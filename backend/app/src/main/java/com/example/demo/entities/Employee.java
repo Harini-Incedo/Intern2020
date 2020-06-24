@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "employee")
 public class Employee {
 
-    enum Timezone {
+    public enum Timezone {
         PST,
         EST,
         IST

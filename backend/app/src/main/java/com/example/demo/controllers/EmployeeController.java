@@ -16,7 +16,7 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
-        return null;
+        return (List<Employee>) repository.findAll();
     }
 
 }
