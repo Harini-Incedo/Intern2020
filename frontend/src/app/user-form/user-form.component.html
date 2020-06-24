@@ -1,38 +1,216 @@
+<link rel="stylesheet" href="user-form.component.css">
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
       <div class="form-group">
-        <label for="name">First Name</label>
-        <input type="text" [(ngModel)]="user.firstName"
-          class="form-control"
-          id="name"
+        <p>Contact Information</p>
+        <div>
+          <label for="firstName">&emsp;First Name<span style="color: red;">*</span></label>
+          <input type="text" [(ngModel)]="user.firstName"
           name="name"
-          placeholder="Enter First Name of the employee"
-          required #name="ngModel">
+          required #name="ngModel"
+          value="user.firstName">
       </div>
-      <div [hidden]="!name.pristine" class="alert alert-danger">First Name is required</div>
-      <div class="form-group">
-        <label for="name">Last Name</label>
+      <div>
+        <label for="lastName">&emsp;Last Name<span style="color: red;">*</span></label>
         <input type="text" [(ngModel)]="user.lastName"
-          class="form-control"
           id="name"
           name="name"
-          placeholder="Enter Last Name of the employee"
+          value="user.lastName"
           required #name="ngModel">
       </div>
-      <div [hidden]="!name.pristine" class="alert alert-danger">Last Name is required</div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" [(ngModel)]="user.email"
-          class="form-control"
+        <label for="email">&emsp;Email<span style="color: red;">*</span></label>
+        <input type="email" [(ngModel)]="user.email"
           id="email"
           name="email"
-          placeholder="Enter your email address"
+          placeholder="someone@example.com"
+          value="user.email"
           required #email="ngModel">
-        <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
       </div>
-      <button type="submit" [disabled]="!userForm.form.valid"
-        class="btn btn-info">Submit</button>
+      <hr>
+      <div class="form-group">
+        <p>Employee Information</p>
+        <div>
+          <label for="role">&emsp;Role<span style="color: red;">*</span></label>
+          <input list="roles" id="role" name="role" [(ngModel)]="user.role" required #role="ngModel" />
+          <datalist id="roles">
+              <option value="Developer">
+              <option value="Project Manager">
+              <option value="Business Analyst">
+              <option value="Data Scientist">
+              <option value="Intern">
+          </datalist>
+        </div>
+        <div>
+          <label for="department">&emsp;Department</label>
+          <input list="departments" id="department" name="department" [(ngModel)]="user.department"
+          required #department="ngModel"/>
+          <datalist id="departments">
+              <option value="Telecom">
+              <option value="Product Engineering">
+              <option value="Financial Services">
+              <option value="Life Sciences">
+              <option value="Healthcare">
+          </datalist>
+        </div>
+        <div>
+          <label for="managerName">&emsp;Manager Name<span style="color: red;">*</span></label>
+          <input type="text" [(ngModel)]="user.managerName"
+            id="managerName"
+            name="managerName"
+            value="user.managerName"
+            required #managerName="ngModel">
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <p>Location and Logistics</p>
+        <div>
+          <label for="startDate">&emsp;Start Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="user.startDate"
+            id="startDate"
+            name="startDate"
+            value="user.startDate"
+            required #startDate="ngModel">
+        </div>
+        <div>
+          <label for="endDate">&emsp;End Date</label>
+          <input type="date" [(ngModel)]="user.endDate"
+            id="endDate"
+            name="endDate"
+            value="user.endDate"
+            #endDate="ngModel">
+        </div>
+        <div>
+          <label for="location">&emsp;Location</label>
+          <input type="text" [(ngModel)]="user.location"
+            id="location"
+            name="location"
+            value="user.location"
+            #location="ngModel">
+        </div>
+        <div>
+          <label for="timeZone">&emsp;Time Zone<span style="color: red;">*</span></label>
+          <select [(ngModel)]="user.timeZone"
+            id="timeZone"
+            name="timeZone"
+            value="user.timeZone"
+            #timeZone="ngModel">
+            <option></option>
+          <option value="International Date Line West">
+            (UTC -12:00) International Date Line West
+          </option>
+          <option value="Midway Islands Time">
+            (UTC -11:00) Midway Islands Time
+          </option>
+          <option value="Hawaii Standard Time">
+            (UTC -10:00) Hawaii Standard Time
+          </option>
+          <option value="Marquesas Islands">
+            (UTC -09:30) Marquesas Island
+          </option>
+          <option value="Alaska Standard Time">
+            (UTC -09:00) Alaska Standard Time
+          </option>
+          <option value="Pacific Standard Time">
+            (UTC -08:00) Pacific Standard Time
+          </option>
+          <option value="Phoenix Standard Time">
+            (UTC -07:00) Phoenix Standard Time
+          </option>
+          <option value="Mountain Standard Time">
+            (UTC -07:00) Mountain Standard Time
+          </option>
+          <option value="Central Standard Time">
+            (UTC -06:00) Central Standard Time
+          </option>
+          <option value="Eastern Standard Time">
+            (UTC -05:00) Eastern Standard Time
+          </option>
+          <option value="Indiana Eastern Standard Time">
+            (UTC -05:00) Indiana Eastern Standard Time
+          </option>
+          <option value="Puerto Rico and US Virgin Islands Time">
+            (UTC -04:00) Puerto Rico and US Virgin Islands Time
+          </option>
+          <option value="Canada Newfoundland Time">
+            (UTC -03:30) Canada Newfoundland Time
+          </option>
+          <option value="Argentina Standard Time">
+            (UTC -03:00) Argentina Standard Time
+          </option>
+          <option value="Brazil Eastern Time">
+            (UTC -03:00) Brazil Eastern Time
+          </option>
+          <option value="Central African Time">
+            (UTC -01:00) Central African Time
+          </option>
+          <option value="Universal Coordinated Time">
+            (UTC) Universal Coordinated Time
+          </option>
+          <option value="European Central Time">
+            (UTC +01:00) European Central Time
+          </option>
+          <option value="Eastern European Time">
+            (UTC +02:00) Eastern European Time
+          </option>
+          <option value="Egypt Standard Time">
+            (UTC +02:00) Egypt Standard Time
+          </option>
+          <option value="Eastern African Time">
+            (UTC +03:00) Eastern African Time
+          </option>
+          <option value="Middle East Time">
+            (UTC +03:30) Middle East Time
+          </option>
+          <option value="Near East Time">
+            (UTC +04:00) Near East Time
+          </option>
+          <option value="Pakistan Lahore Time">
+            (UTC +05:00) Pakistan Lahore Time
+          </option>
+          <option value="India Standard Time">
+            (UTC +05:30) India Standard Time
+          </option>
+          <option value="Bangladesh Standard Time">
+            (UTC +06:00) Bangladesh Standard Time
+          </option>
+          <option value="Vietnam Standard Time">
+            (UTC +07:00) Vietnam Standard Time
+          </option>
+          <option value="China Taiwan Time">
+            (UTC +08:00) China Taiwan Time
+          </option>
+          <option value="Japan Standard Time">
+            (UTC +09:00) Japan Standard Time
+          </option>
+          <option value="Australia Central Time">
+            (UTC +09:30) Australia Central Time
+          </option>
+          <option value="Australia Eastern Time">
+            (UTC +10:00) Australia Eastern Time
+          </option>
+          <option value="Solomon Standard Time">
+            (UTC +11:00) Solomon Standard Time
+          </option>
+          <option value="New Zealand Standard Time">
+            (UTC +12:00) New Zealand Standard Time
+          </option>
+          </select>
+        </div>
+        <div>
+          <label for="workingHours">&emsp;Working Hours<span style="color: red;">*</span></label>
+          <input type="time" [(ngModel)]="user.workingHours"
+            id="startTime"
+            name="workingHours"
+            value="user.workingHours"
+            #workingHours="ngModel">
+            -
+          <input type="time" id="endTime">
+        </div>
+      </div>
+      <a routerLink="/users">&larr;Go Back</a>
+      <button type="submit" [disabled]="!userForm.form.valid">Save</button>
     </form>
   </div>
 </div>
