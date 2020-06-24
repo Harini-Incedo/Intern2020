@@ -1,34 +1,56 @@
 package com.example.demo.entities;
 
 import com.example.demo.Department;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 
 @Entity
+@Table(name = "employee")
 public class Employee {
 
     enum Timezone {
         PST,
         EST,
-        IST;
+        IST
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    String firstName;
-    String lastName;
-    String email;
-    Date startDate;
-    Date endDate;
-    String location;
-    Enum<Timezone> timezone;
-    Enum<Department> department;
-    String role;
-    String manager;
+
+    // contact information
+    @Column(name = "firstName")
+    private String firstName;
+    @Column(name = "lastName")
+    private String lastName;
+    @Column(name = "email")
+    private String email;
+
+    // association with company
+    @Column(name = "startDate")
+    private Date startDate;
+    @Column(name = "endDate")
+    private Date endDate;
+
+    // location and logistics
+    @Column(name = "startWork")
+    private Time startWork;
+    @Column(name = "endWork")
+    private Time endWork;
+    @Column(name = "location")
+    private String location;
+    @Column(name = "timezone")
+    private Enum<Timezone> timezone;
+
+    // current position profile
+    @Column(name = "department")
+    private Enum<Department> department;
+    @Column(name = "role")
+    private String role;
+    @Column(name = "manager")
+    private String manager;
 
 
     public Employee() {
@@ -85,6 +107,22 @@ public class Employee {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Time getStartWork() {
+        return startWork;
+    }
+
+    public void setStartWork(Time startWork) {
+        this.startWork = startWork;
+    }
+
+    public Time getEndWork() {
+        return endWork;
+    }
+
+    public void setEndWork(Time endWork) {
+        this.endWork = endWork;
     }
 
     public String getLocation() {
