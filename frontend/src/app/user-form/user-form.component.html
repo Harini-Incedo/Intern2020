@@ -7,24 +7,21 @@
         <div>
           <label for="firstName">&emsp;First Name<span style="color: red;">*</span></label>
           <input type="text" [(ngModel)]="user.firstName"
-          name="name"
-          required #name="ngModel"
-          value="user.firstName">
+          name="firstName"
+          required #name="ngModel">
       </div>
       <div>
         <label for="lastName">&emsp;Last Name<span style="color: red;">*</span></label>
         <input type="text" [(ngModel)]="user.lastName"
           id="name"
           name="name"
-          value="user.lastName"
-          required #name="ngModel">
+          required #lastName="ngModel">
       </div>
         <label for="email">&emsp;Email<span style="color: red;">*</span></label>
         <input type="email" [(ngModel)]="user.email"
           id="email"
           name="email"
           placeholder="someone@example.com"
-          value="user.email"
           required #email="ngModel">
       </div>
       <hr>
@@ -58,7 +55,6 @@
           <input type="text" [(ngModel)]="user.manager"
             id="managerName"
             name="managerName"
-            value="user.managerName"
             required #managerName="ngModel">
         </div>
       </div>
@@ -70,7 +66,6 @@
           <input type="date" [(ngModel)]="user.startDate"
             id="startDate"
             name="startDate"
-            value="user.startDate"
             required #startDate="ngModel">
         </div>
         <div>
@@ -78,7 +73,6 @@
           <input type="date" [(ngModel)]="user.endDate"
             id="endDate"
             name="endDate"
-            value="user.endDate"
             #endDate="ngModel">
         </div>
         <div>
@@ -86,7 +80,6 @@
           <input type="text" [(ngModel)]="user.location"
             id="location"
             name="location"
-            value="user.location"
             #location="ngModel">
         </div>
         <div>
@@ -94,7 +87,6 @@
           <select [(ngModel)]="user.timeZone"
             id="timeZone"
             name="timeZone"
-            value="user.timeZone"
             #timeZone="ngModel">
             <option></option>
           <option value="International Date Line West">
@@ -203,7 +195,6 @@
           <input type="time" [(ngModel)]="user.workingHours"
             id="startTime"
             name="workingHours"
-            value="user.workingHours"
             #workingHours="ngModel">
             -
           <input type="time" id="endTime">

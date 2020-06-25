@@ -13,7 +13,7 @@ export class ViewPageComponent implements OnInit {
   user: User;
 
   constructor( private route: ActivatedRoute, public userService : UserService) {
-    
+
   }
 
   ngOnInit(): void {

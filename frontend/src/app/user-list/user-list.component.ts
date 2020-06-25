@@ -47,5 +47,5 @@ export class UserListComponent implements OnInit {
       this.userService.setUsers(data);
       this.selectedUsers = [];
     });
-  } 
+  }
 }

@@ -33,6 +33,8 @@ public class Employee {
     private Date startDate;
     @Column(name = "endDate")
     private Date endDate;
+    @Column(name = "active")
+    private boolean active;
 
     // location and logistics
     @Column(name = "startWork")
@@ -42,11 +44,11 @@ public class Employee {
     @Column(name = "location")
     private String location;
     @Column(name = "timezone")
-    private Enum<Timezone> timezone;
+    private Timezone timezone;
 
     // current position profile
     @Column(name = "department")
-    private Enum<Department> department;
+    private Department department;
     @Column(name = "role")
     private String role;
     @Column(name = "manager")
@@ -56,13 +58,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String email, Date startDate, Enum<Timezone> timezone, String role) {
+    public Employee(String firstName, String lastName, String email, Date startDate, Timezone timezone, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.startDate = startDate;
         this.timezone = timezone;
         this.role = role;
+        this.active = true;
     }
 
     public long getId() {
@@ -83,6 +86,14 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String getEmail() {
@@ -133,19 +144,19 @@ public class Employee {
         this.location = location;
     }
 
-    public Enum<Timezone> getTimezone() {
+    public Timezone getTimezone() {
         return timezone;
     }
 
-    public void setTimezone(Enum<Timezone> timezone) {
+    public void setTimezone(Timezone timezone) {
         this.timezone = timezone;
     }
 
-    public Enum<Department> getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(Enum<Department> department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
@@ -164,5 +175,4 @@ public class Employee {
     public void setManager(String manager) {
         this.manager = manager;
     }
-
 }
