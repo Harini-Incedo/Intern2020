@@ -8,7 +8,7 @@ export class User {
   startDate: string;
   endDate: string;
   location: string;
-  timeZone: string;
+  timezone: string;
   workingHours: string;
   manager: string;
 }
