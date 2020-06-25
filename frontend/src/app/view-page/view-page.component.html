@@ -1,0 +1,22 @@
+<div class="card my-5">
+  <div *ngIf="selectedUser" class="card-body">
+    <p style="left: 11%; position: absolute;">{{ selectedUser.firstName }} {{ selectedUser.lastName }}</p>
+    <br>
+    <p>Email <span style="left: 14%; position: absolute;">{{ selectedUser.email }}</span></p>
+    <p>Department <span style="left: 14%; position: absolute;">{{ selectedUser.department }}</span></p>
+    <p>Manager <span style="left: 14%; position: absolute;">{{ selectedUser.manager }}</span></p>
+    <p>Start Date <span style="left: 14%; position: absolute;">{{ selectedUser.startDate }}</span></p>
+    <p>End Date <span style="left: 14%; position: absolute;">{{ selectedUser.endDate }}</span></p>
+    <p>Location <span style="left: 14%; position: absolute;">{{ selectedUser.location }}</span></p>
+    <p>Time Zone <span style="left: 14%; position: absolute;">{{ selectedUser.timeZone }}</span></p>
+    <p>Working Hours <span style="left: 14%; position: absolute;">{{ selectedUser.workingHours }}</span></p>
+    <div class="vl">
+    </div>
+    <div style="float: right; justify-content: space-evenly;">
+      <a routerLink="/employees">&larr;Go Back</a>
+      <button>Contact</button>
+      <button routerLink="/editEmployee/{{selectedUser.id}}">Edit</button>
+      <button>Delete</button>
+    </div>
+  </div>
+</div>

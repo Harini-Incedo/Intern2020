@@ -49,7 +49,7 @@ export class UserService {
   }
 
   public delete(id: number) {
-    this.http.delete<User>(this.usersUrl+"/" +id );
+    this.http.delete<User>(this.usersUrl + "/" + id);
   }
 
   public edit(user: User) {

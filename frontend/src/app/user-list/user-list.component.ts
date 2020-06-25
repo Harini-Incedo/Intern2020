@@ -39,7 +39,6 @@ export class UserListComponent implements OnInit {
 
   deleteUser(user:User) : void{
     this.userService.delete(+user.id);
-    
   }
 
   ngOnInit() {
@@ -48,5 +47,5 @@ export class UserListComponent implements OnInit {
       this.userService.setUsers(data);
       this.selectedUsers = [];
     });
-  } 
+  }
 }
