@@ -1,5 +1,3 @@
-import { Time } from '@angular/common';
-
 export class User {
   id: string;
   firstName: string;
@@ -11,7 +9,6 @@ export class User {
   endDate: string;
   location: string;
   timeZone: string;
-  startWork: Time;
-  endWork: Time;
+  workingHours: string;
   manager: string;
 }
