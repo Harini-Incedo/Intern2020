@@ -202,12 +202,21 @@
         </div>
         <div>
           <label for="workingHours">&emsp;Working Hours<span style="color: red;">*</span></label>
-          <input type="time" [(ngModel)]="user.workingHours"
-            id="startTime"
+          <select [(ngModel)]="user.workingHours"
+            id="workingHours"
             name="workingHours"
             #workingHours="ngModel">
-            -
-          <input type="time" id="endTime">
+            <option></option>
+            <option value="Part Time">
+              Part Time
+            </option>
+            <option value="Full Time">
+              Full Time
+            </option>
+            <option value="Temporary">
+              Temporary
+            </option>
+          </select>
         </div>
       </div>
       <a routerLink="/employees">&larr;Go Back</a>
