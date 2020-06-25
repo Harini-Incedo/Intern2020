@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../user';
-
+import { ActivatedRoute } from '@angular/router';
+import {UserService} from '../user-service.service';
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',
@@ -8,13 +9,20 @@ import { User } from '../user';
 })
 export class ViewPageComponent implements OnInit {
 
+  selectedUser : User;
   user: User;
 
-  constructor() {
-    this.user = new User();
+  constructor( private route: ActivatedRoute, public userService : UserService) {
+    
   }
 
   ngOnInit(): void {
+    this.getUserById();
+  }
+
+  getUserById(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUserByIdApi(id).subscribe(data=>this.selectedUser = data)
   }
 
 }

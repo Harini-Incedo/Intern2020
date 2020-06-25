@@ -14,9 +14,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <td><input type="checkbox"></td>
-          <td><a href="/viewEmployee">{{ user.firstName }}</a></td>
-          <td><a href="/viewEmployee">{{ user.lastName }}</a></td>
+          <td><input (click)="onSelectList(user)" type="checkbox"></td>
+          <td><a routerLink="/viewEmployee/{{user.id}}">{{ user.firstName }}</a></td>
+          <td><a routerLink="/viewEmployee/{{user.id}}">{{ user.lastName }}</a></td>
           <td>{{ user.department }}</td>
           <td>{{ user.manager }}</td>
           <td>{{ user.location }}</td>
@@ -24,8 +24,8 @@
         </tr>
       </tbody>
     </table>
-    <button routerLink="/editEmployee" disabled>Edit</button>
-    <button disabled>Delete</button>
+    <button *ngIf="selectedUsers && selectedUsers.length ===1" routerLink="/editEmployee/{{selectedUsers[0].id}}">Edit</button>
+    <button *ngIf="selectedUsers && selectedUsers.length ===1" (click)="deleteUser(selectedUsers[0])">Delete</button>
     <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+
     </button>
   </div>

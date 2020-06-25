@@ -7,8 +7,8 @@ import { ViewPageComponent } from './view-page/view-page.component';
 const routes: Routes = [
   { path: 'employees', component: UserListComponent },
   { path: 'addEmployee', component: UserFormComponent },
-  { path: 'viewEmployee', component: ViewPageComponent},
-  { path: 'editEmployee', component: UserFormComponent}
+  { path: 'viewEmployee/:id', component: ViewPageComponent},
+  { path: 'editEmployee/:id', component: UserFormComponent}
 ];
 
 @NgModule({

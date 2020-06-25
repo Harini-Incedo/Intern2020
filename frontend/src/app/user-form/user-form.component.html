@@ -210,7 +210,7 @@
         </div>
       </div>
       <a routerLink="/employees">&larr;Go Back</a>
-      <button type="submit" routerLink="/employees" [disabled]="!userForm.form.valid">Save</button>
+      <button type="submit" [disabled]="!userForm.form.valid" (click)="onSubmit()">Save</button>
     </form>
   </div>
 </div>
