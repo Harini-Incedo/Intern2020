@@ -25,4 +25,11 @@ export class ViewPageComponent implements OnInit {
     this.userService.getUserByIdApi(id).subscribe(data=>this.selectedUser = data)
   }
 
+  deleteUser(user:User) : void{
+    let check = confirm("Are you sure you want to delete this employee?");
+    if (check) {
+      this.userService.delete(+user.id).subscribe(d=>this.userService.gotoUserList())
+    }
+  }
+
 }
