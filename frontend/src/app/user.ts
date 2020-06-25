@@ -10,5 +10,5 @@ export class User {
   location: string;
   timeZone: string;
   workingHours: string;
-  managerName: string;
+  manager: string;
 }
