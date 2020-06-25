@@ -1,0 +1,22 @@
+<div class="card my-5">
+  <div class="card-body">
+    <p style="left: 11%; position: absolute;">{{ user.firstName }} {{ user.lastName }}</p>
+    <br>
+    <p>Email <span style="left: 14%; position: absolute;">{{ user.email }}</span></p>
+    <p>Department <span style="left: 14%; position: absolute;">{{ user.department }}</span></p>
+    <p>Manager <span style="left: 14%; position: absolute;">{{ user.managerName }}</span></p>
+    <p>Start Date <span style="left: 14%; position: absolute;">{{ user.startDate }}</span></p>
+    <p>End Date <span style="left: 14%; position: absolute;">{{ user.endDate }}</span></p>
+    <p>Location <span style="left: 14%; position: absolute;">{{ user.location }}</span></p>
+    <p>Time Zone <span style="left: 14%; position: absolute;">{{ user.timeZone }}</span></p>
+    <p>Working Hours <span style="left: 14%; position: absolute;">{{ user.workingHours }}</span></p>
+    <div class="vl">
+    </div>
+    <div style="float: right; justify-content: space-evenly;">
+      <a routerLink="/employees">&larr;Go Back</a>
+      <button onclick="sendEmail();">Contact</button>
+      <button routerLink="/editEmployee">Edit</button>
+      <button>Delete</button>
+    </div>
+  </div>
+</div>
