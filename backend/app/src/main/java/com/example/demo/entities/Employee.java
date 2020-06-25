@@ -1,9 +1,11 @@
 package com.example.demo.entities;
 
 import com.example.demo.Department;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -30,7 +32,9 @@ public class Employee {
 
     // association with company
     @Column(name = "startDate")
+    @JsonFormat(pattern = "MM-dd-yyyy")
     private Date startDate;
+    @JsonFormat(pattern = "MM-dd-yyyy")
     @Column(name = "endDate")
     private Date endDate;
     @Column(name = "active")
@@ -38,9 +42,11 @@ public class Employee {
 
     // location and logistics
     @Column(name = "startWork")
-    private Time startWork;
+    @JsonFormat(pattern = "KK:mm a")
+    private LocalTime startWork;
     @Column(name = "endWork")
-    private Time endWork;
+    @JsonFormat(pattern = "KK:mm a")
+    private LocalTime endWork;
     @Column(name = "location")
     private String location;
     @Column(name = "timezone")
@@ -120,19 +126,19 @@ public class Employee {
         this.endDate = endDate;
     }
 
-    public Time getStartWork() {
+    public LocalTime getStartWork() {
         return startWork;
     }
 
-    public void setStartWork(Time startWork) {
+    public void setStartWork(LocalTime startWork) {
         this.startWork = startWork;
     }
 
-    public Time getEndWork() {
+    public LocalTime getEndWork() {
         return endWork;
     }
 
-    public void setEndWork(Time endWork) {
+    public void setEndWork(LocalTime endWork) {
         this.endWork = endWork;
     }
 
