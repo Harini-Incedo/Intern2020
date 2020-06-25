@@ -21,14 +21,10 @@ export class UserFormComponent {
 
   onSubmit() {
     if(this.isCreateMode){
-      this.userService.create(this.user).subscribe(result => this.gotoUserList());
+      this.userService.create(this.user).subscribe(result => this.userService.gotoUserList());
     }else{
-      this.userService.edit(this.user).subscribe(result => this.gotoUserList());
+      this.userService.edit(this.user).subscribe(result => this.userService.gotoUserList());
     }
-  }
-
-  gotoUserList() {
-    this.router.navigate(['/employees']);
   }
 
   ngOnInit(): void {

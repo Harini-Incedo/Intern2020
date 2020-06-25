@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -20,7 +21,7 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router,) {
     this.usersUrl = 'http://localhost:8080/employees';
   }
 
@@ -49,7 +50,7 @@ export class UserService {
   }
 
   public delete(id: number) {
-    this.http.delete<User>(this.usersUrl+"/" +id );
+    return this.http.delete<User>(this.usersUrl +"/" +id ,this.httpOptions);
   }
 
   public edit(user: User) {
@@ -60,4 +61,7 @@ export class UserService {
     return this.http.get<User>(this.usersUrl + "/" + id)
   }
 
+  public gotoUserList() {
+    this.router.navigate(['/employees']);
+  }
 }

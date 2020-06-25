@@ -20,6 +20,11 @@ export class ViewPageComponent implements OnInit {
     this.getUserById();
   }
 
+  
+  deleteUser(user:User) : void{
+    this.userService.delete(+user.id).subscribe(d=>this.userService.gotoUserList()) 
+  }
+  
   getUserById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserByIdApi(id).subscribe(data=>this.selectedUser = data)
