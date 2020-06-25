@@ -44,7 +44,7 @@
         <div>
           <label for="department">&emsp;Department</label>
           <input list="departments" id="department" name="department" [(ngModel)]="user.department"
-          required #department="ngModel"/>
+          #department="ngModel"/>
           <datalist id="departments">
               <option value="Telecom">
               <option value="Product Engineering">
@@ -55,7 +55,7 @@
         </div>
         <div>
           <label for="managerName">&emsp;Manager Name<span style="color: red;">*</span></label>
-          <input type="text" [(ngModel)]="user.managerName"
+          <input type="text" [(ngModel)]="user.manager"
             id="managerName"
             name="managerName"
             value="user.managerName"
@@ -209,8 +209,8 @@
           <input type="time" id="endTime">
         </div>
       </div>
-      <a routerLink="/users">&larr;Go Back</a>
-      <button type="submit" [disabled]="!userForm.form.valid">Save</button>
+      <a routerLink="/employees">&larr;Go Back</a>
+      <button type="submit" [disabled]="!userForm.form.valid" (click)="onSubmit()">Save</button>
     </form>
   </div>
 </div>

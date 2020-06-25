@@ -11,19 +11,34 @@ import { User } from '../user';
 export class UserFormComponent {
 
   user: User;
+  isCreateMode: boolean;
 
   constructor(
     private route: ActivatedRoute,
       private router: Router,
         private userService: UserService) {
-    this.user = new User();
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    if(this.isCreateMode){
+      this.userService.create(this.user).subscribe(result => this.gotoUserList());
+    }else{
+      this.userService.edit(this.user).subscribe(result => this.gotoUserList());
+    }
   }
 
   gotoUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/employees']);
+  }
+
+  ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    if (!id){
+      this.user = new User();
+      this.isCreateMode = true;
+    }else{
+      this.userService.getUserByIdApi(id).subscribe(d=>this.user = d);
+      this.isCreateMode = false;
+    }
   }
 }

@@ -4,22 +4,26 @@ import com.example.demo.entities.Employee;
 import com.example.demo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     @Autowired
     private EmployeeRepository repository;
 
-
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return repository.findAllActive();
     }
-
 
     @GetMapping("employees/{id}")
     public Employee getEmployeeByID(@PathVariable("id") Long id) {
@@ -34,13 +38,11 @@ public class EmployeeController {
         return null;
     }
 
-
     @PostMapping("/employees")
     void createEmployee(@RequestBody Employee e) {
         e.setActive(true);
         repository.save(e);
     }
-
 
     @DeleteMapping("employees/{id}")
     void deleteEmployeeByID(@PathVariable("id") Long id) {
