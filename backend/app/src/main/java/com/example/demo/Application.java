@@ -19,13 +19,20 @@ public class Application {
 
 	@Bean
 	CommandLineRunner init(EmployeeRepository repository) {
-		// creates mock employees for testing purposes
 		return args -> {
-			Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-				Employee e =
-						new Employee(name, name, name.toLowerCase() + "@domain.com",
-											new Date(1, 1, 1),
-												Employee.Timezone.PST, "developer");
+			// creates mock employees for testing purposes
+			Stream.of("John Cena Business Analyst", "Sponge Robert Project Manager",
+						"Jennifer Aniston Web Developer", "Harry Styles College Recruiter",
+							"Nancy Drew IT Consultant").forEach(name -> {
+				String[] info = name.split(" ");
+				Employee e = new Employee(info[0], info[1],
+										info[0].toLowerCase() + "@domain.com",
+												new Date(120, 1, 1),
+													Employee.Timezone.PST,
+													info[2] + " " + info[3]);
+				e.setDepartment(Department.TELECOM);
+				e.setLocation("New Jersey");
+				e.setManager("Chandler Bing");
 				repository.save(e);
 			});
 			repository.findAll().forEach(System.out::println);
