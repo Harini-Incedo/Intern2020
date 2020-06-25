@@ -89,13 +89,13 @@
             name="timeZone"
             #timeZone="ngModel">
             <option></option>
-            <option value="PST">
+            <option value=0>
               (UTC -08:00) Pacific Standard Time
             </option>
-            <option value="EST">
+            <option value=1>
               (UTC -05:00) Eastern Standard Time
             </option>
-            <option value="IST">
+            <option value=2>
               (UTC +05:30) India Standard Time
             </option>
             <!-- PST, EST, IST
@@ -202,12 +202,12 @@
         </div>
         <div>
           <label for="workingHours">&emsp;Working Hours<span style="color: red;">*</span></label>
-          <input type="time" [(ngModel)]="user.workingHours"
+          <input type="time" [(ngModel)]="user.startWork"
             id="startTime"
             name="workingHours"
-            #workingHours="ngModel">
+            #startWork="ngModel">
             -
-          <input type="time" id="endTime">
+          <input type="time" id="endTime" [(ngModel)]="user.endWork" #endWork="ngModel">
         </div>
       </div>
       <a routerLink="/employees">&larr;Go Back</a>
