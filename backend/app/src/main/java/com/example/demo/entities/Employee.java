@@ -1,11 +1,7 @@
 package com.example.demo.entities;
 
-import com.example.demo.Department;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -34,19 +30,15 @@ public class Employee {
     @Column(name = "startDate")
     @JsonFormat(pattern = "MM-dd-yyyy")
     private Date startDate;
-    @JsonFormat(pattern = "MM-dd-yyyy")
     @Column(name = "endDate")
+    @JsonFormat(pattern = "MM-dd-yyyy")
     private Date endDate;
     @Column(name = "active")
     private boolean active;
 
     // location and logistics
-    @Column(name = "startWork")
-    @JsonFormat(pattern = "KK:mm a")
-    private LocalTime startWork;
-    @Column(name = "endWork")
-    @JsonFormat(pattern = "KK:mm a")
-    private LocalTime endWork;
+    @Column(name = "workingHours")
+    private String workingHours;
     @Column(name = "location")
     private String location;
     @Column(name = "timezone")
@@ -54,12 +46,11 @@ public class Employee {
 
     // current position profile
     @Column(name = "department")
-    private Department department;
+    private String department;
     @Column(name = "role")
     private String role;
     @Column(name = "manager")
     private String manager;
-
 
     public Employee() {
     }
@@ -126,20 +117,12 @@ public class Employee {
         this.endDate = endDate;
     }
 
-    public LocalTime getStartWork() {
-        return startWork;
+    public String getWorkingHours() {
+        return workingHours;
     }
 
-    public void setStartWork(LocalTime startWork) {
-        this.startWork = startWork;
-    }
-
-    public LocalTime getEndWork() {
-        return endWork;
-    }
-
-    public void setEndWork(LocalTime endWork) {
-        this.endWork = endWork;
+    public void setWorkingHours(String workingHours) {
+        this.workingHours = workingHours;
     }
 
     public String getLocation() {
@@ -158,11 +141,11 @@ public class Employee {
         this.timezone = timezone;
     }
 
-    public Department getDepartment() {
+    public String getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 
@@ -181,4 +164,5 @@ public class Employee {
     public void setManager(String manager) {
         this.manager = manager;
     }
+
 }
