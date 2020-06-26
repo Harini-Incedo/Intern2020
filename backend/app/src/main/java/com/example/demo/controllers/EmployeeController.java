@@ -53,4 +53,30 @@ public class EmployeeController {
         }
     }
 
+    @PutMapping("employees/{id}")
+    void updateEmployeeByID(@PathVariable("id") Long id, @RequestBody Employee e) {
+        Employee toUpdate = getEmployeeByID(id);
+        if (toUpdate != null) {
+
+            toUpdate.setFirstName(e.getFirstName());
+            toUpdate.setLastName(e.getLastName());
+            toUpdate.setEmail(e.getEmail());
+
+            toUpdate.setLocation(e.getLocation());
+            toUpdate.setStartDate(e.getStartDate());
+            toUpdate.setEndDate(e.getEndDate());
+
+            toUpdate.setWorkingHours(e.getWorkingHours());
+            toUpdate.setLocation(e.getLocation());
+            toUpdate.setTimezone(e.getTimezone());
+
+            toUpdate.setDepartment(e.getDepartment());
+            toUpdate.setRole(e.getRole());
+            toUpdate.setManager(e.getManager());
+
+            repository.save(toUpdate);
+
+        }
+    }
+
 }
