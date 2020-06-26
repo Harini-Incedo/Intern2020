@@ -28,8 +28,12 @@ export class ViewPageComponent implements OnInit {
   deleteUser(user:User) : void{
     let check = confirm("Are you sure you want to delete this employee?");
     if (check) {
-      this.userService.delete(+user.id).subscribe(d=>this.userService.gotoUserList())
+      this.userService.delete(+user.id).subscribe(d=>this.userService.gotoUserList());
     }
+  }
+
+  reload(): void{
+    window.location.reload();
   }
 
 }

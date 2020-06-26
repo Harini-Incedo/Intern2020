@@ -87,6 +87,7 @@
           <select [(ngModel)]="user.timezone"
             id="timezone"
             name="timezone"
+            required
             #timeZone="ngModel">
             <option></option>
             <option value=0>
@@ -205,8 +206,8 @@
           <select [(ngModel)]="user.workingHours"
             id="workingHours"
             name="workingHours"
+            required
             #workingHours="ngModel">
-            <option></option>
             <option value="Part Time">
               Part Time
             </option>

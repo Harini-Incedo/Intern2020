@@ -25,7 +25,8 @@
       </tbody>
     </table>
     <button *ngIf="selectedUsers && selectedUsers.length ===1" routerLink="/editEmployee/{{selectedUsers[0].id}}">Edit</button>
-    <button *ngIf="selectedUsers && selectedUsers.length ===1" (click)="deleteUser(selectedUsers[0])">Delete</button>
+    <button *ngIf="selectedUsers && selectedUsers.length ===1" (click)="deleteUser(selectedUsers[0])"
+    style="margin-left: 1em;">Delete</button>
     <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+
     </button>
   </div>
