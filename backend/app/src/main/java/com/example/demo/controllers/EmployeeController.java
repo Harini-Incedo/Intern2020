@@ -41,6 +41,15 @@ public class EmployeeController {
     @PostMapping("/employees")
     void createEmployee(@RequestBody Employee e) {
         e.setActive(true);
+        System.out.println(e.getFirstName() + " " + e.getLastName() + ":");
+        System.out.println("Email: " + e.getEmail());
+        System.out.println("Department: " + e.getDepartment());
+        System.out.println("Manager: " + e.getManager());
+        System.out.println("Start Date: " + e.getStartDate());
+        System.out.println("End Date: " + e.getEndDate());
+        System.out.println("Location: " + e.getLocation());
+        System.out.println("Time Zone: " + e.getTimezone());
+        System.out.println("Working Hours: " + e.getWorkingHours());
         repository.save(e);
     }
 
