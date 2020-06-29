@@ -4,11 +4,6 @@ import com.example.demo.entities.Employee;
 import com.example.demo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +18,21 @@ public class EmployeeController {
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return repository.findAllActive();
+    }
+
+
+    @GetMapping("/roles")
+    public String[] getRoles() {
+        String[] roles = {"Analyst", "Developer", "Consultant", "Data Scientist",
+                "Intern", "Manager", "HR", "Assistant"};
+        return roles;
+    }
+
+    @GetMapping("/departments")
+    public String[] getDepartments() {
+        String[] departments = {"Telecom", "Financial Services", "Life Sciences",
+                                        "Healthcare", "Product Engineering"};
+        return departments;
     }
 
     @GetMapping("employees/{id}")
