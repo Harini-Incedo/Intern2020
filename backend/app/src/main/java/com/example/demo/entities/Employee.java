@@ -1,8 +1,9 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "employee")
@@ -28,11 +29,11 @@ public class Employee {
 
     // association with company
     @Column(name = "startDate")
-    @JsonFormat(pattern = "MM-dd-yyyy")
-    private Date startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
     @Column(name = "endDate")
-    @JsonFormat(pattern = "MM-dd-yyyy")
-    private Date endDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
     @Column(name = "active")
     private boolean active;
 
@@ -55,7 +56,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String email, Date startDate, Timezone timezone, String role) {
+    public Employee(String firstName, String lastName, String email, LocalDate startDate, Timezone timezone, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -101,19 +102,19 @@ public class Employee {
         this.email = email;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.stream.Stream;
@@ -28,13 +29,13 @@ public class Application {
 				String[] info = name.split(" ");
 				Employee e = new Employee(info[0], info[1],
 										info[0].toLowerCase() + "@domain.com",
-												new Date(120, 1, 1),
-													Employee.Timezone.IST,
+												LocalDate.of(2019, 1, 1),
+													Employee.Timezone.EST,
 													info[2] + " " + info[3]);
-				e.setDepartment("Telecommunication");
+				e.setDepartment("Telecom");
 				e.setLocation("New Jersey");
 				e.setManager("Chandler Bing");
-				e.setEndDate(new Date(120, 1, 2));
+				e.setEndDate(LocalDate.of(2020, 1, 1));
 				e.setWorkingHours("Part Time");
 				repository.save(e);
 			});
