@@ -9,7 +9,8 @@ import { User } from '../user';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent {
-
+  departments: String[];
+  roles: String[];
   user: User;
   isCreateMode: boolean;
 
@@ -29,6 +30,8 @@ export class UserFormComponent {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    this.getAllDepartments();
+    this.getAllRoles();
     if (!id){
       this.user = new User();
       this.isCreateMode = true;
@@ -36,5 +39,17 @@ export class UserFormComponent {
       this.userService.getUserByIdApi(id).subscribe(d=>this.user = d);
       this.isCreateMode = false;
     }
+  }
+
+  getAllDepartments():void{
+    this.userService.getDepartments().subscribe(resp=>{
+      this.departments = resp;
+    })
+  }
+
+  getAllRoles():void{
+    this.userService.getRoles().subscribe(resp=>{
+      this.roles = resp;
+    })
   }
 }
