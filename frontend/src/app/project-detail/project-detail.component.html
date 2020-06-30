@@ -1,0 +1,25 @@
+<ul class="text-center">
+  <li class="list-inline-item">
+    <a routerLink="/projects" class="btn btn-info">List Projects</a>
+      </li>
+  <li class="list-inline-item">
+    <a routerLink="/addProject" class="btn btn-info">Add Projects</a>
+      </li>
+</ul>
+<div class="card my-5">
+  <div class="card-body">
+    <p>Project Name <span> {{ project.projectName }} </span></p>
+    <p>Project Goal/Objective <span> {{ project.projectDescription }} </span></p>
+    <p>Start Date <span> {{ project.startDate }}</span></p>
+    <p>End Date <span> {{project.endDate }} </span></p>
+    <p>Client Name <span> {{ project.clientName }} </span></p>
+    <p>Team Size <span> {{ project.teamSize }} </span></p>
+    <p>Department <span> {{ project.department }} </span></p>
+    <p>Weekly Hours <span> {{ project.weeklyHours }} </span></p>
+    <div style="float: right; justify-content: space-evenly;">
+      <a routerLink="/projects">&larr;Go Back</a>
+      <button>Edit</button>
+      <button style="margin-right: 0em;">Delete</button>
+    </div>
+  </div>
+</div>
