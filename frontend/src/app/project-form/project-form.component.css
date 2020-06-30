@@ -7,13 +7,3 @@ label {
   position: absolute;
   margin-top: 1ex;
 }
-
-#endTime {
-  margin-left: 0em;
-  position: relative;
-  margin-top: 0ex;
-}
-
-button {
-  margin-left: 1em;
-}

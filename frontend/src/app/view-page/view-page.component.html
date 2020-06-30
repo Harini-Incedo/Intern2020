@@ -1,9 +1,17 @@
+<ul class="text-center">
+  <li class="list-inline-item">
+    <a routerLink="/employees" class="btn btn-info">List Employees</a>
+      </li>
+  <li class="list-inline-item">
+    <a routerLink="/addEmployee" class="btn btn-info">Add Employee</a>
+      </li>
+</ul>
 <div class="card my-5">
   <div *ngIf="selectedUser" class="card-body">
     <p style="left: 8.5%; position: absolute; font-size: larger;"><strong>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong></p>
     <br>
     <br>
-    <p><strong>Email</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.email }}</span></p>
+    <p><strong>Email</strong> <a href="mailto: {{ selectedUser.email }}" style="left: 14%; position: absolute;">{{ selectedUser.email }}</a></p>
     <p><strong>Department</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.department }}</span></p>
     <p><strong>Manager</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.manager }}</span></p>
     <p><strong>Start Date</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.startDate }}</span></p>
@@ -15,7 +23,7 @@
     </div>
     <div style="float: right; justify-content: space-evenly;">
       <a routerLink="/employees">&larr;Go Back</a>
-      <button>Contact</button>
+      <button (click)="email(selectedUser)">Contact</button>
       <button routerLink="/editEmployee/{{selectedUser.id}}">Edit</button>
       <button (click)="deleteUser(selectedUser)" style="margin-right: 0em;">Delete</button>
     </div>

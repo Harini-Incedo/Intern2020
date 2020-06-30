@@ -1,4 +1,12 @@
 <link rel="stylesheet" href="user-form.component.css">
+<ul class="text-center">
+  <li class="list-inline-item">
+    <a routerLink="/employees" class="btn btn-info">List Employees</a>
+      </li>
+  <li class="list-inline-item">
+    <a routerLink="/addEmployee" class="btn btn-info">Add Employee</a>
+      </li>
+</ul>
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">

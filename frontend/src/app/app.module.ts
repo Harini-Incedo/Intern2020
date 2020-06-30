@@ -8,13 +8,19 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserService } from './user-service.service';
 import { ViewPageComponent } from './view-page/view-page.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectFormComponent } from './project-form/project-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     UserFormComponent,
-    ViewPageComponent
+    ViewPageComponent,
+    ProjectListComponent,
+    ProjectDetailComponent,
+    ProjectFormComponent
   ],
   imports: [
     BrowserModule,
