@@ -52,4 +52,8 @@ export class UserFormComponent {
       this.roles = resp;
     })
   }
+
+  goBack(e:any):void {
+    this.userService.goBack();
+  }
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
+import {Location} from '@angular/common';
 @Injectable()
 export class UserService {
 
@@ -21,7 +21,7 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient,private router: Router,) {
+  constructor(private http: HttpClient,private router: Router,private _location: Location) {
     this.usersUrl = 'http://localhost:8080/employees';
   }
 
@@ -72,4 +72,9 @@ export class UserService {
   public gotoUserList() {
     this.router.navigate(['/employees']);
   }
+
+  public goBack(){
+    this._location.back();
+  }
+  
 }

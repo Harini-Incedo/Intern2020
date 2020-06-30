@@ -14,7 +14,7 @@
     <div class="vl">
     </div>
     <div style="float: right; justify-content: space-evenly;">
-      <a routerLink="/employees">&larr;Go Back</a>
+      <button type="button" (click)="goBack()" >&larr;Go Back</button>
       <button>Contact</button>
       <button routerLink="/editEmployee/{{selectedUser.id}}">Edit</button>
       <button (click)="deleteUser(selectedUser)" style="margin-right: 0em;">Delete</button>

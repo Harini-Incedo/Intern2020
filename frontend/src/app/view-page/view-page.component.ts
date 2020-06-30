@@ -32,4 +32,8 @@ export class ViewPageComponent implements OnInit {
     }
   }
 
+  goBack():void {
+    this.userService.goBack();
+  }
+
 }

@@ -213,7 +213,7 @@
           </select>
         </div>
       </div>
-      <a routerLink="/employees">&larr;Go Back</a>
+      <button type="button" (click)="goBack($event)" >&larr;Go Back</button>
       <button type="submit" [disabled]="!userForm.form.valid" (onclick)="onSubmit()">Save</button>
     </form>
   </div>
