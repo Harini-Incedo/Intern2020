@@ -36,14 +36,15 @@
           <label for="teamSize">&emsp;Team Size</label>
           <input type="number" [(ngModel)]="project.teamSize"
           name="teamSize"
+          min="1"
+          value="1"
           #teamSize="ngModel">
         </div>
         <div>
           <label for="projectDescription">&emsp;Project Description</label>
           <textarea [(ngModel)]="project.projectDescription"
           name="projectDescription"
-          required #projectDescription="ngModel">
-          </textarea>
+          required #projectDescription="ngModel"></textarea>
         </div>
       </div>
       <hr>
@@ -65,11 +66,13 @@
           <label for="weeklyHours">&emsp;Weekly Hours</label>
           <input type="number" [(ngModel)]="project.weeklyHours"
           name="weeklyHours"
+          min="1"
+          value="1"
           #weeklyHours="ngModel">
         </div>
       </div>
     </form>
-    <a routerLink="/projects">&larr;Go Back</a>
+    <button type="button" (click)="goBack($event)">&larr;Go Back</button>
     <button type="submit" [disabled]="!projectForm.form.valid">Save</button>
   </div>
 </div>

@@ -17,7 +17,7 @@
     <p>Department <span> {{ project.department }} </span></p>
     <p>Weekly Hours <span> {{ project.weeklyHours }} </span></p>
     <div style="float: right; justify-content: space-evenly;">
-      <a routerLink="/projects">&larr;Go Back</a>
+      <button type="button" (click)="goBack($event)">&larr;Go Back</button>
       <button>Edit</button>
       <button style="margin-right: 0em;">Delete</button>
     </div>

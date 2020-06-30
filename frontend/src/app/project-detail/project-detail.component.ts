@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -11,9 +12,14 @@ export class ProjectDetailComponent implements OnInit {
   selectedProject : Project;
   project: Project;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  goBack(e:any):void {
+    this.userService.goBack();
+  }
 }

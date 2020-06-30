@@ -26,4 +26,8 @@ export class ProjectFormComponent implements OnInit {
     })
   }
 
+  goBack(e:any):void{
+    this.userService.goBack();
+  }
+
 }
