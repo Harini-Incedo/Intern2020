@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'editEmployee/:id', component: UserFormComponent},
   { path: 'projects', component: ProjectListComponent},
   { path: 'addProject', component: ProjectFormComponent },
-  { path: 'viewProject/:id', component: ProjectDetailComponent},
+  { path: 'viewProject', component: ProjectDetailComponent},
   { path: 'editProject/:id', component: ProjectFormComponent}
 ];
 
