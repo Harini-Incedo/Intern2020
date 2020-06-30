@@ -30,5 +30,10 @@
         </tr>
       </tbody>
     </table>
+    <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true" >Edit</button>
+    <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true"
+    style="margin-left: 1em;">Delete</button>
+    <button routerLink="/addProject" style="float: right;border-radius: 50%; border-color: black;">+
+    </button>
   </div>
 </div>

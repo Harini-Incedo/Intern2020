@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user-service.service';
 import { Project } from '../project';
 
 @Component({
@@ -9,10 +10,20 @@ import { Project } from '../project';
 export class ProjectFormComponent implements OnInit {
 
   project: Project;
+  departments: String[];
 
-  constructor() { }
+  constructor(
+    private userService: UserService) {
+  }
 
   ngOnInit(): void {
+    this.getAllDepartments();
+  }
+
+  getAllDepartments():void{
+    this.userService.getDepartments().subscribe(resp=>{
+      this.departments = resp;
+    })
   }
 
 }

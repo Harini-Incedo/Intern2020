@@ -9,6 +9,8 @@ import { Project } from '../project';
 export class ProjectListComponent implements OnInit {
 
   projects: Project[];
+  selectedProjects: Project[] ;
+  selectedProject: Project ;
 
   constructor() { }
 

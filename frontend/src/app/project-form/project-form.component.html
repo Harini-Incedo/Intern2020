@@ -25,9 +25,12 @@
         </div>
         <div>
           <label for="department">&emsp;Department<span style="color: red;">*</span></label>
-          <input type="text" [(ngModel)]="project.department"
-          name="department"
-          required #department="ngModel">
+          <select id="department" required name="department"
+          #department="ngModel" [(ngModel)]="project.department">
+            <option *ngFor="let department of departments" [value]="department">
+              {{department}}
+            </option>
+          </select>
         </div>
         <div>
           <label for="teamSize">&emsp;Team Size</label>
@@ -40,6 +43,7 @@
           <textarea [(ngModel)]="project.projectDescription"
           name="projectDescription"
           required #projectDescription="ngModel">
+          </textarea>
         </div>
       </div>
       <hr>
