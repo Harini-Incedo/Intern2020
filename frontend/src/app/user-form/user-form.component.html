@@ -9,7 +9,7 @@
 </ul>
 <div class="card my-5">
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm" *ngIf="user!==undefined">
       <div class="form-group">
         <p>Contact Information</p>
         <div>
@@ -37,26 +37,20 @@
         <p>Employee Information</p>
         <div>
           <label for="role">&emsp;Role<span style="color: red;">*</span></label>
-          <input list="roles" id="role" name="role" [(ngModel)]="user.role" required #role="ngModel" />
-          <datalist id="roles">
-              <option value="Developer">
-              <option value="Project Manager">
-              <option value="Business Analyst">
-              <option value="Data Scientist">
-              <option value="Intern">
-          </datalist>
+          <select id="role" required name="role" [(ngModel)]="user.role" #role="ngModel">
+            <option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </option>
+          </select>
         </div>
         <div>
           <label for="department">&emsp;Department</label>
-          <input list="departments" id="department" name="department" [(ngModel)]="user.department"
-          #department="ngModel"/>
-          <datalist id="departments">
-              <option value="Telecom">
-              <option value="Product Engineering">
-              <option value="Financial Services">
-              <option value="Life Sciences">
-              <option value="Healthcare">
-          </datalist>
+          <select id="department" required name="department"
+          #department="ngModel" [(ngModel)]="user.department">
+            <option *ngFor="let department of departments" [value]="department">
+              {{department}}
+            </option>
+          </select>
         </div>
         <div>
           <label for="managerName">&emsp;Manager Name<span style="color: red;">*</span></label>
