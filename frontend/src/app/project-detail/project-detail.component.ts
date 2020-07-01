@@ -13,12 +13,11 @@ export class ProjectDetailComponent implements OnInit {
 
   selectedProject : Project;
   project: Project;
-  projectService: any;
 
   constructor(
     private generalService: GeneralService,
     private route: ActivatedRoute,
-    public projectSerivce : ProjectServiceService,
+    private projectSerivce : ProjectServiceService,
     private router : Router
   ) { }
 
@@ -36,13 +35,11 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   completeProject(project:Project) {
-    this.projectService.complete(+project.id).subscribe(d=>this.projectService.gotoProjectList());
-    window.location.reload();
+    this.projectSerivce.complete(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
   }
 
   closeProject(project:Project) {
-    this.projectService.close(+project.id).subscribe(d=>this.projectService.gotoProjectList());
-    window.location.reload();
+    this.projectSerivce.close(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
   }
 
   editProject(project:Project) : void {

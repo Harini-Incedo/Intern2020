@@ -62,4 +62,8 @@ export class ProjectServiceService {
     return this.http.put<Project>(this.projectsUrl + "/close/" + id ,this.httpOptions);
   }
 
+  public start(id: number) {
+    return this.http.put<Project>(this.projectsUrl + "/start/" + id ,this.httpOptions);
+  }
+
 }

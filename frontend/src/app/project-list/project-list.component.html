@@ -34,7 +34,7 @@
     </table>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true" (click)="editProject(selectedProjects[0])">Edit</button>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true"
-    style="margin-left: 1em;">Start</button>
+    style="margin-left: 1em;" (click)="startProject(selectedProjects[0])" >Start</button>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true" (click)="closeProject(selectedProjects[0])"
     style="margin-left: 1em;">Close</button>
     <button

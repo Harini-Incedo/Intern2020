@@ -18,7 +18,7 @@ public class ProjectController {
     // To get four status options
     @GetMapping("/status")
     public String[] getStatus() {
-        String[] status = {"Opened", "In Progress", "Completed", "Closed"};
+        String[] status = {"Pending", "In Progress", "Completed", "Closed"};
         return status;
     }
 
@@ -39,6 +39,7 @@ public class ProjectController {
         System.out.println("Team Size: " + p.getTeamSize());
         System.out.println("Department: " + p.getDepartment());
         // Add validation for project status based on start date //
+        p.setStatus("Pending");
         repository.save(p);
     }
 
@@ -67,6 +68,14 @@ public class ProjectController {
         Project toClose = getProjectByID(id);
         toClose.setStatus("Closed");
         repository.save(toClose);
+    }
+
+    // Updates the project status to be closed
+    @PutMapping("projects/start/{id}")
+    void startProjectByID(@PathVariable("id") Long id) {
+        Project project = getProjectByID(id);
+        project.setStatus("In Progress");
+        repository.save(project);
     }
 
     // Updates the project with the given ID if it exists
