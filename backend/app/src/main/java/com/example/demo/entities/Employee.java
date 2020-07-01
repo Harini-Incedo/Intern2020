@@ -11,8 +11,7 @@ public class Employee {
 
     public enum Timezone {
         PST,
-        EST,
-        IST
+        EST
     }
 
     @Id
