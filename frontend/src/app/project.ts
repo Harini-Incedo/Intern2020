@@ -1,5 +1,5 @@
 export class Project {
-  id: string;
+  id: number;
   projectName: string;
   clientName: string;
   department: string;

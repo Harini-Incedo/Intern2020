@@ -51,7 +51,15 @@ export class ProjectServiceService {
   }
 
   public getProjectByIdApi(id:number): Observable<Project>{
-    return this.http.get<Project>(this.projectsUrl + "/" + id)
+    return this.http.get<Project>(this.projectsUrl + "/" + id);
+  }
+
+  public complete(id: number) {
+    return this.http.put<Project>(this.projectsUrl + "/complete/" + id ,this.httpOptions);
+  }
+
+  public close(id: number) {
+    return this.http.put<Project>(this.projectsUrl + "/close/" + id ,this.httpOptions);
   }
 
 }

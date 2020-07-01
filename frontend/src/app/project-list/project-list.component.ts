@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
 import { ProjectServiceService } from '../project-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -13,7 +14,7 @@ export class ProjectListComponent implements OnInit {
   selectedProjects: Project[] ;
   selectedProject: Project ;
 
-  constructor(private projectService: ProjectServiceService) { }
+  constructor(private projectService: ProjectServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.projectService.findAll().subscribe(data => {
@@ -43,6 +44,20 @@ export class ProjectListComponent implements OnInit {
     }else{
       this.selectedProjects.push(project);
     }
+  }
+
+  completeProject(project:Project) {
+    this.projectService.complete(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+    window.location.reload();
+  }
+
+  closeProject(project:Project) {
+    this.projectService.close(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+    window.location.reload();
+  }
+
+  editProject(project:Project) : void {
+    this.router.navigateByUrl(`/editProject/${project.id}`);
   }
 
 }
