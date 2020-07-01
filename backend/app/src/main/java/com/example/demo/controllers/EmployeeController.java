@@ -15,12 +15,13 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository repository;
 
+    // To get all active employees in sorted order by last name
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return repository.findAllActive();
     }
 
-
+    // To get a preset list of roles
     @GetMapping("/roles")
     public String[] getRoles() {
         String[] roles = {"Analyst", "Developer", "Consultant", "Data Scientist",
@@ -28,6 +29,7 @@ public class EmployeeController {
         return roles;
     }
 
+    // To get a preset list of departments
     @GetMapping("/departments")
     public String[] getDepartments() {
         String[] departments = {"Telecom", "Financial Services", "Life Sciences",
@@ -35,6 +37,7 @@ public class EmployeeController {
         return departments;
     }
 
+    // Returns the active employee with the given ID, if it exists
     @GetMapping("employees/{id}")
     public Employee getEmployeeByID(@PathVariable("id") Long id) {
         Optional<Employee> employee = repository.findById(id);
@@ -48,6 +51,7 @@ public class EmployeeController {
         return null;
     }
 
+    // Creates a new employee in the database with the given information
     @PostMapping("/employees")
     void createEmployee(@RequestBody Employee e) {
         e.setActive(true);
@@ -72,6 +76,7 @@ public class EmployeeController {
         }
     }
 
+    // Updates the project with the given ID if it exists
     @PutMapping("employees/{id}")
     void updateEmployeeByID(@PathVariable("id") Long id, @RequestBody Employee e) {
         Employee toUpdate = getEmployeeByID(id);
