@@ -48,6 +48,7 @@ export class UserListComponent implements OnInit {
   editUser(user:User) : void {
     this.router.navigateByUrl(`/editEmployee/${user.id}`);
   }
+
   ngOnInit() {
     this.userService.findAll().subscribe(data => {
       this.users = data;

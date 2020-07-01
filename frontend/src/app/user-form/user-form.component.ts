@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user-service.service';
 import { User } from '../user';
+import { GeneralService } from '../general.service';
 
 @Component({
   selector: 'app-user-form',
@@ -17,7 +18,8 @@ export class UserFormComponent {
   constructor(
     private route: ActivatedRoute,
       private router: Router,
-        private userService: UserService) {
+        private userService: UserService,
+          private generalService: GeneralService) {
   }
 
   onSubmit() {
@@ -42,7 +44,7 @@ export class UserFormComponent {
   }
 
   getAllDepartments():void{
-    this.userService.getDepartments().subscribe(resp=>{
+    this.generalService.getDepartments().subscribe(resp=>{
       this.departments = resp;
     })
   }
@@ -54,6 +56,6 @@ export class UserFormComponent {
   }
 
   goBack(e:any):void {
-    this.userService.goBack();
+    this.generalService.goBack();
   }
 }

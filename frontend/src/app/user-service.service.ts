@@ -60,10 +60,6 @@ export class UserService {
   public getUserByIdApi(id:number): Observable<User>{
     return this.http.get<User>(this.usersUrl + "/" + id)
   }
-   
-  public getDepartments(): Observable<any> {
-    return this.http.get("http://localhost:8080/departments",this.httpOptions)
-  }
 
   public getRoles(): Observable<any> {
     return this.http.get("http://localhost:8080/roles",this.httpOptions)
@@ -73,8 +69,4 @@ export class UserService {
     this.router.navigate(['/employees']);
   }
 
-  public goBack(){
-    this._location.back();
-  }
-  
 }

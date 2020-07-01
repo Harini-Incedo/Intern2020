@@ -3,9 +3,10 @@ export class Project {
   projectName: string;
   clientName: string;
   department: string;
-  teamSize: string;
-  projectDescription: string;
+  teamSize: number;
+  projectGoal: string;
   startDate: string;
   endDate: string;
-  weeklyHours: string;
+  weeklyHours: number;
+  status: string;
 }

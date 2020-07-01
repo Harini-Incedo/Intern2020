@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user-service.service';
 import { Project } from '../project';
+import { GeneralService } from '../general.service';
+import { ProjectServiceService } from '../project-service.service';
 
 @Component({
   selector: 'app-project-form',
@@ -11,9 +12,12 @@ export class ProjectFormComponent implements OnInit {
 
   project: Project;
   departments: String[];
+  statuses: String[];
+  isCreateMode: boolean;
 
   constructor(
-    private userService: UserService) {
+    private generalService: GeneralService,
+    private projectService: ProjectServiceService) {
   }
 
   ngOnInit(): void {
@@ -21,13 +25,21 @@ export class ProjectFormComponent implements OnInit {
   }
 
   getAllDepartments():void{
-    this.userService.getDepartments().subscribe(resp=>{
+    this.generalService.getDepartments().subscribe(resp=>{
       this.departments = resp;
     })
   }
 
+  onSubmit() {
+    if(this.isCreateMode){
+      this.projectService.create(this.project).subscribe(result => this.projectService.gotoProjectList());
+    }else{
+      this.projectService.edit(this.project).subscribe(result => this.projectService.gotoProjectList());
+    }
+  }
+
   goBack(e:any):void{
-    this.userService.goBack();
+    this.generalService.goBack();
   }
 
 }

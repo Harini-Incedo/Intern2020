@@ -17,22 +17,28 @@
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
           <th scope="col">Weekly Hours</th>
+          <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let project of projects">
           <td><input type="checkbox"></td>
           <td><a routerLink="/viewProject/{{project.id}}">{{ project.projectName }}</a></td>
-          <td><a routerLink="/viewProject/{{project.id}}">{{ project.clientName }}</a></td>
+          <td>{{ project.clientName }}</td>
           <td>{{ project.startDate }}</td>
           <td>{{ project.endDate }}</td>
           <td>{{ project.weeklyHours }}</td>
+          <td>{{ project.status }}</td>
         </tr>
       </tbody>
     </table>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true" >Edit</button>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true"
-    style="margin-left: 1em;">Delete</button>
+    style="margin-left: 1em;">Start</button>
+    <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true"
+    style="margin-left: 1em;">Close</button>
+    <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true"
+    style="margin-left: 1em;">Complete</button>
     <button routerLink="/addProject" style="float: right;border-radius: 50%; border-color: black;">+
     </button>
   </div>

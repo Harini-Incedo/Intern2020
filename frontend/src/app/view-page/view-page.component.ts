@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import {UserService} from '../user-service.service';
+import { GeneralService } from '../general.service';
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',
@@ -12,7 +13,7 @@ export class ViewPageComponent implements OnInit {
   selectedUser : User;
   user: User;
 
-  constructor( private route: ActivatedRoute, public userService : UserService) {
+  constructor( private route: ActivatedRoute, public userService : UserService, public generalService : GeneralService) {
 
   }
 
@@ -33,9 +34,9 @@ export class ViewPageComponent implements OnInit {
   }
 
   goBack():void {
-    this.userService.goBack();
+    this.generalService.goBack();
   }
-  
+
   email(user:User) : void {
     window.location.href = "mailto:" + user.email;
   }

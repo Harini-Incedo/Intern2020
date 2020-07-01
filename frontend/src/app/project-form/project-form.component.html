@@ -8,7 +8,7 @@
 </ul>
 <div class="card my-5">
   <div class="card-body">
-    <form #projectForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
       <div class="form-group">
         <p>Project Information</p>
         <div>
@@ -41,10 +41,10 @@
           #teamSize="ngModel">
         </div>
         <div>
-          <label for="projectDescription">&emsp;Project Description</label>
-          <textarea [(ngModel)]="project.projectDescription"
-          name="projectDescription"
-          required #projectDescription="ngModel"></textarea>
+          <label for="projectGoal">&emsp;Project Description</label>
+          <textarea [(ngModel)]="project.projectGoal"
+          name="projectGoal"
+          required #projectGoal="ngModel"></textarea>
         </div>
       </div>
       <hr>
@@ -73,6 +73,6 @@
       </div>
     </form>
     <button type="button" (click)="goBack($event)">&larr;Go Back</button>
-    <button type="submit" [disabled]="!projectForm.form.valid">Save</button>
+    <button type="submit" [disabled]="!projectForm.form.valid" style="margin-left: 1em;">Save</button>
   </div>
 </div>
