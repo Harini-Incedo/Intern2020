@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ProjectRepository extends CrudRepository <Project, Long> {
-    @Query("SELECT * FROM Project ORDER BY projectName ")
+
+    @Query("SELECT p FROM Project p ORDER BY p.clientName")
     List<Project> findAllProjects();
+
 }

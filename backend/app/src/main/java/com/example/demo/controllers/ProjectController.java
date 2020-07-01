@@ -11,23 +11,24 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "https://localhost:4200")
 public class ProjectController {
+
     @Autowired
     private ProjectRepository repository;
 
-    //DEPARTMENT
-    @GetMapping("/departments")
-    public String[] getdepartments() {
-        String[] dep = {"Telecom", "Financial Services", "Life Sciences", "Healthcare", "Product Engineering"};
-        return dep;
+    // To get four status options
+    @GetMapping("/status")
+    public String[] getStatus() {
+        String[] status = {"Opened", "In Progress", "Completed", "Closed"};
+        return status;
     }
 
-    //To Get All the Projects
+    // To get all active projects in sorted order by client name
     @GetMapping("/projects")
-    public List<Project> getAllProject() {
+    public List<Project> getAllProjects() {
         return repository.findAllProjects();
     }
 
-    //Create a new Project
+    // Creates a new project in the database with the given information
     @PostMapping("/projects")
     void createProject(@RequestBody Project p) {
         System.out.println(p.getProjectName() + ":");
@@ -37,22 +38,39 @@ public class ProjectController {
         System.out.println("Client Name: " + p.getClientName());
         System.out.println("Team Size: " + p.getTeamSize());
         System.out.println("Department: " + p.getDepartment());
+        // Add validation for project status based on start date //
         repository.save(p);
     }
 
-    //Get Project by their ID
+    // Returns the active project with the given ID, if it exists
     @GetMapping("projects/{id}")
     public Project getProjectByID(@PathVariable("id") Long id){
         Optional<Project> proj = repository.findById(id);
-        if(proj.isPresent()){
+        if (proj.isPresent()){
             Project temp = proj.get();
             return temp;
         }
         return null;
     }
 
-    //Update Project
-    @PutMapping("project/{id}")
+    // Updates the project status to be completed
+    @PutMapping("projects/complete/{id}")
+    void completeProjectByID(@PathVariable("id") Long id) {
+        Project toComplete = getProjectByID(id);
+        toComplete.setStatus("Completed");
+        repository.save(toComplete);
+    }
+
+    // Updates the project status to be closed
+    @PutMapping("projects/close/{id}")
+    void closeProjectByID(@PathVariable("id") Long id) {
+        Project toClose = getProjectByID(id);
+        toClose.setStatus("Closed");
+        repository.save(toClose);
+    }
+
+    // Updates the project with the given ID if it exists
+    @PutMapping("projects/{id}")
     void updateProjectByID(@PathVariable("id")Long id, @RequestBody Project p){
         Project toUpdate = getProjectByID(id);
         if(toUpdate != null){
@@ -64,6 +82,7 @@ public class ProjectController {
             toUpdate.setClientName(p.getClientName());
             toUpdate.setTeamSize(p.getTeamSize());
             toUpdate.setDepartment(p.getDepartment());
+            toUpdate.setWeeklyHours(p.getWeeklyHours());
 
             repository.save(toUpdate);
         }
