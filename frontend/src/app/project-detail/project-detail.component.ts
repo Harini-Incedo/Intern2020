@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
 import { GeneralService } from '../general.service';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectServiceService } from '../project-service.service';
+import { ProjectServiceService } from "../project-service.service";
 
 @Component({
   selector: 'app-project-detail',
@@ -22,6 +22,7 @@ export class ProjectDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getProjectById();
   }
 
   goBack(e:any):void {
@@ -29,8 +30,7 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   getProjectById(): void {
-    console.log(this.route);
     const id = +this.route.snapshot.paramMap.get('id');
-    this.projectService.getProjectByIdApi(id).subscribe(data=>this.selectedProject = data)
+    this.projectSerivce.getProjectByIdApi(id).subscribe(data=>this.selectedProject = data)
   }
 }

@@ -7,19 +7,19 @@
       </li>
 </ul>
 <div class="card my-5">
-  <div class="card-body">
-    <p>Project Name <span> {{ project.projectName }} </span></p>
-    <p>Project Goal/Objective <span> {{ project.projectGoal }} </span></p>
-    <p>Start Date <span> {{ project.startDate }}</span></p>
-    <p>End Date <span> {{project.endDate }} </span></p>
-    <p>Client Name <span> {{ project.clientName }} </span></p>
-    <p>Team Size <span> {{ project.teamSize }} </span></p>
-    <p>Department <span> {{ project.department }} </span></p>
-    <p>Weekly Hours <span> {{ project.weeklyHours }} </span></p>
-    <p>Status <span> {{ project.status }} </span></p>
+  <div *ngIf="selectedProject" class="card-body">
+    <p>Project Name <span> {{ selectedProject.projectName }} </span></p>
+    <p>Project Goal/Objective <span> {{ selectedProject.projectGoal }} </span></p>
+    <p>Start Date <span> {{ selectedProject.startDate }}</span></p>
+    <p>End Date <span> {{selectedProject.endDate }} </span></p>
+    <p>Client Name <span> {{ selectedProject.clientName }} </span></p>
+    <p>Team Size <span> {{ selectedProject.teamSize }} </span></p>
+    <p>Department <span> {{ selectedProject.department }} </span></p>
+    <p>Weekly Hours <span> {{ selectedProject.weeklyHours }} </span></p>
+    <p>Status <span> {{ selectedProject.status }} </span></p>
     <div style="float: right; justify-content: space-evenly;">
       <button type="button" (click)="goBack($event)">&larr;Go Back</button>
-      <button >Edit</button>
+      <button routerLink="/editProject/{{selectedProject.id}}">Edit</button>
       <button>Start</button>
       <button>Close</button>
       <button style="margin-right: 0em;">Complete</button>
