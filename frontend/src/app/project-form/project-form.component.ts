@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
 import { GeneralService } from '../general.service';
 import { ProjectServiceService } from '../project-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -17,11 +18,20 @@ export class ProjectFormComponent implements OnInit {
 
   constructor(
     private generalService: GeneralService,
-    private projectService: ProjectServiceService) {
+    private projectService: ProjectServiceService,
+    private route:ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
     this.getAllDepartments();
+    if (!id){
+      this.project = new Project();
+      this.isCreateMode = true;
+    }else{
+      this.projectService.getProjectByIdApi(id).subscribe(d=>this.project = d);
+      this.isCreateMode = false;
+    }
   }
 
   getAllDepartments():void{

@@ -24,7 +24,7 @@
           required #clientName="ngModel">
         </div>
         <div>
-          <label for="department">&emsp;Department<span style="color: red;">*</span></label>
+          <label for="department">&emsp;Department <span style="color: red;">*</span></label>
           <select id="department" required name="department"
           #department="ngModel" [(ngModel)]="project.department">
             <option *ngFor="let department of departments" [value]="department">
@@ -73,6 +73,6 @@
       </div>
     </form>
     <button type="button" (click)="goBack($event)">&larr;Go Back</button>
-    <button type="submit" [disabled]="!projectForm.form.valid" style="margin-left: 1em;">Save</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="!projectForm.form.valid" style="margin-left: 1em;">Save</button>
   </div>
 </div>
