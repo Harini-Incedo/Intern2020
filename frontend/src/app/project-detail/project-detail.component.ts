@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
 import { GeneralService } from '../general.service';
-import { ActivatedRoute } from '@angular/router';
-import { ProjectServiceService } from "../project-service.service";
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectServiceService } from '../project-service.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -18,7 +18,8 @@ export class ProjectDetailComponent implements OnInit {
   constructor(
     private generalService: GeneralService,
     private route: ActivatedRoute,
-    public projectSerivce : ProjectServiceService
+    public projectSerivce : ProjectServiceService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -33,4 +34,19 @@ export class ProjectDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.projectSerivce.getProjectByIdApi(id).subscribe(data=>this.selectedProject = data)
   }
+
+  completeProject(project:Project) {
+    this.projectService.complete(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+    window.location.reload();
+  }
+
+  closeProject(project:Project) {
+    this.projectService.close(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+    window.location.reload();
+  }
+
+  editProject(project:Project) : void {
+    this.router.navigateByUrl(`/editProject/${project.id}`);
+  }
+
 }

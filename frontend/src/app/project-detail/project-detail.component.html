@@ -21,8 +21,8 @@
       <button type="button" (click)="goBack($event)">&larr;Go Back</button>
       <button routerLink="/editProject/{{selectedProject.id}}">Edit</button>
       <button>Start</button>
-      <button>Close</button>
-      <button style="margin-right: 0em;">Complete</button>
+      <button (click)="closeProject(selectedProject)">Close</button>
+      <button style="margin-right: 0em;" (click)="completeProject(selectedProject)">Complete</button>
     </div>
   </div>
 </div>
