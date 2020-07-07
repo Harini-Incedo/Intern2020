@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import com.example.demo.entities.Employee;
+import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
 import com.example.demo.repositories.EmployeeRepository;
+import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +24,8 @@ public class Application {
 	}
 
 	@Bean
-	CommandLineRunner init(EmployeeRepository empRepository, ProjectRepository projRepository) {
+	CommandLineRunner init(EmployeeRepository empRepository, ProjectRepository projRepository,
+								EngagementRepository engRepository) {
 		return args -> {
 
 			// creates mock employees for testing
@@ -59,6 +62,19 @@ public class Application {
 				projRepository.save(p);
 			});
 			projRepository.findAll().forEach(System.out::println);
+
+			// creates mock engagements for testing
+			Stream.of("3 9 40 Web Developer", "2 9 40 Project Manager", "5 10 40 IT Consultant",
+					"1 10 40 Business Analyst", "4 10 40 College Recruiter").forEach(name -> {
+				String[] info = name.split(" ");
+				Engagement p = new Engagement(Long.parseLong(info[0]), Long.parseLong(info[1]),
+											info[3] + " " + info[4],
+												LocalDate.of(2020, 6, 1),
+												LocalDate.of(2020, 7, 1),
+												Integer.parseInt(info[2]));
+				engRepository.save(p);
+			});
+			engRepository.findAll().forEach(System.out::println);
 
 		};
 	}

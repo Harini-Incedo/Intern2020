@@ -18,13 +18,13 @@ public class EngagementController {
     // To get all engagements associated with the given project
     @GetMapping("projects/{id}/engagements")
     public List<Engagement> getEngagementsByProjectID(@PathVariable("id") Long id) {
-        return null;
+        return repository.findEngagementsByProjectID(id);
     }
 
     // To get all engagements associated with the given employee
     @GetMapping("employees/{id}/engagements")
     public List<Engagement> getEngagementsByEmployeeID(@PathVariable("id") Long id) {
-        return null;
+        return repository.findEngagementsByEmployeeID(id);
     }
 
     // Creates a new engagement in the database with the given information
