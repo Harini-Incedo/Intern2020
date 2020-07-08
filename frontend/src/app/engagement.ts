@@ -3,7 +3,7 @@ export class Engagement {
   employeeID: number;
   projectID: number;
   role: string;
-  hoursNeeded: number;
+  hoursNeeded: string;
   startDate: string;
   endDate: string;
 }

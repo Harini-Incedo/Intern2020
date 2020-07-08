@@ -6,6 +6,7 @@ import { ProjectServiceService } from '../project-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { Engagement } from '../engagement';
 import { EngagementService } from '../engagement.service';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-engagement-form',
@@ -16,8 +17,8 @@ export class EngagementFormComponent implements OnInit {
 
   project: Project;
   engagement: Engagement;
-  employee: User;
-  employeeNames: String[];
+  users: User[];
+  selectedUser: User;
   roles: String[];
   employeeName: String;
   isCreateMode: boolean;
@@ -27,10 +28,14 @@ export class EngagementFormComponent implements OnInit {
     private generalService: GeneralService,
     private projectService: ProjectServiceService,
     private route:ActivatedRoute,
-    private engagementSerivce: EngagementService
+    private engagementSerivce: EngagementService,
+    private userSerivce: UserService
   ) { }
 
   ngOnInit(): void {
+    this.userSerivce.findAll().subscribe(data => {
+      this.users = data;
+    });
     const projectId = +this.route.snapshot.paramMap.get('id');
     this.getProjectById(projectId);
     this.getAllRoles();
@@ -48,6 +53,10 @@ export class EngagementFormComponent implements OnInit {
     this.projectService.getProjectByIdApi(projectId).subscribe(resp=>{
       this.project=resp;
     })
+  }
+
+  onSelectOne(user:User){
+    this.userSerivce.setSelectedUser(user);
   }
 
   getAllRoles():void{

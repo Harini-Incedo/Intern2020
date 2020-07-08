@@ -10,18 +10,18 @@
         </div>
         <div>
           <label for="role">&emsp;Role<span style="color: red;">*</span></label>
-          <select id="role" required name="role" [(ngModel)]="engagement.role" #role="ngModel">
-            <option *ngFor="let role of roles" [value]="engagement.role">
+          <select id="role" required name="role" #role="ngModel" [(ngModel)]="engagement.role">
+            <option *ngFor="let role of roles" [value]="role">
               {{role}}
             </option>
           </select>
         </div>
         <div>
-          <label for="employeeName">&emsp;Employee Name <span style="color: red;">*</span></label>
-          <select id="employeeName" required name="employeeName"
-          #employeeName="ngModel" [(ngModel)]="employee.firstName">
-            <option *ngFor="let employeeName of employeeNames" [value]="employeeName">
-              {{employeeName}}
+          <label for="user">&emsp;Employee Name <span style="color: red;">*</span></label>
+          <select id="user" required name="user"
+          #employeeName="ngModel" [(ngModel)]="users">
+            <option *ngFor="let user of users" [value]="user.firstName">
+              {{user.firstName}} {{user.lastName}}
             </option>
           </select>
         </div>
@@ -46,7 +46,6 @@
           <input type="number" [(ngModel)]="engagement.hoursNeeded" id="number"
           name="hoursNeeded"
           min="1"
-          value="1"
           #hoursNeeded="ngModel"
           required>
         </div>
