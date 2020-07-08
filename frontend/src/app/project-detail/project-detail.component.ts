@@ -76,5 +76,9 @@ export class ProjectDetailComponent implements OnInit {
     this.router.navigateByUrl(`/viewProject/${project.id}/editEngagement/${engagement.id}`);
   }
 
+  deleteEngagement( engagement:Engagement) : void {
+    this.engagementSerivce.delete(+engagement.id).subscribe(d=>   window.location.reload());
+  }
+
 
 }

@@ -16,7 +16,7 @@ import { UserService } from '../user-service.service';
 export class EngagementFormComponent implements OnInit {
 
   project: Project;
-  engagement: Engagement;
+  engagement: Engagement = {id:0,employeeID:0, projectID:0, role:"", hoursNeeded:"", startDate:"", endDate:""};
   users: User[];
   selectedUser: User;
   roles: String[];
@@ -42,6 +42,7 @@ export class EngagementFormComponent implements OnInit {
     const engagementId = +this.route.snapshot.paramMap.get('engagementid');
     if (!engagementId) {
       this.engagement = new Engagement();
+      this.engagement.projectID = projectId;
       this.isCreateMode = true;
     } else {
       this.engagementSerivce.getEngagementByIdApi(engagementId).subscribe(d=>this.engagement = d);
@@ -67,13 +68,14 @@ export class EngagementFormComponent implements OnInit {
 
   onSubmit() {
     if(this.isCreateMode){
-      this.engagementSerivce.create(this.engagement).subscribe(result => this.engagementSerivce.gotoProjectView(this.project.id));
+      this.engagement.employeeID = +this.engagement.employeeID;
+      this.engagementSerivce.create(this.engagement).subscribe(result => this.goBack());
     }else{
-      this.projectService.edit(this.project).subscribe(result => this.projectService.gotoProjectList());
+      this.engagementSerivce.edit(this.engagement).subscribe(result => this.goBack());
     }
   }
 
-  goBack(e:any):void{
+  goBack():void{
     this.generalService.goBack();
   }
 

@@ -1,4 +1,4 @@
-<div class="card my-5">
+<div *ngIf="project" class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #engagementForm="ngForm">
       <div class="form-group">
@@ -19,8 +19,8 @@
         <div>
           <label for="user">&emsp;Employee Name <span style="color: red;">*</span></label>
           <select id="user" required name="user"
-          #employeeName="ngModel" [(ngModel)]="users">
-            <option *ngFor="let user of users" [value]="user.firstName">
+          #employeeName="ngModel" [(ngModel)]="engagement.employeeID">
+            <option *ngFor="let user of users" [value]="user.id">
               {{user.firstName}} {{user.lastName}}
             </option>
           </select>
@@ -51,7 +51,7 @@
         </div>
       </div>
     </form>
-    <button type="button" (click)="goBack($event)">&larr;Go Back</button>
+    <button type="button" (click)="goBack()">&larr;Go Back</button>
     <button type="submit" (click)="onSubmit()" [disabled]="!engagementForm.form.valid" style="margin-left: 1em;">Save</button>
   </div>
 </div>

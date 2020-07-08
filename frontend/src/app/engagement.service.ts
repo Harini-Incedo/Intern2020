@@ -37,6 +37,14 @@ export class EngagementService {
     return this.http.post<Engagement>(this.engagementsUrl, engagement);
   }
 
+  public edit(engagement: Engagement) {
+    return this.http.put<Engagement>(this.engagementsUrl + "/" + engagement.id, engagement);
+  }
+
+  public delete (id: number) {
+    return this.http.delete<Engagement>(this.engagementsUrl + "/" + id);
+  }
+
   public getEngagementByIdApi(id:number): Observable<Engagement>{
     return this.http.get<Engagement>(this.engagementsUrl + "/" + id);
   }
