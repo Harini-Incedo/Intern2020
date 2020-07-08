@@ -42,7 +42,7 @@ export class EngagementService {
   }
 
   public delete (id: number) {
-    return this.http.delete<Engagement>(this.engagementsUrl + "/" + id);
+    return this.http.delete<Engagement>(this.engagementsUrl + "/" + id, this.httpOptions);
   }
 
   public getEngagementByIdApi(id:number): Observable<Engagement>{
@@ -55,10 +55,6 @@ export class EngagementService {
 
   public gotoProjectView(id:number) {
     this.router.navigate(['/viewProject/' + id]);
-  }
-
-  public delete(engagement: Engagement) {
-    return this.http.delete<Engagement>(this.engagementsUrl + "/" + engagement.id, this.httpOptions)
   }
 
 }

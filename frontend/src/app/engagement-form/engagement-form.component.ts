@@ -80,7 +80,7 @@ export class EngagementFormComponent implements OnInit {
   }
 
   deleteEngagement(engagement:Engagement) {
-    this.engagementSerivce.delete(engagement).subscribe(d=>this.engagementSerivce.gotoProjectView(this.project.id));
+    this.engagementSerivce.delete(engagement.id).subscribe(d=>this.engagementSerivce.gotoProjectView(this.project.id));
     window.location.reload();
   }
 
