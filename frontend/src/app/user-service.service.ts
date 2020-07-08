@@ -4,6 +4,7 @@ import { User } from './user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {Location} from '@angular/common';
+import { Engagement } from './engagement';
 @Injectable()
 export class UserService {
 
@@ -63,6 +64,10 @@ export class UserService {
 
   public gotoUserList() {
     this.router.navigate(['/employees']);
+  }
+
+  public getEngagementByUser(id:number): Observable<Engagement[]> {
+    return this.http.get<Engagement[]>(this.usersUrl + "/" + id + "/engagements");
   }
 
 }

@@ -5,8 +5,10 @@
         <p>Engagement Information</p>
         <div>
           <label for="projectName">&emsp;Project Name <span style="color: red;">*</span></label>
-          <input type="text" required name="projectName" #projectName="ngModel"
+          <select id="projectName" required name="projectName" #projectName="ngModel"
           [(ngModel)]="project.projectName" disabled>
+            <option [value]="project.projectName">{{project.projectName}}</option>
+          </select>
         </div>
         <div>
           <label for="role">&emsp;Role<span style="color: red;">*</span></label>

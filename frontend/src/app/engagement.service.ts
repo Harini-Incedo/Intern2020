@@ -57,4 +57,8 @@ export class EngagementService {
     this.router.navigate(['/viewProject/' + id]);
   }
 
+  public delete(engagement: Engagement) {
+    return this.http.delete<Engagement>(this.engagementsUrl + "/" + engagement.id, this.httpOptions)
+  }
+
 }
