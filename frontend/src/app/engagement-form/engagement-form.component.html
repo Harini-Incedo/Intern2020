@@ -1,0 +1,58 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #engagementForm="ngForm">
+      <div class="form-group">
+        <p>Engagement Information</p>
+        <div>
+          <label for="projectName">&emsp;Project Name <span style="color: red;">*</span></label>
+          <input type="text" required name="projectName" #projectName="ngModel"
+          [(ngModel)]="project.projectName" disabled>
+        </div>
+        <div>
+          <label for="role">&emsp;Role<span style="color: red;">*</span></label>
+          <select id="role" required name="role" [(ngModel)]="engagement.role" #role="ngModel">
+            <option *ngFor="let role of roles" [value]="engagement.role">
+              {{role}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="employeeName">&emsp;Employee Name <span style="color: red;">*</span></label>
+          <select id="employeeName" required name="employeeName"
+          #employeeName="ngModel" [(ngModel)]="employee.firstName">
+            <option *ngFor="let employeeName of employeeNames" [value]="employeeName">
+              {{employeeName}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <p>Engagement Logistics</p>
+        <div>
+          <label for="startDate">&emsp;Start Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="engagement.startDate"
+          name="startDate"
+          required #startDate="ngModel">
+        </div>
+        <div>
+          <label for="endDate">&emsp;End Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="engagement.endDate"
+          name="endDate"
+          required #endDate="ngModel">
+        </div>
+        <div>
+          <label for="hoursNeeded">&emsp;Hours Needed<span style="color: red;">*</span></label>
+          <input type="number" [(ngModel)]="engagement.hoursNeeded" id="number"
+          name="hoursNeeded"
+          min="1"
+          value="1"
+          #hoursNeeded="ngModel"
+          required>
+        </div>
+      </div>
+    </form>
+    <button type="button" (click)="goBack($event)">&larr;Go Back</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="!engagementForm.form.valid" style="margin-left: 1em;">Save</button>
+  </div>
+</div>

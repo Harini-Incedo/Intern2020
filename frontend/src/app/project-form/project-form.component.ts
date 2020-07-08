@@ -25,10 +25,10 @@ export class ProjectFormComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getAllDepartments();
-    if (!id){
+    if (!id) {
       this.project = new Project();
       this.isCreateMode = true;
-    }else{
+    } else {
       this.projectService.getProjectByIdApi(id).subscribe(d=>this.project = d);
       this.isCreateMode = false;
     }

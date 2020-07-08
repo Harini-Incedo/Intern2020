@@ -1,14 +1,5 @@
-.vl {
-  border-left: 2px solid;
-  height: 438px;
-  position: absolute;
-  left: 30%;
-  margin-left: -3px;
-  top: 0;
-}
-
-a {
-  margin-right: 1em;
+span {
+  float: right;
 }
 
 button {

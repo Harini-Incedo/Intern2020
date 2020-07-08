@@ -11,6 +11,7 @@ import { ViewPageComponent } from './view-page/view-page.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
+import { EngagementFormComponent } from './engagement-form/engagement-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProjectFormComponent } from './project-form/project-form.component';
     ViewPageComponent,
     ProjectListComponent,
     ProjectDetailComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    EngagementFormComponent
   ],
   imports: [
     BrowserModule,

@@ -51,7 +51,7 @@ export class ProjectListComponent implements OnInit {
     window.location.reload();
   }
 
-  
+
   startProject(project:Project) {
     this.projectService.start(+project.id).subscribe(d=>this.projectService.gotoProjectList());
     window.location.reload();

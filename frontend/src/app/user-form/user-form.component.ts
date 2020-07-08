@@ -50,7 +50,7 @@ export class UserFormComponent {
   }
 
   getAllRoles():void{
-    this.userService.getRoles().subscribe(resp=>{
+    this.generalService.getRoles().subscribe(resp=>{
       this.roles = resp;
     })
   }
