@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectServiceService } from '../project-service.service';
 import { EngagementService } from '../engagement.service';
 import { Engagement } from '../engagement';
+import { newArray } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-project-detail',
@@ -29,8 +30,11 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjectById();
+    this.engagements = [];
     this.engagementSerivce.findAll(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
-      this.engagements = data;
+      for (let index = 0; index < data.length; index++) {
+        this.engagements.push(data[index]['engagement']);
+      }
     });
   }
 

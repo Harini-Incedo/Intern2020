@@ -44,7 +44,7 @@ export class EngagementFormComponent implements OnInit {
       this.engagement = new Engagement();
       this.isCreateMode = true;
     } else {
-      this.engagementSerivce.getEngagementByIdApi(engagementId).subscribe(d=>this.engagement = d);
+      this.engagementSerivce.getEngagementByIdApi(engagementId).subscribe(d=>this.engagement = d["engagement"]);
       this.isCreateMode = false;
     }
   }
@@ -75,6 +75,11 @@ export class EngagementFormComponent implements OnInit {
 
   goBack(e:any):void{
     this.generalService.goBack();
+  }
+
+  deleteEngagement(engagement:Engagement) {
+    this.engagementSerivce.delete(engagement).subscribe(d=>this.engagementSerivce.gotoProjectView(this.project.id));
+    window.location.reload();
   }
 
 }

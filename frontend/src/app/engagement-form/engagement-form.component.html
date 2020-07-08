@@ -5,8 +5,10 @@
         <p>Engagement Information</p>
         <div>
           <label for="projectName">&emsp;Project Name <span style="color: red;">*</span></label>
-          <input type="text" required name="projectName" #projectName="ngModel"
+          <select id="projectName" required name="projectName" #projectName="ngModel"
           [(ngModel)]="project.projectName" disabled>
+            <option [value]="project.projectName">{{project.projectName}}</option>
+          </select>
         </div>
         <div>
           <label for="role">&emsp;Role<span style="color: red;">*</span></label>
@@ -20,7 +22,7 @@
           <label for="user">&emsp;Employee Name <span style="color: red;">*</span></label>
           <select id="user" required name="user"
           #employeeName="ngModel" [(ngModel)]="users">
-            <option *ngFor="let user of users" [value]="user.firstName">
+            <option *ngFor="let user of users" [value]="user.id">
               {{user.firstName}} {{user.lastName}}
             </option>
           </select>
