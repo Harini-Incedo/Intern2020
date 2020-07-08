@@ -1,0 +1,78 @@
+<ul class="text-center">
+  <li class="list-inline-item">
+    <a routerLink="/projects" class="btn btn-info">List Projects</a>
+      </li>
+  <li class="list-inline-item">
+    <a routerLink="/addProject" class="btn btn-info">Add Projects</a>
+      </li>
+</ul>
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      <div class="form-group">
+        <p>Project Information</p>
+        <div>
+          <label for="projectName">&emsp;Project Name<span style="color: red;">*</span></label>
+          <input type="text" [(ngModel)]="project.projectName"
+          name="projectName"
+          required #projectName="ngModel">
+        </div>
+        <div>
+          <label for="clientName">&emsp;Client Name<span style="color: red;">*</span></label>
+          <input type="text" [(ngModel)]="project.clientName"
+          name="clientName"
+          required #clientName="ngModel">
+        </div>
+        <div>
+          <label for="department">&emsp;Department <span style="color: red;">*</span></label>
+          <select id="department" required name="department"
+          #department="ngModel" [(ngModel)]="project.department">
+            <option *ngFor="let department of departments" [value]="department">
+              {{department}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="teamSize">&emsp;Team Size</label>
+          <input type="number" [(ngModel)]="project.teamSize"
+          name="teamSize"
+          min="1"
+          value="1"
+          #teamSize="ngModel">
+        </div>
+        <div>
+          <label for="projectGoal">&emsp;Project Description</label>
+          <textarea [(ngModel)]="project.projectGoal"
+          name="projectGoal"
+          required #projectGoal="ngModel"></textarea>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <p>Project Logistics</p>
+        <div>
+          <label for="startDate">&emsp;Start Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="project.startDate"
+          name="startDate"
+          required #startDate="ngModel">
+        </div>
+        <div>
+          <label for="endDate">&emsp;End Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="project.endDate"
+          name="endDate"
+          required #endDate="ngModel">
+        </div>
+        <div>
+          <label for="weeklyHours">&emsp;Weekly Hours</label>
+          <input type="number" [(ngModel)]="project.weeklyHours"
+          name="weeklyHours"
+          min="1"
+          value="1"
+          #weeklyHours="ngModel">
+        </div>
+      </div>
+    </form>
+    <button type="button" (click)="goBack($event)">&larr;Go Back</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="!projectForm.form.valid" style="margin-left: 1em;">Save</button>
+  </div>
+</div>

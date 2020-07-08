@@ -1,0 +1,28 @@
+<ul class="text-center">
+  <li class="list-inline-item">
+    <a routerLink="/projects" class="btn btn-info">List Projects</a>
+      </li>
+  <li class="list-inline-item">
+    <a routerLink="/addProject" class="btn btn-info">Add Projects</a>
+      </li>
+</ul>
+<div class="card my-5">
+  <div *ngIf="selectedProject" class="card-body">
+    <p>Project Name <span> {{ selectedProject.projectName }} </span></p>
+    <p>Project Goal/Objective <span> {{ selectedProject.projectGoal }} </span></p>
+    <p>Start Date <span> {{ selectedProject.startDate }}</span></p>
+    <p>End Date <span> {{selectedProject.endDate }} </span></p>
+    <p>Client Name <span> {{ selectedProject.clientName }} </span></p>
+    <p>Team Size <span> {{ selectedProject.teamSize }} </span></p>
+    <p>Department <span> {{ selectedProject.department }} </span></p>
+    <p>Weekly Hours <span> {{ selectedProject.weeklyHours }} </span></p>
+    <p>Status <span> {{ selectedProject.status }} </span></p>
+    <div style="float: right; justify-content: space-evenly;">
+      <button type="button" (click)="goBack($event)">&larr;Go Back</button>
+      <button routerLink="/editProject/{{selectedProject.id}}">Edit</button>
+      <button>Start</button>
+      <button (click)="closeProject(selectedProject)">Close</button>
+      <button style="margin-right: 0em;" (click)="completeProject(selectedProject)">Complete</button>
+    </div>
+  </div>
+</div>
