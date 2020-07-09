@@ -71,9 +71,13 @@ export class ProjectDetailComponent implements OnInit {
     this.selectedEngagements.push(engagement);
   }
 
-  onSelectOne(engagement:Engagement){
-    this.selectedEngagement = engagement;
-    this.engagementSerivce.setSelectedEngagement(engagement);
+  onSelectOne(engagement:Engagement) {
+    if (this.selectedEngagement && engagement.id === this.selectedEngagement.id) {
+      this.selectedEngagement = null;
+    } else {
+      this.selectedEngagement = engagement;
+      this.engagementSerivce.setSelectedEngagement(engagement);
+    }
   }
 
   editEngagement(project:Project, engagement:Engagement) : void {

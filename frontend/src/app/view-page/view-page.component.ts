@@ -52,10 +52,9 @@ export class ViewPageComponent implements OnInit {
     this.engagements = [];
     this.userService.getEngagementByUser(id).subscribe(data=>{
       for (let index = 0; index < data.length; index++) {
-        data[index]["engagement"]["projectName"] = data[index]['project']['projectName']
+        data[index]["engagement"]["projectName"] = data[index]['project']['projectName'];
         this.engagements.push(data[index]['engagement']);
       }
-      console.log(this.engagements)
     });
   }
 

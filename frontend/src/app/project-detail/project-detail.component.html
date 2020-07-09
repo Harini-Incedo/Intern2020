@@ -31,8 +31,8 @@
   <div>
     <p style="text-align: center;"><strong>Engagements</strong></p>
     <button type="button" style="margin-left: 1em;" routerLink="addEngagement">Add</button>
-    <button type="button" (click)="editEngagement(selectedProject, selectedEngagement)">Edit</button>
-    <button type="button" (click)="deleteEngagement(selectedEngagement)">Delete</button>
+    <button type="button" [disabled]="!selectedEngagement" (click)="editEngagement(selectedProject, selectedEngagement)">Edit</button>
+    <button type="button" [disabled]="!selectedEngagement" (click)="deleteEngagement(selectedEngagement)">Delete</button>
     <br>
     <br>
     <table class="table table-bordered table-striped">
