@@ -32,7 +32,7 @@
         </tr>
       </tbody>
     </table>
-    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])" >Edit</button>
+    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])">Edit</button>
     <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="deleteUser(selectedUsers[0])"
     style="margin-left: 1em;">Delete</button>
     <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+

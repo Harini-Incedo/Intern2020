@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../user';
+import { User } from '../Classes/user';
 import { ActivatedRoute } from '@angular/router';
-import {UserService} from '../user-service.service';
-import { GeneralService } from '../general.service';
+import {UserService} from '../Services/user-service.service';
+import { GeneralService } from '../Services/general.service';
+import { Engagement } from '../Classes/engagement';
+import { Project } from '../Classes/project';
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',
@@ -12,6 +14,8 @@ export class ViewPageComponent implements OnInit {
 
   selectedUser : User;
   user: User;
+  projects: Project[];
+  engagements: Engagement[];
 
   constructor( private route: ActivatedRoute, public userService : UserService, public generalService : GeneralService) {
 
@@ -19,11 +23,12 @@ export class ViewPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserById();
+    this.getEngagementsByEmployee();
   }
 
   getUserById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUserByIdApi(id).subscribe(data=>this.selectedUser = data)
+    this.userService.getUserByIdApi(id).subscribe(data=>this.selectedUser = data);
   }
 
   deleteUser(user:User) : void {
@@ -39,6 +44,18 @@ export class ViewPageComponent implements OnInit {
 
   email(user:User) : void {
     window.location.href = "mailto:" + user.email;
+  }
+
+  getEngagementsByEmployee():void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.projects = [];
+    this.engagements = [];
+    this.userService.getEngagementByUser(id).subscribe(data=>{
+      for (let index = 0; index < data.length; index++) {
+        data[index]["engagement"]["projectName"] = data[index]['project']['projectName'];
+        this.engagements.push(data[index]['engagement']);
+      }
+    });
   }
 
 }

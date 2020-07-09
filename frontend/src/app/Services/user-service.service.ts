@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user';
+import { User } from '../Classes/user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {Location} from '@angular/common';
+import { Engagement } from '../Classes/engagement';
 @Injectable()
 export class UserService {
 
@@ -61,12 +62,12 @@ export class UserService {
     return this.http.get<User>(this.usersUrl + "/" + id)
   }
 
-  public getRoles(): Observable<any> {
-    return this.http.get("http://localhost:8080/roles",this.httpOptions)
-  }
-
   public gotoUserList() {
     this.router.navigate(['/employees']);
+  }
+
+  public getEngagementByUser(id:number): Observable<Engagement[]> {
+    return this.http.get<Engagement[]>(this.usersUrl + "/" + id + "/engagements");
   }
 
 }

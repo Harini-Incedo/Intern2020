@@ -8,21 +8,52 @@
 </ul>
 <div class="card my-5">
   <div *ngIf="selectedProject" class="card-body">
-    <p>Project Name <span> {{ selectedProject.projectName }} </span></p>
-    <p>Project Goal/Objective <span> {{ selectedProject.projectGoal }} </span></p>
-    <p>Start Date <span> {{ selectedProject.startDate }}</span></p>
-    <p>End Date <span> {{selectedProject.endDate }} </span></p>
-    <p>Client Name <span> {{ selectedProject.clientName }} </span></p>
-    <p>Team Size <span> {{ selectedProject.teamSize }} </span></p>
-    <p>Department <span> {{ selectedProject.department }} </span></p>
-    <p>Weekly Hours <span> {{ selectedProject.weeklyHours }} </span></p>
-    <p>Status <span> {{ selectedProject.status }} </span></p>
+    <p style="text-align: center;"><strong>{{ selectedProject.projectName }}</strong></p>
+    <br>
+    <br>
+    <p><strong>Project Goal/Objective</strong> <span> {{ selectedProject.projectGoal }} </span></p>
+    <p><strong>Start Date</strong> <span> {{ selectedProject.startDate }}</span></p>
+    <p><strong>End Date</strong> <span> {{selectedProject.endDate }} </span></p>
+    <p><strong>Client Name</strong> <span> {{ selectedProject.clientName }} </span></p>
+    <p><strong>Team Size</strong> <span> {{ selectedProject.teamSize }} </span></p>
+    <p><strong>Department</strong> <span> {{ selectedProject.department }} </span></p>
+    <p><strong>Weekly Hours</strong> <span> {{ selectedProject.weeklyHours }} </span></p>
+    <p><strong>Status</strong> <span> {{ selectedProject.status }} </span></p>
     <div style="float: right; justify-content: space-evenly;">
       <button type="button" (click)="goBack($event)">&larr;Go Back</button>
       <button routerLink="/editProject/{{selectedProject.id}}">Edit</button>
-      <button>Start</button>
+      <button (click)="startProject(selectedProject)">Start</button>
       <button (click)="closeProject(selectedProject)">Close</button>
       <button style="margin-right: 0em;" (click)="completeProject(selectedProject)">Complete</button>
     </div>
+  </div>
+  <hr>
+  <div>
+    <p style="text-align: center;"><strong>Engagements</strong></p>
+    <button type="button" style="margin-left: 1em;" routerLink="addEngagement">Add</button>
+    <button type="button" [disabled]="!selectedEngagement" (click)="editEngagement(selectedProject, selectedEngagement)">Edit</button>
+    <button type="button" [disabled]="!selectedEngagement" (click)="deleteEngagement(selectedEngagement)">Delete</button>
+    <br>
+    <br>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Role</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Hours Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let engagement of engagements">
+          <td><input (click)="onSelectOne(engagement)" type="checkbox"></td>
+          <td>{{ engagement.role }}</td>
+          <td>{{ engagement.startDate }}</td>
+          <td>{{ engagement.endDate }}</td>
+          <td>{{ engagement.hoursNeeded }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -6,6 +6,8 @@ import { ViewPageComponent } from './view-page/view-page.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { EngagementFormComponent } from './engagement-form/engagement-form.component';
+import { Engagement } from './Classes/engagement';
 
 const routes: Routes = [
   { path: 'employees', component: UserListComponent },
@@ -15,7 +17,8 @@ const routes: Routes = [
   { path: 'projects', component: ProjectListComponent},
   { path: 'addProject', component: ProjectFormComponent },
   { path: 'viewProject/:id', component: ProjectDetailComponent},
-  { path: 'editProject/:id', component: ProjectFormComponent}
+  { path: 'viewProject/:id/editEngagement/:engagementid', component: EngagementFormComponent},
+  { path: 'viewProject/:id/addEngagement', component: EngagementFormComponent}
 ];
 
 @NgModule({
