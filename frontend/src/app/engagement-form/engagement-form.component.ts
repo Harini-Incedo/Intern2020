@@ -16,7 +16,7 @@ import { UserService } from '../user-service.service';
 export class EngagementFormComponent implements OnInit {
 
   project: Project;
-  engagement: Engagement = {id:0,employeeID:0, projectID:0, role:"", hoursNeeded:"", startDate:"", endDate:""};
+  engagement: Engagement = {id:0,employeeID:0, projectID:0, role:"", hoursNeeded:"", startDate:"", endDate:"", projectName:""};
   users: User[];
   selectedUser: User;
   roles: String[];

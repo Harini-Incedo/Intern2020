@@ -14,8 +14,8 @@ export class ViewPageComponent implements OnInit {
 
   selectedUser : User;
   user: User;
-  project: Project;
-  engagement: Engagement;
+  projects: Project[];
+  engagements: Engagement[];
 
   constructor( private route: ActivatedRoute, public userService : UserService, public generalService : GeneralService) {
 
@@ -48,8 +48,15 @@ export class ViewPageComponent implements OnInit {
 
   getEngagementsByEmployee():void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getEngagementByUser(id).subscribe(d=>this.engagement=d[0]['engagement']);
-    this.userService.getEngagementByUser(id).subscribe(d=>this.project=d[0]['project'])
+    this.projects = [];
+    this.engagements = [];
+    this.userService.getEngagementByUser(id).subscribe(data=>{
+      for (let index = 0; index < data.length; index++) {
+        data[index]["engagement"]["projectName"] = data[index]['project']['projectName']
+        this.engagements.push(data[index]['engagement']);
+      }
+      console.log(this.engagements)
+    });
   }
 
 }

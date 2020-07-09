@@ -21,7 +21,7 @@
     <p><strong>Working Hours</strong> <span>{{selectedUser.workingHours}} </span></p>
     <div style="float: right; justify-content: space-evenly;">
       <button type="button" (click)="goBack()" >&larr;Go Back</button>
-      <button>Contact</button>
+      <button (click)="email(selectedUser)">Contact</button>
       <button routerLink="/editEmployee/{{selectedUser.id}}">Edit</button>
       <button (click)="deleteUser(selectedUser)" style="margin-right: 0em;">Delete</button>
     </div>
@@ -35,16 +35,18 @@
           <th scope="col">Project Name</th>
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
-          <th scope="col">Utilization</th>
+          <th scope="col">Hours Needed</th>
           <th scope="col">Role on Project</th>
         </tr>
       </thead>
       <tbody>
-        <td>{{project.projectName}}</td>
-        <td>{{engagement.startDate}}</td>
-        <td>{{engagement.endDate}}</td>
-        <td>{{engagement.hoursNeeded}}/40</td>
-        <td>{{engagement.role}}</td>
+        <tr *ngFor="let engagement of engagements">
+          <td>{{engagement.projectName}}</td>
+          <td>{{engagement.startDate}}</td>
+          <td>{{engagement.endDate}}</td>
+          <td>{{engagement.hoursNeeded}}</td>
+          <td>{{engagement.role}}</td>
+        </tr>
       </tbody>
     </table>
   </div>

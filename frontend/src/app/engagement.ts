@@ -6,4 +6,5 @@ export class Engagement {
   hoursNeeded: string;
   startDate: string;
   endDate: string;
+  projectName: string;
 }
