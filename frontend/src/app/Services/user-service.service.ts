@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user';
+import { User } from '../Classes/user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {Location} from '@angular/common';
-import { Engagement } from './engagement';
+import { Engagement } from '../Classes/engagement';
 @Injectable()
 export class UserService {
 

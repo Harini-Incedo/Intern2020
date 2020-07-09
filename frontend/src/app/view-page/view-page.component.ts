@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../user';
+import { User } from '../Classes/user';
 import { ActivatedRoute } from '@angular/router';
-import {UserService} from '../user-service.service';
-import { GeneralService } from '../general.service';
-import { Engagement } from '../engagement';
-import { Project } from '../project';
+import {UserService} from '../Services/user-service.service';
+import { GeneralService } from '../Services/general.service';
+import { Engagement } from '../Classes/engagement';
+import { Project } from '../Classes/project';
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',

@@ -7,7 +7,7 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { EngagementFormComponent } from './engagement-form/engagement-form.component';
-import { Engagement } from './engagement';
+import { Engagement } from './Classes/engagement';
 
 const routes: Routes = [
   { path: 'employees', component: UserListComponent },

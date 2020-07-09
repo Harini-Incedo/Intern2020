@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../project';
-import { User } from '../user';
-import { GeneralService } from '../general.service';
-import { ProjectServiceService } from '../project-service.service';
+import { Project } from '../Classes/project';
+import { User } from '../Classes/user';
+import { GeneralService } from '../Services/general.service';
+import { ProjectServiceService } from '../Services/project-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { Engagement } from '../engagement';
-import { EngagementService } from '../engagement.service';
-import { UserService } from '../user-service.service';
+import { Engagement } from '../Classes/engagement';
+import { EngagementService } from '../Services/engagement.service';
+import { UserService } from '../Services/user-service.service';
 
 @Component({
   selector: 'app-engagement-form',

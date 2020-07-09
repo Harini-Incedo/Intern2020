@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Engagement } from './engagement';
+import { Engagement } from '../Classes/engagement';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {Location} from '@angular/common';
-import { Project } from './project';
+import { Project } from '../Classes/project';
 
 @Injectable({
   providedIn: 'root'

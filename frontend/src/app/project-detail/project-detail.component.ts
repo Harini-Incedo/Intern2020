@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../project';
-import { GeneralService } from '../general.service';
+import { Project } from '../Classes/project';
+import { GeneralService } from '../Services/general.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectServiceService } from '../project-service.service';
-import { EngagementService } from '../engagement.service';
-import { Engagement } from '../engagement';
+import { ProjectServiceService } from '../Services/project-service.service';
+import { EngagementService } from '../Services/engagement.service';
+import { Engagement } from '../Classes/engagement';
 import { newArray } from '@angular/compiler/src/util';
 
 @Component({
