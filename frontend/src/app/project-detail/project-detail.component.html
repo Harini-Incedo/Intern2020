@@ -48,7 +48,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let engagement of engagements">
-          <td><input (click)="onSelectList(engagement)" type="checkbox"></td>
+          <td><input (click)="onSelectList(engagement)" (click)="onSelectOne(engagement)" type="checkbox"></td>
           <td><a routerLink="/viewEmployee/{{ engagement.employeeID }}">{{ engagement.firstName }} {{ engagement.lastName }}</a></td>
           <td>{{ engagement.role }}</td>
           <td>{{ engagement.startDate }}</td>

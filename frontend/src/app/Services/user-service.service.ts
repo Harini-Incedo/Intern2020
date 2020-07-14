@@ -42,8 +42,14 @@ export class UserService {
     this.selectedUsers = users;
   }
 
-  public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+  public findAll(employeeType:string): Observable<User[]> {
+    if (employeeType === "Active") {
+      return this.http.get<User[]>(this.usersUrl);
+    } else if (employeeType === "Inactive") {
+      return this.http.get<User[]>(this.usersUrl);
+    } else {
+      return this.http.get<User[]>(this.usersUrl);
+    }
   }
 
   public create(user: User) {

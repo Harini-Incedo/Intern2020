@@ -33,7 +33,7 @@ export class EngagementFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userSerivce.findAll().subscribe(data => {
+    this.userSerivce.findAll("Active").subscribe(data => {
       this.users = data;
     });
     const projectId = +this.route.snapshot.paramMap.get('id');
