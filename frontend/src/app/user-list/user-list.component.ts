@@ -56,4 +56,8 @@ export class UserListComponent implements OnInit {
       this.selectedUsers = [];
     });
   }
+
+  getByEmployeeType(employeeType:string) : void {
+    console.log(employeeType);
+  }
 }

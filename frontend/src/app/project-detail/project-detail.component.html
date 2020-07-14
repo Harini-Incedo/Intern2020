@@ -31,14 +31,15 @@
   <div>
     <p style="text-align: center;"><strong>Engagements</strong></p>
     <button type="button" style="margin-left: 1em;" routerLink="addEngagement">Add</button>
-    <button type="button" [disabled]="!selectedEngagement" (click)="editEngagement(selectedProject, selectedEngagement)">Edit</button>
-    <button type="button" [disabled]="!selectedEngagement" (click)="deleteEngagement(selectedEngagement)">Delete</button>
+    <button type="button" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true" (click)="editEngagement(selectedProject, selectedEngagement)">Edit</button>
+    <button type="button" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true" (click)="deleteEngagement(selectedEngagement)">Delete</button>
     <br>
     <br>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col"></th>
+          <th scope="col">Employee Name</th>
           <th scope="col">Role</th>
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
@@ -47,7 +48,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let engagement of engagements">
-          <td><input (click)="onSelectOne(engagement)" type="checkbox"></td>
+          <td><input (click)="onSelectList(engagement)" type="checkbox"></td>
+          <td><a routerLink="/viewEmployee/{{ engagement.employeeID }}">{{ engagement.firstName }} {{ engagement.lastName }}</a></td>
           <td>{{ engagement.role }}</td>
           <td>{{ engagement.startDate }}</td>
           <td>{{ engagement.endDate }}</td>

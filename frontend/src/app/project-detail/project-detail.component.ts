@@ -31,8 +31,11 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getProjectById();
     this.engagements = [];
+    this.selectedEngagements = [];
     this.engagementSerivce.findAll(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
       for (let index = 0; index < data.length; index++) {
+        data[index]["engagement"]["firstName"] = data[index]["employee"]["firstName"];
+        data[index]["engagement"]["lastName"] = data[index]["employee"]["lastName"];
         this.engagements.push(data[index]['engagement']);
       }
     });
@@ -77,6 +80,20 @@ export class ProjectDetailComponent implements OnInit {
     } else {
       this.selectedEngagement = engagement;
       this.engagementSerivce.setSelectedEngagement(engagement);
+    }
+  }
+
+  onSelectList(engagement:Engagement){
+    if(this.selectedEngagements && this.selectedEngagements.length>0){
+      let isInTheList : boolean = false;
+      isInTheList = this.selectedEngagements.find(su=>su.id === engagement.id) === undefined ? false : true;
+      if(isInTheList){
+        this.selectedEngagements = this.selectedEngagements.filter(d=>d.id !==engagement.id);
+      }else {
+        this.selectedEngagements.push(engagement);
+      }
+    }else{
+      this.selectedEngagements.push(engagement);
     }
   }
 
