@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProjectFormComponent implements OnInit {
 
-  project: Project;
+  project: Project = {id:0, projectName:"", status:"", clientName:"", department:"", teamSize:0, projectGoal:"", startDate:"", endDate:"", weeklyHours:0};;
   departments: String[];
   statuses: String[];
   isCreateMode: boolean;

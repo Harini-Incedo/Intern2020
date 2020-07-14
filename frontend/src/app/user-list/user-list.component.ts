@@ -50,7 +50,11 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findAll().subscribe(data => {
+    this.getEmployeeByType();
+  }
+
+  getEmployeeByType(): void {
+    this.userService.findAll(document.querySelector("select").value).subscribe(data => {
       this.users = data;
       this.userService.setUsers(data);
       this.selectedUsers = [];
