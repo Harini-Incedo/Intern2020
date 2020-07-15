@@ -75,7 +75,10 @@ public class Employee {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if(firstName.matches("^[a-zA-Z ]*$")) {
+            this.firstName = firstName;
+        }
+        //Should display error message here that name has numbers or special characters
     }
 
     public String getLastName() {
@@ -83,7 +86,10 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if(lastName.matches("^[a-zA-Z ]*$")) {
+            this.lastName = lastName;
+        }
+        //Should display error message here that name has numbers or special characters
     }
 
     public boolean isActive() {
@@ -107,15 +113,24 @@ public class Employee {
     }
 
     public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+        LocalDate min = LocalDate.parse("2012,01,01");
+        if (startDate.compareTo(min) >= 0) {
+            this.startDate = startDate;
+        }
+        //throw an error message that start date is less than min date
     }
+
 
     public LocalDate getEndDate() {
         return endDate;
     }
 
     public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+        LocalDate temp = getStartDate();
+        if (endDate.compareTo(temp) > 0) {
+            this.endDate = endDate;
+        }
+        //throw error message that employee cant get fired in one day :'(
     }
 
     public String getWorkingHours() {
@@ -123,7 +138,10 @@ public class Employee {
     }
 
     public void setWorkingHours(String workingHours) {
-        this.workingHours = workingHours;
+        if (workingHours.matches(("^[0-9]*$"))) {
+            this.workingHours = workingHours;
+        }
+        //throw error since working hours is not a number
     }
 
     public String getLocation() {
@@ -131,7 +149,11 @@ public class Employee {
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        if(location.matches("^[a-zA-Z ]*$")) {
+            this.location = location;
+        }
+        //throw error that Location is invalid.
+
     }
 
     public Timezone getTimezone() {
@@ -163,7 +185,11 @@ public class Employee {
     }
 
     public void setManager(String manager) {
-        this.manager = manager;
+        if(manager.matches("^[a-zA-Z ]*$")) {
+            this.manager = manager;
+        }
+        //throw error that manager is invalid I think we still have to chekc if he exists in employee
+
     }
 
 }

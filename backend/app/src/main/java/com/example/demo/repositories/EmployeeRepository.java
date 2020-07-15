@@ -13,4 +13,7 @@ public interface EmployeeRepository extends CrudRepository<Employee,Long> {
     @Query("SELECT e FROM Employee e WHERE e.active=true ORDER BY e.lastName ASC")
     List<Employee> findAllActive();
 
+    @Query("SELECT e FROM Employee e WHERE e.active=false ORDER BY e.lastName ASC")
+    List<Employee> findAllInActive();
+
 }

@@ -47,7 +47,10 @@ public class EmployeeController {
             if (toReturn.isActive()) {
                 return toReturn;
             }
+            //error message that status is not active
+
         }
+        //instead of returning null it should throw an error message that employee doesn't exist
         return null;
     }
 
@@ -64,6 +67,7 @@ public class EmployeeController {
         System.out.println("Location: " + e.getLocation());
         System.out.println("Time Zone: " + e.getTimezone());
         System.out.println("Working Hours: " + e.getWorkingHours());
+
         repository.save(e);
     }
 
@@ -71,9 +75,14 @@ public class EmployeeController {
     void deleteEmployeeByID(@PathVariable("id") Long id) {
         Employee toDelete = getEmployeeByID(id);
         if (toDelete != null) {
-            toDelete.setActive(false);
-            repository.save(toDelete);
+            if(toDelete.isActive()== true){
+                toDelete.setActive(false);
+                repository.save(toDelete);
+            }
+            //throw an error message for employee already not active
+
         }
+        //throw error message for employee doesn't exist
     }
 
     // Updates the project with the given ID if it exists
@@ -101,6 +110,7 @@ public class EmployeeController {
             repository.save(toUpdate);
 
         }
+        //throw error message that id doesn't exist
     }
 
 }
