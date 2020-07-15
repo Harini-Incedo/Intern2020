@@ -13,11 +13,11 @@ public class ApiError {
     private String errorMessage;
     private String debugMessage;
 
-    ApiError(HttpStatus status, String errorMessage, Throwable ex) {
+    ApiError(HttpStatus status, String errorMessage, String debugMessage, Throwable ex) {
         timestamp = LocalDateTime.now();
         this.status = status;
         this.errorMessage = errorMessage;
-        this.debugMessage = ex.getLocalizedMessage();
+        this.debugMessage = debugMessage;
     }
 
     public HttpStatus getStatus() {

@@ -43,7 +43,7 @@ public class ProjectController {
         System.out.println("Department: " + p.getDepartment());
 
         // INPUT VALIDATION //
-        //validateProjectDetails(p);
+        validateProjectDetails(p);
 
         // Add validation for project status based on start date //
         p.setStatus("Pending");
@@ -67,7 +67,7 @@ public class ProjectController {
     @PutMapping("projects/complete/{id}")
     void completeProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toComplete = getProjectByID(id);
-        if (toComplete != null) {
+        if (toComplete != null) { // valid project ID
             toComplete.setStatus("Completed");
             repository.save(toComplete);
         } else {
@@ -79,7 +79,7 @@ public class ProjectController {
     @PutMapping("projects/close/{id}")
     void closeProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toClose = getProjectByID(id);
-        if (toClose != null) {
+        if (toClose != null) { // valid project ID
             toClose.setStatus("Closed");
             repository.save(toClose);
         } else {
@@ -91,7 +91,7 @@ public class ProjectController {
     @PutMapping("projects/start/{id}")
     void startProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toStart = getProjectByID(id);
-        if (toStart != null) {
+        if (toStart != null) { // valid project ID
             toStart.setStatus("In Progress");
             repository.save(toStart);
         } else {
@@ -103,9 +103,10 @@ public class ProjectController {
     @PutMapping("projects/{id}")
     void updateProjectByID(@PathVariable("id")Long id, @RequestBody Project p) {
         Project toUpdate = getProjectByID(id);
-        if (toUpdate != null){
+        if (toUpdate != null){ // valid project ID
+
             // INPUT VALIDATION //
-            //validateProjectDetails(p);
+            validateProjectDetails(p);
 
             toUpdate.setProjectName(p.getProjectName());
             toUpdate.setProjectGoal(p.getProjectGoal());
@@ -117,43 +118,47 @@ public class ProjectController {
             toUpdate.setWeeklyHours(p.getWeeklyHours());
 
             repository.save(toUpdate);
+
+        } else {
+            invalidProjectID(id);
         }
     }
 
     // Throws an error if a request is made for a project which doesn't exist
     private void invalidProjectID(long id) {
-        throw new EntityNotFoundException("No project exists with this ID: " + id);
+        throw new EntityNotFoundException("No project exists with this ID: " + id, "Please use a valid ID.");
     }
 
     // Validates project details input by the user
     private void validateProjectDetails(Project p) throws InvalidInputException {
         /* Project Name */
         if (p.getProjectName() != null && !p.getProjectName().matches("[a-zA-Z0-9 -]*")) {
-            throw new InvalidInputException("Invalid Project Name: " + p.getProjectName() +
-                                                "\n Project name should not contain any special characters.");
+            throw new InvalidInputException("Invalid Project Name: " + p.getProjectName(),
+                                                "Project name should not contain any special characters.");
         }
         /* Client Name */
         if (p.getClientName() != null && !p.getClientName().matches("[a-zA-Z0-9 -]*")) {
-            throw new InvalidInputException("Invalid Client Name: " + p.getProjectName() +
-                                                "\n Client name should not contain any special characters.");
+            throw new InvalidInputException("Invalid Client Name: " + p.getProjectName(),
+                                                "Client name should not contain any special characters.");
         }
         /* Start Date */
         if (p.getStartDate() != null && !p.getStartDate().isAfter(LocalDate.of(2012, 1, 1))) {
-            throw new InvalidInputException("Start Date is invalid: " + p.getStartDate());
+            throw new InvalidInputException("Start Date is invalid: " + p.getStartDate(),
+                                                "Start Date should be on or after January 1st, 2012.");
         }
         /* End Date */
         if (p.getEndDate() != null && !p.getEndDate().isAfter(p.getStartDate())) {
-            throw new InvalidInputException("End Date is invalid: " + p.getEndDate() +
+            throw new InvalidInputException("End Date is invalid: " + p.getEndDate(),
                                                 "End Date should be equal to or later than Start Date.");
         }
         /* Weekly Hours */
         if (p.getWeeklyHours() < 0) {
-            throw new InvalidInputException("Invalid Weekly Hours: " + p.getWeeklyHours() +
+            throw new InvalidInputException("Invalid Weekly Hours: " + p.getWeeklyHours(),
                                                 "Weekly hours should be a positive integer value.");
         }
         /* Team Size */
         if (p.getTeamSize() < 0) {
-            throw new InvalidInputException("Invalid Team Size: " + p.getTeamSize() +
+            throw new InvalidInputException("Invalid Team Size: " + p.getTeamSize(),
                                                 "Team size should be a positive integer value.");
         }
     }
