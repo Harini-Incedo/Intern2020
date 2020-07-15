@@ -47,19 +47,28 @@ export class ProjectListComponent implements OnInit {
   }
 
   completeProject(project:Project) {
-    this.projectService.complete(+project.id).subscribe(d=>this.projectService.gotoProjectList());
-    window.location.reload();
+    let check = confirm("Are you sure you want to complete " + project.projectName + "?");
+    if (check) {
+      this.projectService.complete(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+      window.location.reload();
+    }
   }
 
 
   startProject(project:Project) {
-    this.projectService.start(+project.id).subscribe(d=>this.projectService.gotoProjectList());
-    window.location.reload();
+    let check = confirm("Are you sure you want to start " + project.projectName + "?");
+    if (check) {
+      this.projectService.start(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+      window.location.reload();
+    }
   }
 
   closeProject(project:Project) {
-    this.projectService.close(+project.id).subscribe(d=>this.projectService.gotoProjectList());
-    window.location.reload();
+    let check = confirm("Are you sure you want to close " + project.projectName + "?");
+    if (check) {
+      this.projectService.close(+project.id).subscribe(d=>this.projectService.gotoProjectList());
+      window.location.reload();
+    }
   }
 
   editProject(project:Project) : void {

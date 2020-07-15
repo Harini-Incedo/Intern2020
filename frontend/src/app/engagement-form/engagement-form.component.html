@@ -42,6 +42,11 @@
           <input type="date" [(ngModel)]="engagement.endDate"
           name="endDate"
           required #endDate="ngModel">
+          <div *ngIf="(endDate.value < startDate.value) && endDate.touched"
+            class="alert alert-danger">
+              <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
+              <div *ngIf="endDate.value < startDate.value && endDate.touched">{{endDate.value}} is an invalid end date. Please enter a valid end date.</div>
+            </div>
         </div>
         <div>
           <label for="hoursNeeded">&emsp;Hours Needed<span style="color: red;">*</span></label>
@@ -53,17 +58,19 @@
         </div>
         <div *ngIf="hoursNeeded.invalid && (hoursNeeded.dirty || hoursNeeded.touched)"
           class="alert alert-danger">
-          <div *ngIf="hoursNeeded.errors?.forbiddenHoursNeeded && !hoursNeeded.errors.required">
-            Forbidden {{hoursNeeded.errors?.forbiddenHoursNeeded?.value}} because the 
-            {{printForbiddenMessage(hoursNeeded.errors?.forbiddenHoursNeeded?.value)}} 
+          <div *ngIf="hoursNeeded.invalid && hoursNeeded.touched && hoursNeeded.value <= 0 && !hoursNeeded.errors?.required">
+            The following value cannot be processed as {{hoursNeeded.value}} is less than 1.
           </div>
-          <div *ngIf="hoursNeeded.errors.required">
-            Hours needed is required.
+          <div *ngIf="hoursNeeded.invalid && hoursNeeded.touched && hoursNeeded.value > 100 && !hoursNeeded.errors?.required">
+            The following value cannot be processed as {{hoursNeeded.value}} is greater than 100.
+          </div>
+          <div *ngIf="hoursNeeded.errors?.required">
+            Hours needed is a required field.
           </div>
         </div>
       </div>
     </form>
     <button type="button" (click)="goBack()">&larr;Go Back</button>
-    <button type="submit" (click)="onSubmit()" [disabled]="!engagementForm.form.valid" style="margin-left: 1em;">Save</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="engagementForm.form.invalid?true:false" style="margin-left: 1em;">Save</button>
   </div>
 </div>
