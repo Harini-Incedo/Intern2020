@@ -20,14 +20,14 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     // Handles exception thrown when an entity is requested with an invalid ID
     @ExceptionHandler(EntityNotFoundException.class)
     protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
-        ApiError error = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        ApiError error = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage(), ex.getDebugMessage(), ex);
         return buildResponseEntity(error);
     }
 
     // Handles exception thrown when an entity is created or updated with invalid details
     @ExceptionHandler(InvalidInputException.class)
     protected ResponseEntity<Object> handleInvalidInput(InvalidInputException ex) {
-        ApiError error = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
+        ApiError error = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), ex.getDebugMessage(), ex);
         return buildResponseEntity(error);
     }
 
