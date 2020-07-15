@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UserService } from '../user-service.service';
+import { User } from '../Classes/user';
+import { UserService } from '../Services/user-service.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
@@ -50,7 +50,11 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findAll().subscribe(data => {
+    this.getEmployeeByType();
+  }
+
+  getEmployeeByType(): void {
+    this.userService.findAll(document.querySelector("select").value).subscribe(data => {
       this.users = data;
       this.userService.setUsers(data);
       this.selectedUsers = [];

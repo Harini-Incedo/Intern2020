@@ -33,12 +33,14 @@
           </select>
         </div>
         <div>
-          <label for="teamSize">&emsp;Team Size</label>
+          <label for="teamSize">&emsp;Team Size<span style="color: red;">*</span></label>
           <input type="number" [(ngModel)]="project.teamSize"
           name="teamSize"
           min="1"
+          ngMin="1"
           value="1"
-          #teamSize="ngModel">
+          #teamSize="ngModel"
+          required>
         </div>
         <div>
           <label for="projectGoal">&emsp;Project Description</label>
@@ -64,7 +66,7 @@
         </div>
         <div>
           <label for="weeklyHours">&emsp;Weekly Hours</label>
-          <input type="number" [(ngModel)]="project.weeklyHours"
+          <input type="number" [(ngModel)]="project.weeklyHours" id="number"
           name="weeklyHours"
           min="1"
           value="1"

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user-service.service';
-import { User } from '../user';
-import { GeneralService } from '../general.service';
+import { UserService } from '../Services/user-service.service';
+import { User } from '../Classes/user';
+import { GeneralService } from '../Services/general.service';
 
 @Component({
   selector: 'app-user-form',
@@ -12,7 +12,7 @@ import { GeneralService } from '../general.service';
 export class UserFormComponent {
   departments: String[];
   roles: String[];
-  user: User;
+  user: User = {id:"", firstName:"", lastName:"", email:"", role:"", department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
   isCreateMode: boolean;
 
   constructor(
@@ -50,7 +50,7 @@ export class UserFormComponent {
   }
 
   getAllRoles():void{
-    this.userService.getRoles().subscribe(resp=>{
+    this.generalService.getRoles().subscribe(resp=>{
       this.roles = resp;
     })
   }

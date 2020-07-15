@@ -29,15 +29,14 @@ public class Application {
 		return args -> {
 
 			// creates mock employees for testing
-			Stream.of("John Cena Business Analyst", "Sponge Robert Project Manager",
-						"Jennifer Aniston Web Developer", "Harry Styles College Recruiter",
-							"Nancy Drew IT Consultant").forEach(name -> {
+			Stream.of("John Cena Analyst", "Sponge Robert Manager",
+						"Jennifer Aniston Developer", "Harry Styles Intern",
+							"Nancy Drew Consultant").forEach(name -> {
 				String[] info = name.split(" ");
 				Employee e = new Employee(info[0], info[1],
 										info[0].toLowerCase() + "@domain.com",
 												LocalDate.of(2019, 1, 1),
-													Employee.Timezone.EST,
-													info[2] + " " + info[3]);
+													Employee.Timezone.EST, info[2]);
 				e.setDepartment("Telecom");
 				e.setLocation("New Jersey");
 				e.setManager("Chandler Bing");

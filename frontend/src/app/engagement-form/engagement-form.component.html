@@ -1,0 +1,69 @@
+<div *ngIf="project" class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #engagementForm="ngForm">
+      <div class="form-group">
+        <p>Engagement Information</p>
+        <div>
+          <label for="projectName">&emsp;Project Name <span style="color: red;">*</span></label>
+          <select id="projectName" required name="projectName" #projectName="ngModel"
+          [(ngModel)]="project.projectName" disabled>
+            <option [value]="project.projectName">{{project.projectName}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="role">&emsp;Role<span style="color: red;">*</span></label>
+          <select id="role" required name="role" #role="ngModel" [(ngModel)]="engagement.role">
+            <option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="user">&emsp;Employee Name <span style="color: red;">*</span></label>
+          <select id="user" required name="user"
+          #employeeName="ngModel" [(ngModel)]="engagement.employeeID">
+            <option *ngFor="let user of users" [value]="user.id">
+              {{user.firstName}} {{user.lastName}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <p>Engagement Logistics</p>
+        <div>
+          <label for="startDate">&emsp;Start Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="engagement.startDate"
+          name="startDate"
+          required #startDate="ngModel">
+        </div>
+        <div>
+          <label for="endDate">&emsp;End Date<span style="color: red;">*</span></label>
+          <input type="date" [(ngModel)]="engagement.endDate"
+          name="endDate"
+          required #endDate="ngModel">
+        </div>
+        <div>
+          <label for="hoursNeeded">&emsp;Hours Needed<span style="color: red;">*</span></label>
+          <input type="number" [(ngModel)]="engagement.hoursNeeded" id="number"
+          name="hoursNeeded"
+          appForbiddenHoursNeeded="1"
+          #hoursNeeded="ngModel"
+          required>
+        </div>
+        <div *ngIf="hoursNeeded.invalid && (hoursNeeded.dirty || hoursNeeded.touched)"
+          class="alert alert-danger">
+          <div *ngIf="hoursNeeded.errors?.forbiddenHoursNeeded && !hoursNeeded.errors.required">
+            Forbidden {{hoursNeeded.errors?.forbiddenHoursNeeded?.value}} because the 
+            {{printForbiddenMessage(hoursNeeded.errors?.forbiddenHoursNeeded?.value)}} 
+          </div>
+          <div *ngIf="hoursNeeded.errors.required">
+            Hours needed is required.
+          </div>
+        </div>
+      </div>
+    </form>
+    <button type="button" (click)="goBack()">&larr;Go Back</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="!engagementForm.form.valid" style="margin-left: 1em;">Save</button>
+  </div>
+</div>

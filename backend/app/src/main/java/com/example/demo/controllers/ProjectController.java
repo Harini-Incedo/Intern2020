@@ -2,9 +2,12 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Project;
 import com.example.demo.repositories.ProjectRepository;
+import com.example.demo.validation.EntityNotFoundException;
+import com.example.demo.validation.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +17,11 @@ public class ProjectController {
 
     @Autowired
     private ProjectRepository repository;
+    private final String[] status = {"Pending", "In Progress", "Completed", "Closed"};
 
-    // To get four status options
+    // To get project status options
     @GetMapping("/status")
     public String[] getStatus() {
-        String[] status = {"Pending", "In Progress", "Completed", "Closed"};
         return status;
     }
 
@@ -38,51 +41,72 @@ public class ProjectController {
         System.out.println("Client Name: " + p.getClientName());
         System.out.println("Team Size: " + p.getTeamSize());
         System.out.println("Department: " + p.getDepartment());
+
+        // INPUT VALIDATION //
+        validateProjectDetails(p);
+
         // Add validation for project status based on start date //
         p.setStatus("Pending");
+
         repository.save(p);
     }
 
     // Returns the active project with the given ID, if it exists
     @GetMapping("projects/{id}")
-    public Project getProjectByID(@PathVariable("id") Long id){
+    public Project getProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Optional<Project> proj = repository.findById(id);
         if (proj.isPresent()){
             Project temp = proj.get();
             return temp;
         }
+        invalidProjectID(id);
         return null;
     }
 
     // Updates the project status to be completed
     @PutMapping("projects/complete/{id}")
-    void completeProjectByID(@PathVariable("id") Long id) {
+    void completeProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toComplete = getProjectByID(id);
-        toComplete.setStatus("Completed");
-        repository.save(toComplete);
+        if (toComplete != null) { // valid project ID
+            toComplete.setStatus("Completed");
+            repository.save(toComplete);
+        } else {
+            invalidProjectID(id);
+        }
     }
 
     // Updates the project status to be closed
     @PutMapping("projects/close/{id}")
-    void closeProjectByID(@PathVariable("id") Long id) {
+    void closeProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toClose = getProjectByID(id);
-        toClose.setStatus("Closed");
-        repository.save(toClose);
+        if (toClose != null) { // valid project ID
+            toClose.setStatus("Closed");
+            repository.save(toClose);
+        } else {
+            invalidProjectID(id);
+        }
     }
 
-    // Updates the project status to be closed
+    // Updates the project status to be in progress
     @PutMapping("projects/start/{id}")
-    void startProjectByID(@PathVariable("id") Long id) {
-        Project project = getProjectByID(id);
-        project.setStatus("In Progress");
-        repository.save(project);
+    void startProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
+        Project toStart = getProjectByID(id);
+        if (toStart != null) { // valid project ID
+            toStart.setStatus("In Progress");
+            repository.save(toStart);
+        } else {
+            invalidProjectID(id);
+        }
     }
 
     // Updates the project with the given ID if it exists
     @PutMapping("projects/{id}")
-    void updateProjectByID(@PathVariable("id")Long id, @RequestBody Project p){
+    void updateProjectByID(@PathVariable("id")Long id, @RequestBody Project p) {
         Project toUpdate = getProjectByID(id);
-        if(toUpdate != null){
+        if (toUpdate != null){ // valid project ID
+
+            // INPUT VALIDATION //
+            validateProjectDetails(p);
 
             toUpdate.setProjectName(p.getProjectName());
             toUpdate.setProjectGoal(p.getProjectGoal());
@@ -94,6 +118,48 @@ public class ProjectController {
             toUpdate.setWeeklyHours(p.getWeeklyHours());
 
             repository.save(toUpdate);
+
+        } else {
+            invalidProjectID(id);
+        }
+    }
+
+    // Throws an error if a request is made for a project which doesn't exist
+    private void invalidProjectID(long id) {
+        throw new EntityNotFoundException("No project exists with this ID: " + id, "Please use a valid ID.");
+    }
+
+    // Validates project details input by the user
+    private void validateProjectDetails(Project p) throws InvalidInputException {
+        /* Project Name */
+        if (p.getProjectName() != null && !p.getProjectName().matches("[a-zA-Z0-9 -]*")) {
+            throw new InvalidInputException("Invalid Project Name: " + p.getProjectName(),
+                                                "Project name should not contain any special characters.");
+        }
+        /* Client Name */
+        if (p.getClientName() != null && !p.getClientName().matches("[a-zA-Z0-9 -]*")) {
+            throw new InvalidInputException("Invalid Client Name: " + p.getProjectName(),
+                                                "Client name should not contain any special characters.");
+        }
+        /* Start Date */
+        if (p.getStartDate() != null && !p.getStartDate().isAfter(LocalDate.of(2012, 1, 1))) {
+            throw new InvalidInputException("Start Date is invalid: " + p.getStartDate(),
+                                                "Start Date should be on or after January 1st, 2012.");
+        }
+        /* End Date */
+        if (p.getEndDate() != null && !p.getEndDate().isAfter(p.getStartDate())) {
+            throw new InvalidInputException("End Date is invalid: " + p.getEndDate(),
+                                                "End Date should be equal to or later than Start Date.");
+        }
+        /* Weekly Hours */
+        if (p.getWeeklyHours() < 0) {
+            throw new InvalidInputException("Invalid Weekly Hours: " + p.getWeeklyHours(),
+                                                "Weekly hours should be a positive integer value.");
+        }
+        /* Team Size */
+        if (p.getTeamSize() < 0) {
+            throw new InvalidInputException("Invalid Team Size: " + p.getTeamSize(),
+                                                "Team size should be a positive integer value.");
         }
     }
 

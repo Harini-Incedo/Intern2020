@@ -24,4 +24,9 @@ export class GeneralService {
   public goBack(){
     this._location.back();
   }
+
+  public getRoles(): Observable<any> {
+    return this.http.get("http://localhost:8080/roles",this.httpOptions)
+  }
+
 }

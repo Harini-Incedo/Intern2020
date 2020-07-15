@@ -4,9 +4,12 @@ import com.example.demo.entities.Employee;
 import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
 import com.example.demo.repositories.EngagementRepository;
+import com.example.demo.validation.EntityNotFoundException;
+import com.example.demo.validation.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -59,6 +62,8 @@ public class EngagementController {
     // Creates a new engagement in the database with the given information
     @PostMapping("/engagements")
     void createEngagement(@RequestBody Engagement e) {
+        // INPUT VALIDATION //
+        validateEngagementDetails(e);
         repository.save(e);
     }
 
@@ -90,7 +95,9 @@ public class EngagementController {
     void updateEngagementByID(@PathVariable("id")Long id, @RequestBody Engagement e){
         Triple data = getEngagementByID(id);
         Engagement toUpdate = data.engagement;
-        if (toUpdate != null){
+        if (toUpdate != null) {
+            // INPUT VALIDATION //
+            validateEngagementDetails(e);
 
             toUpdate.setEmployeeID(e.getEmployeeID());
             toUpdate.setProjectID(e.getProjectID());
@@ -100,7 +107,32 @@ public class EngagementController {
             toUpdate.setHoursNeeded(e.getHoursNeeded());
 
             repository.save(toUpdate);
+        } else {
+            invalidEngagementID(id);
+        }
+    }
 
+    // Throws an error if a request is made for a engagement which doesn't exist
+    private void invalidEngagementID(long id) {
+        throw new EntityNotFoundException("No engagement exists with this ID: " + id, "Please use a valid ID.");
+    }
+
+    // Validates engagement details input by the user
+    private void validateEngagementDetails(Engagement e) throws InvalidInputException {
+        /* Start Date */
+        if (e.getStartDate() != null && !e.getStartDate().isAfter(LocalDate.of(2011, 12, 31))) {
+            throw new InvalidInputException("Start Date is invalid: " + e.getStartDate(),
+                    "Start Date should be on or after January 1st, 2012.");
+        }
+        /* End Date */
+        if (e.getEndDate() != null && !e.getEndDate().isAfter(e.getStartDate())) {
+            throw new InvalidInputException("End Date is invalid: " + e.getEndDate(),
+                    "End Date should be equal to or later than Start Date.");
+        }
+        /* Hours Needed */
+        if (e.getHoursNeeded() < 0) {
+            throw new InvalidInputException("Invalid Hours Needed: " + e.getHoursNeeded(),
+                                    "Hours needed should be a positive integer value.");
         }
     }
 

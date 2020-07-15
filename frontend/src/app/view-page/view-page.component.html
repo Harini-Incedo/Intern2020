@@ -8,24 +8,46 @@
 </ul>
 <div class="card my-5">
   <div *ngIf="selectedUser" class="card-body">
-    <p style="left: 8.5%; position: absolute; font-size: larger;"><strong>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong></p>
+    <p style="text-align: center;"><strong>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong></p>
     <br>
     <br>
-    <p><strong>Email</strong> <a href="mailto: {{ selectedUser.email }}" style="left: 14%; position: absolute;">{{ selectedUser.email }}</a></p>
-    <p><strong>Department</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.department }}</span></p>
-    <p><strong>Manager</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.manager }}</span></p>
-    <p><strong>Start Date</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.startDate }}</span></p>
-    <p><strong>End Date</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.endDate }}</span></p>
-    <p><strong>Location</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.location }}</span></p>
-    <p><strong>Time Zone</strong> <span style="left: 14%; position: absolute;">{{ selectedUser.timezone }}</span></p>
-    <p><strong>Working Hours</strong> <span style="left: 14%; position: absolute;">{{selectedUser.workingHours}} </span></p>
-    <div class="vl">
-    </div>
+    <p><strong>Email</strong> <span><a href="mailto: {{ selectedUser.email }}">{{ selectedUser.email }}</a></span></p>
+    <p><strong>Department</strong> <span>{{ selectedUser.department }}</span></p>
+    <p><strong>Manager</strong> <span>{{ selectedUser.manager }}</span></p>
+    <p><strong>Start Date</strong> <span>{{ selectedUser.startDate }}</span></p>
+    <p><strong>End Date</strong> <span>{{ selectedUser.endDate }}</span></p>
+    <p><strong>Location</strong> <span>{{ selectedUser.location }}</span></p>
+    <p><strong>Time Zone</strong> <span>{{ selectedUser.timezone }}</span></p>
+    <p><strong>Working Hours</strong> <span>{{selectedUser.workingHours}} </span></p>
     <div style="float: right; justify-content: space-evenly;">
       <button type="button" (click)="goBack()" >&larr;Go Back</button>
-      <button>Contact</button>
+      <button (click)="email(selectedUser)">Contact</button>
       <button routerLink="/editEmployee/{{selectedUser.id}}">Edit</button>
       <button (click)="deleteUser(selectedUser)" style="margin-right: 0em;">Delete</button>
     </div>
+  </div>
+  <hr>
+  <div>
+    <p style="text-align: center;"><strong>Projects</strong></p>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Project Name</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Hours Needed</th>
+          <th scope="col">Role on Project</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let engagement of engagements">
+          <td><a routerLink="/viewProject/{{engagement.projectID}}">{{engagement.projectName}}</a></td>
+          <td>{{engagement.startDate}}</td>
+          <td>{{engagement.endDate}}</td>
+          <td>{{engagement.hoursNeeded}}</td>
+          <td>{{engagement.role}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

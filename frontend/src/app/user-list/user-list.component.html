@@ -8,6 +8,12 @@
 </ul>
 <div class="card my-5">
   <div class="card-body">
+    <label for="employeeType">&emsp;Employee Type&emsp;</label>
+      <select id="employeeType" required name="employeeType" (change)="getEmployeeByType()">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="Both">Both</option>
+      </select>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
@@ -32,7 +38,7 @@
         </tr>
       </tbody>
     </table>
-    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])" >Edit</button>
+    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])">Edit</button>
     <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="deleteUser(selectedUsers[0])"
     style="margin-left: 1em;">Delete</button>
     <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+
