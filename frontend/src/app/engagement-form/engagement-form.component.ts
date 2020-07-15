@@ -86,9 +86,9 @@ export class EngagementFormComponent implements OnInit {
 
   printForbiddenMessage(value:number){
     if(value<1){
-      return "value is less than 1";
+      return "is less than 1, the smallest processable value.";
     }else if(value>100){
-      return "value is greater than 100";
+      return "is greater than 100, the largest processable value.";
     }
   }
 }

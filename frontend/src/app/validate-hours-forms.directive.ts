@@ -1,14 +1,12 @@
 import { Directive,Input } from '@angular/core';
 import { Validator, AbstractControl, NG_VALIDATORS, ValidatorFn } from '@angular/forms';
 
-
-
 @Directive({
   selector: '[appForbiddenHoursNeeded]',
-  providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true}]
+  providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenHoursValidatorDirective, multi: true}]
 })
 
-export class ForbiddenValidatorDirective implements Validator {
+export class ForbiddenHoursValidatorDirective implements Validator {
   @Input('appForbiddenHoursNeeded') hoursNeeded: number;
 
   forbiddenHoursValidator(hoursNeeded: number): ValidatorFn {
@@ -19,7 +17,7 @@ export class ForbiddenValidatorDirective implements Validator {
   }
 
   validate(control: AbstractControl): {[key: string]: any} | null {
-    return this.hoursNeeded ? 
+    return this.hoursNeeded ?
     this.forbiddenHoursValidator(this.hoursNeeded)(control): null;
   }
 

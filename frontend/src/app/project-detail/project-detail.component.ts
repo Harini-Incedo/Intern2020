@@ -6,6 +6,8 @@ import { ProjectServiceService } from '../Services/project-service.service';
 import { EngagementService } from '../Services/engagement.service';
 import { Engagement } from '../Classes/engagement';
 import { newArray } from '@angular/compiler/src/util';
+import { UserService } from '../Services/user-service.service';
+import { User } from '../Classes/user';
 
 @Component({
   selector: 'app-project-detail',
@@ -15,6 +17,7 @@ import { newArray } from '@angular/compiler/src/util';
 export class ProjectDetailComponent implements OnInit {
 
   selectedProject : Project;
+  employee : User;
   project: Project;
   engagements: Engagement[];
   selectedEngagements: Engagement[];
@@ -25,7 +28,8 @@ export class ProjectDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private projectSerivce : ProjectServiceService,
     private router : Router,
-    private engagementSerivce: EngagementService
+    private engagementSerivce: EngagementService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -51,15 +55,24 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   completeProject(project:Project) {
-    this.projectSerivce.complete(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
+    let check = confirm("Are you sure you want to complete " + project.projectName + "?");
+    if (check) {
+      this.projectSerivce.complete(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
+    }
   }
 
   closeProject(project:Project) {
-    this.projectSerivce.close(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
+    let check = confirm("Are you sure you want to close " + project.projectName + "?");
+    if (check) {
+      this.projectSerivce.close(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
+    }
   }
 
   startProject(project:Project) {
-    this.projectSerivce.start(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
+    let check = confirm("Are you sure you want to start " + project.projectName + "?");
+    if (check) {
+      this.projectSerivce.start(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
+    }
   }
 
   editProject(project:Project) : void {
@@ -101,8 +114,11 @@ export class ProjectDetailComponent implements OnInit {
     this.router.navigateByUrl(`/viewProject/${project.id}/editEngagement/${engagement.id}`);
   }
 
-  deleteEngagement( engagement:Engagement) : void {
-    this.engagementSerivce.delete(+engagement.id).subscribe(d=>   window.location.reload());
+  deleteEngagement(engagement:Engagement) : void {
+    let check = confirm("Are you sure you want to delete this engagement from " + this.selectedProject.projectName + "?");
+    if (check) {
+      this.engagementSerivce.delete(+engagement.id).subscribe(d=>window.location.reload());
+    }
   }
 
 

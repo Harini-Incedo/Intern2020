@@ -16,21 +16,40 @@
           <label for="firstName">&emsp;First Name<span style="color: red;">*</span></label>
           <input type="text" [(ngModel)]="user.firstName"
           name="firstName"
-          required #name="ngModel">
-      </div>
+          required #firstName="ngModel"
+          pattern="[a-zA-Z ]*">
+          <div *ngIf="firstName.invalid && firstName.touched"
+          class="alert alert-danger">
+            <div *ngIf="firstName.errors?.required && firstName.touched">First name is required</div>
+            <div *ngIf="firstName.errors?.pattern && firstName.touched">{{firstName.value}} is an invalid first name. Please enter a valid one.</div>
+          </div>
+        </div>
       <div>
         <label for="lastName">&emsp;Last Name<span style="color: red;">*</span></label>
         <input type="text" [(ngModel)]="user.lastName"
           id="name"
           name="name"
-          required #lastName="ngModel">
+          required #lastName="ngModel"
+          pattern="[a-zA-Z ]*">
+          <div *ngIf="lastName.invalid && lastName.touched"
+          class="alert alert-danger">
+            <div *ngIf="lastName.errors?.required && lastName.touched">Last name is required</div>
+            <div *ngIf="lastName.errors?.pattern && lastName.touched">{{lastName.value}} is an invalid last name. Please enter a valid one.</div>
+          </div>
       </div>
         <label for="email">&emsp;Email<span style="color: red;">*</span></label>
         <input type="email" [(ngModel)]="user.email"
           id="email"
           name="email"
           placeholder="someone@example.com"
-          required #email="ngModel">
+          [email]="user.email!==''"
+          required #email="ngModel"
+          required>
+          <div *ngIf="email.invalid && email.touched"
+          class="alert alert-danger">
+            <div *ngIf="email.errors?.required && email.touched">Email is required</div>
+            <div *ngIf="email.errors?.email && email.touched">{{email.value}} is an invalid email. Please enter a valid email.</div>
+          </div>
       </div>
       <hr>
       <div class="form-group">
@@ -44,7 +63,7 @@
           </select>
         </div>
         <div>
-          <label for="department">&emsp;Department</label>
+          <label for="department">&emsp;Department<span style="color: red;">*</span></label>
           <select id="department" required name="department"
           #department="ngModel" [(ngModel)]="user.department">
             <option *ngFor="let department of departments" [value]="department">
@@ -57,7 +76,13 @@
           <input type="text" [(ngModel)]="user.manager"
             id="managerName"
             name="managerName"
-            required #managerName="ngModel">
+            required #managerName="ngModel"
+            pattern="[a-zA-Z ]+">
+          <div *ngIf="managerName.invalid && managerName.touched"
+          class="alert alert-danger">
+            <div *ngIf="managerName.errors?.required && managerName.touched">Manager Name is a required field.</div>
+            <div *ngIf="managerName.errors?.pattern && managerName.touched">{{ managerName.value }} is an invalid manager name. Please enter a valid manager name.</div>
+          </div>
         </div>
       </div>
       <hr>
@@ -76,13 +101,23 @@
             id="endDate"
             name="endDate"
             #endDate="ngModel">
+            <div *ngIf="(endDate.value < startDate.value) && endDate.touched"
+            class="alert alert-danger">
+              <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
+              <div *ngIf="endDate.value < startDate.value && endDate.touched">{{endDate.value}} is an invalid end date. Please enter a valid end date.</div>
+            </div>
         </div>
         <div>
           <label for="location">&emsp;Location</label>
           <input type="text" [(ngModel)]="user.location"
             id="location"
             name="location"
-            #location="ngModel">
+            #location="ngModel"
+            pattern="[a-zA-Z ]+">
+          <div *ngIf="location.invalid && location.touched"
+          class="alert alert-danger">
+            <div *ngIf="location.errors?.pattern && location.touched">{{location.value}} is an invalid location. Please enter a valid one.</div>
+          </div>
         </div>
         <div>
           <label for="timezone">&emsp;Time Zone<span style="color: red;">*</span></label>
@@ -222,7 +257,7 @@
         </div>
       </div>
       <button type="button" (click)="goBack($event)">&larr;Go Back</button>
-      <button type="submit" [disabled]="!userForm.form.valid" (onclick)="onSubmit()">Save</button>
+      <button type="submit" [disabled]="userForm.form.invalid?true:false" (onclick)="onSubmit()">Save</button>
     </form>
   </div>
 </div>

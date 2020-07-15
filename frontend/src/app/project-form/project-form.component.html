@@ -37,10 +37,19 @@
           <input type="number" [(ngModel)]="project.teamSize"
           name="teamSize"
           min="1"
-          ngMin="1"
           value="1"
+          appForbiddenHoursNeeded="1"
           #teamSize="ngModel"
           required>
+          <div *ngIf="teamSize.invalid && teamSize.touched"
+          class="alert alert-danger">
+          <div *ngIf="teamSize.invalid && teamSize.touched && teamSize.value <= 0 && !teamSize.errors?.required">
+            The following value cannot be processed as {{teamSize.value}} is less than 1.
+          </div>
+          <div *ngIf="teamSize.errors?.required">
+            Team size is a required field.
+          </div>
+        </div>
         </div>
         <div>
           <label for="projectGoal">&emsp;Project Description</label>
@@ -63,18 +72,36 @@
           <input type="date" [(ngModel)]="project.endDate"
           name="endDate"
           required #endDate="ngModel">
+          <div *ngIf="(endDate.value < startDate.value) && endDate.touched"
+            class="alert alert-danger">
+              <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
+              <div *ngIf="endDate.value < startDate.value && endDate.touched">{{endDate.value}} is an invalid end date. Please enter a valid end date.</div>
+            </div>
         </div>
         <div>
-          <label for="weeklyHours">&emsp;Weekly Hours</label>
+          <label for="weeklyHours">&emsp;Weekly Hours<span style="color: red;">*</span></label>
           <input type="number" [(ngModel)]="project.weeklyHours" id="number"
           name="weeklyHours"
+          #weeklyHours="ngModel"
+          appForbiddenHoursNeeded="1"
           min="1"
-          value="1"
-          #weeklyHours="ngModel">
+          required>
+          <div *ngIf="weeklyHours.invalid && weeklyHours.touched"
+          class="alert alert-danger">
+          <div *ngIf="weeklyHours.invalid && weeklyHours.touched && weeklyHours.value <= 0 && !weeklyHours.errors?.required">
+            The following value cannot be processed as {{weeklyHours.value}} is less than 1.
+          </div>
+          <div *ngIf="weeklyHours.invalid && weeklyHours.touched && weeklyHours.value > 1000 && !weeklyHours.errors?.required">
+            The following value cannot be processed as {{weeklyHours.value}} is greater than 1000.
+          </div>
+          <div *ngIf="weeklyHours.errors?.required">
+            Weekly hours is a required field.
+          </div>
+        </div>
         </div>
       </div>
     </form>
     <button type="button" (click)="goBack($event)">&larr;Go Back</button>
-    <button type="submit" (click)="onSubmit()" [disabled]="!projectForm.form.valid" style="margin-left: 1em;">Save</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="projectForm.form.invalid?true:false" style="margin-left: 1em;">Save</button>
   </div>
 </div>
