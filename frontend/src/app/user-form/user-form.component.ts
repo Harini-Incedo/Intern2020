@@ -12,7 +12,7 @@ import { GeneralService } from '../Services/general.service';
 export class UserFormComponent {
   departments: String[];
   roles: String[];
-  user: User;
+  user: User = {id:"", firstName:"", lastName:"", email:"", role:"", department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
   isCreateMode: boolean;
 
   constructor(

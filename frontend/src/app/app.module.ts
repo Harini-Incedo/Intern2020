@@ -12,6 +12,7 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { EngagementFormComponent } from './engagement-form/engagement-form.component';
+import { ForbiddenValidatorDirective } from './validate-forms.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EngagementFormComponent } from './engagement-form/engagement-form.compo
     ProjectListComponent,
     ProjectDetailComponent,
     ProjectFormComponent,
-    EngagementFormComponent
+    EngagementFormComponent,
+    ForbiddenValidatorDirective
   ],
   imports: [
     BrowserModule,

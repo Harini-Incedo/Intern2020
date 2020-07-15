@@ -41,7 +41,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let engagement of engagements">
-          <td>{{engagement.projectName}}</td>
+          <td><a routerLink="/viewProject/{{engagement.projectID}}">{{engagement.projectName}}</a></td>
           <td>{{engagement.startDate}}</td>
           <td>{{engagement.endDate}}</td>
           <td>{{engagement.hoursNeeded}}</td>

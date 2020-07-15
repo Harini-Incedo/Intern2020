@@ -33,7 +33,7 @@ export class EngagementFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userSerivce.findAll().subscribe(data => {
+    this.userSerivce.findAll("Active").subscribe(data => {
       this.users = data;
     });
     const projectId = +this.route.snapshot.paramMap.get('id');
@@ -84,4 +84,11 @@ export class EngagementFormComponent implements OnInit {
     window.location.reload();
   }
 
+  printForbiddenMessage(value:number){
+    if(value<1){
+      return "value is less than 1";
+    }else if(value>100){
+      return "value is greater than 100";
+    }
+  }
 }
