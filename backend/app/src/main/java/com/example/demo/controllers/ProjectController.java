@@ -59,74 +59,55 @@ public class ProjectController {
             Project temp = proj.get();
             return temp;
         }
-        invalidProjectID(id);
-        return null;
+        throw new EntityNotFoundException("No project exists with this ID: " + id,
+                                                        "Please use a valid project ID.");
     }
 
     // Updates the project status to be completed
     @PutMapping("projects/complete/{id}")
     void completeProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toComplete = getProjectByID(id);
-        if (toComplete != null) { // valid project ID
-            toComplete.setStatus("Completed");
-            repository.save(toComplete);
-        } else {
-            invalidProjectID(id);
-        }
+        // valid project ID
+        toComplete.setStatus("Completed");
+        repository.save(toComplete);
     }
 
     // Updates the project status to be closed
     @PutMapping("projects/close/{id}")
     void closeProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toClose = getProjectByID(id);
-        if (toClose != null) { // valid project ID
-            toClose.setStatus("Closed");
-            repository.save(toClose);
-        } else {
-            invalidProjectID(id);
-        }
+        // valid project ID
+        toClose.setStatus("Closed");
+        repository.save(toClose);
     }
 
     // Updates the project status to be in progress
     @PutMapping("projects/start/{id}")
     void startProjectByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Project toStart = getProjectByID(id);
-        if (toStart != null) { // valid project ID
-            toStart.setStatus("In Progress");
-            repository.save(toStart);
-        } else {
-            invalidProjectID(id);
-        }
+        // valid project ID
+        toStart.setStatus("In Progress");
+        repository.save(toStart);
     }
 
     // Updates the project with the given ID if it exists
     @PutMapping("projects/{id}")
     void updateProjectByID(@PathVariable("id")Long id, @RequestBody Project p) {
         Project toUpdate = getProjectByID(id);
-        if (toUpdate != null){ // valid project ID
 
-            // INPUT VALIDATION //
-            validateProjectDetails(p);
+        // INPUT VALIDATION //
+        validateProjectDetails(p);
 
-            toUpdate.setProjectName(p.getProjectName());
-            toUpdate.setProjectGoal(p.getProjectGoal());
-            toUpdate.setStartDate(p.getStartDate());
-            toUpdate.setEndDate(p.getEndDate());
-            toUpdate.setClientName(p.getClientName());
-            toUpdate.setTeamSize(p.getTeamSize());
-            toUpdate.setDepartment(p.getDepartment());
-            toUpdate.setWeeklyHours(p.getWeeklyHours());
+        toUpdate.setProjectName(p.getProjectName());
+        toUpdate.setProjectGoal(p.getProjectGoal());
+        toUpdate.setStartDate(p.getStartDate());
+        toUpdate.setEndDate(p.getEndDate());
+        toUpdate.setClientName(p.getClientName());
+        toUpdate.setTeamSize(p.getTeamSize());
+        toUpdate.setDepartment(p.getDepartment());
+        toUpdate.setWeeklyHours(p.getWeeklyHours());
 
-            repository.save(toUpdate);
-
-        } else {
-            invalidProjectID(id);
-        }
-    }
-
-    // Throws an error if a request is made for a project which doesn't exist
-    private void invalidProjectID(long id) {
-        throw new EntityNotFoundException("No project exists with this ID: " + id, "Please use a valid ID.");
+        repository.save(toUpdate);
     }
 
     // Validates project details input by the user

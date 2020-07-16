@@ -24,7 +24,15 @@ public class EngagementController {
     // To get all engagements associated with the given project.
     // Returns a list in the form: { (eng-1, emp-1, null), (eng-2, emp-2, null) }
     @GetMapping("projects/{id}/engagements")
-    public List<Triple> getEngagementsByProjectID(@PathVariable("id") Long id) {
+    public List<Triple> getEngagementsByProjectID(@PathVariable("id") Long id)
+            throws EntityNotFoundException {
+        // checks to see if given project ID is valid
+        Project p = repository.findProjectByID(id);
+        if (p == null) {
+            throw new EntityNotFoundException("No project exists with this ID: " + id,
+                    "Please use a valid project ID.");
+        }
+
         List<Triple> toReturn = new ArrayList<>();
 
         List<Engagement> engagements = repository.findEngagementsByProjectID(id);
@@ -43,7 +51,15 @@ public class EngagementController {
     // To get all engagements associated with the given employee.
     // Returns a list in the form: { (eng-1, null, proj-1), (eng-2, null, proj-2) }
     @GetMapping("employees/{id}/engagements")
-    public List<Triple> getEngagementsByEmployeeID(@PathVariable("id") Long id) {
+    public List<Triple> getEngagementsByEmployeeID(@PathVariable("id") Long id)
+            throws EntityNotFoundException {
+        // checks to see if given employee ID is valid
+        Employee emp = repository.findEmployeeByID(id);
+        if (emp == null) {
+            throw new EntityNotFoundException("No Employee exists with this ID: " + id,
+                    "Please use a valid employee ID.");
+        }
+
         List<Triple> toReturn = new ArrayList<>();
 
         List<Engagement> engagements = repository.findEngagementsByEmployeeID(id);
@@ -61,7 +77,7 @@ public class EngagementController {
 
     // Creates a new engagement in the database with the given information
     @PostMapping("/engagements")
-    void createEngagement(@RequestBody Engagement e) {
+    void createEngagement(@RequestBody Engagement e) throws InvalidInputException {
         // INPUT VALIDATION //
         validateEngagementDetails(e);
         repository.save(e);
@@ -69,14 +85,14 @@ public class EngagementController {
 
     // Deletes the engagement with the given ID
     @DeleteMapping("engagements/{id}")
-    void deleteEngagementByID(@PathVariable("id") Long id) {
+    void deleteEngagementByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Triple toDelete = getEngagementByID(id);
         repository.delete(toDelete.engagement);
     }
 
     // Returns the engagement with the given ID, if it exists
     @GetMapping("engagements/{id}")
-    private Triple getEngagementByID(@PathVariable("id") Long id){
+    private Triple getEngagementByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Optional<Engagement> engagement = repository.findById(id);
         if (engagement.isPresent()){
             Engagement e = engagement.get();
@@ -87,34 +103,29 @@ public class EngagementController {
             // employee grouped together
             return new Triple(e, temp);
         }
-        return null;
+        throw new EntityNotFoundException("No engagement exists with this ID: " + id,
+                                                        "Please use a valid engagement ID.");
     }
 
     // Updates the engagement with the given ID if it exists
     @PutMapping("engagements/{id}")
-    void updateEngagementByID(@PathVariable("id")Long id, @RequestBody Engagement e){
+    void updateEngagementByID(@PathVariable("id")Long id, @RequestBody Engagement e)
+                    throws EntityNotFoundException, InvalidInputException {
         Triple data = getEngagementByID(id);
         Engagement toUpdate = data.engagement;
-        if (toUpdate != null) {
-            // INPUT VALIDATION //
-            validateEngagementDetails(e);
 
-            toUpdate.setEmployeeID(e.getEmployeeID());
-            toUpdate.setProjectID(e.getProjectID());
-            toUpdate.setStartDate(e.getStartDate());
-            toUpdate.setEndDate(e.getEndDate());
-            toUpdate.setRole(e.getRole());
-            toUpdate.setHoursNeeded(e.getHoursNeeded());
+        // INPUT VALIDATION //
+        validateEngagementDetails(e);
 
-            repository.save(toUpdate);
-        } else {
-            invalidEngagementID(id);
-        }
-    }
+        toUpdate.setEmployeeID(e.getEmployeeID());
+        toUpdate.setProjectID(e.getProjectID());
+        toUpdate.setStartDate(e.getStartDate());
+        toUpdate.setEndDate(e.getEndDate());
+        toUpdate.setRole(e.getRole());
+        toUpdate.setHoursNeeded(e.getHoursNeeded());
 
-    // Throws an error if a request is made for a engagement which doesn't exist
-    private void invalidEngagementID(long id) {
-        throw new EntityNotFoundException("No engagement exists with this ID: " + id, "Please use a valid ID.");
+        repository.save(toUpdate);
+
     }
 
     // Validates engagement details input by the user
