@@ -28,7 +28,7 @@ public class Application {
 								EngagementRepository engRepository) {
 		return args -> {
 
-			// creates mock employees for testing
+			// creates mock active employees for testing
 			Stream.of("John Cena Analyst", "Sponge Robert Manager",
 						"Jennifer Aniston Developer", "Harry Styles Intern",
 							"Nancy Drew Consultant").forEach(name -> {
@@ -41,9 +41,27 @@ public class Application {
 				e.setLocation("New Jersey");
 				e.setManager("Chandler Bing");
 				e.setEndDate(LocalDate.of(2020, 1, 1));
-				e.setWorkingHours("Part Time");
+				e.setWorkingHours("Full Time");
 				empRepository.save(e);
 			});
+
+			// creates mock inactive employees for testing
+			Stream.of("Billy Joel HR", "Fred Heebie Intern",
+					"Bill Jeebie Intern").forEach(name -> {
+				String[] info = name.split(" ");
+				Employee e = new Employee(info[0], info[1],
+						info[0].toLowerCase() + "@domain.com",
+						LocalDate.of(2019, 1, 1),
+						Employee.Timezone.EST, info[2]);
+				e.setDepartment("Healthcare");
+				e.setLocation("New York");
+				e.setManager("Joey Tribbiani");
+				e.setEndDate(LocalDate.of(2020, 1, 1));
+				e.setWorkingHours("Part Time");
+				e.setActive(false);
+				empRepository.save(e);
+			});
+
 			empRepository.findAll().forEach(System.out::println);
 
 			// creates mock projects for testing

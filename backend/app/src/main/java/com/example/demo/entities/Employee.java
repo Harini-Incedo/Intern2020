@@ -1,8 +1,6 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.example.demo.validation.EntityNotFoundException;
-import com.example.demo.validation.InvalidInputException;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -41,7 +39,7 @@ public class Employee {
 
     // location and logistics
     @Column(name = "workingHours")
-    private int workingHours;
+    private String workingHours;
     @Column(name = "location")
     private String location;
     @Column(name = "timezone")
@@ -76,28 +74,16 @@ public class Employee {
         return firstName;
     }
 
-    public void setFirstName(String firstName) throws InvalidInputException {
-        if (firstName.matches("^[a-zA-Z ]*$")) {
-            this.firstName = firstName;
-        } else {
-            throw new InvalidInputException("Invalid First Name: " + firstName,
-                    "First name should not contain any special characters.");
-        }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) throws InvalidInputException{
-        if(lastName.matches("^[a-zA-Z ]*$")) {
-            this.lastName = lastName;
-        }
-        else {
-            throw new InvalidInputException("Invalid Last Name: " + lastName,
-                    "Last name should not contain any special characters.");
-        }
-
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public boolean isActive() {
@@ -120,15 +106,8 @@ public class Employee {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) throws InvalidInputException{
-        LocalDate min = LocalDate.parse("2012,01,01");
-        if (startDate.compareTo(min) >= 0) {
-            this.startDate = startDate;
-        }
-        else{
-            throw new InvalidInputException("Start Date is invalid: " + startDate,
-                    "Start Date should be on or after January 1st, 2012.");
-        }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
 
@@ -136,38 +115,24 @@ public class Employee {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate)throws InvalidInputException {
-        LocalDate temp = getStartDate();
-        if (endDate.compareTo(temp) > 0) {
-            this.endDate = endDate;
-        }
-        throw new InvalidInputException("End Date is invalid: " + endDate,
-                "End Date should be on or after January 1st, 2012.");
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
-    public int getWorkingHours() {
+    public String getWorkingHours() {
         return workingHours;
     }
 
-    public void setWorkingHours(int workingHours) throws InvalidInputException{
-        if (workingHours > 0) {
-            this.workingHours = workingHours;
-        }
-        throw new InvalidInputException("Invalid Weekly Hours: " + workingHours,
-                "Weekly hours should be a positive integer value.");
+    public void setWorkingHours(String workingHours) {
+        this.workingHours = workingHours;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) throws InvalidInputException{
-        if(location.matches("^[a-zA-Z ]*$")) {
-            this.location = location;
-        }
-        throw new InvalidInputException("Invalid Location: " + location,
-                "Location should not be special characters.");
-
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Timezone getTimezone() {
@@ -198,13 +163,8 @@ public class Employee {
         return manager;
     }
 
-    public void setManager(String manager) throws InvalidInputException {
-        if(manager.matches("^[a-zA-Z ]*$")) {
-            this.manager = manager;
-        }
-        throw new InvalidInputException("Invalid Manager: " + manager,
-                "Manager should not have any special characters.");
-
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
 }
