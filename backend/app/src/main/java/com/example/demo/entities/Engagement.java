@@ -33,7 +33,7 @@ public class Engagement {
 
     public Engagement(long employeeID, long projectID, String role, LocalDate startDate, LocalDate endDate, int hoursNeeded) {
         this.employeeID = employeeID;
-        this.projectID = projectID;
+        this.projectID =  projectID;
         this.role = role;
         this.startDate = startDate;
         this.endDate = endDate;

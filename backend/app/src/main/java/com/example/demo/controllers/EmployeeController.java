@@ -1,10 +1,14 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Employee;
+import com.example.demo.entities.Project;
 import com.example.demo.repositories.EmployeeRepository;
+import com.example.demo.validation.EntityNotFoundException;
+import com.example.demo.validation.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +43,7 @@ public class EmployeeController {
 
     // Returns the active employee with the given ID, if it exists
     @GetMapping("employees/{id}")
-    public Employee getEmployeeByID(@PathVariable("id") Long id) {
+    public Employee getEmployeeByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Optional<Employee> employee = repository.findById(id);
         if (employee.isPresent()) {
             Employee toReturn = employee.get();
@@ -47,8 +51,12 @@ public class EmployeeController {
             if (toReturn.isActive()) {
                 return toReturn;
             }
+            //error message that status is not active
+
         }
-        return null;
+
+            throw new EntityNotFoundException("No Employee exists with this ID: " + id, "Please use a valid ID.");
+
     }
 
     // Creates a new employee in the database with the given information
@@ -64,16 +72,24 @@ public class EmployeeController {
         System.out.println("Location: " + e.getLocation());
         System.out.println("Time Zone: " + e.getTimezone());
         System.out.println("Working Hours: " + e.getWorkingHours());
+        vaildEmployeeDetails(e);
         repository.save(e);
     }
 
     @DeleteMapping("employees/{id}")
-    void deleteEmployeeByID(@PathVariable("id") Long id) {
+    void deleteEmployeeByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Employee toDelete = getEmployeeByID(id);
         if (toDelete != null) {
-            toDelete.setActive(false);
-            repository.save(toDelete);
+            if(toDelete.isActive()== true){
+                toDelete.setActive(false);
+                repository.save(toDelete);
+            }
+
         }
+        else{
+            invalidEmployeeID(id);
+        }
+
     }
 
     // Updates the project with the given ID if it exists
@@ -100,6 +116,61 @@ public class EmployeeController {
 
             repository.save(toUpdate);
 
+        }
+        else{
+            invalidEmployeeID(id);
+        }
+    }
+
+    private void invalidEmployeeID(long id) throws EntityNotFoundException {
+        throw new EntityNotFoundException("No Employee exists with this ID: " + id, "Please use a valid ID.");
+    }
+    private void vaildEmployeeDetails(Employee e) throws InvalidInputException {
+
+        if (e.getFirstName() == null || !e.getFirstName().matches("^[a-zA-Z ]*$")) {
+            throw new InvalidInputException("Invalid First Name: " + e.getFirstName(),
+                    "First Name should not contain any special characters.");
+        }
+
+        if (e.getLastName() == null || !e.getLastName().matches("^[a-zA-Z ]*$")) {
+            throw new InvalidInputException("Invalid Last Name: " + e.getLastName(),
+                    "Last Name should not contain any special characters.");
+        }
+
+        if (e.getStartDate() == null || !e.getStartDate().isAfter(LocalDate.of(2012, 1, 1))) {
+            throw new InvalidInputException("Start Date is invalid: " + e.getStartDate(),
+                    "Start Date should be on or after January 1st, 2012.");
+        }
+
+        if (e.getEndDate() == null || !e.getEndDate().isAfter(e.getStartDate())) {
+            throw new InvalidInputException("End Date is invalid: " + e.getEndDate(),
+                    "End Date should be equal to or later than Start Date.");
+        }
+
+        if (e.getWorkingHours() < 0) {
+            throw new InvalidInputException("Invalid Weekly Hours: " + e.getWorkingHours(),
+                    "Weekly hours should be a positive integer value.");
+        }
+
+        if (e.getEmail() == null ) {
+            throw new InvalidInputException("Invalid Email: " + e.getEmail(),
+                    "Please input an EmailID");
+        }
+        if(e.getDepartment() == null){
+            throw new InvalidInputException("Invalid Department: " + e.getDepartment(),"Please Input a Department");
+        }
+        if (e.getRole() == null){
+            throw new InvalidInputException("Invalid Role: " + e.getRole(),"Please Input a Role");
+        }
+        if(e.getLocation() == null || !e.getLocation().matches("^[a-zA-Z ]*$")){
+            throw new InvalidInputException("Invalid Location: " + e.getLocation(), "Location should not have any special characters");
+        }
+        if(e.getTimezone() == null){
+            throw new InvalidInputException("Invalid Timezone: " + e.getTimezone(),"Please Input a Timezone");
+        }
+        if(e.getManager() == null || !e.getManager().matches("^[a-zA-Z ]*$"))
+        {
+            throw new InvalidInputException("Invalid Manager: " + e.getManager(), "Manager should not have any special characters");
         }
     }
 
