@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.demo.validation.EntityNotFoundException;
+import com.example.demo.validation.InvalidInputException;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -39,7 +41,7 @@ public class Employee {
 
     // location and logistics
     @Column(name = "workingHours")
-    private String workingHours;
+    private int workingHours;
     @Column(name = "location")
     private String location;
     @Column(name = "timezone")
@@ -74,22 +76,28 @@ public class Employee {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        if(firstName.matches("^[a-zA-Z ]*$")) {
+    public void setFirstName(String firstName) throws InvalidInputException {
+        if (firstName.matches("^[a-zA-Z ]*$")) {
             this.firstName = firstName;
+        } else {
+            throw new InvalidInputException("Invalid First Name: " + firstName,
+                    "First name should not contain any special characters.");
         }
-        //Should display error message here that name has numbers or special characters
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws InvalidInputException{
         if(lastName.matches("^[a-zA-Z ]*$")) {
             this.lastName = lastName;
         }
-        //Should display error message here that name has numbers or special characters
+        else {
+            throw new InvalidInputException("Invalid Last Name: " + lastName,
+                    "Last name should not contain any special characters.");
+        }
+
     }
 
     public boolean isActive() {
@@ -112,12 +120,15 @@ public class Employee {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDate startDate) throws InvalidInputException{
         LocalDate min = LocalDate.parse("2012,01,01");
         if (startDate.compareTo(min) >= 0) {
             this.startDate = startDate;
         }
-        //throw an error message that start date is less than min date
+        else{
+            throw new InvalidInputException("Start Date is invalid: " + startDate,
+                    "Start Date should be on or after January 1st, 2012.");
+        }
     }
 
 
@@ -125,34 +136,37 @@ public class Employee {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDate endDate)throws InvalidInputException {
         LocalDate temp = getStartDate();
         if (endDate.compareTo(temp) > 0) {
             this.endDate = endDate;
         }
-        //throw error message that employee cant get fired in one day :'(
+        throw new InvalidInputException("End Date is invalid: " + endDate,
+                "End Date should be on or after January 1st, 2012.");
     }
 
-    public String getWorkingHours() {
+    public int getWorkingHours() {
         return workingHours;
     }
 
-    public void setWorkingHours(String workingHours) {
-        if (workingHours.matches(("^[0-9]*$"))) {
+    public void setWorkingHours(int workingHours) throws InvalidInputException{
+        if (workingHours > 0) {
             this.workingHours = workingHours;
         }
-        //throw error since working hours is not a number
+        throw new InvalidInputException("Invalid Weekly Hours: " + workingHours,
+                "Weekly hours should be a positive integer value.");
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(String location) throws InvalidInputException{
         if(location.matches("^[a-zA-Z ]*$")) {
             this.location = location;
         }
-        //throw error that Location is invalid.
+        throw new InvalidInputException("Invalid Location: " + location,
+                "Location should not be special characters.");
 
     }
 
@@ -184,11 +198,12 @@ public class Employee {
         return manager;
     }
 
-    public void setManager(String manager) {
+    public void setManager(String manager) throws InvalidInputException {
         if(manager.matches("^[a-zA-Z ]*$")) {
             this.manager = manager;
         }
-        //throw error that manager is invalid I think we still have to chekc if he exists in employee
+        throw new InvalidInputException("Invalid Manager: " + manager,
+                "Manager should not have any special characters.");
 
     }
 
