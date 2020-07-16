@@ -3,6 +3,8 @@ import { Project } from '../Classes/project';
 import { GeneralService } from '../Services/general.service';
 import { ProjectServiceService } from '../Services/project-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-project-form',
@@ -58,5 +60,10 @@ export class ProjectFormComponent implements OnInit {
     }else if(value>1000){
       return "is greater than 1000, the largest processable value.";
     }
+  }
+
+  private handleError(errorResponse: HttpErrorResponse) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    return throwError(errorResponse);
   }
 }

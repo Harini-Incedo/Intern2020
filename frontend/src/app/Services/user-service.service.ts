@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../Classes/user';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import {catchError} from 'rxjs/operators'
 import {Location} from '@angular/common';
 import { Engagement } from '../Classes/engagement';
 @Injectable()
@@ -43,17 +44,13 @@ export class UserService {
   }
 
   public findAll(employeeType:string): Observable<User[]> {
-    if (employeeType === "Active") {
-      return this.http.get<User[]>(this.usersUrl);
-    } else if (employeeType === "Inactive") {
-      return this.http.get<User[]>(this.usersUrl);
-    } else {
-      return this.http.get<User[]>(this.usersUrl);
-    }
+    return this.http.get<User[]>(this.usersUrl + "/" + employeeType)
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
   public create(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(this.usersUrl, user)
+      .pipe(catchError(this.handleSecondError));
   }
 
   public delete(id: number) {
@@ -66,6 +63,7 @@ export class UserService {
 
   public getUserByIdApi(id:number): Observable<User>{
     return this.http.get<User>(this.usersUrl + "/" + id)
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
   public gotoUserList() {
@@ -73,7 +71,21 @@ export class UserService {
   }
 
   public getEngagementByUser(id:number): Observable<Engagement[]> {
-    return this.http.get<Engagement[]>(this.usersUrl + "/" + id + "/engagements");
+    return this.http.get<Engagement[]>(this.usersUrl + "/" + id + "/engagements")
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
+  }
+
+  private handleError(errorResponse: HttpErrorResponse, router: Router) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    if (check) {
+      router.navigate(['/employees']);
+    }
+    return throwError(errorResponse);
+  }
+
+  private handleSecondError(errorResponse: HttpErrorResponse) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    return throwError(errorResponse);
   }
 
 }

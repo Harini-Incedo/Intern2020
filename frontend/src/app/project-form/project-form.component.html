@@ -15,13 +15,25 @@
           <label for="projectName">&emsp;Project Name<span style="color: red;">*</span></label>
           <input type="text" [(ngModel)]="project.projectName"
           name="projectName"
-          required #projectName="ngModel">
+          required #projectName="ngModel"
+          pattern="[a-zA-Z0-9 -]*">
+          <div *ngIf="projectName.invalid && projectName.touched"
+          class="alert alert-danger">
+            <div *ngIf="projectName.errors?.required && projectName.touched">Project name is required</div>
+            <div *ngIf="projectName.errors?.pattern && projectName.touched">{{projectName.value}} is an invalid project name. Please enter a valid one.</div>
+          </div>
         </div>
         <div>
           <label for="clientName">&emsp;Client Name<span style="color: red;">*</span></label>
           <input type="text" [(ngModel)]="project.clientName"
           name="clientName"
-          required #clientName="ngModel">
+          required #clientName="ngModel"
+          pattern="[a-zA-Z0-9 -]*">
+          <div *ngIf="clientName.invalid && clientName.touched"
+          class="alert alert-danger">
+            <div *ngIf="clientName.errors?.required && clientName.touched">Client name is required</div>
+            <div *ngIf="clientName.errors?.pattern && clientName.touched">{{clientName.value}} is an invalid client name. Please enter a valid one.</div>
+          </div>
         </div>
         <div>
           <label for="department">&emsp;Department <span style="color: red;">*</span></label>
@@ -72,11 +84,11 @@
           <input type="date" [(ngModel)]="project.endDate"
           name="endDate"
           required #endDate="ngModel">
-          <div *ngIf="(endDate.value < startDate.value) && endDate.touched"
+          <!--<div *ngIf="(endDate.value < startDate.value) && endDate.touched"
             class="alert alert-danger">
               <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
               <div *ngIf="endDate.value < startDate.value && endDate.touched">{{endDate.value}} is an invalid end date. Please enter a valid end date.</div>
-            </div>
+            </div>-->
         </div>
         <div>
           <label for="weeklyHours">&emsp;Weekly Hours<span style="color: red;">*</span></label>
@@ -102,6 +114,6 @@
       </div>
     </form>
     <button type="button" (click)="goBack($event)">&larr;Go Back</button>
-    <button type="submit" (click)="onSubmit()" [disabled]="projectForm.form.invalid?true:false" style="margin-left: 1em;">Save</button>
+    <button type="submit" (click)="onSubmit()" [disabled]="projectForm.form.invalid" style="margin-left: 1em;">Save</button>
   </div>
 </div>
