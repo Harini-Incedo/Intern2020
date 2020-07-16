@@ -34,15 +34,6 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjectById();
-    this.engagements = [];
-    this.selectedEngagements = [];
-    this.engagementSerivce.findAll(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
-      for (let index = 0; index < data.length; index++) {
-        data[index]["engagement"]["firstName"] = data[index]["employee"]["firstName"];
-        data[index]["engagement"]["lastName"] = data[index]["employee"]["lastName"];
-        this.engagements.push(data[index]['engagement']);
-      }
-    });
   }
 
   goBack(e:any):void {
@@ -51,7 +42,20 @@ export class ProjectDetailComponent implements OnInit {
 
   getProjectById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.projectSerivce.getProjectByIdApi(id).subscribe(data=>this.selectedProject = data)
+    this.projectSerivce.getProjectByIdApi(id).subscribe(data=>{
+      this.selectedProject = data;
+      if (this.selectedProject) {
+        this.engagements = [];
+        this.selectedEngagements = [];
+        this.engagementSerivce.findAll(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
+          for (let index = 0; index < data.length; index++) {
+            data[index]["engagement"]["firstName"] = data[index]["employee"]["firstName"];
+            data[index]["engagement"]["lastName"] = data[index]["employee"]["lastName"];
+            this.engagements.push(data[index]['engagement']);
+          }
+        });
+      }
+    })
   }
 
   completeProject(project:Project) {

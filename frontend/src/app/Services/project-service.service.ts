@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Project } from '../Classes/project';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,15 +32,18 @@ export class ProjectServiceService {
   }
 
   public create(project: Project) {
-    return this.http.post<Project>(this.projectsUrl, project);
+    return this.http.post<Project>(this.projectsUrl, project)
+      .pipe(catchError(this.handleSecondError));
   }
 
   public edit(project: Project) {
-    return this.http.put<Project>(this.projectsUrl + "/" + project.id, project);
+    return this.http.put<Project>(this.projectsUrl + "/" + project.id, project)
+      .pipe(catchError(this.handleSecondError));
   }
 
   public findAll(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.projectsUrl);
+    return this.http.get<Project[]>(this.projectsUrl)
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
   public addToProjects(project:Project):void{
@@ -51,7 +55,8 @@ export class ProjectServiceService {
   }
 
   public getProjectByIdApi(id:number): Observable<Project>{
-    return this.http.get<Project>(this.projectsUrl + "/" + id);
+    return this.http.get<Project>(this.projectsUrl + "/" + id)
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
   public complete(id: number) {
@@ -64,6 +69,19 @@ export class ProjectServiceService {
 
   public start(id: number) {
     return this.http.put<Project>(this.projectsUrl + "/start/" + id ,this.httpOptions);
+  }
+
+  private handleError(errorResponse: HttpErrorResponse, router: Router) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    if (check) {
+      router.navigate(['/projects']);
+    }
+    return throwError(errorResponse);
+  }
+
+  private handleSecondError(errorResponse: HttpErrorResponse) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    return throwError(errorResponse);
   }
 
 }
