@@ -22,7 +22,7 @@ export class EngagementFormComponent implements OnInit {
   roles: String[];
   employeeName: String;
   isCreateMode: boolean;
-
+  inValidDate: boolean = false;
 
   constructor(
     private generalService: GeneralService,
@@ -84,11 +84,11 @@ export class EngagementFormComponent implements OnInit {
     window.location.reload();
   }
 
-  printForbiddenMessage(value:number){
-    if(value<1){
-      return "is less than 1, the smallest processable value.";
-    }else if(value>100){
-      return "is greater than 100, the largest processable value.";
-    }
+  printForbiddenMessage(value:number | any ){
+    return this.generalService.printForbiddenMessage(value,"engagement");
+  }
+
+  validateEndDate(endDate:any,startDate:any){
+    this.inValidDate = this.generalService.validateEndDate(endDate,startDate);
   }
 }
