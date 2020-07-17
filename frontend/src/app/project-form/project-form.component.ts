@@ -15,6 +15,7 @@ export class ProjectFormComponent implements OnInit {
   departments: String[];
   statuses: String[];
   isCreateMode: boolean;
+  inValidDate: boolean = false;
 
   constructor(
     private generalService: GeneralService,
@@ -52,11 +53,11 @@ export class ProjectFormComponent implements OnInit {
     this.generalService.goBack();
   }
 
-  printForbiddenMessageWeeklyHours(value:number){
-    if(value<1){
-      return "is less than 1, the smallest processable value.";
-    }else if(value>1000){
-      return "is greater than 1000, the largest processable value.";
-    }
+  printForbiddenMessageWeeklyHours(value:number | any ){
+    return this.generalService.printForbiddenMessage(value,"project");
+  }
+
+  validateEndDate(endDate:any,startDate:any){
+    this.inValidDate = this.generalService.validateEndDate(endDate,startDate);
   }
 }

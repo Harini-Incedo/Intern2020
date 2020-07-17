@@ -96,17 +96,16 @@
             required #startDate="ngModel">
         </div>
         <div>
-          <label for="endDate">&emsp;End Date</label>
+          <label for="endDate">&emsp;End Date<span style="color: red;">*</span></label>
           <input type="date" [(ngModel)]="user.endDate"
-            id="endDate"
-            name="endDate"
-            #endDate="ngModel">
-            <div *ngIf="(endDate.value < startDate.value) && endDate.touched"
-            class="alert alert-danger">
-              <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
-              <div *ngIf="endDate.value < startDate.value && endDate.touched">{{endDate.value}} is an invalid end date. Please enter a valid end date.</div>
-            </div>
-        </div>
+          name="endDate"
+          #endDate="ngModel">
+          <div *ngIf="endDate.touched && validateEndDate(endDate,startDate)"
+          class="alert alert-danger">
+            <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
+          </div>
+          <div  class="alert alert-danger" *ngIf="endDate.touched && inValidDate">End date cannot be before start date. Please enter a valid end date.</div>
+        </div> 
         <div>
           <label for="location">&emsp;Location</label>
           <input type="text" [(ngModel)]="user.location"

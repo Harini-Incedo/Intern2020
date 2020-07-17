@@ -14,6 +14,7 @@ export class UserFormComponent {
   roles: String[];
   user: User = {id:"", firstName:"", lastName:"", email:"", role:"", department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
   isCreateMode: boolean;
+  inValidDate: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,4 +59,9 @@ export class UserFormComponent {
   goBack(e:any):void {
     this.generalService.goBack();
   }
+
+  validateEndDate(endDate:any,startDate:any){
+    this.inValidDate = this.generalService.validateEndDate(endDate,startDate);
+  }
+
 }

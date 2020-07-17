@@ -7,12 +7,25 @@ import { Validator, AbstractControl, NG_VALIDATORS, ValidatorFn } from '@angular
 })
 
 export class ForbiddenHoursValidatorDirective implements Validator {
-  @Input('appForbiddenHoursNeeded') hoursNeeded: number;
+  @Input('appForbiddenHoursNeeded') hoursNeeded: string;
 
-  forbiddenHoursValidator(hoursNeeded: number): ValidatorFn {
+  forbiddenHoursValidator(hoursNeeded: string): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
-      const forbidden = control.value >100 || control.value <1 ;
-      return forbidden ? {'forbiddenHoursNeeded': {value: control.value}} : null;
+      let forbidden :boolean = false;
+      let  noneDigitValue :boolean = false;
+      if(control.value){
+        if(("" + control.value).includes("e")){
+          noneDigitValue = true;
+        }else{
+          noneDigitValue = false;
+        }
+        if(hoursNeeded === "engagement"){
+          forbidden = control.value >100 || control.value <1?true:false
+        } else if(hoursNeeded === "project"){
+          forbidden = control.value >1000 || control.value <1?true:false
+        }     
+      }
+      return forbidden || noneDigitValue ? {'forbiddenHoursNeeded': {value: control.value}} : null;
     };
   }
 
