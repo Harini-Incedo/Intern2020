@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Engagement } from '../Classes/engagement';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import {Location} from '@angular/common';
 import { Project } from '../Classes/project';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,15 +31,18 @@ export class EngagementService {
   }
 
   public findAll(id:number): Observable<Engagement[]> {
-    return this.http.get<Engagement[]>("http://localhost:8080/projects/" + id + "/engagements");
+    return this.http.get<Engagement[]>("http://localhost:8080/projects/" + id + "/engagements")
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
   public create(engagement: Engagement) {
-    return this.http.post<Engagement>(this.engagementsUrl, engagement);
+    return this.http.post<Engagement>(this.engagementsUrl, engagement)
+      .pipe(catchError(this.handleSecondError));
   }
 
   public edit(engagement: Engagement) {
-    return this.http.put<Engagement>(this.engagementsUrl + "/" + engagement.id, engagement);
+    return this.http.put<Engagement>(this.engagementsUrl + "/" + engagement.id, engagement)
+      .pipe(catchError(this.handleSecondError));
   }
 
   public delete (id: number) {
@@ -46,7 +50,8 @@ export class EngagementService {
   }
 
   public getEngagementByIdApi(id:number): Observable<Engagement>{
-    return this.http.get<Engagement>(this.engagementsUrl + "/" + id);
+    return this.http.get<Engagement>(this.engagementsUrl + "/" + id)
+      .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
   public setSelectedEngagement(engagement:Engagement):void{
@@ -55,6 +60,19 @@ export class EngagementService {
 
   public gotoProjectView(id:number) {
     this.router.navigate(['/viewProject/' + id]);
+  }
+
+  private handleError(errorResponse: HttpErrorResponse, router: Router) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+      if (check) {
+        router.navigate(['/projects']);
+      }
+      return throwError(errorResponse);
+   }
+
+  private handleSecondError(errorResponse: HttpErrorResponse) {
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    return throwError(errorResponse);
   }
 
 }

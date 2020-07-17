@@ -23,12 +23,16 @@ export class ViewPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserById();
-    this.getEngagementsByEmployee();
   }
 
   getUserById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUserByIdApi(id).subscribe(data=>this.selectedUser = data);
+    this.userService.getUserByIdApi(id).subscribe(data=>{
+      this.selectedUser = data
+      if (this.selectedUser) {
+        this.getEngagementsByEmployee();
+      }
+    });
   }
 
   deleteUser(user:User) : void {
