@@ -43,8 +43,7 @@
           name="email"
           placeholder="someone@example.com"
           [email]="user.email!==''"
-          required #email="ngModel"
-          required>
+          required #email="ngModel">
           <div *ngIf="email.invalid && email.touched"
           class="alert alert-danger">
             <div *ngIf="email.errors?.required && email.touched">Email is required</div>
@@ -61,6 +60,23 @@
               {{role}}
             </option>
           </select>
+        </div>
+        <div>
+          <label for="skills">&emsp;Skills</label>
+          <select id="skills" name="skill" [(ngModel)]="user.skills" #skill="ngModel">
+            <option *ngFor="let skill of skills" [value]="skill">
+              {{skill}}
+            </option>
+          </select>
+          <button type="button" (click)="addSkill()">Add Skill</button>
+          <div style="border-color: black; border-style:solid; border-width: 1px; margin-top: 1em; margin-left: 1em;"
+          [hidden]="selectedSkills.length===0">
+            <span *ngFor="let skills of selectedSkills">
+              <button class="btn btn-info"
+               type="button" (click)="removeSkill(skills)"
+               style="margin-top: 5px; margin-bottom: 5px;">{{skills}} X</button>
+            </span>
+          </div>
         </div>
         <div>
           <label for="department">&emsp;Department<span style="color: red;">*</span></label>
@@ -105,7 +121,7 @@
             <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
           </div>
           <div  class="alert alert-danger" *ngIf="endDate.touched && inValidDate">End date cannot be before start date. Please enter a valid end date.</div>
-        </div> 
+        </div>
         <div>
           <label for="location">&emsp;Location</label>
           <input type="text" [(ngModel)]="user.location"

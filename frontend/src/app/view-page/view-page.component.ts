@@ -16,6 +16,7 @@ export class ViewPageComponent implements OnInit {
   user: User;
   projects: Project[];
   engagements: Engagement[];
+  skills: String[];
 
   constructor( private route: ActivatedRoute, public userService : UserService, public generalService : GeneralService) {
 
@@ -28,7 +29,7 @@ export class ViewPageComponent implements OnInit {
   getUserById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserByIdApi(id).subscribe(data=>{
-      this.selectedUser = data
+      this.selectedUser = data;
       if (this.selectedUser) {
         this.getEngagementsByEmployee();
       }

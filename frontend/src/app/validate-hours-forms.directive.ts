@@ -14,7 +14,7 @@ export class ForbiddenHoursValidatorDirective implements Validator {
       let forbidden :boolean = false;
       let  noneDigitValue :boolean = false;
       if(control.value){
-        if(("" + control.value).includes("e")){
+        if(("" + control.value).includes("e") || ("" + control.value).includes("+") || ("" + control.value).includes("-") || ("" + control.value).includes(".")){
           noneDigitValue = true;
         }else{
           noneDigitValue = false;
@@ -23,7 +23,7 @@ export class ForbiddenHoursValidatorDirective implements Validator {
           forbidden = control.value >100 || control.value <1?true:false
         } else if(hoursNeeded === "project"){
           forbidden = control.value >1000 || control.value <1?true:false
-        }     
+        }
       }
       return forbidden || noneDigitValue ? {'forbiddenHoursNeeded': {value: control.value}} : null;
     };

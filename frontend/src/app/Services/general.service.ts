@@ -38,6 +38,8 @@ export class GeneralService {
       return "is greater than 100, the largest processable value.";
     }else if(value>1000 && type === "project"){
        return "the value is greater than 1000, the largest processable value."
+    } else {
+      return "value is not a valid integer."
     }
   }
 
@@ -47,6 +49,6 @@ export class GeneralService {
       return true;
     }else{
       return false;
-    }    
+    }
   }
 }
