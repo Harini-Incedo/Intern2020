@@ -13,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.stream.Stream;
 
@@ -44,12 +45,13 @@ public class Application {
 				Employee e = new Employee(info[0], info[1],
 										info[0].toLowerCase() + "@domain.com",
 												LocalDate.of(2019, 1, 1),
-													Employee.Timezone.EST, info[2]);
+													Employee.Timezone.EST, info[2],new String[]{"Java","Python"});
 				e.setDepartment("Telecom");
 				e.setLocation("New Jersey");
 				e.setManager("Chandler Bing");
 				e.setEndDate(LocalDate.of(2020, 1, 1));
 				e.setWorkingHours("Full Time");
+
 				empRepository.save(e);
 			});
 
@@ -60,7 +62,7 @@ public class Application {
 				Employee e = new Employee(info[0], info[1],
 						info[0].toLowerCase() + "@domain.com",
 						LocalDate.of(2019, 1, 1),
-						Employee.Timezone.EST, info[2]);
+						Employee.Timezone.EST, info[2],new String[]{});
 				e.setDepartment("Healthcare");
 				e.setLocation("New York");
 				e.setManager("Joey Tribbiani");
