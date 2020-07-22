@@ -4,6 +4,7 @@ export class User {
   lastName: string;
   email: string;
   role: string;
+  skills: string[];
   department: string;
   startDate: string;
   endDate: string;

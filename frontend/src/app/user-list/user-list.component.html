@@ -9,11 +9,38 @@
 <div class="card my-5">
   <div class="card-body">
     <label for="employeeType">&emsp;Employee Type&emsp;</label>
-      <select id="employeeType" required name="employeeType" (change)="getEmployeeByType()">
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-        <option value="Both">Both</option>
-      </select>
+    <select id="employeeType" required name="employeeType" (change)="getEmployeeByType()">
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+      <option value="Both">Both</option>
+    </select>
+    <br>
+    <!--<input type="text" name="firstName" placeholder="First Name" style="margin-left: 2.75em; width: 10.25em;"
+    pattern="[a-zA-Z ]*">
+
+    <input type="text" name="lastName" placeholder="Last Name"  style="margin-left: 0.25em; width: 10.25em;"
+    pattern="[a-zA-Z ]*">
+
+    <select name="department" style="margin-left: 0.25em; width: 11.25em;">
+      <option disabled selected>Department</option>
+      <option *ngFor="let department of departments" [value]="department">
+        {{department}}
+      </option>
+    </select>
+
+    <input type="text"name="managerName" placeholder="Manager Name" pattern="[a-zA-Z ]+"
+    style="margin-left: 0.25em; width: 14em;">
+
+    <input type="text" name="location" placeholder="Location" style="margin-left: 0.25em; width: 8.65em;"
+    pattern="[a-zA-Z ]+">
+
+    <select name="role" style="margin-left: 0.25em; width: 6.25em;">
+      <option disabled selected>Role</option>
+      <option *ngFor="let role of roles" [value]="role">
+        {{role}}
+      </option>
+    </select>-->
+
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>

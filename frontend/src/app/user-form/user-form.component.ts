@@ -12,7 +12,9 @@ import { GeneralService } from '../Services/general.service';
 export class UserFormComponent {
   departments: String[];
   roles: String[];
-  user: User = {id:"", firstName:"", lastName:"", email:"", role:"", department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
+  skills: String[];
+  selectedSkills: String[];
+  user: User = {id:"", firstName:"", lastName:"", email:"", role:"", skills:[], department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
   isCreateMode: boolean;
   inValidDate: boolean = false;
 
@@ -33,8 +35,11 @@ export class UserFormComponent {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    this.skills = [];
+    this.skills.push("Test");
     this.getAllDepartments();
     this.getAllRoles();
+    this.selectedSkills = [];
     if (!id){
       this.user = new User();
       this.isCreateMode = true;
@@ -48,6 +53,30 @@ export class UserFormComponent {
     this.generalService.getDepartments().subscribe(resp=>{
       this.departments = resp;
     })
+  }
+
+  addSkill():void{
+    if (document.querySelectorAll("select")[1].value.length > 0) {
+      if (this.selectedSkills.includes(document.querySelectorAll("select")[1].value)) {
+        alert("This value is already in the skills. Please choose another skill.")
+      } else {
+        this.selectedSkills.push(document.querySelectorAll("select")[1].value);
+        this.selectedSkills.sort();
+      }
+    } else {
+      alert("Please enter a valid input");
+    }
+    document.querySelectorAll("select")[1].value = "";
+  }
+
+  removeSkill(com:string):void{
+    let newSkills = [];
+    for (let i = 0; i < this.selectedSkills.length; i++) {
+      if (com != this.selectedSkills[i]) {
+        newSkills.push(this.selectedSkills[i]);
+      }
+    }
+    this.selectedSkills = newSkills.sort();
   }
 
   getAllRoles():void{

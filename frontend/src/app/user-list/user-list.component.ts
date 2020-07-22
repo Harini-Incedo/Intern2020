@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../Classes/user';
 import { UserService } from '../Services/user-service.service';
 import { Router } from '@angular/router';
+import { GeneralService } from '../Services/general.service';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -12,8 +13,13 @@ export class UserListComponent implements OnInit {
   users: User[];
   selectedUsers: User[] ;
   selectedUser: User ;
-  constructor(private userService: UserService,private router: Router) {
-  }
+  departments: String[];
+  roles: String[];
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private generalService: GeneralService
+  ) {}
 
   onSelectOne(user:User){
     this.userService.setSelectedUser(user);
@@ -31,6 +37,10 @@ export class UserListComponent implements OnInit {
     }else{
       this.selectedUsers.push(user);
     }
+  }
+
+  openDialog() {
+    console.log("Filter button clicked");
   }
 
   addSelectedUser(user:User) : void {
@@ -51,6 +61,8 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.getEmployeeByType();
+    this.getAllDepartments();
+    this.getAllRoles();
   }
 
   getEmployeeByType(): void {
@@ -59,5 +71,17 @@ export class UserListComponent implements OnInit {
       this.userService.setUsers(data);
       this.selectedUsers = [];
     });
+  }
+
+  getAllDepartments():void{
+    this.generalService.getDepartments().subscribe(resp=>{
+      this.departments = resp;
+    })
+  }
+
+  getAllRoles():void{
+    this.generalService.getRoles().subscribe(resp=>{
+      this.roles = resp;
+    })
   }
 }
