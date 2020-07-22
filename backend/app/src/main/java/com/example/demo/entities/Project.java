@@ -124,5 +124,20 @@ public class Project {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", projectName='" + projectName + '\'' +
+                ", projectGoal='" + projectGoal + '\'' +
+                ", clientName='" + clientName + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", department='" + department + '\'' +
+                ", teamSize=" + teamSize +
+                ", weeklyHours=" + weeklyHours +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
 

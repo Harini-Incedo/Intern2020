@@ -6,20 +6,29 @@ import com.example.demo.entities.Project;
 import com.example.demo.repositories.EmployeeRepository;
 import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.TimeZone;
 import java.util.stream.Stream;
 
 @SpringBootApplication
 public class Application {
 
+	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+
 	public static void main(String[] args) {
+
+		// to test logging //
+		logger.info("this is a info message");
+		logger.warn("this is a warn message");
+		logger.error("this is a error message");
+
 		SpringApplication.run(Application.class, args);
 	}
 
@@ -36,12 +45,13 @@ public class Application {
 				Employee e = new Employee(info[0], info[1],
 										info[0].toLowerCase() + "@domain.com",
 												LocalDate.of(2019, 1, 1),
-													Employee.Timezone.EST, info[2]);
+													Employee.Timezone.EST, info[2],new String[]{"Java","Python"});
 				e.setDepartment("Telecom");
 				e.setLocation("New Jersey");
 				e.setManager("Chandler Bing");
 				e.setEndDate(LocalDate.of(2020, 1, 1));
 				e.setWorkingHours("Full Time");
+
 				empRepository.save(e);
 			});
 
@@ -52,7 +62,7 @@ public class Application {
 				Employee e = new Employee(info[0], info[1],
 						info[0].toLowerCase() + "@domain.com",
 						LocalDate.of(2019, 1, 1),
-						Employee.Timezone.EST, info[2]);
+						Employee.Timezone.EST, info[2],new String[]{});
 				e.setDepartment("Healthcare");
 				e.setLocation("New York");
 				e.setManager("Joey Tribbiani");
@@ -81,11 +91,10 @@ public class Application {
 			projRepository.findAll().forEach(System.out::println);
 
 			// creates mock engagements for testing
-			Stream.of("3 9 40 Web Developer", "2 9 40 Project Manager", "5 10 40 IT Consultant",
-					"1 10 40 Business Analyst", "4 10 40 College Recruiter").forEach(name -> {
+			Stream.of("3 9 40 Developer", "2 9 40 Manager", "5 10 40 Consultant",
+					"1 10 40 Analyst", "4 10 40 Intern").forEach(name -> {
 				String[] info = name.split(" ");
-				Engagement p = new Engagement(Long.parseLong(info[0]), Long.parseLong(info[1]),
-											info[3] + " " + info[4],
+				Engagement p = new Engagement(Long.parseLong(info[0]), Long.parseLong(info[1]), info[3],
 												LocalDate.of(2020, 6, 1),
 												LocalDate.of(2020, 7, 1),
 												Integer.parseInt(info[2]));

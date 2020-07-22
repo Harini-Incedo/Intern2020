@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 @Entity
 @Table(name = "employee")
@@ -52,11 +56,14 @@ public class Employee {
     private String role;
     @Column(name = "manager")
     private String manager;
+    @Column(name = "skills")
+    private String[] skills;
 
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String email, LocalDate startDate, Timezone timezone, String role) {
+
+    public Employee(String firstName, String lastName, String email, LocalDate startDate, Timezone timezone, String role,String [] skills) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -64,8 +71,8 @@ public class Employee {
         this.timezone = timezone;
         this.role = role;
         this.active = true;
+        this.skills = skills;
     }
-
     public long getId() {
         return id;
     }
@@ -166,5 +173,31 @@ public class Employee {
     public void setManager(String manager) {
         this.manager = manager;
     }
+    public String[] getSkills() {
+        return skills;
+    }
 
+    public void setSkills(String[] skills) {
+        this.skills = skills;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", active=" + active +
+                ", workingHours='" + workingHours + '\'' +
+                ", location='" + location + '\'' +
+                ", timezone=" + timezone +
+                ", department='" + department + '\'' +
+                ", role='" + role + '\'' +
+                ", manager='" + manager + '\'' +
+                '}';
+    }
 }
