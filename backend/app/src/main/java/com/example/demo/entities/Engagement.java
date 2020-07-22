@@ -92,4 +92,16 @@ public class Engagement {
         this.hoursNeeded = hoursNeeded;
     }
 
+    @Override
+    public String toString() {
+        return "Engagement{" +
+                "id=" + id +
+                ", employeeID=" + employeeID +
+                ", projectID=" + projectID +
+                ", role='" + role + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", hoursNeeded=" + hoursNeeded +
+                '}';
+    }
 }
