@@ -21,6 +21,7 @@ public class EmployeeController {
             "Intern", "Manager", "HR", "Assistant"};
     private final String[] departments = {"Telecom", "Financial Services", "Life Sciences",
             "Healthcare", "Product Engineering"};
+    private final String[] skills = { "Java","Python","C","C++","UI","SQL","Cloud Computing","Ruby","R","Data Science","Machine Learning","Go","Finance","Marketing","Human Resource","Management"};
 
     // To get all active employees in sorted order by last name
     @GetMapping("/employees/Active")
@@ -44,6 +45,10 @@ public class EmployeeController {
     @GetMapping("/roles")
     public String[] getRoles() {
         return roles;
+    }
+    @GetMapping("/skills")
+    public String[] getSkills(){
+        return skills;
     }
 
     // To get a preset list of departments
@@ -80,7 +85,7 @@ public class EmployeeController {
         System.out.println("Location: " + e.getLocation());
         System.out.println("Time Zone: " + e.getTimezone());
         System.out.println("Working Hours: " + e.getWorkingHours());
-
+        System.out.println("Skills : " + e.getSkills());
         // INPUT VALIDATION //
         validateEmployeeDetails(e);
 
@@ -118,6 +123,7 @@ public class EmployeeController {
         toUpdate.setDepartment(e.getDepartment());
         toUpdate.setRole(e.getRole());
         toUpdate.setManager(e.getManager());
+        toUpdate.setSkills(e.getSkills());
 
         repository.save(toUpdate);
 
@@ -161,6 +167,10 @@ public class EmployeeController {
         /* Role */
         if (e.getRole() == null) {
             throw new InvalidInputException("No role selected.","Please select a role.");
+        }
+        if(e.getSkills().length <0)
+        {
+            throw new InvalidInputException("Invalid Skills: " +e.getSkills(), "Invalid Skills");
         }
         /* Location */
         if (e.getLocation() != null && !e.getLocation().matches("^[a-zA-Z ]*$")) {
