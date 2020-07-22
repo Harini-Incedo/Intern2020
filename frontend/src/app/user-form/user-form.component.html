@@ -63,13 +63,10 @@
         </div>
         <div>
           <label for="skills">&emsp;Skills</label>
-          <select id="skills"  [(ngModel)]="user.skills" #skills="ngModel" [ngModelOptions]="{standalone: true}">
-            <option *ngFor="let role of roles" [value]="role">{{role}}</option>
-            <!--<option value="Test">Test</option>
-            <option value="Test1">Test1</option>
-            <option value="Test2">Test2</option>
-            <option value="Test3">Test3</option>
-            <option value="Test4">Test4</option>-->
+          <select id="skills" name="skill" [(ngModel)]="user.skills" #skill="ngModel">
+            <option *ngFor="let skill of skills" [value]="skill">
+              {{skill}}
+            </option>
           </select>
           <button type="button" (click)="addSkill()">Add Skill</button>
           <div style="border-color: black; border-style:solid; border-width: 1px; margin-top: 1em; margin-left: 1em;"

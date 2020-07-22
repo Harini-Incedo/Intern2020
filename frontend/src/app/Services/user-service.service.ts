@@ -66,6 +66,10 @@ export class UserService {
       .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
+  public getSkills(): any{
+    return this.http.get("http://localhost:8080/skills", this.httpOptions);
+  }
+
   public gotoUserList() {
     this.router.navigate(['/employees']);
   }

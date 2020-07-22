@@ -10,11 +10,11 @@ import { GeneralService } from '../Services/general.service';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent {
-  departments: String[];
-  roles: String[];
-  skills: String[];
-  selectedSkills: String[];
-  user: User = {id:"", firstName:"", lastName:"", email:"", role:"", skills:[], department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
+  departments: string[];
+  roles: string[];
+  skills: string[];
+  selectedSkills: string[];
+  user: User = {id:0, firstName:"", lastName:"", email:"", role:"", skills:[], department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
   isCreateMode: boolean;
   inValidDate: boolean = false;
 
@@ -26,6 +26,7 @@ export class UserFormComponent {
   }
 
   onSubmit() {
+    this.user.skills = this.selectedSkills;
     if(this.isCreateMode){
       this.userService.create(this.user).subscribe(result => this.userService.gotoUserList());
     }else{
@@ -35,16 +36,19 @@ export class UserFormComponent {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.skills = [];
-    this.skills.push("Test");
+    this.getSkills();
     this.getAllDepartments();
     this.getAllRoles();
     this.selectedSkills = [];
     if (!id){
       this.user = new User();
+      this.user.skills = [];
       this.isCreateMode = true;
     }else{
-      this.userService.getUserByIdApi(id).subscribe(d=>this.user = d);
+      this.userService.getUserByIdApi(id).subscribe(d=>{
+        this.user = d
+        this.selectedSkills = d.skills;
+      });
       this.isCreateMode = false;
     }
   }
@@ -52,6 +56,12 @@ export class UserFormComponent {
   getAllDepartments():void{
     this.generalService.getDepartments().subscribe(resp=>{
       this.departments = resp;
+    })
+  }
+
+  getSkills():void{
+    this.userService.getSkills().subscribe(resp=>{
+      this.skills = resp;
     })
   }
 
