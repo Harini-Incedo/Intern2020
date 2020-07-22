@@ -167,4 +167,22 @@ public class Employee {
         this.manager = manager;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", active=" + active +
+                ", workingHours='" + workingHours + '\'' +
+                ", location='" + location + '\'' +
+                ", timezone=" + timezone +
+                ", department='" + department + '\'' +
+                ", role='" + role + '\'' +
+                ", manager='" + manager + '\'' +
+                '}';
+    }
 }

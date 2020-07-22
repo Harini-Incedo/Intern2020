@@ -125,7 +125,6 @@ public class EngagementController {
         toUpdate.setHoursNeeded(e.getHoursNeeded());
 
         repository.save(toUpdate);
-
     }
 
     // Validates engagement details input by the user
