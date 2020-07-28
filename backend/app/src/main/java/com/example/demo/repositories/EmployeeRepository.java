@@ -19,6 +19,7 @@ public interface EmployeeRepository extends CrudRepository<Employee,Long> {
 
     @Query("SELECT e FROM Employee e ORDER BY e.lastName ASC")
     List<Employee> findAll();
+
     @Query("SELECT e FROM Employee e WHERE e.email=?1")
     List<Employee> checkEmail(String email);
 
