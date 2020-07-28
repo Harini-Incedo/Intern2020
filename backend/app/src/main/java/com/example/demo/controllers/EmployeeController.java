@@ -224,9 +224,12 @@ public class EmployeeController {
                     "End Date should be equal to or later than Start Date.");
         }
         /* Email */
-        if (e.getEmail() == null) {
+        if (e.getEmail() == null || ! e.getEmail().matches("^[A-Za-z0-9+_.-]+@+[A-za-z]+.[a-zA-z]{2,}$")) {
             throw new InvalidInputException("Invalid Email: " + e.getEmail(),
                     "Please input an EmailID");
+        }
+        if(!(repository.checkEmail(e.getEmail()).isEmpty())){
+            throw new InvalidInputException("Invalid Email: "+ e.getEmail(),"Email already exists");
         }
         /* Department */
         if (e.getDepartment() == null) {
@@ -255,5 +258,4 @@ public class EmployeeController {
                                                 "Manager name should not contain any special characters.");
         }
     }
-
 }
