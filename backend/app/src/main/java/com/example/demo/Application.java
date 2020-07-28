@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Stream;
 
 @SpringBootApplication
@@ -36,16 +37,22 @@ public class Application {
 	CommandLineRunner init(EmployeeRepository empRepository, ProjectRepository projRepository,
 								EngagementRepository engRepository) {
 		return args -> {
-
+			List<String> skillsList = Arrays.asList("Java","Python","C","C++","UI","SQL","Cloud Computing",
+					"Ruby","R","Data Science","Machine Learning","Go","Finance",
+					"Marketing","Human Resource","Management");
+			Random random = new Random();
 			// creates mock active employees for testing
 			Stream.of("John Cena Analyst", "Sponge Robert Manager",
 						"Jennifer Aniston Developer", "Harry Styles Intern",
 							"Nancy Drew Consultant").forEach(name -> {
 				String[] info = name.split(" ");
+				HashSet<String> mockSkills = new HashSet<>();
+				mockSkills.add(skillsList.get(random.nextInt(10)));
+				mockSkills.add("Management");
 				Employee e = new Employee(info[0], info[1],
 										info[0].toLowerCase() + "@domain.com",
 												LocalDate.of(2019, 1, 1),
-													Employee.Timezone.EST, info[2],new String[]{"Java","Python"});
+													Employee.Timezone.EST, info[2], mockSkills);
 				e.setDepartment("Telecom");
 				e.setLocation("New Jersey");
 				e.setManager("Chandler Bing");
@@ -62,7 +69,7 @@ public class Application {
 				Employee e = new Employee(info[0], info[1],
 						info[0].toLowerCase() + "@domain.com",
 						LocalDate.of(2019, 1, 1),
-						Employee.Timezone.EST, info[2],new String[]{});
+						Employee.Timezone.EST, info[2],new HashSet<>());
 				e.setDepartment("Healthcare");
 				e.setLocation("New York");
 				e.setManager("Joey Tribbiani");
@@ -94,7 +101,7 @@ public class Application {
 			Stream.of("3 9 40 Developer", "2 9 40 Manager", "5 10 40 Consultant",
 					"1 10 40 Analyst", "4 10 40 Intern").forEach(name -> {
 				String[] info = name.split(" ");
-				Engagement p = new Engagement(Long.parseLong(info[0]), Long.parseLong(info[1]), info[3],
+				Engagement p = new Engagement(Long.parseLong(info[0]), Long.parseLong(info[1]), 1,
 												LocalDate.of(2020, 6, 1),
 												LocalDate.of(2020, 7, 1),
 												Integer.parseInt(info[2]));
