@@ -10,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProjectController {
-
     @Autowired
     private ProjectRepository repository;
+    private SkillRepository skillRepository;
     private final String[] status = {"Pending", "In Progress", "Completed", "Closed"};
 
     // To get project status options
@@ -145,5 +144,7 @@ public class ProjectController {
                                                 "Team size should be a positive integer value.");
         }
     }
+    // Gets a list of Engagements by Project ID
+
 
 }
