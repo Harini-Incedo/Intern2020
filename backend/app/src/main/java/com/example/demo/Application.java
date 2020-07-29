@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import com.example.demo.entities.Employee;
-import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
 import com.example.demo.repositories.EmployeeRepository;
 import com.example.demo.repositories.EngagementRepository;
@@ -13,9 +12,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 @SpringBootApplication
@@ -24,12 +25,6 @@ public class Application {
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
-
-		// to test logging //
-		logger.info("this is a info message");
-		logger.warn("this is a warn message");
-		logger.error("this is a error message");
-
 		SpringApplication.run(Application.class, args);
 	}
 
@@ -91,23 +86,22 @@ public class Application {
 				p.setDepartment("Telecom");
 				p.setProjectGoal("To make money!");
 				p.setTeamSize(10);
-				p.setEndDate(LocalDate.of(2021, 1, 1));
+				p.setEndDate(LocalDate.of(2019, 2, 1));
 				p.setWeeklyHours(300);
 				projRepository.save(p);
 			});
 			projRepository.findAll().forEach(System.out::println);
 
-			// creates mock engagements for testing
-			Stream.of("3 9 40 Developer", "2 9 40 Manager", "5 10 40 Consultant",
-					"1 10 40 Analyst", "4 10 40 Intern").forEach(name -> {
-				String[] info = name.split(" ");
-				Engagement p = new Engagement(Long.parseLong(info[0]), Long.parseLong(info[1]), 1,
-												LocalDate.of(2020, 6, 1),
-												LocalDate.of(2020, 7, 1),
-												Integer.parseInt(info[2]));
-				engRepository.save(p);
-			});
-			engRepository.findAll().forEach(System.out::println);
+//			// creates mock engagements for testing
+//			Stream.of("3 9 40 Developer", "2 9 40 Manager", "5 10 40 Consultant",
+//					"1 10 40 Analyst", "4 10 40 Intern").forEach(name -> {
+//				String[] info = name.split(" ");
+//				Engagement p = new Engagement(Long.parseLong(info[1]), 1,
+//												LocalDate.of(2020, 6, 1),
+//												LocalDate.of(2020, 7, 1));
+//				engRepository.save(p);
+//			});
+//			engRepository.findAll().forEach(System.out::println);
 
 		};
 	}

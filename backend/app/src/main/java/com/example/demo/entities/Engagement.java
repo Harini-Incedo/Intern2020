@@ -28,8 +28,6 @@ public class Engagement {
     @Column(name = "endDate")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
-    @Column(name = "hoursNeeded")
-    private int hoursNeeded;
 
     // NEW //
     @ElementCollection
@@ -40,13 +38,11 @@ public class Engagement {
 
     }
 
-    public Engagement(long employeeID, long projectID, long skillID, LocalDate startDate, LocalDate endDate, int hoursNeeded) {
-        this.employeeID = employeeID;
+    public Engagement(long projectID, long skillID, LocalDate startDate, LocalDate endDate) {
         this.projectID =  projectID;
         this.skillID = skillID;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.hoursNeeded = hoursNeeded;
         System.out.println(startDate + " " + endDate);
         this.assignedWeeklyHours = defaultWeeklyHoursMapping();
     }
@@ -54,7 +50,7 @@ public class Engagement {
     // helper method:
     // creates "empty" week to hours mapping based on start
     // and end date for this engagement.
-    public Map<LocalDate, Integer> defaultWeeklyHoursMapping() {
+    private Map<LocalDate, Integer> defaultWeeklyHoursMapping() {
         Map<LocalDate, Integer> toReturn = new HashMap<>();
         LocalDate mondayOfStartingWeek = this.startDate.with(DayOfWeek.MONDAY);
         LocalDate temp = mondayOfStartingWeek;
@@ -117,14 +113,6 @@ public class Engagement {
         this.assignedWeeklyHours = assignedWeeklyHours;
     }
 
-    public int getHoursNeeded() {
-        return hoursNeeded;
-    }
-
-    public void setHoursNeeded(int hoursNeeded) {
-        this.hoursNeeded = hoursNeeded;
-    }
-
     @Override
     public String toString() {
         return "Engagement{" +
@@ -134,7 +122,6 @@ public class Engagement {
                 ", skillID=" + skillID +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", hoursNeeded=" + hoursNeeded +
                 ", assignedWeeklyHours=" + assignedWeeklyHours +
                 '}';
     }

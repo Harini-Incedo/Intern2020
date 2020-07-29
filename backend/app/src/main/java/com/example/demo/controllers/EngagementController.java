@@ -21,7 +21,9 @@ public class EngagementController {
 
     @Autowired
     private EngagementRepository repository;
+    @Autowired
     private SkillRepository skillRepository;
+    @Autowired
     private ProjectRepository projectRepository;
 
     // To get all engagements associated with the given project.
@@ -36,14 +38,17 @@ public class EngagementController {
                     "Please use a valid project ID.");
         }
 
+        // retrieves a list of the skills on the given project
         List<Skill> allSkills = skillRepository.getSkillByProjectID(id);
-        if (allSkills == null){
+        if (allSkills == null) {
             throw new EntityNotFoundException("No Skills exists with this ProjectID: " + id,
                     "Please use a valid project ID.");
         }
 
         List<EngagementsBySkill> toReturn = new ArrayList<>();
 
+        // for each skill, wraps the skill and it's associated
+        // engagements together in an container object.
         for (Skill s: allSkills) {
             List<Engagement> temp = projectRepository.getEngagementBySkill(id,s.getId());
             List<EngagementContainer> engagementsBySkill = new ArrayList<>();
@@ -55,7 +60,8 @@ public class EngagementController {
                 // employee grouped together
                 engagementsBySkill.add(new EngagementContainer(e, emp));
             }
-            EngagementsBySkill skillGrouping = new EngagementsBySkill(s.getSkillName(), s.getTotalWeeklyHours(), engagementsBySkill);
+            EngagementsBySkill skillGrouping = new EngagementsBySkill(s.getSkillName(),
+                                                        s.getTotalWeeklyHours(), engagementsBySkill);
             toReturn.add(skillGrouping);
         }
         
@@ -137,7 +143,7 @@ public class EngagementController {
         toUpdate.setStartDate(e.getStartDate());
         toUpdate.setEndDate(e.getEndDate());
         toUpdate.setSkillID(e.getSkillID());
-        toUpdate.setHoursNeeded(e.getHoursNeeded());
+        toUpdate.setAssignedWeeklyHours(e.getAssignedWeeklyHours());
 
         repository.save(toUpdate);
     }
@@ -153,11 +159,6 @@ public class EngagementController {
         if (e.getEndDate() != null && !e.getEndDate().isAfter(e.getStartDate())) {
             throw new InvalidInputException("End Date is invalid: " + e.getEndDate(),
                     "End Date should be equal to or later than Start Date.");
-        }
-        /* Hours Needed */
-        if (e.getHoursNeeded() < 0) {
-            throw new InvalidInputException("Invalid Hours Needed: " + e.getHoursNeeded(),
-                                    "Hours needed should be a positive integer value.");
         }
     }
 

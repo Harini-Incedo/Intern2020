@@ -1,15 +1,16 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Engagement;
+import com.example.demo.entities.Project;
 import com.example.demo.entities.Skill;
-import com.example.demo.repositories.EmployeeRepository;
 import com.example.demo.repositories.EngagementRepository;
+import com.example.demo.repositories.ProjectRepository;
 import com.example.demo.repositories.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -19,19 +20,41 @@ public class SkillController {
     private SkillRepository skillRepository;
     @Autowired
     private EngagementRepository engagementRepository;
+    @Autowired
+    private ProjectRepository projectRepository;
 
-    // INCOMPLETE
-    public void addSkillToProject(long projID, String skillName, int totalWeeklyHours, int count) {
+
+    @PutMapping("projects/{projID}/skills")
+    public void addSkillToProject(@PathVariable("projID") long projID, @RequestBody HashMap<String, String> values) {
+        // extracts necessary values from request body sent by UI
+        String skillName = values.get("skillName");
+        int totalWeeklyHours = Integer.parseInt(values.get("totalWeeklyHours"));
+        int count = Integer.parseInt(values.get("count"));
+
+        // creates a new skill object on project if one does not exist.
+        // otherwise, updates existing object with given hours.
         Skill skillOnProject = skillRepository.findSkillOnProject(projID, skillName);
         if (skillOnProject == null) {
             skillOnProject = createSkill(skillName, totalWeeklyHours, projID);
         } else {
             updateSkillByID(skillOnProject, totalWeeklyHours);
         }
+
+        // creates count many "empty" engagements with every detail filled
+        // except the employee on the engagement.
         for (int i = 0; i < count; i++) {
-//            Engagement newEngagement = new Engagement(1l, projID, skillOnProject.getId(), );
-//            engagementRepository.save(newEngagement);
+            Project p = (projectRepository.findById(projID)).get();
+            Engagement newEngagement = new Engagement(projID, skillOnProject.getId(),
+                                                            p.getStartDate(), p.getEndDate());
+            engagementRepository.save(newEngagement);
         }
+    }
+
+    // For testing purposes:
+    // returns all skills in the skill database table
+    @GetMapping("/databaseSkills")
+    public List<Skill> getAllSkills() {
+        return (List<Skill>) skillRepository.findAll();
     }
 
     // creates a new skill on this project and returns it
