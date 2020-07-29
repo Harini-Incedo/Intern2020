@@ -2,9 +2,15 @@ package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jdk.vm.ci.meta.Local;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "project")
@@ -37,7 +43,8 @@ public class Project {
     @Column(name = "status")
     private String status;
 
-    public Project(String projectName, String clientName, LocalDate startDate, String status){
+
+    public Project(String projectName, String clientName, LocalDate startDate, String status) {
         this.projectName = projectName;
         this.clientName =  clientName;
         this.startDate = startDate;

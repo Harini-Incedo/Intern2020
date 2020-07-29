@@ -24,7 +24,7 @@ public class EngagementController {
     // To get all engagements associated with the given project.
     // Returns a list in the form: { (eng-1, emp-1, null), (eng-2, emp-2, null) }
     @GetMapping("projects/{id}/engagements")
-    public List<Triple> getEngagementsByProjectID(@PathVariable("id") Long id)
+    public List<EngagementContainer> getEngagementsByProjectID(@PathVariable("id") Long id)
             throws EntityNotFoundException {
         // checks to see if given project ID is valid
         Project p = repository.findProjectByID(id);
@@ -33,7 +33,7 @@ public class EngagementController {
                     "Please use a valid project ID.");
         }
 
-        List<Triple> toReturn = new ArrayList<>();
+        List<EngagementContainer> toReturn = new ArrayList<>();
 
         List<Engagement> engagements = repository.findEngagementsByProjectID(id);
         for (Engagement e : engagements) {
@@ -42,7 +42,7 @@ public class EngagementController {
             Employee temp = repository.findEmployeeByID(employeeID);
             // creates a new triple with engagement e and it's associated
             // employee grouped together
-            toReturn.add(new Triple(e, temp));
+            toReturn.add(new EngagementContainer(e, temp));
         }
 
         return toReturn;
@@ -51,7 +51,7 @@ public class EngagementController {
     // To get all engagements associated with the given employee.
     // Returns a list in the form: { (eng-1, null, proj-1), (eng-2, null, proj-2) }
     @GetMapping("employees/{id}/engagements")
-    public List<Triple> getEngagementsByEmployeeID(@PathVariable("id") Long id)
+    public List<EngagementContainer> getEngagementsByEmployeeID(@PathVariable("id") Long id)
             throws EntityNotFoundException {
         // checks to see if given employee ID is valid
         Employee emp = repository.findEmployeeByID(id);
@@ -60,7 +60,7 @@ public class EngagementController {
                     "Please use a valid employee ID.");
         }
 
-        List<Triple> toReturn = new ArrayList<>();
+        List<EngagementContainer> toReturn = new ArrayList<>();
 
         List<Engagement> engagements = repository.findEngagementsByEmployeeID(id);
         for (Engagement e : engagements) {
@@ -69,7 +69,7 @@ public class EngagementController {
             Project temp = repository.findProjectByID(projectID);
             // creates a new triple with engagement e and it's associated
             // project grouped together
-            toReturn.add(new Triple(e, temp));
+            toReturn.add(new EngagementContainer(e, temp));
         }
 
         return toReturn;
@@ -86,13 +86,13 @@ public class EngagementController {
     // Deletes the engagement with the given ID
     @DeleteMapping("engagements/{id}")
     void deleteEngagementByID(@PathVariable("id") Long id) throws EntityNotFoundException {
-        Triple toDelete = getEngagementByID(id);
+        EngagementContainer toDelete = getEngagementByID(id);
         repository.delete(toDelete.engagement);
     }
 
     // Returns the engagement with the given ID, if it exists
     @GetMapping("engagements/{id}")
-    private Triple getEngagementByID(@PathVariable("id") Long id) throws EntityNotFoundException {
+    private EngagementContainer getEngagementByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Optional<Engagement> engagement = repository.findById(id);
         if (engagement.isPresent()){
             Engagement e = engagement.get();
@@ -101,7 +101,7 @@ public class EngagementController {
             Employee temp = repository.findEmployeeByID(employeeID);
             // returns a new triple with engagement e and it's associated
             // employee grouped together
-            return new Triple(e, temp);
+            return new EngagementContainer(e, temp);
         }
         throw new EntityNotFoundException("No engagement exists with this ID: " + id,
                                                         "Please use a valid engagement ID.");
@@ -111,7 +111,7 @@ public class EngagementController {
     @PutMapping("engagements/{id}")
     void updateEngagementByID(@PathVariable("id")Long id, @RequestBody Engagement e)
                     throws EntityNotFoundException, InvalidInputException {
-        Triple data = getEngagementByID(id);
+        EngagementContainer data = getEngagementByID(id);
         Engagement toUpdate = data.engagement;
 
         // INPUT VALIDATION //
@@ -121,7 +121,7 @@ public class EngagementController {
         toUpdate.setProjectID(e.getProjectID());
         toUpdate.setStartDate(e.getStartDate());
         toUpdate.setEndDate(e.getEndDate());
-        toUpdate.setRole(e.getRole());
+        toUpdate.setSkillID(e.getSkillID());
         toUpdate.setHoursNeeded(e.getHoursNeeded());
 
         repository.save(toUpdate);
@@ -148,7 +148,7 @@ public class EngagementController {
 
     // A helper/container class which allows grouping of engagement objects
     // with their associated employee and project objects.
-    public class Triple {
+    public class EngagementContainer {
 
         public Engagement engagement;
         public Employee employee;
@@ -156,7 +156,7 @@ public class EngagementController {
 
         // constructs a triple with the engagement and employee
         // field populated, and the project field nullified
-        public Triple(Engagement eng, Employee emp) {
+        public EngagementContainer(Engagement eng, Employee emp) {
             engagement = eng;
             employee = emp;
             project = null;
@@ -164,12 +164,27 @@ public class EngagementController {
 
         // constructs a triple with the engagement and project
         // field populated, and the employee field nullified
-        public Triple(Engagement eng, Project proj) {
+        public EngagementContainer(Engagement eng, Project proj) {
             engagement = eng;
             employee = null;
             project = proj;
         }
 
+    }
+
+    // A helper/container class which allows grouping of EngagementContainer
+    // objects and the skill associated with them.
+    public class EngagementsBySkill {
+        public String skillName;
+        public int totalWeeklyHours;
+        public List<EngagementContainer> engagements;
+
+        public EngagementsBySkill(String skillName, int totalWeeklyHours,
+                                            List<EngagementContainer> engagements) {
+            this.skillName = skillName;
+            this.totalWeeklyHours = totalWeeklyHours;
+            this.engagements = engagements;
+        }
     }
 
 }

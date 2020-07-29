@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Employee;
+import com.example.demo.entities.Engagement;
 import com.example.demo.repositories.EmployeeRepository;
 import com.example.demo.validation.EntityNotFoundException;
 import com.example.demo.validation.InvalidInputException;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +25,9 @@ public class EmployeeController {
             "Intern", "Manager", "HR", "Assistant"};
     private final String[] departments = {"Telecom", "Financial Services", "Life Sciences",
             "Healthcare", "Product Engineering"};
-    private final String[] skills = { "Java","Python","C","C++","UI","SQL","Cloud Computing","Ruby","R","Data Science","Machine Learning","Go","Finance","Marketing","Human Resource","Management"};
+    private final String[] skills = { "Java","Python","C","C++","UI","SQL","Cloud Computing",
+                                        "Ruby","R","Data Science","Machine Learning","Go","Finance",
+                                            "Marketing","Human Resource","Management"};
 
     // To get all active employees in sorted order by last name
     @GetMapping("/employees/Active")
@@ -41,11 +47,77 @@ public class EmployeeController {
         return repository.findAll();
     }
 
+    // To get all recommended employees in sorted order by last name
+    @GetMapping("/employees/recommended")
+    public List<Employee> getRecommendedEmployees(@RequestBody HashMap<String, String> values) {
+        // extracts necessary values from request body sent by UI
+        String skill = values.get("skill");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startDate = LocalDate.parse(values.get("startDate"), dtf);
+        LocalDate endDate = LocalDate.parse(values.get("endDate"), dtf);
+
+        List<Employee> active = repository.findAllActive();
+        List<Employee> employeesWithSkill = new ArrayList<>();
+        // iterates over all active employees and extracts only those who
+        // have the desired skill
+        for (Employee e : active) {
+//            if (containsSkill(e.getSkills(), skill)) {
+//                employeesWithSkill.add(e);
+//            }
+            if (e.getSkills().contains(skill)) {
+                employeesWithSkill.add(e);
+            }
+        }
+
+        List<Employee> toReturn = new ArrayList<>();
+        // filtering by availability
+        for (Employee e : employeesWithSkill) {
+            // employee should either not have an end date, or their end date
+            // with the company should be after the end date of needed engagement.
+            if (e.getEndDate() == null || e.getEndDate().isAfter(endDate)) {
+                List<Engagement> engagements = repository.findEngagementsByEmployeeID(e.getId());
+                // iterated over employees with desired skill, and extracts only those
+                // who don't have engagements overlapping with needed engagement.
+                boolean recommended = true;
+                for (Engagement eng : engagements) {
+                    if (containsOverlap(eng, startDate, endDate)) {
+                        recommended = false;
+                        break;
+                    }
+                }
+                if (recommended) {
+                    toReturn.add(e);
+                }
+            }
+        }
+        return toReturn;
+    }
+
+    // helper method:
+    // returns true if the given engagement overlaps with the
+    // duration between the given start and end date
+    private boolean containsOverlap(Engagement e, LocalDate startDate, LocalDate endDate) {
+        return !(startDate.isAfter(e.getEndDate()) || endDate.isBefore(e.getStartDate()));
+    }
+
+    // helper method:
+    // returns true if given skill set contains given skill
+    private boolean containsSkill(String[] skills, String skill) {
+        for (String s : skills) {
+            if (s.equals(skill)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // To get a preset list of roles
     @GetMapping("/roles")
     public String[] getRoles() {
         return roles;
     }
+
+    // To get a preset list of skills
     @GetMapping("/skills")
     public String[] getSkills(){
         return skills;
@@ -92,6 +164,7 @@ public class EmployeeController {
         repository.save(e);
     }
 
+    // Deletes the employee with the given ID, if it exists/is currently active
     @DeleteMapping("employees/{id}")
     void deleteEmployeeByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         Employee toDelete = getEmployeeByID(id);
@@ -99,7 +172,7 @@ public class EmployeeController {
         repository.save(toDelete);
     }
 
-    // Updates the project with the given ID if it exists
+    // Updates the employee with the given ID if it exists
     @PutMapping("employees/{id}")
     void updateEmployeeByID(@PathVariable("id") Long id, @RequestBody Employee e)
                                 throws EntityNotFoundException, InvalidInputException {
@@ -150,11 +223,6 @@ public class EmployeeController {
             throw new InvalidInputException("End Date is invalid: " + e.getEndDate(),
                     "End Date should be equal to or later than Start Date.");
         }
-        /* Working Hours */
-//        if (e.getWorkingHours() < 0) {
-//            throw new InvalidInputException("Invalid Weekly Hours: " + e.getWorkingHours(),
-//                    "Weekly hours should be a positive integer value.");
-//        }
         /* Email */
         if (e.getEmail() == null || ! e.getEmail().matches("^[A-Za-z0-9+_.-]+@+[A-za-z]+.[a-zA-z]{2,}$")) {
             throw new InvalidInputException("Invalid Email: " + e.getEmail(),
@@ -171,9 +239,9 @@ public class EmployeeController {
         if (e.getRole() == null) {
             throw new InvalidInputException("No role selected.","Please select a role.");
         }
-        if(e.getSkills().length <0)
-        {
-            throw new InvalidInputException("Invalid Skills: " +e.getSkills(), "Invalid Skills");
+        /* Skills */
+        if (e.getSkills() == null) {
+            throw new InvalidInputException("Invalid Skills: " + e.getSkills(), "Invalid Skills");
         }
         /* Location */
         if (e.getLocation() != null && !e.getLocation().matches("^[a-zA-Z ]*$")) {
