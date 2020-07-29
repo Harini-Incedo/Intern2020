@@ -100,16 +100,16 @@ public class EmployeeController {
         return !(startDate.isAfter(e.getEndDate()) || endDate.isBefore(e.getStartDate()));
     }
 
-    // helper method:
-    // returns true if given skill set contains given skill
-    private boolean containsSkill(String[] skills, String skill) {
-        for (String s : skills) {
-            if (s.equals(skill)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    // helper method:
+//    // returns true if given skill set contains given skill
+//    private boolean containsSkill(String[] skills, String skill) {
+//        for (String s : skills) {
+//            if (s.equals(skill)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     // To get a preset list of roles
     @GetMapping("/roles")
