@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface SkillRepository extends CrudRepository <Skill, Long> {
 
+    @Query("SELECT S FROM Skill s where s.projectID=?1")
+    List<Skill> getSkillByProjectID(long projID);
     @Query("SELECT s FROM Skill s WHERE s.projectID=?1 AND s.skillName=?2")
     Skill findSkillOnProject(long projID, String skill);
 

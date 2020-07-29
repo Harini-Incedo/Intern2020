@@ -3,6 +3,9 @@ package com.example.demo.controllers;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
+import com.example.demo.entities.Skill;
+import com.example.demo.repositories.SkillRepository;
+import com.example.demo.repositories.ProjectRepository;
 import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.validation.EntityNotFoundException;
 import com.example.demo.validation.InvalidInputException;
@@ -10,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -20,11 +21,13 @@ public class EngagementController {
 
     @Autowired
     private EngagementRepository repository;
+    private SkillRepository skillRepository;
+    private ProjectRepository projectRepository;
 
     // To get all engagements associated with the given project.
     // Returns a list in the form: { (eng-1, emp-1, null), (eng-2, emp-2, null) }
     @GetMapping("projects/{id}/engagements")
-    public List<EngagementContainer> getEngagementsByProjectID(@PathVariable("id") Long id)
+    public List<EngagementsBySkill> getEngagementsByProjectID(@PathVariable("id") Long id)
             throws EntityNotFoundException {
         // checks to see if given project ID is valid
         Project p = repository.findProjectByID(id);
@@ -33,20 +36,32 @@ public class EngagementController {
                     "Please use a valid project ID.");
         }
 
-        List<EngagementContainer> toReturn = new ArrayList<>();
-
-        List<Engagement> engagements = repository.findEngagementsByProjectID(id);
-        for (Engagement e : engagements) {
-            // find the employee associated with engagement e
-            long employeeID = e.getEmployeeID();
-            Employee temp = repository.findEmployeeByID(employeeID);
-            // creates a new triple with engagement e and it's associated
-            // employee grouped together
-            toReturn.add(new EngagementContainer(e, temp));
+        List<Skill> allSkills = skillRepository.getSkillByProjectID(id);
+        if (allSkills == null){
+            throw new EntityNotFoundException("No Skills exists with this ProjectID: " + id,
+                    "Please use a valid project ID.");
         }
 
+        List<EngagementsBySkill> toReturn = new ArrayList<>();
+
+        for (Skill s: allSkills) {
+            List<Engagement> temp = projectRepository.getEngagementBySkill(id,s.getId());
+            List<EngagementContainer> engagementsBySkill = new ArrayList<>();
+            for (Engagement e: temp) {
+                // find the employee associated with engagement e
+                long employeeID = e.getEmployeeID();
+                Employee emp = repository.findEmployeeByID(employeeID);
+                // creates a new triple with engagement e and it's associated
+                // employee grouped together
+                engagementsBySkill.add(new EngagementContainer(e, emp));
+            }
+            EngagementsBySkill skillGrouping = new EngagementsBySkill(s.getSkillName(), s.getTotalWeeklyHours(), engagementsBySkill);
+            toReturn.add(skillGrouping);
+        }
+        
         return toReturn;
     }
+
 
     // To get all engagements associated with the given employee.
     // Returns a list in the form: { (eng-1, null, proj-1), (eng-2, null, proj-2) }
@@ -186,5 +201,6 @@ public class EngagementController {
             this.engagements = engagements;
         }
     }
+
 
 }
