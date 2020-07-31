@@ -143,7 +143,16 @@ public class EngagementController {
         toUpdate.setStartDate(e.getStartDate());
         toUpdate.setEndDate(e.getEndDate());
         toUpdate.setSkillID(e.getSkillID());
-        toUpdate.setAssignedWeeklyHours(e.getAssignedWeeklyHours());
+
+        // updates only the hourly mappings which have changed from the UI
+        Map<LocalDate, Integer> existingHourlyMapping = toUpdate.getAssignedWeeklyHours();
+
+        Map<LocalDate, Integer> weeksToUpdate = e.getAssignedWeeklyHours();
+        Set<LocalDate> dates = weeksToUpdate.keySet();
+
+        for (LocalDate d: dates) {
+            existingHourlyMapping.replace(d, weeksToUpdate.get(d));
+        }
 
         repository.save(toUpdate);
     }
