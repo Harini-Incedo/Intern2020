@@ -23,6 +23,12 @@ export class ForbiddenHoursValidatorDirective implements Validator {
           forbidden = control.value >100 || control.value <1?true:false
         } else if(hoursNeeded === "project"){
           forbidden = control.value >1000 || control.value <1?true:false
+        } else if(hoursNeeded === "peopleNeeded"){
+          forbidden = control.value<1?true:false
+        } else if(hoursNeeded === "weeklyHoursForEmployee"){
+          forbidden = control.value<1?true:false
+        } else if(hoursNeeded === "weeklyHoursNeeded"){
+          forbidden = control.value<1?true:false
         }
       }
       return forbidden || noneDigitValue ? {'forbiddenHoursNeeded': {value: control.value}} : null;
