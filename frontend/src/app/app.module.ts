@@ -14,6 +14,7 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { ForbiddenHoursValidatorDirective } from './validate-hours-forms.directive';
 import { SkillFormComponent } from './skill-form/skill-form.component';
 import { EmployeeSkillFormComponent } from './employee-skill-form/employee-skill-form.component';
+import { EditHoursComponent } from './edit-hours/edit-hours.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EmployeeSkillFormComponent } from './employee-skill-form/employee-skill
     ProjectFormComponent,
     ForbiddenHoursValidatorDirective,
     SkillFormComponent,
-    EmployeeSkillFormComponent
+    EmployeeSkillFormComponent,
+    EditHoursComponent
   ],
   imports: [
     BrowserModule,

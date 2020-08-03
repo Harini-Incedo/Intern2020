@@ -6,20 +6,23 @@ button {
   margin-right: 1em;
 }
 
-.pagination {
-  display: inline;
+div.pager {
+  text-align: center;
+  margin: 1em 0;
 }
 
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
+div.pager span {
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8;
+  text-align: center;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
+  margin-right: 0.5em;
 }
 
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
+div.pager span.active {
+  background: #c00;
 }
-
-.pagination a:hover:not(.active) {background-color: #ddd;}

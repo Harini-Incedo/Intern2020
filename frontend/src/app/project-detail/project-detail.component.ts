@@ -42,6 +42,30 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjectById();
+    // setTimeout(()=> {
+    //   $('table.paginated').each(function() {
+    //     let currentPage = 0;
+    //     let numPerPage = 15;
+    //     let $table = $('table.paginated');
+    //     $table.bind('repaginate', function() {
+    //       $table.find('td.dates').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+    //     });
+    //     $table.trigger('repaginate');
+    //     let numRows = $table.find('td.dates').length;
+    //     let numPages = Math.ceil(numRows / numPerPage);
+    //     let $pager = $('<div class="pager"></div>');
+    //     for (let page = 0; page < numPages; page++) {
+    //         $('<span class="page-number"></span>').text(page + 1).bind('click', {
+    //             newPage: page
+    //         }, function(event) {
+    //             currentPage = event.data['newPage'];
+    //             $table.trigger('repaginate');
+    //             $(this).addClass('active').siblings().removeClass('active');
+    //         }).appendTo($pager).addClass('clickable');
+    //     }
+    //     $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+    // });
+    // }, 1000)
   }
 
   goBack(e:any):void {
@@ -62,35 +86,60 @@ export class ProjectDetailComponent implements OnInit {
           if (this.skills.length > 0) {
             for (let index = 0; index < dates.length; index++) {
               let td = d3.selectAll('tr.first').insert('td');
+              td.attr('class', 'dates');
               td.text(this.dateTimeFormat.format(dates[index]));
             }
           }
           for (let i = 0; i < this.skills.length; i++) {
-            let tr = d3.selectAll('table').insert('tr');
+            let map = new Map();
+            let tr = d3.selectAll('table').insert('tr').attr('class', 'dates');
             let th = tr.insert('th');
             th.attr("colspan", 3);
             th.attr("class", "header");
             for (let date = 0; date < dates.length; date++) {
-              tr.insert('td').text(this.skills[i].totalWeeklyHours);
+              let td = tr.insert('td').text(this.skills[i].totalWeeklyHours);
+              td.attr('style', 'background-color:#FFFFE0;')
             }
             th.text(this.skills[i].skillName);
             for (let b = 0; b < this.skills[i]["engagements"].length; b++) {
               let tr2 = d3.selectAll('table').insert('tr');
               let td = tr2.insert('td');
               if (this.skills[i]["engagements"][b]["employee"] === null) {
-                td.text("Pending");
+                td.append('span').text('X')
+                .on('click', ()=> {
+                  let check = confirm("Are you sure you want to delete this empty engagement?");
+                  if (check) {
+                    this.engagementSerivce.delete(this.skills[i]["engagements"][b]["engagement"]["id"])
+                      .subscribe(result => window.location.reload());
+                  }
+                });
+                td.append('span').text(' ');
+                td.append('span').text("Pending");
                 td.attr('colspan', 3);
                 for (let x = 0; x < dates.length; x++) {
                   let assignedWeeklyHours = new Array(this.skills[i]["engagements"][b]["engagement"]["assignedWeeklyHours"]);
-                  for (let w = 0; w < assignedWeeklyHours.length; w++) {
-                    tr2.insert('td').text(0);
-                    td.attr('class', 'workingHours');
-                    tr2.attr("class", "employee-" + this.skills[i].skillName);
-                  }
+                  let td = tr2.insert('td').text(0);
+                  td.attr('class', 'workingHours');
+                  td.on('click', ()=>{
+                    this.editWorkingHours(dates[x].toLocaleDateString('zh-Hans-CN', {year:'numeric', month:"2-digit", day:"2-digit"}), Number(Object.keys(assignedWeeklyHours).toString()),
+                    this.skills[i]["engagements"][b]["engagement"]);
+                  });
+                  tr2.attr("class", "employee-" + this.skills[i].skillName);
                 }
               }
               if (this.skills[i]["engagements"][b]["employee"] !== null) {
-                td.text(this.skills[i]["engagements"][b]["employee"]["firstName"]);
+                td.append('span').text('X')
+                .on('click', ()=> {
+                  let check = confirm("Are you sure you want to delete " + this.skills[i]["engagements"][b]["employee"]["firstName"] + "'s engagement?");
+                  if (check) {
+                    this.engagementSerivce.delete(this.skills[i]["engagements"][b]["engagement"]["id"])
+                      .subscribe(result => window.location.reload());
+                  }
+                });
+                td.append('span').text('    ');
+                let a = td.append('a').text(' ' + this.skills[i]["engagements"][b]["employee"]["firstName"]);
+                a.attr('ng-reflect-router-link', '/viewEmployee/' + this.skills[i]["engagements"][b]["employee"]["id"]);
+                a.attr('href', '/viewEmployee/' + this.skills[i]["engagements"][b]["employee"]["id"]);
                 td.attr("class", "employee-" + this.skills[i].skillName);
                 tr.on("click", ()=>{
                   $('.employee-' + this.skills[i].skillName).slideToggle(0, function(){
@@ -98,23 +147,54 @@ export class ProjectDetailComponent implements OnInit {
                 });
                 td.attr("colspan", 3);
                 for (let x = 0; x < dates.length; x++) {
-                  let assignedWeeklyHours = new Array(this.skills[i]["engagements"][i]["engagement"]["assignedWeeklyHours"]);
-                  for (let w = 0; w < assignedWeeklyHours.length; w++) {
-                    let test = Object.keys(assignedWeeklyHours[w]);
-                    let td = tr2.insert('td').text(0);
-                    let y = 0;
-                    if (new Date(test[0]) < new Date(this.selectedProject.startDate)) {
-                      y = 1;
+                  let assignedWeeklyHours = new Array(this.skills[i]["engagements"][b]["engagement"]["assignedWeeklyHours"]);
+                  let td = tr2.insert('td');
+                  if (this.skills[i]["engagements"][b]["engagement"]["employee"] === null) {
+                    td.text(0);
+                    if (map.has(dates[x])) {
+                      map.set(dates[x], map.get(dates[x]) + 0);
+                    } else {
+                      map.set(dates[x], 0);
                     }
-                    for (let j = y; j < test.length; j++) {
-                      if (this.convertDateToUTC(new Date(test[j])).getTime() === new Date(dates[y]).getTime()) {
-                        td.text(Object.values(assignedWeeklyHours[w])[j].toString());
+                  } else {
+                    for (let w = 0; w < Object.keys(assignedWeeklyHours[0]).length; w++) {
+                      if (this.convertDateToUTC(new Date(Object.keys(assignedWeeklyHours[0])[w])).getTime() === dates[x].getTime()) {
+                        td.text((Object.values(assignedWeeklyHours[0])[w]).toString());
+                        if (map.has(dates[x])) {
+                          map.set(dates[x], map.get(dates[x]) + (Object.values(assignedWeeklyHours[0])[w]));
+                        } else {
+                          map.set(dates[x], (Object.values(assignedWeeklyHours[0])[w]));
+                        }
+                        td.attr('class', 'workingHours');
+                        td.on('click', ()=>{
+                          this.editWorkingHours(dates[x].toLocaleDateString('zh-Hans-CN',
+                           {year:'numeric', month:"2-digit", day:"2-digit"}),
+                            Number((Object.values(assignedWeeklyHours[0])[w]).toString()),
+                            this.skills[i]["engagements"][b]["engagement"]);
+                        });
                       }
                     }
-                    td.attr('class', 'workingHours');
-                    tr2.attr("class", "employee-" + this.skills[i].skillName);
                   }
+                  tr2.attr("class", "employee-" + this.skills[i].skillName);
                 }
+              }
+            }
+            let jsonObject = {};
+            map.forEach((value, key) => {
+                jsonObject[key] = value
+            });
+            let tr4 = d3.selectAll('table').insert('tr').attr('class', 'dates').attr("class", "employee-" + this.skills[i].skillName);
+            tr4.insert('td').attr('colspan', 3).append('strong').text('Total');
+            tr4.on("click", ()=>{
+              $('.employee-' + this.skills[i].skillName).slideToggle(0, function(){
+              });
+            });
+            for (let w = 0; w < Object.keys(jsonObject).length; w++) {
+              let td1 = tr4.insert('td').text(Object.values(jsonObject)[w].toString() + '/' + this.skills[i].totalWeeklyHours).attr('class', 'workingHours');
+              if (Number(Object.values(jsonObject)[w])/this.skills[i].totalWeeklyHours > 1) {
+                td1.attr('style', 'background-color:green;color:white;');
+              } else if (Number(Object.values(jsonObject)[w])/this.skills[i].totalWeeklyHours < 1) {
+                td1.attr('style', 'background-color:red;color:white;');
               }
             }
             let button = d3.selectAll('table').insert('button');
@@ -125,6 +205,7 @@ export class ProjectDetailComponent implements OnInit {
             })
           }
         });
+
       }
     });
   }
@@ -138,6 +219,12 @@ export class ProjectDetailComponent implements OnInit {
     if (check) {
       this.projectSerivce.complete(+project.id).subscribe(d=>this.projectSerivce.gotoProjectList());
     }
+  }
+
+  editWorkingHours(obj: string, obj2: number, obj3: Object) {
+    obj = obj.replace('/', '-');
+    obj = obj.replace('/', '-');
+    this.engagementSerivce.navigateToEditHoursForm(obj, obj2, obj3);
   }
 
   closeProject(project:Project) {

@@ -42,14 +42,19 @@ export class EngagementService {
       .pipe(catchError(this.handleSecondError));
   }
 
+  public navigateToEditHoursForm(obj: string, obj2: number, obj3: Object) {
+    this.router.navigate(
+      ['/engagement/' + obj3["id"] + '/editEmployee/' + obj3["employeeID"] + '/project/' + obj3["projectID"] + '/skill/' + obj3["skillID"] + '/date/' + obj+ '/hours/' + obj2]);
+  }
+
   public edit(id: number, obj: object) {
     return this.http.put<any>(this.engagementsUrl + "/" + id, obj, this.httpOptions)
       .pipe(catchError(this.handleSecondError));
   }
 
-  // public delete (id: number) {
-  //   return this.http.delete<Engagement>(this.engagementsUrl + "/" + id, this.httpOptions);
-  // }
+  public delete (id: number) {
+    return this.http.delete<Engagement>(this.engagementsUrl + "/" + id, this.httpOptions);
+  }
 
   public getEngagementByIdApi(id:number): Observable<Engagement>{
     return this.http.get<Engagement>(this.engagementsUrl + "/" + id)
