@@ -1,0 +1,34 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #skillForm="ngForm">
+      <div class="form-group">
+        <p><strong>Skill Information</strong></p>
+        <div>
+          <label for="projectName">&emsp;Project Name <span style="color: red;">*</span></label>
+          <select id="projectName" required name="projectName" #projectName="ngModel"
+          [(ngModel)]="employee.projectName" disabled>
+            <option [value]="employee.projectName">{{employee.projectName}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="skills">&emsp;Skill Name<span style="color: red;">*</span></label>
+          <select id="skills" required name="skills" #skillName="ngModel"
+          [(ngModel)]="skill.skillName" disabled>
+            <option [value]="skill.skillName">{{skill.skillName}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="user">&emsp;Employee Name<span style="color: red;">*</span></label>
+          <select id="user" required name="user"
+          #employeeName="ngModel" [(ngModel)]="employee.employeeID">
+            <option *ngFor="let user of users" [value]="user.id">
+              {{user.firstName}} {{user.lastName}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <button type="button" (click)="goBack()">&larr;Go Back</button>
+    <button type="submit" [disabled]="skillForm.form.invalid?true:false" (click)="onSubmit()" style="margin-left: 1em;">Save</button>
+  </div>
+</div>

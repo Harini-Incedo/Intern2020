@@ -6,7 +6,9 @@ import { ViewPageComponent } from './view-page/view-page.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
-import { EngagementFormComponent } from './engagement-form/engagement-form.component';
+import { SkillFormComponent } from './skill-form/skill-form.component';
+import { EmployeeSkillFormComponent } from './employee-skill-form/employee-skill-form.component';
+import { EditHoursComponent } from './edit-hours/edit-hours.component';
 
 const routes: Routes = [
   { path: 'employees', component: UserListComponent },
@@ -17,8 +19,10 @@ const routes: Routes = [
   { path: 'addProject', component: ProjectFormComponent },
   { path: 'editProject/:id', component: ProjectFormComponent},
   { path: 'viewProject/:id', component: ProjectDetailComponent},
-  { path: 'viewProject/:id/editEngagement/:engagementid', component: EngagementFormComponent},
-  { path: 'viewProject/:id/addEngagement', component: EngagementFormComponent}
+  { path: 'addSkill/:projectid', component: SkillFormComponent},
+  { path: 'addEmployee/:projectid/skill/:skillName', component: EmployeeSkillFormComponent},
+  { path: 'engagement/:engagementid/editEmployee/:employeeid/project/:projectid/skill/:skillId/date/:date/hours/:hours',
+component: EditHoursComponent }
 ];
 
 @NgModule({

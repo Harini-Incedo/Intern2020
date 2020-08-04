@@ -13,6 +13,7 @@
     <br>
     <p><strong>Email</strong> <span><a href="mailto: {{ selectedUser.email }}">{{ selectedUser.email }}</a></span></p>
     <p><strong>Department</strong> <span>{{ selectedUser.department }}</span></p>
+    <p><strong>Role</strong> <span>{{ selectedUser.role }}</span></p>
     <p><strong>Skills</strong> <span>{{ selectedUser.skills }}</span></p>
     <p><strong>Manager</strong> <span>{{ selectedUser.manager }}</span></p>
     <p><strong>Start Date</strong> <span>{{ selectedUser.startDate }}</span></p>
@@ -36,8 +37,7 @@
           <th scope="col">Project Name</th>
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
-          <th scope="col">Hours Needed</th>
-          <th scope="col">Role on Project</th>
+          <th scope="col">Skill on Project</th>
         </tr>
       </thead>
       <tbody>
@@ -45,8 +45,7 @@
           <td><a routerLink="/viewProject/{{engagement.projectID}}">{{engagement.projectName}}</a></td>
           <td>{{engagement.startDate}}</td>
           <td>{{engagement.endDate}}</td>
-          <td>{{engagement.hoursNeeded}}</td>
-          <td>{{engagement.role}}</td>
+          <td>{{engagement.skillName}}</td>
         </tr>
       </tbody>
     </table>

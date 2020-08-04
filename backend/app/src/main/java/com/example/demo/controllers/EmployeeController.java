@@ -48,9 +48,10 @@ public class EmployeeController {
     }
 
     // To get all recommended employees in sorted order by last name
-    @GetMapping("/employees/recommended")
+    @PostMapping("/employees/recommended")
     public List<Employee> getRecommendedEmployees(@RequestBody HashMap<String, String> values) {
         // extracts necessary values from request body sent by UI
+        System.out.println("Check values MAP: " + values);
         String skill = values.get("skill");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(values.get("startDate"), dtf);

@@ -6,6 +6,8 @@ import { Observable, throwError } from 'rxjs';
 import {Location} from '@angular/common';
 import { Project } from '../Classes/project';
 import { catchError } from 'rxjs/operators';
+import { Skill } from '../Classes/skill';
+import { Employee } from '../Classes/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -30,18 +32,23 @@ export class EngagementService {
     this.engagementsUrl = 'http://localhost:8080/engagements';
   }
 
-  public findAll(id:number): Observable<Engagement[]> {
-    return this.http.get<Engagement[]>("http://localhost:8080/projects/" + id + "/engagements")
+  public findAll(id:number): Observable<Skill[]> {
+    return this.http.get<Skill[]>("http://localhost:8080/projects/" + id + "/engagements")
       .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
-  public create(engagement: Engagement) {
-    return this.http.post<Engagement>(this.engagementsUrl, engagement)
+  public create(skill: Skill) {
+    return this.http.post<Skill>(this.engagementsUrl, skill)
       .pipe(catchError(this.handleSecondError));
   }
 
-  public edit(engagement: Engagement) {
-    return this.http.put<Engagement>(this.engagementsUrl + "/" + engagement.id, engagement)
+  public navigateToEditHoursForm(obj: string, obj2: number, obj3: Object) {
+    this.router.navigate(
+      ['/engagement/' + obj3["id"] + '/editEmployee/' + obj3["employeeID"] + '/project/' + obj3["projectID"] + '/skill/' + obj3["skillID"] + '/date/' + obj+ '/hours/' + obj2]);
+  }
+
+  public edit(id: number, obj: object) {
+    return this.http.put<any>(this.engagementsUrl + "/" + id, obj, this.httpOptions)
       .pipe(catchError(this.handleSecondError));
   }
 

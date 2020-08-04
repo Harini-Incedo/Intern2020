@@ -10,7 +10,7 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
       <div class="form-group">
-        <p>Project Information</p>
+        <p><strong>Project Information</strong></p>
         <div>
           <label for="projectName">&emsp;Project Name<span style="color: red;">*</span></label>
           <input type="text" [(ngModel)]="project.projectName"
@@ -57,7 +57,7 @@
         class="alert alert-danger">
           <div *ngIf="teamSize.errors?.forbiddenHoursNeeded">
             The following value cannot be processed {{teamSize.errors?.forbiddenHoursNeeded?.value}},
-            {{printForbiddenMessageWeeklyHours(teamSize.errors?.forbiddenHoursNeeded?.value)}} 
+            {{printForbiddenMessageWeeklyHours(teamSize.errors?.forbiddenHoursNeeded?.value)}}
           </div>
           <div *ngIf="!teamSize.errors?.forbiddenHoursNeeded && teamSize.errors.required">
             Hours needed is required.
@@ -73,7 +73,7 @@
       </div>
       <hr>
       <div class="form-group">
-        <p>Project Logistics</p>
+        <p><strong>Project Logistics</strong></p>
         <div>
           <label for="startDate">&emsp;Start Date<span style="color: red;">*</span></label>
           <input type="date" [(ngModel)]="project.startDate"
@@ -90,7 +90,7 @@
             <div *ngIf="endDate.errors?.required && endDate.touched">End Date is a required field.</div>
           </div>
           <div  class="alert alert-danger" *ngIf="endDate.touched && inValidDate">End date cannot be before start date. Please enter a valid end date.</div>
-        </div> 
+        </div>
         <div>
           <label for="weeklyHours">&emsp;Weekly Hours<span style="color: red;">*</span></label>
           <input type="number" [(ngModel)]="project.weeklyHours" id="number"
@@ -102,7 +102,7 @@
           class="alert alert-danger">
             <div *ngIf="weeklyHours.errors?.forbiddenHoursNeeded">
               The following value cannot be processed {{weeklyHours.errors?.forbiddenHoursNeeded?.value}},
-              {{printForbiddenMessageWeeklyHours(weeklyHours.errors?.forbiddenHoursNeeded?.value)}} 
+              {{printForbiddenMessageWeeklyHours(weeklyHours.errors?.forbiddenHoursNeeded?.value)}}
             </div>
             <div *ngIf="!weeklyHours.errors?.forbiddenHoursNeeded && weeklyHours.errors.required">
               Hours needed is required.

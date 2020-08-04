@@ -12,7 +12,8 @@ import { Project } from '../Classes/project';
 })
 export class ViewPageComponent implements OnInit {
 
-  selectedUser : User;
+  selectedUser : User = {id: 0, firstName: "", lastName: "", email: "", role: "", skills:[],
+ department: "", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
   user: User;
   projects: Project[];
   engagements: Engagement[];
@@ -57,8 +58,13 @@ export class ViewPageComponent implements OnInit {
     this.engagements = [];
     this.userService.getEngagementByUser(id).subscribe(data=>{
       for (let index = 0; index < data.length; index++) {
+        this.userService.getSkillByID(data[index]["engagement"]["skillID"])
+          .subscribe(data1 => {
+            data[index]["engagement"]["skillName"] = data1["skillName"];
+          })
         data[index]["engagement"]["projectName"] = data[index]['project']['projectName'];
         this.engagements.push(data[index]['engagement']);
+        this.engagements.push();
       }
     });
   }

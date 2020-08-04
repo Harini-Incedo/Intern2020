@@ -30,7 +30,14 @@
   <hr>
   <div>
     <p style="text-align: center;"><strong>Engagements</strong></p>
-    <button type="button" style="margin-left: 1em;" routerLink="addEngagement">Add</button>
+    <button type="button" style="margin-left: 1em;" (click)="addSkill(selectedProject)">Add Skill</button>
+    <table class="paginated">
+      <tr class="first">
+        <th colspan="3"></th>
+      </tr>
+    </table>
+
+    <!--<button type="button" style="margin-left: 1em;" routerLink="addEngagement">Add</button>
     <button type="button" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true" (click)="editEngagement(selectedProject, selectedEngagement)">Edit</button>
     <button type="button" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true" (click)="deleteEngagement(selectedEngagement)">Delete</button>
     <br>
@@ -56,6 +63,6 @@
           <td>{{ engagement.hoursNeeded }}</td>
         </tr>
       </tbody>
-    </table>
+    </table>-->
   </div>
 </div>

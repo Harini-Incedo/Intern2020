@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class SkillController {
 
     @Autowired
@@ -24,9 +24,10 @@ public class SkillController {
     private ProjectRepository projectRepository;
 
 
-    @PutMapping("projects/{projID}/skills")
+    @PutMapping("/projects/{projID}/skills")
     public void addSkillToProject(@PathVariable("projID") long projID, @RequestBody HashMap<String, String> values) {
         // extracts necessary values from request body sent by UI
+        System.out.println(values);
         String skillName = values.get("skillName");
         int totalWeeklyHours = Integer.parseInt(values.get("totalWeeklyHours"));
         int count = Integer.parseInt(values.get("count"));
@@ -49,6 +50,12 @@ public class SkillController {
             engagementRepository.save(newEngagement);
         }
     }
+
+    @GetMapping("/skills/{id}")
+    public Skill getSkillByID(@PathVariable("id") long id) {
+        return (skillRepository.findById(id)).get();
+    }
+
 
     // For testing purposes:
     // returns all skills in the skill database table
