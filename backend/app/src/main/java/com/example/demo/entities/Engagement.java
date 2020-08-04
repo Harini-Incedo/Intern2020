@@ -61,6 +61,21 @@ public class Engagement {
         return toReturn;
     }
 
+    // helper method:
+    // updates hourly mapping of engagement when the timeline is changed
+    public void extendMappings(LocalDate newStartDate, LocalDate newEndDate) {
+        LocalDate mondayOfStartingWeek = newStartDate.with(DayOfWeek.MONDAY);
+        LocalDate temp = mondayOfStartingWeek;
+        while (temp.isBefore(newEndDate)) {
+            if (!assignedWeeklyHours.containsKey(temp)) {
+                assignedWeeklyHours.put(temp, 0);
+            }
+            temp = temp.plusWeeks(1);
+        }
+        setStartDate(newStartDate);
+        setEndDate(newEndDate);
+    }
+
     public long getId() {
         return id;
     }

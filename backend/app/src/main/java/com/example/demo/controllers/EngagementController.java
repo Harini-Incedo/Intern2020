@@ -46,6 +46,13 @@ public class EngagementController {
         }
 
         List<EngagementsBySkill> toReturn = new ArrayList<>();
+        Collections.sort(allSkills,
+                new Comparator<Skill>() {
+                        @Override
+                        public int compare(Skill o1, Skill o2) {
+                            return o1.getSkillName().compareTo(o2.getSkillName());
+                        }
+                    });
 
         // for each skill, wraps the skill and it's associated
         // engagements together in an container object.

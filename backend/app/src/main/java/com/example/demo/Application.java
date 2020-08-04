@@ -86,7 +86,7 @@ public class Application {
 				p.setDepartment("Telecom");
 				p.setProjectGoal("To make money!");
 				p.setTeamSize(10);
-				p.setEndDate(LocalDate.of(2019, 2, 1));
+				p.setEndDate(LocalDate.of(2019, 3, 1));
 				p.setWeeklyHours(300);
 				projRepository.save(p);
 			});

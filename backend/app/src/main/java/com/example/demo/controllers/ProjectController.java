@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Skill;
+import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
 import com.example.demo.repositories.SkillRepository;
 import com.example.demo.validation.EntityNotFoundException;
@@ -15,9 +17,12 @@ import java.util.*;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProjectController {
+
     @Autowired
     private ProjectRepository repository;
-    private SkillRepository skillRepository;
+    @Autowired
+    private EngagementRepository engagementRepository;
+
     private final String[] status = {"Pending", "In Progress", "Completed", "Closed"};
 
     // To get project status options
@@ -101,8 +106,18 @@ public class ProjectController {
 
         toUpdate.setProjectName(p.getProjectName());
         toUpdate.setProjectGoal(p.getProjectGoal());
+
         toUpdate.setStartDate(p.getStartDate());
         toUpdate.setEndDate(p.getEndDate());
+
+        // loop over engagements with this project
+        // set each of their start and end date
+        List<Engagement> engagementsToUpdate = repository.findEngagementsByProjectID(id);
+        for (Engagement e : engagementsToUpdate) {
+            e.extendMappings(p.getStartDate(), p.getEndDate());
+            engagementRepository.save(e);
+        }
+
         toUpdate.setClientName(p.getClientName());
         toUpdate.setTeamSize(p.getTeamSize());
         toUpdate.setDepartment(p.getDepartment());

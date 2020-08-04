@@ -17,4 +17,7 @@ public interface ProjectRepository extends CrudRepository <Project, Long> {
     @Query("SELECT e FROM Engagement e WHERE e.projectID=?1 AND e.skillID=?2")
     List<Engagement> getEngagementBySkill(long projID, long skillID);
 
+    @Query("SELECT e FROM Engagement e WHERE e.projectID=?1")
+    List<Engagement> findEngagementsByProjectID(long id);
+
 }

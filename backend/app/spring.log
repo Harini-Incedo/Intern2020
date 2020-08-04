@@ -4754,3 +4754,973 @@ Caused by: org.hibernate.QueryException: No data type for node: org.hibernate.hq
 [2020-07-31T14:17:39.039Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
 [2020-07-31T14:17:39.039Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[com.example.demo.controllers.EngagementController$EngagementsBySkill@411f5ac6]]
 [2020-07-31T14:17:39.039Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:14:01.001Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting Application on DESKTOP-OUDQFQT with PID 14780 (C:\Users\mussw\IdeaProjects\Intern2020\backend\app\build\classes\java\main started by mussw in C:\Users\mussw\IdeaProjects\Intern2020\backend\app)
+[2020-08-03T08:14:01.001Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-08-03T08:14:04.004Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+[2020-08-03T08:14:04.004Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 209ms. Found 4 JPA repository interfaces.
+[2020-08-03T08:14:06.006Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2020-08-03T08:14:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-08-03T08:14:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.36]
+[2020-08-03T08:14:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-08-03T08:14:06.006Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [285] [INFO ] Root WebApplicationContext: initialization completed in 4335 ms
+[2020-08-03T08:14:07.007Z] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [main] [181] [INFO ] Initializing ExecutorService 'applicationTaskExecutor'
+[2020-08-03T08:14:07.007Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-08-03T08:14:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] [main] [615] [DEBUG] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2020-08-03T08:14:08.008Z] [org.springframework.web.servlet.handler.AbstractHandlerMethodMapping] [main] [351] [DEBUG] 29 mappings in 'requestMappingHandlerMapping'
+[2020-08-03T08:14:08.008Z] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [main] [173] [DEBUG] Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[2020-08-03T08:14:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [main] [297] [DEBUG] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[2020-08-03T08:14:09.009Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [110] [INFO ] HikariPool-1 - Starting...
+[2020-08-03T08:14:09.009Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2020-08-03T08:14:09.009Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [49] [INFO ] Triggering deferred initialization of Spring Data repositories…
+[2020-08-03T08:14:10.010Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-08-03T08:14:15.015Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [task-1] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-08-03T08:14:15.015Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [53] [INFO ] Spring Data repositories initialized!
+[2020-08-03T08:14:15.015Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started Application in 15.493 seconds (JVM running for 20.114)
+[2020-08-03T08:15:29.029Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-08-03T08:15:29.029Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-08-03T08:15:29.029Z] [org.springframework.web.servlet.DispatcherServlet] [http-nio-8080-exec-1] [526] [DEBUG] Detected StandardServletMultipartResolver
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [542] [DEBUG] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 45 ms
+[2020-08-03T08:15:30.030Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/projects/120", parameters={}
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [http-nio-8080-exec-1] [398] [DEBUG] Using @ExceptionHandler com.example.demo.validation.ApiExceptionHandler#handleEntityNotFound(EntityNotFoundException)
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:30.030Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [com.example.demo.validation.ApiError@38485074]
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-1] [145] [DEBUG] Resolved [com.example.demo.validation.EntityNotFoundException: No project exists with this ID: 120]
+[2020-08-03T08:15:30.030Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 404 NOT_FOUND
+[2020-08-03T08:15:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T08:15:33.033Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T08:15:33.033Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T08:15:33.033Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] OPTIONS "/departments", parameters={}
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/roles", parameters={}
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:38.038Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:38.038Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/employees/3", parameters={}
+[2020-08-03T08:15:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T08:15:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=2019 (truncated)...]
+[2020-08-03T08:15:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:15:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/employees/3/engagements", parameters={}
+[2020-08-03T08:15:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T08:15:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:15:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[]]
+[2020-08-03T08:15:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T08:16:21.021Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T08:16:21.021Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T08:16:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects/13", parameters={}
+[2020-08-03T08:16:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T08:16:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [Project{id=13, projectName='TestProject-5', projectGoal='To make money!', clientName='Sony', startDa (truncated)...]
+[2020-08-03T08:16:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/projects/13/engagements", parameters={}
+[2020-08-03T08:16:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T08:16:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[]]
+[2020-08-03T08:16:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/projects/13", parameters={}
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T08:16:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [Project{id=13, projectName='TestProject-5', projectGoal='To make money!', clientName='Sony', startDa (truncated)...]
+[2020-08-03T08:16:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T08:16:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/projects/13", parameters={}
+[2020-08-03T08:16:33.033Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T08:16:33.033Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [Project{id=13, projectName='TestProject-5', projectGoal='To make money!', clientName='Sony', startDa (truncated)...]
+[2020-08-03T08:16:33.033Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T08:16:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/projects/13/engagements", parameters={}
+[2020-08-03T08:16:33.033Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T08:16:33.033Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T08:16:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[]]
+[2020-08-03T08:16:33.033Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] OPTIONS "/roles", parameters={}
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] OPTIONS "/departments", parameters={}
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:14:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T09:14:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/employees/Inactive", parameters={}
+[2020-08-03T09:14:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllInactiveEmployees()
+[2020-08-03T09:14:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:14:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Employee{id=7, firstName='Fred', lastName='Heebie', email='fred@domain.com', startDate=2019-01-01,  (truncated)...]
+[2020-08-03T09:14:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:14:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/employees/Both", parameters={}
+[2020-08-03T09:14:58.058Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllEmployees()
+[2020-08-03T09:14:58.058Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:14:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T09:14:58.058Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:15:03.003Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:15:03.003Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:15:03.003Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:15:03.003Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T09:15:03.003Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] OPTIONS "/skills", parameters={}
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getSkills()
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/skills", parameters={}
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getSkills()
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:15:14.014Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[Ljava.lang.String;@3aedb6e2]
+[2020-08-03T09:15:14.014Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] OPTIONS "/employees", parameters={}
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#createEmployee(Employee)
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] POST "/employees", parameters={}
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#createEmployee(Employee)
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Employee{id=0, firstName='Jane', lastName='Doe', email='jane@domain.com', startDate=2020-08-01, endD (truncated)...]
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:17:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:00.000Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/employees/3", parameters={}
+[2020-08-03T09:17:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T09:17:24.024Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:17:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=2019 (truncated)...]
+[2020-08-03T09:17:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:17:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/employees/3/engagements", parameters={}
+[2020-08-03T09:17:24.024Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T09:17:24.024Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:17:24.024Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[]]
+[2020-08-03T09:17:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/skills", parameters={}
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getSkills()
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Ljava.lang.String;@3aedb6e2]
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/employees/3", parameters={}
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=2019 (truncated)...]
+[2020-08-03T09:18:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/employees/3", parameters={}
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#updateEmployeeByID(Long, Employee)
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] PUT "/employees/3", parameters={}
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#updateEmployeeByID(Long, Employee)
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifera@domain.com', startDate=201 (truncated)...]
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifera@domain.com', startDate=20 (truncated)...]
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:18:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:48.048Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/employees/3", parameters={}
+[2020-08-03T09:18:48.048Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T09:18:48.048Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:48.048Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifera@domain.com', startDate=201 (truncated)...]
+[2020-08-03T09:18:48.048Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:18:48.048Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/3/engagements", parameters={}
+[2020-08-03T09:18:48.048Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T09:18:48.048Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:18:48.048Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[]]
+[2020-08-03T09:18:48.048Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:19:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:19:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:19:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:19:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:19:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifera@domain.com', startDate=20 (truncated)...]
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:19:58.058Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:19:58.058Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:11.011Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] OPTIONS "/employees/3", parameters={}
+[2020-08-03T09:20:11.011Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#deleteEmployeeByID(Long)
+[2020-08-03T09:20:11.011Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:11.011Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] DELETE "/employees/3", parameters={}
+[2020-08-03T09:20:11.011Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#deleteEmployeeByID(Long)
+[2020-08-03T09:20:11.011Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:20:11.011Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:20:11.011Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:20:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:20:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Employee{id=1, firstName='John', lastName='Cena', email='john@domain.com', startDate=2019-01-01, en (truncated)...]
+[2020-08-03T09:20:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:20:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:15.015Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/employees/Inactive", parameters={}
+[2020-08-03T09:20:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllInactiveEmployees()
+[2020-08-03T09:20:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:20:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifera@domain.com', startDate=20 (truncated)...]
+[2020-08-03T09:20:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:20:50.050Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:20:50.050Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:20:50.050Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:20:50.050Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:20:50.050Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:21:22.022Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:21:22.022Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:21:22.022Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:21:22.022Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:21:22.022Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:22:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] OPTIONS "/projects", parameters={}
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#createProject(Project)
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:22:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] POST "/projects", parameters={}
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#createProject(Project)
+[2020-08-03T09:22:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Project{id=0, projectName='Test', projectGoal='x', clientName='Google', startDate=2020-08-01, endDat (truncated)...]
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:22:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:22:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:22:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:22:29.029Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/projects/12", parameters={}
+[2020-08-03T09:22:29.029Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T09:22:29.029Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:22:29.029Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', start (truncated)...]
+[2020-08-03T09:22:29.029Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:22:29.029Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/projects/12/engagements", parameters={}
+[2020-08-03T09:22:29.029Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T09:22:29.029Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:22:29.029Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[]]
+[2020-08-03T09:22:29.029Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:06.006Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:23:06.006Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:23:06.006Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:06.006Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:23:06.006Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:08.008Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/projects/15", parameters={}
+[2020-08-03T09:23:08.008Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T09:23:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:08.008Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [Project{id=15, projectName='Test', projectGoal='x', clientName='Google', startDate=2020-08-01, endDa (truncated)...]
+[2020-08-03T09:23:08.008Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:08.008Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/projects/15/engagements", parameters={}
+[2020-08-03T09:23:08.008Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T09:23:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:08.008Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[]]
+[2020-08-03T09:23:08.008Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:20.020Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] OPTIONS "/projects/start/15", parameters={}
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#startProjectByID(Long)
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:20.020Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] PUT "/projects/start/15", parameters={}
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#startProjectByID(Long)
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:20.020Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:20.020Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:23:20.020Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/projects/15", parameters={}
+[2020-08-03T09:23:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T09:23:27.027Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [Project{id=15, projectName='Test', projectGoal='x', clientName='Google', startDate=2020-08-01, endDa (truncated)...]
+[2020-08-03T09:23:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:23:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/projects/15/engagements", parameters={}
+[2020-08-03T09:23:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T09:23:27.027Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:23:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[]]
+[2020-08-03T09:23:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:11.011Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/projects/close/15", parameters={}
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#closeProjectByID(Long)
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:11.011Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] PUT "/projects/close/15", parameters={}
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#closeProjectByID(Long)
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:11.011Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:11.011Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:24:11.011Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:32.032Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] OPTIONS "/projects/complete/13", parameters={}
+[2020-08-03T09:24:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#completeProjectByID(Long)
+[2020-08-03T09:24:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:32.032Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] PUT "/projects/complete/13", parameters={}
+[2020-08-03T09:24:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#completeProjectByID(Long)
+[2020-08-03T09:24:32.032Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:32.032Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T09:24:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:24:33.033Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:24:33.033Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:24:33.033Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:24:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:24:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:24:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:46.046Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:24:46.046Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:24:46.046Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:46.046Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:24:46.046Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Employee{id=1, firstName='John', lastName='Cena', email='john@domain.com', startDate=2019-01-01, en (truncated)...]
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T09:24:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T09:24:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:24:59.059Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:24:59.059Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:24:59.059Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:24:59.059Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:24:59.059Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T09:45:16.016Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m4s500ms541µs300ns).
+[2020-08-03T09:45:41.041Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T09:45:41.041Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T09:45:41.041Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T09:45:41.041Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T09:45:41.041Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:26:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T10:26:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T10:26:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:26:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T10:26:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/roles", parameters={}
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] OPTIONS "/departments", parameters={}
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Ljava.lang.String;@6b977985]
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[Ljava.lang.String;@711d5916]
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:26:53.053Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Employee{id=1, firstName='John', lastName='Cena', email='john@domain.com', startDate=2019-01-01, en (truncated)...]
+[2020-08-03T10:26:53.053Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:28:05.005Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting Application on DESKTOP-OUDQFQT with PID 11880 (C:\Users\mussw\IdeaProjects\Intern2020\backend\app\build\classes\java\main started by mussw in C:\Users\mussw\IdeaProjects\Intern2020\backend\app)
+[2020-08-03T10:28:05.005Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-08-03T10:28:07.007Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+[2020-08-03T10:28:07.007Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 109ms. Found 4 JPA repository interfaces.
+[2020-08-03T10:28:08.008Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2020-08-03T10:28:08.008Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-08-03T10:28:08.008Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.36]
+[2020-08-03T10:28:09.009Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-08-03T10:28:09.009Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [285] [INFO ] Root WebApplicationContext: initialization completed in 3778 ms
+[2020-08-03T10:28:09.009Z] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [main] [181] [INFO ] Initializing ExecutorService 'applicationTaskExecutor'
+[2020-08-03T10:28:09.009Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-08-03T10:28:10.010Z] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] [main] [615] [DEBUG] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2020-08-03T10:28:10.010Z] [org.springframework.web.servlet.handler.AbstractHandlerMethodMapping] [main] [351] [DEBUG] 29 mappings in 'requestMappingHandlerMapping'
+[2020-08-03T10:28:10.010Z] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [main] [173] [DEBUG] Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[2020-08-03T10:28:10.010Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [main] [297] [DEBUG] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[2020-08-03T10:28:10.010Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [110] [INFO ] HikariPool-1 - Starting...
+[2020-08-03T10:28:10.010Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2020-08-03T10:28:10.010Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [49] [INFO ] Triggering deferred initialization of Spring Data repositories…
+[2020-08-03T10:28:10.010Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-08-03T10:28:13.013Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [task-1] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-08-03T10:28:14.014Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [53] [INFO ] Spring Data repositories initialized!
+[2020-08-03T10:28:14.014Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started Application in 10.989 seconds (JVM running for 26.948)
+[2020-08-03T10:28:42.042Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-3] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.DispatcherServlet] [http-nio-8080-exec-3] [526] [DEBUG] Detected StandardServletMultipartResolver
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [542] [DEBUG] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [547] [INFO ] Completed initialization in 12 ms
+[2020-08-03T10:28:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:28:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T10:28:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:28:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T10:28:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T10:28:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@1e087b32]
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:28:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:12.012Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/employees/Inactive", parameters={}
+[2020-08-03T10:30:12.012Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllInactiveEmployees()
+[2020-08-03T10:30:12.012Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:30:12.012Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Employee{id=7, firstName='Fred', lastName='Heebie', email='fred@domain.com', startDate=2019-01-01,  (truncated)...]
+[2020-08-03T10:30:12.012Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/employees/Both", parameters={}
+[2020-08-03T10:30:21.021Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllEmployees()
+[2020-08-03T10:30:21.021Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:30:21.021Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T10:30:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T10:30:25.025Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T10:30:25.025Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:30:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T10:30:25.025Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] OPTIONS "/skills", parameters={}
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getSkills()
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Ljava.lang.String;@1e087b32]
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/skills", parameters={}
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getSkills()
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:30:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[Ljava.lang.String;@1af24373]
+[2020-08-03T10:30:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:35.035Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] OPTIONS "/employees", parameters={}
+[2020-08-03T10:32:35.035Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#createEmployee(Employee)
+[2020-08-03T10:32:35.035Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:35.035Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] POST "/employees", parameters={}
+[2020-08-03T10:32:35.035Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#createEmployee(Employee)
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Employee{id=0, firstName='Jane', lastName='Doe', email='jane@domain.com', startDate=2020-08-01, endD (truncated)...]
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:32:36.036Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@1e087b32]
+[2020-08-03T10:32:36.036Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/employees/14", parameters={}
+[2020-08-03T10:32:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T10:32:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:32:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [Employee{id=14, firstName='Jane', lastName='Doe', email='jane@domain.com', startDate=2020-08-01, end (truncated)...]
+[2020-08-03T10:32:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:32:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/employees/14/engagements", parameters={}
+[2020-08-03T10:32:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T10:32:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:32:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[]]
+[2020-08-03T10:32:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Ljava.lang.String;@1e087b32]
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/skills", parameters={}
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getSkills()
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/employees/14", parameters={}
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Ljava.lang.String;@1af24373]
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [Employee{id=14, firstName='Jane', lastName='Doe', email='jane@domain.com', startDate=2020-08-01, end (truncated)...]
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] OPTIONS "/employees/14", parameters={}
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#updateEmployeeByID(Long, Employee)
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] PUT "/employees/14", parameters={}
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#updateEmployeeByID(Long, Employee)
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Employee{id=14, firstName='Jane', lastName='Doe', email='janedoe@domain.com', startDate=2020-08-01,  (truncated)...]
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Ljava.lang.String;@1e087b32]
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:55.055Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/employees/14", parameters={}
+[2020-08-03T10:33:55.055Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T10:33:55.055Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:55.055Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [Employee{id=14, firstName='Jane', lastName='Doe', email='janedoe@domain.com', startDate=2020-08-01,  (truncated)...]
+[2020-08-03T10:33:55.055Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:33:55.055Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/employees/14/engagements", parameters={}
+[2020-08-03T10:33:55.055Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T10:33:55.055Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:33:55.055Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[]]
+[2020-08-03T10:33:55.055Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:34:17.017Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T10:34:17.017Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T10:34:17.017Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:34:17.017Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T10:34:17.017Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:34:35.035Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects/12", parameters={}
+[2020-08-03T10:34:35.035Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T10:34:35.035Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:34:35.035Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', start (truncated)...]
+[2020-08-03T10:34:35.035Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:34:35.035Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/projects/12/engagements", parameters={}
+[2020-08-03T10:34:35.035Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T10:34:35.035Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:34:35.035Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[]]
+[2020-08-03T10:34:35.035Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:35:04.004Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T10:35:04.004Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T10:35:04.004Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:35:04.004Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T10:35:04.004Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:35:47.047Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/projects", parameters={}
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#createProject(Project)
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:35:47.047Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] POST "/projects", parameters={}
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#createProject(Project)
+[2020-08-03T10:35:47.047Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Project{id=0, projectName='Test', projectGoal='testing create project', clientName='Google', startDa (truncated)...]
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:35:47.047Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:35:47.047Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T10:35:47.047Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:03.003Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/projects/15", parameters={}
+[2020-08-03T10:36:03.003Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T10:36:03.003Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:03.003Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [Project{id=15, projectName='Test', projectGoal='testing create project', clientName='Google', startD (truncated)...]
+[2020-08-03T10:36:03.003Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:03.003Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/projects/15/engagements", parameters={}
+[2020-08-03T10:36:03.003Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T10:36:03.003Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:03.003Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[]]
+[2020-08-03T10:36:03.003Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:17.017Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] OPTIONS "/projects/start/15", parameters={}
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#startProjectByID(Long)
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:17.017Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] PUT "/projects/start/15", parameters={}
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#startProjectByID(Long)
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:17.017Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:17.017Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T10:36:17.017Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/projects/15", parameters={}
+[2020-08-03T10:36:25.025Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T10:36:25.025Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [Project{id=15, projectName='Test', projectGoal='testing create project', clientName='Google', startD (truncated)...]
+[2020-08-03T10:36:25.025Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/projects/15/engagements", parameters={}
+[2020-08-03T10:36:25.025Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T10:36:25.025Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[]]
+[2020-08-03T10:36:25.025Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/projects/complete/15", parameters={}
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#completeProjectByID(Long)
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] PUT "/projects/complete/15", parameters={}
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#completeProjectByID(Long)
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:36:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:36:52.052Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T10:36:52.052Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:37:07.007Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] OPTIONS "/projects/complete/13", parameters={}
+[2020-08-03T10:37:07.007Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#completeProjectByID(Long)
+[2020-08-03T10:37:07.007Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:37:07.007Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] PUT "/projects/complete/13", parameters={}
+[2020-08-03T10:37:07.007Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#completeProjectByID(Long)
+[2020-08-03T10:37:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:37:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T10:37:08.008Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T10:37:08.008Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T10:37:08.008Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T10:37:08.008Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T10:37:08.008Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T10:37:08.008Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:13:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] OPTIONS "/departments", parameters={}
+[2020-08-03T14:13:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T14:13:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:13:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T14:13:33.033Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-2] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T14:13:33.033Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-2] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:13:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-2] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T14:13:33.033Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:25.025Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T14:15:25.025Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T14:15:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] OPTIONS "/roles", parameters={}
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T14:15:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/departments", parameters={}
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getDepartments()
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [[Ljava.lang.String;@2fae4035]
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[Ljava.lang.String;@1e087b32]
+[2020-08-03T14:15:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:28.028Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:28.028Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T14:15:28.028Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:28.028Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T14:15:28.028Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:29.029Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/employees/3", parameters={}
+[2020-08-03T14:15:31.031Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T14:15:31.031Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:31.031Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=2019 (truncated)...]
+[2020-08-03T14:15:31.031Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:32.032Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/employees/3/engagements", parameters={}
+[2020-08-03T14:15:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T14:15:32.032Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:32.032Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [[]]
+[2020-08-03T14:15:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/employees/5", parameters={}
+[2020-08-03T14:15:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T14:15:43.043Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [Employee{id=5, firstName='Nancy', lastName='Drew', email='nancy@domain.com', startDate=2019-01-01, e (truncated)...]
+[2020-08-03T14:15:43.043Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:43.043Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/employees/5/engagements", parameters={}
+[2020-08-03T14:15:43.043Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByEmployeeID(Long)
+[2020-08-03T14:15:44.044Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:15:44.044Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[]]
+[2020-08-03T14:15:44.044Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T14:15:46.046Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/employees/50", parameters={}
+[2020-08-03T14:15:46.046Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T14:15:49.049Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [http-nio-8080-exec-3] [398] [DEBUG] Using @ExceptionHandler com.example.demo.validation.ApiExceptionHandler#handleEntityNotFound(EntityNotFoundException)
+[2020-08-03T14:15:55.055Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/employees/50", parameters={}
+[2020-08-03T14:15:55.055Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T14:15:55.055Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [http-nio-8080-exec-6] [398] [DEBUG] Using @ExceptionHandler com.example.demo.validation.ApiExceptionHandler#handleEntityNotFound(EntityNotFoundException)
+[2020-08-03T14:16:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:16:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [com.example.demo.validation.ApiError@10e2f965]
+[2020-08-03T14:16:00.000Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T14:16:00.000Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [com.example.demo.validation.ApiError@35fbef3b]
+[2020-08-03T14:16:01.001Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-3] [145] [DEBUG] Resolved [com.example.demo.validation.EntityNotFoundException: No Employee exists with this ID: 50]
+[2020-08-03T14:16:01.001Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-6] [145] [DEBUG] Resolved [com.example.demo.validation.EntityNotFoundException: No Employee exists with this ID: 50]
+[2020-08-03T14:16:01.001Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 404 NOT_FOUND
+[2020-08-03T14:16:01.001Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 404 NOT_FOUND
+[2020-08-03T15:30:02.002Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting Application on DESKTOP-OUDQFQT with PID 8924 (C:\Users\mussw\IdeaProjects\Intern2020\backend\app\build\classes\java\main started by mussw in C:\Users\mussw\IdeaProjects\Intern2020\backend\app)
+[2020-08-03T15:30:02.002Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-08-03T15:30:03.003Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+[2020-08-03T15:30:04.004Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 132ms. Found 4 JPA repository interfaces.
+[2020-08-03T15:30:05.005Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2020-08-03T15:30:05.005Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-08-03T15:30:05.005Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.36]
+[2020-08-03T15:30:05.005Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-08-03T15:30:05.005Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [285] [INFO ] Root WebApplicationContext: initialization completed in 3181 ms
+[2020-08-03T15:30:05.005Z] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [main] [181] [INFO ] Initializing ExecutorService 'applicationTaskExecutor'
+[2020-08-03T15:30:06.006Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-08-03T15:30:06.006Z] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] [main] [615] [DEBUG] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2020-08-03T15:30:07.007Z] [org.springframework.web.servlet.handler.AbstractHandlerMethodMapping] [main] [351] [DEBUG] 29 mappings in 'requestMappingHandlerMapping'
+[2020-08-03T15:30:07.007Z] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [main] [173] [DEBUG] Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[2020-08-03T15:30:07.007Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [main] [297] [DEBUG] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[2020-08-03T15:30:07.007Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [110] [INFO ] HikariPool-1 - Starting...
+[2020-08-03T15:30:07.007Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2020-08-03T15:30:07.007Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [49] [INFO ] Triggering deferred initialization of Spring Data repositories…
+[2020-08-03T15:30:07.007Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-08-03T15:30:09.009Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [task-1] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-08-03T15:30:10.010Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [53] [INFO ] Spring Data repositories initialized!
+[2020-08-03T15:30:10.010Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started Application in 9.323 seconds (JVM running for 17.263)
+[2020-08-03T15:30:32.032Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.DispatcherServlet] [http-nio-8080-exec-1] [526] [DEBUG] Detected StandardServletMultipartResolver
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [542] [DEBUG] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 32 ms
+[2020-08-03T15:30:32.032Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/employees/50", parameters={}
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getEmployeeByID(Long)
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [http-nio-8080-exec-1] [398] [DEBUG] Using @ExceptionHandler com.example.demo.validation.ApiExceptionHandler#handleEntityNotFound(EntityNotFoundException)
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:32.032Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [com.example.demo.validation.ApiError@b993d7e]
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-1] [145] [DEBUG] Resolved [com.example.demo.validation.EntityNotFoundException: No Employee exists with this ID: 50]
+[2020-08-03T15:30:32.032Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 404 NOT_FOUND
+[2020-08-03T15:30:39.039Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T15:30:39.039Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T15:30:39.039Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:39.039Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T15:30:39.039Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] GET "/projects/12", parameters={}
+[2020-08-03T15:30:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T15:30:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Writing [Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', start (truncated)...]
+[2020-08-03T15:30:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] GET "/projects/12/engagements", parameters={}
+[2020-08-03T15:30:42.042Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T15:30:42.042Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:42.042Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Writing [[]]
+[2020-08-03T15:30:42.042Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] GET "/employees/Active", parameters={}
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects/12", parameters={}
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getAllActiveEmployees()
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] OPTIONS "/roles", parameters={}
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', start (truncated)...]
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Writing [[Employee{id=3, firstName='Jennifer', lastName='Aniston', email='jennifer@domain.com', startDate=201 (truncated)...]
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/roles", parameters={}
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EmployeeController#getRoles()
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:45.045Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[Ljava.lang.String;@75ce2827]
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:45.045Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:30:50.050Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/projects", parameters={}
+[2020-08-03T15:30:50.050Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getAllProjects()
+[2020-08-03T15:30:50.050Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:30:50.050Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[Project{id=12, projectName='TestProject-4', projectGoal='To make money!', clientName='Google', star (truncated)...]
+[2020-08-03T15:30:50.050Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:33:06.006Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:33:06.006Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:33:06.006Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=Management, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:33:06.006Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:33:06.006Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:33:06.006Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:33:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects/11/engagements", parameters={}
+[2020-08-03T15:33:15.015Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T15:33:15.015Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:33:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[com.example.demo.controllers.EngagementController$EngagementsBySkill@5d0f3d6f]]
+[2020-08-03T15:33:15.015Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:33:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] GET "/projects/11", parameters={}
+[2020-08-03T15:33:33.033Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T15:33:33.033Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:33:33.033Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Writing [Project{id=11, projectName='TestProject-3', projectGoal='To make money!', clientName='TicketMaster', (truncated)...]
+[2020-08-03T15:33:33.033Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:34:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] PUT "/projects/11", parameters={}
+[2020-08-03T15:34:15.015Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-7] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#updateProjectByID(Long, Project)
+[2020-08-03T15:34:15.015Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-7] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Project{id=11, projectName='TestProject-3', projectGoal='To make money!', clientName='TicketMaster', (truncated)...]
+[2020-08-03T15:34:15.015Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:34:15.015Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-7] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:34:15.015Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-7] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:34:20.020Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/projects/11", parameters={}
+[2020-08-03T15:34:20.020Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#getProjectByID(Long)
+[2020-08-03T15:34:20.020Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:34:20.020Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [Project{id=11, projectName='TestProject-3', projectGoal='To make money!', clientName='TicketMaster', (truncated)...]
+[2020-08-03T15:34:20.020Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:34:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] GET "/projects/11/engagements", parameters={}
+[2020-08-03T15:34:27.027Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T15:34:27.027Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:34:27.027Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Writing [[com.example.demo.controllers.EngagementController$EngagementsBySkill@3d063422]]
+[2020-08-03T15:34:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:40:13.013Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:40:13.013Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:40:13.013Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=Ruby, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:40:13.013Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:40:13.013Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:40:13.013Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:40:18.018Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:40:18.018Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:40:18.018Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=Java, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:40:18.018Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:40:18.018Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:40:18.018Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:40:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:40:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:40:23.023Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=SQL, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:40:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:40:23.023Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:40:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:40:28.028Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] GET "/projects/11/engagements", parameters={}
+[2020-08-03T15:40:28.028Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-9] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T15:40:28.028Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-9] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:40:28.028Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-9] [91] [DEBUG] Writing [[com.example.demo.controllers.EngagementController$EngagementsBySkill@7282d6d4, com.example.demo.con (truncated)...]
+[2020-08-03T15:40:28.028Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-9] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:40:53.053Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting Application on DESKTOP-OUDQFQT with PID 2400 (C:\Users\mussw\IdeaProjects\Intern2020\backend\app\build\classes\java\main started by mussw in C:\Users\mussw\IdeaProjects\Intern2020\backend\app)
+[2020-08-03T15:40:53.053Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-08-03T15:40:55.055Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+[2020-08-03T15:40:55.055Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 115ms. Found 4 JPA repository interfaces.
+[2020-08-03T15:40:56.056Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2020-08-03T15:40:56.056Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-08-03T15:40:56.056Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.36]
+[2020-08-03T15:40:56.056Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-08-03T15:40:56.056Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [285] [INFO ] Root WebApplicationContext: initialization completed in 2632 ms
+[2020-08-03T15:40:56.056Z] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [main] [181] [INFO ] Initializing ExecutorService 'applicationTaskExecutor'
+[2020-08-03T15:40:56.056Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-08-03T15:40:57.057Z] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] [main] [615] [DEBUG] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2020-08-03T15:40:57.057Z] [org.springframework.web.servlet.handler.AbstractHandlerMethodMapping] [main] [351] [DEBUG] 29 mappings in 'requestMappingHandlerMapping'
+[2020-08-03T15:40:57.057Z] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [main] [173] [DEBUG] Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[2020-08-03T15:40:57.057Z] [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver] [main] [297] [DEBUG] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[2020-08-03T15:40:57.057Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [110] [INFO ] HikariPool-1 - Starting...
+[2020-08-03T15:40:57.057Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2020-08-03T15:40:57.057Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [49] [INFO ] Triggering deferred initialization of Spring Data repositories…
+[2020-08-03T15:40:57.057Z] [com.zaxxer.hikari.HikariDataSource] [task-1] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-08-03T15:41:00.000Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [task-1] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-08-03T15:41:00.000Z] [org.springframework.data.repository.config.DeferredRepositoryInitializationListener] [main] [53] [INFO ] Spring Data repositories initialized!
+[2020-08-03T15:41:00.000Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started Application in 7.557 seconds (JVM running for 11.37)
+[2020-08-03T15:41:16.016Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.DispatcherServlet] [http-nio-8080-exec-1] [526] [DEBUG] Detected StandardServletMultipartResolver
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [542] [DEBUG] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 12 ms
+[2020-08-03T15:41:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-1] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:41:16.016Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-1] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=Ruby, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-1] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:41:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:41:19.019Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:41:19.019Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-3] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:41:19.019Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-3] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=Java, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:41:19.019Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:41:19.019Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-3] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:41:19.019Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-3] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:41:22.022Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:41:22.022Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-4] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:41:22.022Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-4] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=SQL, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:41:22.022Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:41:22.022Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-4] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:41:22.022Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:41:26.026Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] PUT "/projects/11/skills", parameters={}
+[2020-08-03T15:41:26.026Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-5] [414] [DEBUG] Mapped to com.example.demo.controllers.SkillController#addSkillToProject(long, HashMap)
+[2020-08-03T15:41:26.026Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-5] [91] [DEBUG] Read "application/json;charset=UTF-8" to [{skillName=SQL, totalWeeklyHours=80, count=1}]
+[2020-08-03T15:41:26.026Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:41:26.026Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-5] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:41:26.026Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-5] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:41:34.034Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] GET "/projects/11/engagements", parameters={}
+[2020-08-03T15:41:34.034Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-6] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T15:41:34.034Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-6] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:41:34.034Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-6] [91] [DEBUG] Writing [[com.example.demo.controllers.EngagementController$EngagementsBySkill@62097fbe, com.example.demo.con (truncated)...]
+[2020-08-03T15:41:35.035Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-6] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:47:54.054Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] PUT "/projects/11", parameters={}
+[2020-08-03T15:47:54.054Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-8] [414] [DEBUG] Mapped to com.example.demo.controllers.ProjectController#updateProjectByID(Long, Project)
+[2020-08-03T15:47:54.054Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-8] [91] [DEBUG] Read "application/json;charset=UTF-8" to [Project{id=11, projectName='TestProject-3', projectGoal='To make money!', clientName='TicketMaster', (truncated)...]
+[2020-08-03T15:47:54.054Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:47:54.054Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-8] [295] [DEBUG] Nothing to write: null body
+[2020-08-03T15:47:54.054Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-8] [1131] [DEBUG] Completed 200 OK
+[2020-08-03T15:47:59.059Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] GET "/projects/11/engagements", parameters={}
+[2020-08-03T15:47:59.059Z] [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8080-exec-10] [414] [DEBUG] Mapped to com.example.demo.controllers.EngagementController#getEngagementsByProjectID(Long)
+[2020-08-03T15:47:59.059Z] [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8080-exec-10] [265] [DEBUG] Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[2020-08-03T15:47:59.059Z] [org.springframework.core.log.LogFormatUtils] [http-nio-8080-exec-10] [91] [DEBUG] Writing [[com.example.demo.controllers.EngagementController$EngagementsBySkill@14c6de20, com.example.demo.con (truncated)...]
+[2020-08-03T15:47:59.059Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-10] [1131] [DEBUG] Completed 200 OK
