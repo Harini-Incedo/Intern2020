@@ -1,0 +1,56 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #skillForm="ngForm">
+      <div class="form-group">
+        <p><strong>Skill Information</strong></p>
+        <div>
+          <label for="projectName">&emsp;Project Name <span style="color: red;">*</span></label>
+          <select id="projectName" required name="projectName" #projectName="ngModel"
+          [(ngModel)]="skill.projectName" disabled>
+            <option [value]="skill.projectName">{{skill.projectName}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="name">&emsp;Skill Name<span style="color: red;">*</span></label>
+          <select id="name" required name="name" #skillName="ngModel" [(ngModel)]="skill.skillName">
+            <option *ngFor="let skill of skills" [value]="skill">
+              {{skill}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="count">&emsp;Number of People Needed<span style="color: red;">*</span></label>
+          <input type="number" [(ngModel)]="skill.count" id="count"
+          name="count"
+          appForbiddenHoursNeeded="peopleNeeded"
+          value="1"
+          min="1"
+          #count="ngModel"
+          required>
+          <div *ngIf="count.invalid && (count.dirty || count.touched)"
+          class="alert alert-danger">
+          <div *ngIf="count.errors?.forbiddenHoursNeeded">
+            Forbidden {{count.errors?.forbiddenHoursNeeded?.value}} because the
+            {{printForbiddenMessage(count.errors?.forbiddenHoursNeeded?.value)}}
+          </div>
+          <div *ngIf="!count.errors?.forbiddenHoursNeeded && count.errors.required">
+            Number of People Needed is required.
+          </div>
+        </div>
+        </div>
+        <div>
+          <label for="totalHours">&emsp;Weekly Hours Needed<span style="color: red;">*</span></label>
+          <input type="number" [(ngModel)]="skill.totalWeeklyHours" id="totalHours"
+          name="weeklyHoursNeeded"
+          appForbiddenHoursNeeded="project"
+          value="1"
+          min="1"
+          #totalWeeklyHours="ngModel"
+          required>
+        </div>
+      </div>
+    </form>
+    <button type="button" (click)="goBack()">&larr;Go Back</button>
+    <button type="submit" [disabled]="skillForm.form.invalid?true:false" (click)="onSubmit()" style="margin-left: 1em;">Save</button>
+  </div>
+</div>

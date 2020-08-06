@@ -48,9 +48,10 @@ public class EmployeeController {
     }
 
     // To get all recommended employees in sorted order by last name
-    @GetMapping("/employees/recommended")
+    @PostMapping("/employees/recommended")
     public List<Employee> getRecommendedEmployees(@RequestBody HashMap<String, String> values) {
         // extracts necessary values from request body sent by UI
+        System.out.println("Check values MAP: " + values);
         String skill = values.get("skill");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(values.get("startDate"), dtf);
@@ -61,9 +62,6 @@ public class EmployeeController {
         // iterates over all active employees and extracts only those who
         // have the desired skill
         for (Employee e : active) {
-//            if (containsSkill(e.getSkills(), skill)) {
-//                employeesWithSkill.add(e);
-//            }
             if (e.getSkills().contains(skill)) {
                 employeesWithSkill.add(e);
             }
@@ -99,17 +97,6 @@ public class EmployeeController {
     private boolean containsOverlap(Engagement e, LocalDate startDate, LocalDate endDate) {
         return !(startDate.isAfter(e.getEndDate()) || endDate.isBefore(e.getStartDate()));
     }
-
-//    // helper method:
-//    // returns true if given skill set contains given skill
-//    private boolean containsSkill(String[] skills, String skill) {
-//        for (String s : skills) {
-//            if (s.equals(skill)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
     // To get a preset list of roles
     @GetMapping("/roles")
@@ -148,18 +135,10 @@ public class EmployeeController {
     @PostMapping("/employees")
     void createEmployee(@RequestBody Employee e) throws InvalidInputException {
         e.setActive(true);
-        System.out.println(e.getFirstName() + " " + e.getLastName() + ":");
-        System.out.println("Email: " + e.getEmail());
-        System.out.println("Department: " + e.getDepartment());
-        System.out.println("Manager: " + e.getManager());
-        System.out.println("Start Date: " + e.getStartDate());
-        System.out.println("End Date: " + e.getEndDate());
-        System.out.println("Location: " + e.getLocation());
-        System.out.println("Time Zone: " + e.getTimezone());
-        System.out.println("Working Hours: " + e.getWorkingHours());
-        System.out.println("Skills : " + e.getSkills());
+
         // INPUT VALIDATION //
         validateEmployeeDetails(e);
+        validateEmailUniqueness(e.getEmail());
 
         repository.save(e);
     }
@@ -172,6 +151,21 @@ public class EmployeeController {
         repository.save(toDelete);
     }
 
+    // Activates the employee with the given ID, if it exists/is currently inactive
+    @PutMapping("employees/{id}/activate")
+    void activateEmployee(@PathVariable("id") Long id) throws EntityNotFoundException {
+        Optional<Employee> employee = repository.findById(id);
+        if (employee.isPresent()) {
+            Employee toActivate = employee.get();
+            toActivate.setActive(true);
+            repository.save(toActivate);
+        } else {
+            throw new EntityNotFoundException("No Employee exists with this ID: " + id,
+                    "Please use a valid employee ID.");
+        }
+    }
+
+
     // Updates the employee with the given ID if it exists
     @PutMapping("employees/{id}")
     void updateEmployeeByID(@PathVariable("id") Long id, @RequestBody Employee e)
@@ -180,6 +174,9 @@ public class EmployeeController {
 
         // INPUT VALIDATION //
         validateEmployeeDetails(e);
+        if (!toUpdate.getEmail().equals(e.getEmail())) {
+            validateEmailUniqueness(e.getEmail());
+        }
 
         toUpdate.setFirstName(e.getFirstName());
         toUpdate.setLastName(e.getLastName());
@@ -202,6 +199,16 @@ public class EmployeeController {
 
     }
 
+    // ensures that the given email does not already exist
+    // in the employee database.
+    private void validateEmailUniqueness(String email) {
+        if (repository.checkEmailDuplication(email) != null) {
+            throw new InvalidInputException("Invalid Email: "+ email,
+                    "There already exists an employee with this email.");
+        }
+    }
+
+    // ensures validity of all given employee details
     private void validateEmployeeDetails(Employee e) throws InvalidInputException {
         /* First Name */
         if (e.getFirstName() == null || !e.getFirstName().matches("^[a-zA-Z ]*$")) {
@@ -219,17 +226,14 @@ public class EmployeeController {
                     "Start Date should be on or after January 1st, 2012.");
         }
         /* End Date */
-        if (e.getEndDate() == null || !e.getEndDate().isAfter(e.getStartDate())) {
+        if (e.getEndDate() != null && !e.getEndDate().isAfter(e.getStartDate())) {
             throw new InvalidInputException("End Date is invalid: " + e.getEndDate(),
                     "End Date should be equal to or later than Start Date.");
         }
         /* Email */
         if (e.getEmail() == null || ! e.getEmail().matches("^[A-Za-z0-9+_.-]+@+[A-za-z]+.[a-zA-z]{2,}$")) {
             throw new InvalidInputException("Invalid Email: " + e.getEmail(),
-                    "Please input an EmailID");
-        }
-        if(!(repository.checkEmail(e.getEmail()).isEmpty())){
-            throw new InvalidInputException("Invalid Email: "+ e.getEmail(),"Email already exists");
+                                                    "Please input a valid email ID.");
         }
         /* Department */
         if (e.getDepartment() == null) {

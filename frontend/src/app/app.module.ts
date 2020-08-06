@@ -11,8 +11,10 @@ import { ViewPageComponent } from './view-page/view-page.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
-import { EngagementFormComponent } from './engagement-form/engagement-form.component';
 import { ForbiddenHoursValidatorDirective } from './validate-hours-forms.directive';
+import { SkillFormComponent } from './skill-form/skill-form.component';
+import { EmployeeSkillFormComponent } from './employee-skill-form/employee-skill-form.component';
+import { EditHoursComponent } from './edit-hours/edit-hours.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { ForbiddenHoursValidatorDirective } from './validate-hours-forms.directi
     ProjectListComponent,
     ProjectDetailComponent,
     ProjectFormComponent,
-    EngagementFormComponent,
-    ForbiddenHoursValidatorDirective
+    ForbiddenHoursValidatorDirective,
+    SkillFormComponent,
+    EmployeeSkillFormComponent,
+    EditHoursComponent
   ],
   imports: [
     BrowserModule,

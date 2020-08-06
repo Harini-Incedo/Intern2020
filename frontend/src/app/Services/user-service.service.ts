@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import {catchError} from 'rxjs/operators'
 import {Location} from '@angular/common';
 import { Engagement } from '../Classes/engagement';
+import { Skill } from '../Classes/skill';
 @Injectable()
 export class UserService {
 
@@ -48,6 +49,10 @@ export class UserService {
       .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
+  public findRecommended(sampleMap:object): Observable<User[]> {
+    return this.http.post<User[]>(this.usersUrl + "/recommended", sampleMap);
+  }
+
   public create(user: User) {
     return this.http.post<User>(this.usersUrl, user)
       .pipe(catchError(this.handleSecondError));
@@ -68,6 +73,10 @@ export class UserService {
 
   public getSkills(): any{
     return this.http.get("http://localhost:8080/skills", this.httpOptions);
+  }
+
+  public getSkillByID(id: number): Observable<Skill>{
+    return this.http.get<Skill>("http://localhost:8080/skills/" + id);
   }
 
   public gotoUserList() {
