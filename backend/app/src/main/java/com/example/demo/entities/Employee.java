@@ -44,7 +44,7 @@ public class Employee {
     @Column(name = "location")
     private String location;
     @Column(name = "timezone")
-    private Timezone timezone;
+    private Timezone timeZone;
 
     // current position profile
     @Column(name = "department")
@@ -66,7 +66,7 @@ public class Employee {
         this.lastName = lastName;
         this.email = email;
         this.startDate = startDate;
-        this.timezone = timezone;
+        this.timeZone = timezone;
         this.role = role;
         this.active = true;
         this.skills = skills;
@@ -142,11 +142,11 @@ public class Employee {
     }
 
     public Timezone getTimezone() {
-        return timezone;
+        return timeZone;
     }
 
     public void setTimezone(Timezone timezone) {
-        this.timezone = timezone;
+        this.timeZone = timezone;
     }
 
     public String getDepartment() {
@@ -193,7 +193,7 @@ public class Employee {
                 ", active=" + active +
                 ", workingHours='" + workingHours + '\'' +
                 ", location='" + location + '\'' +
-                ", timezone=" + timezone +
+                ", timezone=" + timeZone +
                 ", department='" + department + '\'' +
                 ", role='" + role + '\'' +
                 ", manager='" + manager + '\'' +

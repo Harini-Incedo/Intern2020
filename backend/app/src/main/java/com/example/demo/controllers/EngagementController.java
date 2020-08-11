@@ -144,6 +144,7 @@ public class EngagementController {
         toUpdate.setStartDate(e.getStartDate());
         toUpdate.setEndDate(e.getEndDate());
         toUpdate.setSkillID(e.getSkillID());
+        toUpdate.setBillable(e.getBillable());
 
         // updates only the hourly mappings which have changed from the UI
         Map<LocalDate, Integer> existingHourlyMapping = toUpdate.getAssignedWeeklyHours();
