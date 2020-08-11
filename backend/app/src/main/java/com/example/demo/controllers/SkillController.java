@@ -26,10 +26,12 @@ public class SkillController {
 
     @PutMapping("/projects/{projID}/skills")
     public void addSkillToProject(@PathVariable("projID") long projID, @RequestBody HashMap<String, String> values) {
+
         // extracts necessary values from request body sent by UI
         System.out.println(values);
         String skillName = values.get("skillName");
         int totalWeeklyHours = Integer.parseInt(values.get("totalWeeklyHours"));
+        int avgWeeklyEngHours = Integer.parseInt(values.get("avgWeeklyEngHours"));
         int count = Integer.parseInt(values.get("count"));
 
         // creates a new skill object on project if one does not exist.
@@ -46,16 +48,17 @@ public class SkillController {
         for (int i = 0; i < count; i++) {
             Project p = (projectRepository.findById(projID)).get();
             Engagement newEngagement = new Engagement(projID, skillOnProject.getId(),
-                                                            p.getStartDate(), p.getEndDate());
+                                                            p.getStartDate(), p.getEndDate(),
+                                                                avgWeeklyEngHours);
             engagementRepository.save(newEngagement);
         }
+
     }
 
     @GetMapping("/skills/{id}")
     public Skill getSkillByID(@PathVariable("id") long id) {
         return (skillRepository.findById(id)).get();
     }
-
 
     // For testing purposes:
     // returns all skills in the skill database table

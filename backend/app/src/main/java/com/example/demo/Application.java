@@ -14,10 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Stream;
 
 @SpringBootApplication
@@ -33,76 +30,146 @@ public class Application {
 	CommandLineRunner init(EmployeeRepository empRepository, ProjectRepository projRepository,
 								EngagementRepository engRepository) {
 		return args -> {
-			List<String> skillsList = Arrays.asList("Java","Python","C","C++","UI","SQL","Cloud Computing",
-					"Ruby","R","Data Science","Machine Learning","Go","Finance",
-					"Marketing","Human Resource","Management");
-			Random random = new Random();
-			// creates mock active employees for testing
-			Stream.of("John Cena Analyst", "Sponge Robert Manager",
-						"Jennifer Aniston Developer", "Harry Styles Intern",
-							"Nancy Drew Consultant").forEach(name -> {
+
+			// random integer generator
+			Random rand = new Random();
+
+			// predefined values needed for randomization
+			String[] skillsList = {"Java","Python","UI","SQL", "Cloud Computing","Marketing","Management"};
+			String[] employmentType = {"Part Time", "Full Time", "Temporary"};
+			String[] roles = {"Analyst", "Developer", "Consultant", "Data Scientist",
+									"Intern", "Manager", "HR", "Assistant"};
+			String[] mockManagerNames = { "Peter Pan", "Tinker Bell", "Sponge Robert" };
+
+			// maps timezones to practical locations
+			HashMap<Employee.Timezone, String> locations = new HashMap<>();
+			locations.put(Employee.Timezone.IST, "Bangalore");
+			locations.put(Employee.Timezone.EST, "New Jersey");
+			locations.put(Employee.Timezone.PST, "Santa Clara");
+
+			// set of pre-defined manager names
+			HashSet<String> mockManagersSet= new HashSet<>();
+			for (String name : mockManagerNames) {
+				mockManagersSet.add(name);
+			}
+
+			// set of pre-defined inactive employee names
+			HashSet<String> mockInactiveEmployeeNames = new HashSet<>();
+			mockInactiveEmployeeNames.add("Mickey Mouse");
+			mockInactiveEmployeeNames.add("Minnie Mouse");
+			mockInactiveEmployeeNames.add("Donald Duck");
+			mockInactiveEmployeeNames.add("Daisy Duck");
+			mockInactiveEmployeeNames.add("Buzz Lightyear");
+
+			// full set of pre-defined employee names
+			String[] mockEmployeeNames = {	"Mickey Mouse",
+											"Minnie Mouse",
+											"Donald Duck",
+											"Daisy Duck",
+											"Buzz Lightyear",
+											"Harry Potter",
+											"Albus Dumbledore",
+											"Lord Voldemort",
+											"Severus Snape",
+											"Draco Malfoy",
+											"Hermione Granger",
+											"Ron Weasley",
+											"Rachel Greene",
+											"Phoebe Buffay",
+											"Ross Geller",
+											"Chandler Bing",
+											"Monica Geller",
+											"Joey Tribbiani",
+											"Shrek Ogre",
+											"Donkey Donkey",
+											"Princess Fiona",
+											"Lord Farquaad",
+											"Peter Pan",
+											"Tinker Bell",
+											"Sponge Robert",
+											"John Cena",
+											"Harry Styles",
+											"Niall Horan",
+											"Zayn Malik",
+											"Louis Tomlinson",
+											"Liam Payne"	};
+
+			///// LOADS MOCK EMPLOYEES INTO DATABASE /////
+			for(String name : mockEmployeeNames) {
+				// for extracting names
 				String[] info = name.split(" ");
+
+				// adds up to 5 random skills to each employee's skill set
 				HashSet<String> mockSkills = new HashSet<>();
-				mockSkills.add(skillsList.get(random.nextInt(10)));
-				mockSkills.add("Management");
+				for(int i = 0; i < 5; i++) {
+					mockSkills.add(skillsList[rand.nextInt(skillsList.length)]);
+				}
+
+				// assigns manager-specific traits if the current name is a
+				// mock manager name, otherwise assigns randomized traits
+				boolean isManager = mockManagersSet.contains(name);
+				String role = isManager ? "Manager" : roles[rand.nextInt(8)];
+				String manager = isManager ? "Jack Sparrow" : mockManagerNames[rand.nextInt(mockManagerNames.length)];
+				if (isManager) {
+					mockSkills.add("Management");
+				}
+
+				// creates an employee object with current name and selected traits
 				Employee e = new Employee(info[0], info[1],
-										info[0].toLowerCase() + "@domain.com",
-												LocalDate.of(2019, 1, 1),
-													Employee.Timezone.EST, info[2], mockSkills);
+						info[0].toLowerCase() + info[1].toLowerCase() + "@domain.com",
+								LocalDate.of(2019, 1, 1),
+									Employee.Timezone.getRandomTimezone(rand),
+										role, mockSkills);
+
+				// sets fixed department
 				e.setDepartment("Telecom");
-				e.setLocation("New Jersey");
-				e.setManager("Chandler Bing");
-				e.setEndDate(LocalDate.of(2020, 1, 1));
-				e.setWorkingHours("Full Time");
+				// sets a location matching the random timezone
+				e.setLocation(locations.get(e.getTimezone()));
+				// sets random manager
+				e.setManager(manager);
+				// sets a random end date > start date
+				e.setEndDate(LocalDate.of(2021, rand.nextInt(11) + 1 , 1));
+				// sets random employment type
+				e.setWorkingHours(employmentType[rand.nextInt(employmentType.length)]);
 
+				// sets active status if current name is an mock inactive employee
+				if (mockInactiveEmployeeNames.contains(name)) {
+					e.setActive(false);
+				}
+
+				// saves mock employee to the employee database
 				empRepository.save(e);
-			});
+			}
 
-			// creates mock inactive employees for testing
-			Stream.of("Billy Joel HR", "Fred Heebie Intern",
-					"Bill Jeebie Intern").forEach(name -> {
-				String[] info = name.split(" ");
-				Employee e = new Employee(info[0], info[1],
-						info[0].toLowerCase() + "@domain.com",
-						LocalDate.of(2019, 1, 1),
-						Employee.Timezone.EST, info[2],new HashSet<>());
-				e.setDepartment("Healthcare");
-				e.setLocation("New York");
-				e.setManager("Joey Tribbiani");
-				e.setEndDate(LocalDate.of(2020, 1, 1));
-				e.setWorkingHours("Part Time");
-				e.setActive(false);
-				empRepository.save(e);
-			});
-
-			empRepository.findAll().forEach(System.out::println);
-
-			// creates mock projects for testing
+			///// LOADS MOCK PROJECTS INTO DATABASE /////
 			Stream.of("TestProject-1 TMobile", "TestProject-2 Microsoft", "TestProject-3 TicketMaster",
 						"TestProject-4 Google", "TestProject-5 Sony").forEach(name -> {
-				String[] info = name.split(" ");
-				Project p = new Project(info[0], info[1],
-										LocalDate.of(2019, 1, 1),
-									"In Progress");
-				p.setDepartment("Telecom");
-				p.setProjectGoal("To make money!");
-				p.setTeamSize(10);
-				p.setEndDate(LocalDate.of(2019, 3, 1));
-				p.setWeeklyHours(300);
-				projRepository.save(p);
-			});
-			projRepository.findAll().forEach(System.out::println);
 
-//			// creates mock engagements for testing
-//			Stream.of("3 9 40 Developer", "2 9 40 Manager", "5 10 40 Consultant",
-//					"1 10 40 Analyst", "4 10 40 Intern").forEach(name -> {
-//				String[] info = name.split(" ");
-//				Engagement p = new Engagement(Long.parseLong(info[1]), 1,
-//												LocalDate.of(2020, 6, 1),
-//												LocalDate.of(2020, 7, 1));
-//				engRepository.save(p);
-//			});
-//			engRepository.findAll().forEach(System.out::println);
+				// for extracting string info
+				String[] info = name.split(" ");
+
+				// creates a new project with the given details
+				Project p = new Project(info[0], info[1], LocalDate.of(2019, 1, 1),
+										"In Progress");
+
+				// sets fixed department and project goal
+				p.setDepartment("Telecom");
+				p.setProjectGoal("To help the client leverage their digital and data " +
+									"infrastructure to deliver world class customer experience " +
+										"and optimize their network and business operations.");
+
+				// sets randomized team size: between 5-20 and
+				// reasonable weekly hours based on team size.
+				p.setTeamSize(rand.nextInt(16) + 5);
+				p.setWeeklyHours(p.getTeamSize() * 40);
+
+				// sets project end date to be randomly between 1-5 months ahead of start date
+				p.setEndDate(LocalDate.of(2019, rand.nextInt(5) + 2, 1));
+
+				// saves mock employee to the employee database
+				projRepository.save(p);
+
+			});
 
 		};
 	}
