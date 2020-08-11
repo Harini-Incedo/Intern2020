@@ -33,18 +33,23 @@ public class Engagement {
     @ElementCollection
     @Column(name ="assignedWeeklyHours")
     private Map<LocalDate, Integer> assignedWeeklyHours;
+    @Column(name ="billable")
+    private boolean billable;
+
 
     public Engagement() {
 
     }
 
-    public Engagement(long projectID, long skillID, LocalDate startDate, LocalDate endDate) {
+    public Engagement(long projectID, long skillID, LocalDate startDate, LocalDate endDate,boolean billable) {
         this.projectID =  projectID;
         this.skillID = skillID;
         this.startDate = startDate;
         this.endDate = endDate;
         System.out.println(startDate + " " + endDate);
         this.assignedWeeklyHours = defaultWeeklyHoursMapping();
+        this.billable = billable;
+
     }
 
     // helper method:
@@ -126,6 +131,14 @@ public class Engagement {
 
     public void setAssignedWeeklyHours(Map<LocalDate, Integer> assignedWeeklyHours) {
         this.assignedWeeklyHours = assignedWeeklyHours;
+    }
+
+    public boolean getBillable() {
+        return billable;
+    }
+
+    public void setBillable(boolean billable) {
+        this.billable = billable;
     }
 
     @Override
