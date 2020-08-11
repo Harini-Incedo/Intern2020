@@ -33,8 +33,9 @@ public class Engagement {
     @ElementCollection
     @Column(name ="assignedWeeklyHours")
     private Map<LocalDate, Integer> assignedWeeklyHours;
-    @Column(name = "billable")
+    @Column(name ="billable")
     private boolean billable;
+
 
     public Engagement() {
 
@@ -47,7 +48,8 @@ public class Engagement {
         this.endDate = endDate;
         System.out.println(startDate + " " + endDate);
         this.assignedWeeklyHours = defaultWeeklyHoursMapping();
-        this.billable=billable;
+        this.billable = billable;
+
     }
 
     // helper method:

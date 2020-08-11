@@ -78,11 +78,10 @@ public class SkillController {
         skillRepository.save(skillToUpdate);
     }
     @PutMapping("/skills/{id}/update")
-    void updateSkillsByID(@PathVariable("id") Long id,@RequestBody int newHours) throws EntityNotFoundException{
+    void updateSkillsByID(@PathVariable("id")Long id, @RequestBody int newHours) throws EntityNotFoundException{
         Skill toUpdate = getSkillByID(id);
         toUpdate.setTotalWeeklyHours(newHours);
         skillRepository.save(toUpdate);
-
     }
 
 }
