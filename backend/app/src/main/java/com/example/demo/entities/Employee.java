@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.Set;
 
 @Entity
@@ -13,7 +14,11 @@ public class Employee {
     public enum Timezone {
         PST,
         EST,
-        IST
+        IST;
+
+        public static Timezone getRandomTimezone(Random random) {
+            return values()[random.nextInt(values().length)];
+        }
     }
 
     @Id

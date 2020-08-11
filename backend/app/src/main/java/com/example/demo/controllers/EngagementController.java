@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @RestController
@@ -157,6 +158,27 @@ public class EngagementController {
         }
 
         repository.save(toUpdate);
+    }
+
+    // Updates the given engagement's hourly mappings for the weeks,
+    // starting with startDate and going forward weekCount # of weeks
+    // after startDate, with the given newHours.
+    @PutMapping("engagements/{id}/hours")
+    void massUpdateHoursByEngagementID(@PathVariable("id")Long id,
+                                       @RequestBody HashMap<String, String> values)
+                                            throws EntityNotFoundException {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startDate = LocalDate.parse(values.get("startDate"), dtf);
+        int weekCount = Integer.parseInt(values.get("weekCount"));
+        int newHours = Integer.parseInt(values.get("newHours"));
+
+        EngagementContainer data = getEngagementByID(id);
+        Engagement toUpdate = data.engagement;
+
+        toUpdate.massUpdateHours(startDate, weekCount, newHours);
+        repository.save(toUpdate);
+
     }
 
     // Validates engagement details input by the user
