@@ -6,6 +6,7 @@ import com.example.demo.entities.Skill;
 import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
 import com.example.demo.repositories.SkillRepository;
+import com.example.demo.validation.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,9 +48,8 @@ public class SkillController {
         // except the employee on the engagement.
         for (int i = 0; i < count; i++) {
             Project p = (projectRepository.findById(projID)).get();
-            Engagement newEngagement = new Engagement(projID, skillOnProject.getId(),
-                                                            p.getStartDate(), p.getEndDate(),
-                                                                avgWeeklyEngHours);
+            Engagement newEngagement = new Engagement(projID, skillOnProject.getId(), p.getStartDate(), p.getEndDate(),
+                                                                avgWeeklyEngHours, false);
             engagementRepository.save(newEngagement);
         }
 
@@ -78,6 +78,12 @@ public class SkillController {
     private void updateSkillByID(Skill skillToUpdate, int newHours) {
         skillToUpdate.setTotalWeeklyHours(newHours);
         skillRepository.save(skillToUpdate);
+    }
+    @PutMapping("/skills/{id}/update")
+    void updateSkillsByID(@PathVariable("id")Long id, @RequestBody int newHours) throws EntityNotFoundException{
+        Skill toUpdate = getSkillByID(id);
+        toUpdate.setTotalWeeklyHours(newHours);
+        skillRepository.save(toUpdate);
     }
 
 }
