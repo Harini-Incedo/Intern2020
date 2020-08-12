@@ -3,9 +3,11 @@ package com.example.demo;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
+import com.example.demo.entities.Skill;
 import com.example.demo.repositories.EmployeeRepository;
 import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
+import com.example.demo.repositories.SkillRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -28,7 +30,7 @@ public class Application {
 
 	@Bean
 	CommandLineRunner init(EmployeeRepository empRepository, ProjectRepository projRepository,
-								EngagementRepository engRepository) {
+						   EngagementRepository engRepository, SkillRepository skillRepository) {
 		return args -> {
 
 			// random integer generator
@@ -94,14 +96,16 @@ public class Application {
 											"Louis Tomlinson",
 											"Liam Payne"	};
 
+			//////////////////////////////////////////////
 			///// LOADS MOCK EMPLOYEES INTO DATABASE /////
-			for(String name : mockEmployeeNames) {
+			//////////////////////////////////////////////
+			for (String name : mockEmployeeNames) {
 				// for extracting names
-				String[] info = name.split(" ");
+				String[] names = name.split(" ");
 
 				// adds up to 5 random skills to each employee's skill set
 				HashSet<String> mockSkills = new HashSet<>();
-				for(int i = 0; i < 5; i++) {
+				for (int i = 0; i < 5; i++) {
 					mockSkills.add(skillsList[rand.nextInt(skillsList.length)]);
 				}
 
@@ -115,8 +119,8 @@ public class Application {
 				}
 
 				// creates an employee object with current name and selected traits
-				Employee e = new Employee(info[0], info[1],
-						info[0].toLowerCase() + info[1].toLowerCase() + "@domain.com",
+				Employee e = new Employee(names[0], names[1],
+						names[0].toLowerCase() + names[1].toLowerCase() + "@domain.com",
 								LocalDate.of(2019, 1, 1),
 									Employee.Timezone.getRandomTimezone(rand),
 										role, mockSkills);
@@ -141,7 +145,9 @@ public class Application {
 				empRepository.save(e);
 			}
 
+			/////////////////////////////////////////////
 			///// LOADS MOCK PROJECTS INTO DATABASE /////
+			/////////////////////////////////////////////
 			Stream.of("TestProject-1 TMobile", "TestProject-2 Microsoft", "TestProject-3 TicketMaster",
 						"TestProject-4 Google", "TestProject-5 Sony").forEach(name -> {
 
@@ -164,12 +170,50 @@ public class Application {
 				p.setWeeklyHours(p.getTeamSize() * 40);
 
 				// sets project end date to be randomly between 1-5 months ahead of start date
-				p.setEndDate(LocalDate.of(2019, rand.nextInt(5) + 2, 1));
+				p.setEndDate(LocalDate.of(2019, rand.nextInt(2) + 3, 1));
 
 				// saves mock employee to the employee database
 				projRepository.save(p);
 
 			});
+
+			List<Project> projects = projRepository.findAllProjects();
+			List<Employee> employees = empRepository.findAllActive();
+
+			/////////////////////////////////////////////////////////
+			///// LOADS MOCK SKILLS & ENGAGEMENTS INTO DATABASE /////
+			/////////////////////////////////////////////////////////
+			for (Project p : projects) {
+
+				// indices to help with randomization
+				int randomSkillIndex = rand.nextInt(skillsList.length);
+				int randomEmployeeIndex = rand.nextInt(employees.size());
+
+				// generates random number of skills on project: between 1-5
+				int randomSkillsCount = rand.nextInt(5) + 1;
+				for (int i = 0; i < randomSkillsCount; i++) {
+					// gets a random skill from the skills list and adds it to project
+					Skill currSkill = new Skill(skillsList[(randomSkillIndex++) % skillsList.length],
+															80, p.getId());
+					skillRepository.save(currSkill);
+
+					// generates random number of engagements under current skill: between 1-3
+					int randomEmployeeCount = rand.nextInt(3) + 1;
+					for (int j = 0; j < randomEmployeeCount; j++) {
+						// gets a random employee and ensures they have current skill
+						Employee employee = employees.get((randomEmployeeIndex++) % employees.size());
+						employee.getSkills().add(currSkill.getSkillName());
+						empRepository.save(employee);
+						// engages the employee on this project under current skill
+						Engagement engagement = new Engagement(p.getId(), currSkill.getId(),
+																	p.getStartDate(), p.getEndDate(),
+																	40, false);
+						engagement.setEmployeeID(employee.getId());
+						engRepository.save(engagement);
+					}
+				}
+
+			}
 
 		};
 	}
