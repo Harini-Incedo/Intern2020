@@ -41,20 +41,22 @@ public class SkillController {
         if (skillOnProject == null) {
             skillOnProject = createSkill(skillName, totalWeeklyHours, projID);
         } else {
-            updateSkillByID(skillOnProject, totalWeeklyHours);
+            updateSkillHours(skillOnProject, totalWeeklyHours);
         }
 
         // creates count many "empty" engagements with every detail filled
         // except the employee on the engagement.
         for (int i = 0; i < count; i++) {
             Project p = (projectRepository.findById(projID)).get();
-            Engagement newEngagement = new Engagement(projID, skillOnProject.getId(), p.getStartDate(), p.getEndDate(),
-                                                                avgWeeklyEngHours, false);
+            Engagement newEngagement = new Engagement(projID, skillOnProject.getId(),
+                                                            p.getStartDate(), p.getEndDate(),
+                                                                    avgWeeklyEngHours, false);
             engagementRepository.save(newEngagement);
         }
 
     }
 
+    // gets a given skill by ID
     @GetMapping("/skills/{id}")
     public Skill getSkillByID(@PathVariable("id") long id) {
         return (skillRepository.findById(id)).get();
@@ -74,16 +76,31 @@ public class SkillController {
         return newSkill;
     }
 
-    // updates a given skill by ID
-    private void updateSkillByID(Skill skillToUpdate, int newHours) {
+    // helper method:
+    // updates a given skill with new hours
+    private void updateSkillHours(Skill skillToUpdate, int newHours) {
         skillToUpdate.setTotalWeeklyHours(newHours);
         skillRepository.save(skillToUpdate);
     }
+
+    // updates a given skill by ID
     @PutMapping("/skills/{id}/update")
-    void updateSkillsByID(@PathVariable("id")Long id, @RequestBody int newHours) throws EntityNotFoundException{
+    public void updateSkillByID(@PathVariable("id") Long id, @RequestBody int newHours)
+                                                        throws EntityNotFoundException {
         Skill toUpdate = getSkillByID(id);
-        toUpdate.setTotalWeeklyHours(newHours);
-        skillRepository.save(toUpdate);
+        updateSkillHours(toUpdate, newHours);
+    }
+
+    // deletes a given skill by ID
+    @DeleteMapping("/skills/{id}")
+    public void deleteSkillByID(@PathVariable("id") Long id) throws EntityNotFoundException {
+        Skill toDelete = getSkillByID(id);
+        // delete all engagements which have reference to this skillID
+        List<Engagement> engagements = skillRepository.getEngagementsBySkillID(id);
+        for (Engagement e : engagements) {
+            engagementRepository.delete(e);
+        }
+        skillRepository.delete(toDelete);
     }
 
 }

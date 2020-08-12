@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jdk.vm.ci.meta.Local;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
@@ -43,15 +42,13 @@ public class Engagement {
     }
 
   public Engagement(long projectID, long skillID, LocalDate startDate, LocalDate endDate, int avgWeeklyEngHours, boolean billable) {
-
         this.projectID =  projectID;
         this.skillID = skillID;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.avgWeeklyEngHours = avgWeeklyEngHours;
-        System.out.println(startDate + " " + endDate);
-        this.assignedWeeklyHours = defaultWeeklyHoursMapping(avgWeeklyEngHours);
         this.billable = billable;
+        this.avgWeeklyEngHours = avgWeeklyEngHours;
+        this.assignedWeeklyHours = defaultWeeklyHoursMapping(avgWeeklyEngHours);
     }
 
     // helper method:
@@ -90,8 +87,12 @@ public class Engagement {
         LocalDate mondayOfStartingWeek = startDate.with(DayOfWeek.MONDAY);
         LocalDate temp = mondayOfStartingWeek;
         for (int i = 0; i < weekCount; i++) {
-            assignedWeeklyHours.replace(temp, newHours);
-            temp = temp.plusWeeks(1);
+            if (temp.isBefore(endDate)) {
+                assignedWeeklyHours.replace(temp, newHours);
+                temp = temp.plusWeeks(1);
+            } else {
+                break;
+            }
         }
     }
 
