@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Skill } from '../Classes/skill';
 import { GeneralService } from '../Services/general.service';
 import { ProjectServiceService } from '../Services/project-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EngagementService } from '../Services/engagement.service';
 import { UserService } from '../Services/user-service.service';
 import { subscribeOn } from 'rxjs/operators';
@@ -17,9 +17,9 @@ import { Project } from '../Classes/project';
 export class SkillFormComponent implements OnInit {
 
   project: Project;
-  skills: string[];
+  skills: Skill[];
   isCreateMode: boolean;
-  skill: Skill = {id: 0, name: "", projectName: "", count: null, totalWeeklyHours: null, skillName: "" }
+  skill: Skill = {id: 0, name: "", projectName: "", count: null, totalWeeklyHours: null, skillName: "", avgWeeklyEngHours: null }
 
   constructor(
     private generalService: GeneralService,
@@ -27,22 +27,43 @@ export class SkillFormComponent implements OnInit {
     private route:ActivatedRoute,
     private engagementSerivce: EngagementService,
     private userSerivce: UserService,
-    private skillService: SkillService
+    private skillService: SkillService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     const projectId = +this.route.snapshot.paramMap.get('projectid');
+    if (this.router.url.includes('edit')) {
+      const skillid = (+this.route.snapshot.paramMap.get('skillid'));
+      this.skillService.getById(skillid).subscribe(resp => {
+        this.skill = resp;
+      })
+      document.querySelectorAll('select')[1].disabled = true;
+      this.engagementSerivce.findAll(projectId).subscribe(data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i]["skillName"] === this.skill.skillName) {
+            this.skill.count = (data[i]["engagements"].length)
+            this.skill.avgWeeklyEngHours = this.skill.totalWeeklyHours / this.skill.count;
+          }
+        }
+      })
+    }
     this.getProjectById(projectId);
     this.getAllSkills();
   }
 
   onSubmit() {
-    let test = {
-      "skillName": this.skill.skillName,
-      "totalWeeklyHours": this.skill.totalWeeklyHours,
-      "count": this.skill.count
-    };
-    this.skillService.create(this.project, test).subscribe(d => this.goBack());
+    if (this.router.url.includes('edit')) {
+      this.skillService.update(this.skill.id, this.skill.totalWeeklyHours).subscribe(d => this.goBack())
+    } else {
+      let test = {
+        "skillName": this.skill.skillName,
+        "totalWeeklyHours": this.skill.totalWeeklyHours,
+        "count": this.skill.count,
+        "avgWeeklyEngHours": this.skill.avgWeeklyEngHours
+      };
+      this.skillService.create(this.project, test).subscribe(d => this.goBack());
+    }
   }
 
   getProjectById(projectId:number):void {

@@ -28,4 +28,8 @@ export class SkillService {
   public getById(id: number):Observable<Skill>{
     return this.http.get<Skill>('http://localhost:8080/skills/' + id);
   }
+
+  public update(id: number, totalWeeklyHours: number) {
+    return this.http.put<any>('http://localhost:8080/skills/' + id + '/update', totalWeeklyHours, this.httpOptions)
+  }
 }

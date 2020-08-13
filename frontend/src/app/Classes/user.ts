@@ -12,4 +12,5 @@ export class User {
   timezone: string;
   workingHours: string;
   manager: string;
+  active: boolean;
 }

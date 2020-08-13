@@ -4,7 +4,7 @@
     <a routerLink="/employees" class="btn btn-info">List Employees</a>
       </li>
   <li class="list-inline-item">
-    <a routerLink="/addEmployee" class="btn btn-info">Add Employee</a>
+    <a routerLink="/addEmployee" class="btn btn-warning">Add Employee</a>
       </li>
 </ul>
 <div class="card my-5">
@@ -171,7 +171,7 @@
           </select>
         </div>
       </div>
-      <button type="button" (click)="goBack($event)">&larr;Go Back</button>
+      <button type="button" (click)="goBack()">&larr;Go Back</button>
       <button type="submit" [disabled]="userForm.form.invalid?true:false" (onclick)="onSubmit()">Save</button>
     </form>
   </div>

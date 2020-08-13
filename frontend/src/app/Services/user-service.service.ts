@@ -63,7 +63,8 @@ export class UserService {
   }
 
   public edit(user: User) {
-    return this.http.put<User>(this.usersUrl + "/" + user.id, user);
+    return this.http.put<User>(this.usersUrl + "/" + user.id, user)
+      .pipe(catchError(this.handleThirdError));
   }
 
   public getUserByIdApi(id:number): Observable<User>{
@@ -88,16 +89,23 @@ export class UserService {
       .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
+  public activateEmployee(id:number): Observable<User> {
+    return this.http.put<User>(this.usersUrl + `/${id}/activate`, this.httpOptions);
+  }
+
   private handleError(errorResponse: HttpErrorResponse, router: Router) {
-    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
-    if (check) {
-      router.navigate(['/employees']);
-    }
+    alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    this._location.back();
     return throwError(errorResponse);
   }
 
   private handleSecondError(errorResponse: HttpErrorResponse) {
-    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    return throwError(errorResponse);
+  }
+
+  private handleThirdError(errorResponse: HttpErrorResponse) {
+    alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
     return throwError(errorResponse);
   }
 

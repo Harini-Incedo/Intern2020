@@ -1,3 +1,9 @@
-input {
-  margin-left: 1em;
+input, datalist, select {
+  margin-left: 10em;
+  margin-top: 1ex;
+}
+
+label {
+  position: absolute;
+  margin-top: 1ex;
 }

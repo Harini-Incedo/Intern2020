@@ -69,16 +69,18 @@ export class EngagementService {
     this.router.navigate(['/viewProject/' + id]);
   }
 
+  public massUpdateHours(id: number, test: object) {
+    return this.http.put<any>(this.engagementsUrl + '/' + id + '/hours', test, this.httpOptions)
+  }
+
   private handleError(errorResponse: HttpErrorResponse, router: Router) {
-    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
-      if (check) {
-        router.navigate(['/projects']);
-      }
-      return throwError(errorResponse);
+    let check = alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    router.navigate(['/projects']);
+    return throwError(errorResponse);
    }
 
   private handleSecondError(errorResponse: HttpErrorResponse) {
-    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    let check = alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
     return throwError(errorResponse);
   }
 

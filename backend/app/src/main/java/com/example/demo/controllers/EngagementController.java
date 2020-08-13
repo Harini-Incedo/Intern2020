@@ -175,8 +175,9 @@ public class EngagementController {
 
         EngagementContainer data = getEngagementByID(id);
         Engagement toUpdate = data.engagement;
+        Project p = repository.findProjectByID(toUpdate.getProjectID());
 
-        toUpdate.massUpdateHours(startDate, weekCount, newHours);
+        toUpdate.massUpdateHours(startDate, weekCount, newHours, p.getStartDate());
         repository.save(toUpdate);
 
     }

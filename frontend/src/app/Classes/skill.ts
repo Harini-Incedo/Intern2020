@@ -5,4 +5,5 @@ export class Skill {
   skillName: string;
   count: number;
   totalWeeklyHours: number;
+  avgWeeklyEngHours: number;
 }

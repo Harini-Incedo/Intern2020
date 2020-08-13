@@ -1,6 +1,6 @@
 <ul class="text-center">
   <li class="list-inline-item">
-    <a routerLink="/employees" class="btn btn-info">List Employees</a>
+    <a routerLink="/employees" class="btn btn-warning">List Employees</a>
       </li>
   <li class="list-inline-item">
     <a routerLink="/addEmployee" class="btn btn-info">Add Employee</a>
@@ -15,31 +15,6 @@
       <option value="Both">Both</option>
     </select>
     <br>
-    <!--<input type="text" name="firstName" placeholder="First Name" style="margin-left: 2.75em; width: 10.25em;"
-    pattern="[a-zA-Z ]*">
-
-    <input type="text" name="lastName" placeholder="Last Name"  style="margin-left: 0.25em; width: 10.25em;"
-    pattern="[a-zA-Z ]*">
-
-    <select name="department" style="margin-left: 0.25em; width: 11.25em;">
-      <option disabled selected>Department</option>
-      <option *ngFor="let department of departments" [value]="department">
-        {{department}}
-      </option>
-    </select>
-
-    <input type="text"name="managerName" placeholder="Manager Name" pattern="[a-zA-Z ]+"
-    style="margin-left: 0.25em; width: 14em;">
-
-    <input type="text" name="location" placeholder="Location" style="margin-left: 0.25em; width: 8.65em;"
-    pattern="[a-zA-Z ]+">
-
-    <select name="role" style="margin-left: 0.25em; width: 6.25em;">
-      <option disabled selected>Role</option>
-      <option *ngFor="let role of roles" [value]="role">
-        {{role}}
-      </option>
-    </select>-->
 
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
@@ -48,26 +23,68 @@
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Department</th>
-          <th scope="col">Manager Name</th>
+          <!--<th scope="col">Manager Name</th>-->
           <th scope="col">Location</th>
           <th scope="col">Role</th>
+          <th scope="col">Skills</th>
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td></td>
+          <td>
+            <input type="text" name="firstName" placeholder="First Name" pattern="[a-zA-Z ]*"
+            style="width: 6em;">
+          </td>
+          <td>
+            <input type="text" name="lastName" placeholder="Last Name" pattern="[a-zA-Z ]*"
+            style="width: 6em;">
+          </td>
+          <td>
+            <select name="department" style="width: 7em">
+              <option disabled selected style="color: lightgrey;">Department</option>
+              <option *ngFor="let department of departments" [value]="department">
+                {{department}}
+              </option>
+            </select>
+          </td>
+          <td>
+            <input type="text"name="managerName" placeholder="Location" pattern="[a-zA-Z ]+"
+            style="width:7em">
+          </td>
+          <td>
+            <select name="role">
+              <option disabled selected style="color: lightgrey;">Role</option>
+              <option *ngFor="let role of roles" [value]="role">
+                {{role}}
+              </option>
+            </select>
+          </td>
+          <td>
+            <select name="skill">
+              <option disabled selected style="color: lightgrey;">Skill</option>
+              <option *ngFor="let skill of skills" [value]="skill">
+                {{skill}}
+              </option>
+            </select>
+          </td>
+        </tr>
         <tr *ngFor="let user of users">
           <td><input (click)="onSelectList(user)" type="checkbox"></td>
           <td><a routerLink="/viewEmployee/{{user.id}}">{{ user.firstName }}</a></td>
           <td><a routerLink="/viewEmployee/{{user.id}}">{{ user.lastName }}</a></td>
           <td>{{ user.department }}</td>
-          <td>{{ user.manager }}</td>
+          <!--<td>{{ user.manager }}</td>-->
           <td>{{ user.location }}</td>
           <td>{{ user.role }}</td>
+          <td>{{ user.skills }}</td>
         </tr>
       </tbody>
     </table>
     <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])">Edit</button>
-    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="deleteUser(selectedUsers[0])"
+    <button [disabled]="checkStatus(selectedUsers)" (click)="deleteUser(selectedUsers[0])"
     style="margin-left: 1em;">Delete</button>
+    <button [disabled]="checkInactiveStatus(selectedUsers)" (click)="activateUser(selectedUsers[0])" style="margin-left: 1em;">Activate Employee</button>
     <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+
     </button>
   </div>

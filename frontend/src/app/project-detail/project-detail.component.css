@@ -26,3 +26,7 @@ div.pager span {
 div.pager span.active {
   background: #c00;
 }
+
+.paginated {
+  margin-left: 1em;
+}
