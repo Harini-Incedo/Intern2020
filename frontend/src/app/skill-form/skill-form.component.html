@@ -26,6 +26,7 @@
           value="1"
           min="1"
           #count="ngModel"
+          [(ngModel)]="skill.count"
           required>
           <div *ngIf="count.invalid && (count.dirty || count.touched)"
           class="alert alert-danger">
@@ -46,6 +47,13 @@
           value="1"
           min="1"
           #totalWeeklyHours="ngModel"
+          required>
+        </div>
+        <div>
+          <label for="avgWeeklyEngHours">&emsp;Average Weekly Engagement Hours<span style="color: red;">*</span></label>
+          <input type="number" [(ngModel)]="skill.avgWeeklyEngHours" id="avgWeeklyEngHours"
+          name="avgWeeklyEngHours"
+          #avgWeeklyEngHours="ngModel"
           required>
         </div>
       </div>

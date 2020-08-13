@@ -13,7 +13,7 @@ import { Project } from '../Classes/project';
 export class ViewPageComponent implements OnInit {
 
   selectedUser : User = {id: 0, firstName: "", lastName: "", email: "", role: "", skills:[],
- department: "", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
+  department: "", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:"", active: null};
   user: User;
   projects: Project[];
   engagements: Engagement[];
@@ -63,6 +63,11 @@ export class ViewPageComponent implements OnInit {
             data[index]["engagement"]["skillName"] = data1["skillName"];
           })
         data[index]["engagement"]["projectName"] = data[index]['project']['projectName'];
+        if (data[index]["engagement"]["billable"]) {
+          data[index]["engagement"]["billableString"] = "Yes";
+        } else {
+          data[index]["engagement"]["billableString"] = "No";
+        }
         this.engagements.push(data[index]['engagement']);
         this.engagements.push();
       }

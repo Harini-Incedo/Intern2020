@@ -6,4 +6,5 @@ export class Employee {
   avgWeeklyHours: number;
   week: string[];
   hours: number[];
+  billable: boolean;
 }

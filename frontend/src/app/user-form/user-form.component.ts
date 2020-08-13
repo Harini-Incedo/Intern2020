@@ -14,7 +14,7 @@ export class UserFormComponent {
   roles: string[];
   skills: string[];
   selectedSkills: string[];
-  user: User = {id:0, firstName:"", lastName:"", email:"", role:"", skills:[], department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:""};
+  user: User = {id:0, firstName:"", lastName:"", email:"", role:"", skills:[], department:"", startDate:"", endDate:"", location:"", timezone:"", workingHours:"", manager:"", active: true};
   isCreateMode: boolean;
   inValidDate: boolean = false;
 
@@ -28,9 +28,9 @@ export class UserFormComponent {
   onSubmit() {
     this.user.skills = this.selectedSkills;
     if(this.isCreateMode){
-      this.userService.create(this.user).subscribe(result => this.userService.gotoUserList());
+      this.userService.create(this.user).subscribe(result => this.goBack());
     }else{
-      this.userService.edit(this.user).subscribe(result => this.userService.gotoUserList());
+      this.userService.edit(this.user).subscribe(result => this.goBack());
     }
   }
 
@@ -95,7 +95,7 @@ export class UserFormComponent {
     })
   }
 
-  goBack(e:any):void {
+  goBack():void {
     this.generalService.goBack();
   }
 

@@ -5,4 +5,5 @@ export class Engagement {
   projectID: number;
   skillID: number;
   startDate: string;
+  billable: boolean;
 }

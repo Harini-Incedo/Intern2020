@@ -26,6 +26,10 @@
             </option>
           </select>
         </div>
+        <div>
+          <label for="user">&emsp;Billable</label>
+          <input type="checkbox" id="billable" name="billable" #billable="ngModel" [(ngModel)]="employee.billable">
+        </div>
       </div>
     </form>
     <button type="button" (click)="goBack()">&larr;Go Back</button>

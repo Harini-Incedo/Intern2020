@@ -22,8 +22,8 @@ export class EmployeeSkillFormComponent implements OnInit {
   sampleMap: {};
   users: User[];
   project: Project;
-  skill: Skill = {id: 0, name: "", projectName: "", count: null, totalWeeklyHours: 0, skillName: ""}
-  employee: Employee = {id: 0, skillName: "", employeeID: null, projectName: "", avgWeeklyHours: null, week: [], hours: []}
+  skill: Skill = {id: 0, name: "", projectName: "", count: null, totalWeeklyHours: 0, skillName: "", avgWeeklyEngHours: 0}
+  employee: Employee = {id: 0, skillName: "", employeeID: null, projectName: "", avgWeeklyHours: null, week: [], hours: [], billable: false}
 
   constructor(
     private generalService: GeneralService,
@@ -41,6 +41,7 @@ export class EmployeeSkillFormComponent implements OnInit {
     const skillid = +this.route.snapshot.paramMap.get('skillName');
     this.skillService.getById(skillid).subscribe(data=> {
       this.sampleMap["skill"] = data.skillName;
+      this.skill["skill"] = data.skillName;
       this.skill = data;
       this.userService.findRecommended(this.sampleMap).subscribe(data => {
         this.users = data;
@@ -53,20 +54,23 @@ export class EmployeeSkillFormComponent implements OnInit {
     const skillid = +this.route.snapshot.paramMap.get('skillName');
     this.engagementService.findAll(projectid).subscribe(resp=>{
       for (let x = 0; x < resp.length; x++) {
-        if (resp[x]["engagements"][0]["engagement"].skillID === skillid) {
-          for (let i = 0; i < resp[x]["engagements"].length; i++) {
-            if (resp[x]["engagements"][i]["employee"] === null) {
-              let response = {
-                "id": resp[x]["engagements"][i]["engagement"]["id"],
-                "employeeID": this.employee.employeeID,
-                "projectID": projectid,
-                "skillID": skillid,
-                "startDate": this.project.startDate,
-                "endDate": this.project.endDate,
-                "assignedWeeklyHours": resp[x]["engagements"][i]["engagement"]["assignedWeeklyHours"]
+        if (resp[x].skillName === this.skill.skillName) {
+          if (resp[x]["engagements"][0]["engagement"].skillID === skillid) {
+            for (let i = 0; i < resp[x]["engagements"].length; i++) {
+              if (resp[x]["engagements"][i]["employee"] === null) {
+                let response = {
+                  "id": resp[x]["engagements"][i]["engagement"]["id"],
+                  "employeeID": this.employee.employeeID,
+                  "projectID": projectid,
+                  "skillID": skillid,
+                  "startDate": this.project.startDate,
+                  "endDate": this.project.endDate,
+                  "assignedWeeklyHours": resp[x]["engagements"][i]["engagement"]["assignedWeeklyHours"],
+                  "billable": document.querySelector('input').checked
+                }
+                this.engagementService.edit(resp[x]["engagements"][i]["engagement"]["id"], response).subscribe(result => this.goBack());
+                break;
               }
-              this.engagementService.edit(resp[x]["engagements"][i]["engagement"]["id"], response).subscribe(result => this.goBack());
-              break;
             }
           }
         }

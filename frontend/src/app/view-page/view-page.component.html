@@ -8,7 +8,7 @@
 </ul>
 <div class="card my-5">
   <div *ngIf="selectedUser" class="card-body">
-    <p style="text-align: center;"><strong>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong></p>
+    <p style="text-align: center; font-size: x-large;"><strong>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong></p>
     <br>
     <br>
     <p><strong>Email</strong> <span><a href="mailto: {{ selectedUser.email }}">{{ selectedUser.email }}</a></span></p>
@@ -30,7 +30,7 @@
   </div>
   <hr>
   <div>
-    <p style="text-align: center;"><strong>Projects</strong></p>
+    <p style="text-align: center; font-size: x-large;"><strong>Projects</strong></p>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
@@ -38,6 +38,7 @@
           <th scope="col">Start Date</th>
           <th scope="col">End Date</th>
           <th scope="col">Skill on Project</th>
+          <th scope="col">Billable</th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +47,7 @@
           <td>{{engagement.startDate}}</td>
           <td>{{engagement.endDate}}</td>
           <td>{{engagement.skillName}}</td>
+          <td>{{engagement.billableString}}</td>
         </tr>
       </tbody>
     </table>

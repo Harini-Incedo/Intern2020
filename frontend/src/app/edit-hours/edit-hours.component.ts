@@ -13,10 +13,12 @@ import { UserService } from '../Services/user-service.service';
 })
 export class EditHoursComponent implements OnInit {
 
-  date: string;
+  startDate: string;
+  endDate: string;
   hours: number;
   employee: User = {id: 0, firstName: "", lastName: "", email: "", role: "", skills: [],
-  department: "", startDate: "", endDate: "", location: "", timezone: "", workingHours: "", manager: ""}
+  department: "", startDate: "", endDate: "", location: "", timezone: "", workingHours: "", manager: "",
+  active: true}
 
   constructor(
     private route: ActivatedRoute,
@@ -27,35 +29,30 @@ export class EditHoursComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.date = this.route.snapshot.paramMap.get('date');
-    this.hours = +this.route.snapshot.paramMap.get('hours');
-    this.userService.getUserByIdApi(+this.route.snapshot.paramMap.get('employeeid'))
-      .subscribe(resp => {
-        this.employee = resp;
-      })
+    const engagementID = +this.route.snapshot.paramMap.get('engagementid')
+    this.engagementService.getEngagementByIdApi(engagementID).subscribe(resp => {
+      this.startDate = resp["engagement"]["startDate"]
+      this.endDate = resp["engagement"]["endDate"]
+      if (resp["engagement"].employeeID !== 0) {
+        this.userService.getUserByIdApi(resp["engagement"].employeeID).subscribe(resp => {
+          this.employee = resp;
+        })
+      } else {
+        this.employee.firstName = "Pending"
+        this.employee.lastName = "Employee"
+      }
+    })
   }
 
   onSubmit() {
-    const projectID = +this.route.snapshot.paramMap.get('projectid');
-    this.projectService.getProjectByIdApi(projectID).subscribe(resp => {
-      let map = new Map();
-      map.set(this.date, this.hours);
-      let jsonObject = {};
-      map.forEach((value, key) => {
-          jsonObject[key] = value
-      });
-      let obj = {
-        "id" : +this.route.snapshot.paramMap.get('engagementid'),
-        "employeeID": +this.route.snapshot.paramMap.get('employeeid'),
-        "projectID": projectID,
-        "skillID": +this.route.snapshot.paramMap.get('skillId'),
-        "startDate": resp.startDate,
-        "endDate": resp.endDate,
-        "assignedWeeklyHours": jsonObject
-      }
-      this.engagementService.edit(+this.route.snapshot.paramMap.get("engagementid"), obj)
-        .subscribe(resp => this.goBack());
-    })
+    const engagementID = +this.route.snapshot.paramMap.get('engagementid')
+    //Refactor here ->
+    let test = {
+      "startDate": document.querySelectorAll('input')[0].value,
+      "weekCount": Number(document.querySelectorAll('input')[1].value),
+      "newHours": Number(document.querySelectorAll('input')[2].value)
+    }
+    this.engagementService.massUpdateHours(engagementID, test).subscribe(resp => this.goBack())
   }
 
   goBack() {

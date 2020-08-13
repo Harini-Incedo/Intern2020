@@ -15,6 +15,7 @@ import { ForbiddenHoursValidatorDirective } from './validate-hours-forms.directi
 import { SkillFormComponent } from './skill-form/skill-form.component';
 import { EmployeeSkillFormComponent } from './employee-skill-form/employee-skill-form.component';
 import { EditHoursComponent } from './edit-hours/edit-hours.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EditHoursComponent } from './edit-hours/edit-hours.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

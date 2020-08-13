@@ -3,7 +3,7 @@
     <a routerLink="/projects" class="btn btn-info">List Projects</a>
       </li>
   <li class="list-inline-item">
-    <a routerLink="/addProject" class="btn btn-info">Add Projects</a>
+    <a routerLink="/addProject" class="btn btn-warning">Add Project</a>
       </li>
 </ul>
 <div class="card my-5">
@@ -65,7 +65,7 @@
         </div>
         </div>
         <div>
-          <label for="projectGoal">&emsp;Project Description</label>
+          <label for="projectGoal">&emsp;Project Description<span style="color: red;">*</span></label>
           <textarea [(ngModel)]="project.projectGoal"
           name="projectGoal"
           required #projectGoal="ngModel"></textarea>
