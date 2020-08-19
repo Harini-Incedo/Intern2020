@@ -63,7 +63,7 @@ public class EngagementController {
                 engagementsBySkill.add(new EngagementContainer(e, emp));
             }
             EngagementsBySkill skillGrouping = new EngagementsBySkill(s.getSkillName(),
-                                                        s.getTotalWeeklyHours(), engagementsBySkill);
+                                                        s.getAssignedWeeklyHours(), engagementsBySkill);
             toReturn.add(skillGrouping);
         }
         
@@ -170,14 +170,20 @@ public class EngagementController {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(values.get("startDate"), dtf);
-        int weekCount = Integer.parseInt(values.get("weekCount"));
+        LocalDate endDate = LocalDate.parse(values.get("endDate"), dtf);
         int newHours = Integer.parseInt(values.get("newHours"));
 
         EngagementContainer data = getEngagementByID(id);
         Engagement toUpdate = data.engagement;
         Project p = repository.findProjectByID(toUpdate.getProjectID());
 
-        toUpdate.massUpdateHours(startDate, weekCount, newHours, p.getStartDate());
+        /* Date Validation */
+        if (endDate != null && startDate.isAfter(endDate)) {
+            throw new InvalidInputException("End Date is invalid: " + endDate,
+                    "End Date should be equal to or later than Start Date.");
+        }
+
+        toUpdate.massUpdateHours(startDate, endDate, newHours, p.getStartDate());
         repository.save(toUpdate);
 
     }
@@ -226,13 +232,13 @@ public class EngagementController {
     // objects and the skill associated with them.
     public class EngagementsBySkill {
         public String skillName;
-        public int totalWeeklyHours;
+        public Map<LocalDate, Integer> assignedWeeklyHours;
         public List<EngagementContainer> engagements;
 
-        public EngagementsBySkill(String skillName, int totalWeeklyHours,
+        public EngagementsBySkill(String skillName, Map<LocalDate, Integer> assignedWeeklyHours,
                                             List<EngagementContainer> engagements) {
             this.skillName = skillName;
-            this.totalWeeklyHours = totalWeeklyHours;
+            this.assignedWeeklyHours = assignedWeeklyHours;
             this.engagements = engagements;
         }
     }

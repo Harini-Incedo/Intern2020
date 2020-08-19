@@ -2,8 +2,10 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
+import com.example.demo.entities.Skill;
 import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
+import com.example.demo.repositories.SkillRepository;
 import com.example.demo.validation.EntityNotFoundException;
 import com.example.demo.validation.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class ProjectController {
     private ProjectRepository repository;
     @Autowired
     private EngagementRepository engagementRepository;
+    @Autowired
+    private SkillRepository skillRepository;
 
     private final String[] status = {"Pending", "In Progress", "Completed", "Closed"};
 
@@ -109,12 +113,17 @@ public class ProjectController {
         toUpdate.setStartDate(p.getStartDate());
         toUpdate.setEndDate(p.getEndDate());
 
-        // loop over engagements with this project
+        // loop over skills/engagements on this project
         // set each of their start and end date
         List<Engagement> engagementsToUpdate = repository.findEngagementsByProjectID(id);
         for (Engagement e : engagementsToUpdate) {
             e.extendMappings(p.getStartDate(), p.getEndDate());
             engagementRepository.save(e);
+        }
+        List<Skill> skillsToUpdate = skillRepository.getSkillByProjectID(id);
+        for (Skill s : skillsToUpdate) {
+            s.extendMappings(p.getStartDate(), p.getEndDate());
+            skillRepository.save(s);
         }
 
         toUpdate.setClientName(p.getClientName());
@@ -133,8 +142,8 @@ public class ProjectController {
                                                 "Project name should not contain any special characters.");
         }
         /* Client Name */
-        if (p.getClientName() != null && !p.getClientName().matches("[a-zA-Z0-9 -]*")) {
-            throw new InvalidInputException("Invalid Client Name: " + p.getProjectName(),
+        if (p.getClientName() != null && !p.getClientName().matches("[a-zA-Z0-9 &-]*")) {
+            throw new InvalidInputException("Invalid Client Name: " + p.getClientName(),
                                                 "Client name should not contain any special characters.");
         }
         /* Start Date */

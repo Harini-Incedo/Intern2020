@@ -149,7 +149,9 @@ public class Application {
 			///// LOADS MOCK PROJECTS INTO DATABASE /////
 			/////////////////////////////////////////////
 			Stream.of("TestProject-1 TMobile", "TestProject-2 Microsoft", "TestProject-3 TicketMaster",
-						"TestProject-4 Google", "TestProject-5 Sony").forEach(name -> {
+						"TestProject-4 Google", "TestProject-5 Sony","TestProject-6 Verizon",
+							"TestProject-7 Spotify", "TestProject-8 Kleenex", "TestProject-9 Samsung",
+								"TestProject-10 AT&T").forEach(name -> {
 
 				// for extracting string info
 				String[] info = name.split(" ");
@@ -194,7 +196,7 @@ public class Application {
 				for (int i = 0; i < randomSkillsCount; i++) {
 					// gets a random skill from the skills list and adds it to project
 					Skill currSkill = new Skill(skillsList[(randomSkillIndex++) % skillsList.length],
-															80, p.getId());
+															80, p.getId(), p.getStartDate(), p.getEndDate());
 					skillRepository.save(currSkill);
 
 					// generates random number of engagements under current skill: between 1-3
