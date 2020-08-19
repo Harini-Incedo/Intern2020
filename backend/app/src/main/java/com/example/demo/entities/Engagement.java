@@ -83,16 +83,12 @@ public class Engagement {
     // helper method:
     // updates the hourly mappings for the weeks, starting with startDate
     // and up to count # of weeks after startDate, with the given new hours
-    public void massUpdateHours(LocalDate startDate, int weekCount, int newHours, LocalDate projectStartDate) {
+    public void massUpdateHours(LocalDate startDate, LocalDate endDate, int newHours, LocalDate projectStartDate) {
         LocalDate mondayOfStartingWeek = startDate.with(DayOfWeek.MONDAY);
         LocalDate temp = checkForProjectStartDate(mondayOfStartingWeek, projectStartDate);
-        for (int i = 0; i < weekCount; i++) {
-            if (temp.isBefore(endDate)) {
-                assignedWeeklyHours.replace(temp, newHours);
-                temp = temp.plusWeeks(1);
-            } else {
-                break;
-            }
+        while (temp.isBefore(endDate)) {
+            assignedWeeklyHours.replace(temp, newHours);
+            temp = temp.plusWeeks(1);
         }
     }
 
