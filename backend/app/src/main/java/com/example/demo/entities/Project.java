@@ -38,8 +38,10 @@ public class Project {
     private String department;
     @Column(name ="teamSize")
     private int teamSize;
-    @Column(name = "weeklyHours")
-    private int weeklyHours;
+    @Column(name ="totalPlannedHours")
+    private int totalPlannedHours;
+    @Column(name ="totalAllocatedHours")
+    private int totalAllocatedHours;
     @Column(name = "status")
     private String status;
 
@@ -111,13 +113,13 @@ public class Project {
         this.teamSize = teamSize;
     }
 
-    public int getWeeklyHours() {
-        return weeklyHours;
-    }
+    public int getTotalPlannedHours() { return totalPlannedHours; }
 
-    public void setWeeklyHours(int weeklyHours) {
-        this.weeklyHours = weeklyHours;
-    }
+    public void setTotalPlannedHours(int totalPlannedHours) { this.totalPlannedHours = totalPlannedHours; }
+
+    public int getTotalAllocatedHours() { return totalAllocatedHours; }
+
+    public void setTotalAllocatedHours(int totalAllocatedHours) { this.totalAllocatedHours = totalAllocatedHours; }
 
     public long getId() {
         return id;
@@ -142,7 +144,8 @@ public class Project {
                 ", endDate=" + endDate +
                 ", department='" + department + '\'' +
                 ", teamSize=" + teamSize +
-                ", weeklyHours=" + weeklyHours +
+                ", totalPlannedHours=" + totalPlannedHours +
+                ", totalAllocatedHours=" + totalAllocatedHours +
                 ", status='" + status + '\'' +
                 '}';
     }
