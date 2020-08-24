@@ -8,11 +8,14 @@ import com.example.demo.repositories.ProjectRepository;
 import com.example.demo.repositories.SkillRepository;
 import com.example.demo.validation.EntityNotFoundException;
 import com.example.demo.validation.InvalidInputException;
+import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.DocFlavor;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -53,7 +56,10 @@ public class ProjectController {
 
         // INPUT VALIDATION //
         validateProjectDetails(p);
-
+        //Sets the total planned and allocated hours
+        Long id = p.getId();
+        p.setTotalAllocatedHours(calculatetotalAllocatedHours(id));
+        p.setTotalPlannedHours(calculateTotalPlannedHours(id));
         // Add validation for project status based on start date //
         p.setStatus("Pending");
 
@@ -129,11 +135,38 @@ public class ProjectController {
         toUpdate.setClientName(p.getClientName());
         toUpdate.setTeamSize(p.getTeamSize());
         toUpdate.setDepartment(p.getDepartment());
-        toUpdate.setWeeklyHours(p.getWeeklyHours());
+        int totalPlannedHours = calculateTotalPlannedHours(id);
+        int totalAllocatedHours = calculatetotalAllocatedHours(id);
+        toUpdate.setTotalAllocatedHours(totalAllocatedHours);
+        toUpdate.setTotalPlannedHours(totalPlannedHours);
 
         repository.save(toUpdate);
     }
+private int calculateTotalPlannedHours(Long id){
+        List<Skill> tempSkills = skillRepository.getSkillByProjectID(id);
+        int sum = 0;
+        for (Skill s : tempSkills) {
+            Map<LocalDate,Integer> assWeeklyHours = s.getAssignedWeeklyHours();
+            for(LocalDate d : assWeeklyHours.keySet()){
+                int temp = assWeeklyHours.get(d);
+                sum += temp;
+            }
+        }
+        return sum;
 
+}
+private int calculatetotalAllocatedHours(Long id){
+        List<Engagement> tempEngagements = repository.findEngagementsByProjectID(id);
+        int sum = 0;
+        for(Engagement e :tempEngagements){
+            Map<LocalDate,Integer> assWeeklyHours = e.getAssignedWeeklyHours();
+            for(LocalDate d :assWeeklyHours.keySet()){
+                int temp = assWeeklyHours.get(d);
+                sum +=temp;
+            }
+        }
+        return sum;
+}
     // Validates project details input by the user
     private void validateProjectDetails(Project p) throws InvalidInputException {
         /* Project Name */
@@ -156,11 +189,8 @@ public class ProjectController {
             throw new InvalidInputException("End Date is invalid: " + p.getEndDate(),
                                                 "End Date should be equal to or later than Start Date.");
         }
-        /* Weekly Hours */
-        if (p.getWeeklyHours() < 0) {
-            throw new InvalidInputException("Invalid Weekly Hours: " + p.getWeeklyHours(),
-                                                "Weekly hours should be a positive integer value.");
-        }
+
+
         /* Team Size */
         if (p.getTeamSize() < 0) {
             throw new InvalidInputException("Invalid Team Size: " + p.getTeamSize(),

@@ -169,7 +169,6 @@ public class Application {
 				// sets randomized team size: between 5-20 and
 				// reasonable weekly hours based on team size.
 				p.setTeamSize(rand.nextInt(16) + 5);
-				p.setWeeklyHours(p.getTeamSize() * 40);
 
 				// sets project end date to be randomly between 1-5 months ahead of start date
 				p.setEndDate(LocalDate.of(2019, rand.nextInt(2) + 3, 1));
