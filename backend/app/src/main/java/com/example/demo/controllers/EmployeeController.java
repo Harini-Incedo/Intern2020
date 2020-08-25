@@ -3,9 +3,11 @@ package com.example.demo.controllers;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.Engagement;
 import com.example.demo.repositories.EmployeeRepository;
+import com.example.demo.specifications.EmployeeSpecifications;
 import com.example.demo.validation.EntityNotFoundException;
 import com.example.demo.validation.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -45,6 +47,27 @@ public class EmployeeController {
     @GetMapping("/employees/Both")
     public List<Employee> getAllEmployees() {
         return repository.findAll();
+    }
+
+    // To get all employees with the desired details
+    @GetMapping("/employees/filtered")
+    public List<Employee> filterEmployees(@RequestBody HashMap<String, String> values) {
+        // extracts necessary values from request body sent by UI
+        String firstName = values.get("firstName");
+        String lastName = values.get("lastName");
+        String role = values.get("role");
+        String department = values.get("department");
+        String location = values.get("location");
+        String skills = values.get("skills");
+
+        List<Employee> toReturn = repository.findAll(Specification.where(EmployeeSpecifications.withFirstName(firstName))
+                                    .and(EmployeeSpecifications.withLastName(lastName))
+                                    .and(EmployeeSpecifications.withRole(role))
+                                    .and(EmployeeSpecifications.withDepartment(department))
+                                    .and(EmployeeSpecifications.withLocation(location))
+                                    .and(EmployeeSpecifications.withSkills(skills)));
+
+        return toReturn;
     }
 
     // To get all recommended employees in sorted order by last name
