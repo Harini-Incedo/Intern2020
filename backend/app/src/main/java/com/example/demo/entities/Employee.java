@@ -63,10 +63,12 @@ public class Employee {
     private Set<String> skills;
 
     public Employee() {
+        super();
     }
 
 
-    public Employee(String firstName, String lastName, String email, LocalDate startDate, Timezone timezone, String role,Set<String> skills) {
+    public Employee(String firstName, String lastName, String email, LocalDate startDate,
+                                    Timezone timezone, String role,Set<String> skills) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -120,7 +122,6 @@ public class Employee {
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
 
     public LocalDate getEndDate() {
         return endDate;

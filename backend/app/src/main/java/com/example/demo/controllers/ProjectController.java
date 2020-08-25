@@ -46,23 +46,9 @@ public class ProjectController {
     // Creates a new project in the database with the given information
     @PostMapping("/projects")
     void createProject(@RequestBody Project p) {
-        System.out.println(p.getProjectName() + ":");
-        System.out.println("Project Goal: " + p.getProjectGoal());
-        System.out.println("Start Date: " + p.getStartDate());
-        System.out.println("End Date: " + p.getEndDate());
-        System.out.println("Client Name: " + p.getClientName());
-        System.out.println("Team Size: " + p.getTeamSize());
-        System.out.println("Department: " + p.getDepartment());
-
         // INPUT VALIDATION //
         validateProjectDetails(p);
-        //Sets the total planned and allocated hours
-        Long id = p.getId();
-        p.setTotalAllocatedHours(calculatetotalAllocatedHours(id));
-        p.setTotalPlannedHours(calculateTotalPlannedHours(id));
-        // Add validation for project status based on start date //
         p.setStatus("Pending");
-
         repository.save(p);
     }
 
@@ -72,6 +58,8 @@ public class ProjectController {
         Optional<Project> proj = repository.findById(id);
         if (proj.isPresent()){
             Project temp = proj.get();
+            temp.setTotalAllocatedHours(calculatetotalAllocatedHours(id, temp.getStartDate()));
+            temp.setTotalPlannedHours(calculateTotalPlannedHours(id,temp.getStartDate()));
             return temp;
         }
         throw new EntityNotFoundException("No project exists with this ID: " + id,
@@ -135,38 +123,41 @@ public class ProjectController {
         toUpdate.setClientName(p.getClientName());
         toUpdate.setTeamSize(p.getTeamSize());
         toUpdate.setDepartment(p.getDepartment());
-        int totalPlannedHours = calculateTotalPlannedHours(id);
-        int totalAllocatedHours = calculatetotalAllocatedHours(id);
-        toUpdate.setTotalAllocatedHours(totalAllocatedHours);
-        toUpdate.setTotalPlannedHours(totalPlannedHours);
 
         repository.save(toUpdate);
     }
-private int calculateTotalPlannedHours(Long id){
+
+    // helper method: to sum all planned weekly hours for all skills
+    private int calculateTotalPlannedHours(Long id, LocalDate projectStartDate) {
         List<Skill> tempSkills = skillRepository.getSkillByProjectID(id);
         int sum = 0;
         for (Skill s : tempSkills) {
-            Map<LocalDate,Integer> assWeeklyHours = s.getAssignedWeeklyHours();
-            for(LocalDate d : assWeeklyHours.keySet()){
-                int temp = assWeeklyHours.get(d);
-                sum += temp;
-            }
+            sum += sumWeeklyHours(s.getAssignedWeeklyHours(), projectStartDate);
         }
         return sum;
+    }
 
-}
-private int calculatetotalAllocatedHours(Long id){
+    // helper method: to sum all allocated weekly hours for all engagements
+    private int calculatetotalAllocatedHours(Long id, LocalDate projectStartDate) {
         List<Engagement> tempEngagements = repository.findEngagementsByProjectID(id);
         int sum = 0;
-        for(Engagement e :tempEngagements){
-            Map<LocalDate,Integer> assWeeklyHours = e.getAssignedWeeklyHours();
-            for(LocalDate d :assWeeklyHours.keySet()){
-                int temp = assWeeklyHours.get(d);
-                sum +=temp;
+        for(Engagement e : tempEngagements) {
+            sum += sumWeeklyHours(e.getAssignedWeeklyHours(), projectStartDate);
+        }
+        return sum;
+    }
+
+    // helper method: to support calculatetotalAllocatedHours/calculateTotalPlannedHours
+    private int sumWeeklyHours(Map<LocalDate, Integer> hourlyMapping, LocalDate projectStartDate) {
+        int sum = 0;
+        for (LocalDate date : hourlyMapping.keySet()){
+            if (!date.isBefore(projectStartDate)) {
+                sum += hourlyMapping.get(date);
             }
         }
         return sum;
-}
+    }
+
     // Validates project details input by the user
     private void validateProjectDetails(Project p) throws InvalidInputException {
         /* Project Name */
@@ -189,8 +180,6 @@ private int calculatetotalAllocatedHours(Long id){
             throw new InvalidInputException("End Date is invalid: " + p.getEndDate(),
                                                 "End Date should be equal to or later than Start Date.");
         }
-
-
         /* Team Size */
         if (p.getTeamSize() < 0) {
             throw new InvalidInputException("Invalid Team Size: " + p.getTeamSize(),
