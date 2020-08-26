@@ -14,6 +14,7 @@ import { UserService } from '../Services/user-service.service';
 export class EditHoursComponent implements OnInit {
 
   startDate: string;
+  actualStartDate: string;
   endDate: string;
   hours: number;
   employee: User = {id: 0, firstName: "", lastName: "", email: "", role: "", skills: [],
@@ -32,6 +33,7 @@ export class EditHoursComponent implements OnInit {
     const engagementID = +this.route.snapshot.paramMap.get('engagementid')
     this.engagementService.getEngagementByIdApi(engagementID).subscribe(resp => {
       this.startDate = resp["engagement"]["startDate"]
+      this.actualStartDate = resp["engagement"]["startDate"]
       this.endDate = resp["engagement"]["endDate"]
       if (resp["engagement"].employeeID !== 0) {
         this.userService.getUserByIdApi(resp["engagement"].employeeID).subscribe(resp => {
@@ -49,7 +51,7 @@ export class EditHoursComponent implements OnInit {
     //Refactor here ->
     let test = {
       "startDate": document.querySelectorAll('input')[0].value,
-      "weekCount": Number(document.querySelectorAll('input')[1].value),
+      "endDate": (document.querySelectorAll('input')[1].value),
       "newHours": Number(document.querySelectorAll('input')[2].value)
     }
     this.engagementService.massUpdateHours(engagementID, test).subscribe(resp => this.goBack())

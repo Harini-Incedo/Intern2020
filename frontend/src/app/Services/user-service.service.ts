@@ -18,8 +18,6 @@ export class UserService {
 
   public selectedUser : User;
 
-  private Data : User;
-
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -50,7 +48,7 @@ export class UserService {
   }
 
   public findRecommended(sampleMap:object): Observable<User[]> {
-    return this.http.post<User[]>(this.usersUrl + "/recommended", sampleMap);
+    return this.http.post<User[]>(this.usersUrl + "/recommended", sampleMap, this.httpOptions);
   }
 
   public create(user: User) {
@@ -93,19 +91,25 @@ export class UserService {
     return this.http.put<User>(this.usersUrl + `/${id}/activate`, this.httpOptions);
   }
 
+  public getFilteredEmployee(test: object): Observable<User[]> {
+    return this.http.post<User[]>(this.usersUrl + "/filtered", test);
+  }
+
   private handleError(errorResponse: HttpErrorResponse, router: Router) {
-    alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
-    this._location.back();
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    if (check) {
+      router.navigate(['/employees']);
+    }
     return throwError(errorResponse);
   }
 
   private handleSecondError(errorResponse: HttpErrorResponse) {
-    alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
     return throwError(errorResponse);
   }
 
   private handleThirdError(errorResponse: HttpErrorResponse) {
-    alert(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
+    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
     return throwError(errorResponse);
   }
 

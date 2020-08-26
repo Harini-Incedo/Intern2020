@@ -9,40 +9,42 @@
 <div class="card my-5">
   <div class="card-body">
     <label for="employeeType">&emsp;Employee Type&emsp;</label>
-    <select id="employeeType" required name="employeeType" (change)="getEmployeeByType()">
+    <select id="employeeType" required name="employeeType" (change)="getEmployeeByType()" [(ngModel)]="employeeType">
       <option value="Active">Active</option>
       <option value="Inactive">Inactive</option>
       <option value="Both">Both</option>
     </select>
+    <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+
+    </button>
+    <button [disabled]="checkInactiveStatus(selectedUsers)" (click)="activateUser(selectedUsers[0])" style="float: right; margin-right: 1em;">Activate Employee</button>
+    <button [disabled]="checkStatus(selectedUsers)" (click)="deleteUser(selectedUsers[0])"
+    style="float:right; margin-right: 1em;">Delete</button>
+    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])" style="float: right; margin-right: 1em;">Edit</button>
     <br>
-
+    <br>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col"></th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Department</th>
-          <!--<th scope="col">Manager Name</th>-->
-          <th scope="col">Location</th>
-          <th scope="col">Role</th>
-          <th scope="col">Skills</th>
+          <th scope="col" (click)="sort('firstName')">First Name</th>
+          <th scope="col" (click)="sort('lastName')">Last Name</th>
+          <th scope="col" (click)="sort('department')">Department</th>
+          <th scope="col" (click)="sort('location')">Location</th>
+          <th scope="col" (click)="sort('role')">Role</th>
+          <th scope="col" (click)="sortSkills('skills')">Skills</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
-          <td></td>
+          <td><img src="../../assets/searchButton.jpg" (click)="filter()" style="width: 1rem; height: auto;"/></td>
           <td>
             <input type="text" name="firstName" placeholder="First Name" pattern="[a-zA-Z ]*"
-            style="width: 6em;">
+            [(ngModel)]="firstName" style="width: 6em;">
           </td>
           <td>
             <input type="text" name="lastName" placeholder="Last Name" pattern="[a-zA-Z ]*"
-            style="width: 6em;">
+            [(ngModel)]="lastName" style="width: 6em;">
           </td>
           <td>
-            <select name="department" style="width: 7em">
-              <option disabled selected style="color: lightgrey;">Department</option>
+            <select name="department" style="width: 7em" [(ngModel)]="selectedDepartment">
               <option *ngFor="let department of departments" [value]="department">
                 {{department}}
               </option>
@@ -50,43 +52,47 @@
           </td>
           <td>
             <input type="text"name="managerName" placeholder="Location" pattern="[a-zA-Z ]+"
-            style="width:7em">
+            [(ngModel)]="location" style="width:7em">
           </td>
           <td>
-            <select name="role">
-              <option disabled selected style="color: lightgrey;">Role</option>
+            <select name="role" [(ngModel)]="selectedRole">
               <option *ngFor="let role of roles" [value]="role">
                 {{role}}
               </option>
             </select>
           </td>
           <td>
-            <select name="skill">
-              <option disabled selected style="color: lightgrey;">Skill</option>
+            <select name="skill" [(ngModel)]="selectedSkill">
               <option *ngFor="let skill of skills" [value]="skill">
                 {{skill}}
               </option>
             </select>
+            <button type="button" (click)="addSkill()" style="margin-left: 1em;">Add Skill</button>
+            <div style="border-color: black; border-style:solid; border-width: 1px; margin-top: 1em; margin-left: 1em;"
+          [hidden]="selectedSkills.length===0">
+            <span *ngFor="let skills of selectedSkills">
+              <button class="btn btn-info"
+               type="button" (click)="removeSkill(skills)"
+               style="margin-top: 2px; margin-bottom: 2px; margin-left: 2px;">{{skills}} X</button>
+            </span>
+          </div>
           </td>
         </tr>
+      </thead>
+      <tbody id="paginated">
         <tr *ngFor="let user of users">
           <td><input (click)="onSelectList(user)" type="checkbox"></td>
-          <td><a routerLink="/viewEmployee/{{user.id}}">{{ user.firstName }}</a></td>
-          <td><a routerLink="/viewEmployee/{{user.id}}">{{ user.lastName }}</a></td>
+          <td *ngIf="!user.active" class="blackData">{{ user.firstName }}</td>
+          <td *ngIf="user.active" routerLink="/viewEmployee/{{user.id}}" class="blueData">{{ user.firstName }}</td>
+          <td *ngIf="!user.active" class="blackData">{{ user.lastName }}</td>
+          <td *ngIf="user.active" routerLink="/viewEmployee/{{user.id}}" class="blueData">{{ user.lastName }}</td>
           <td>{{ user.department }}</td>
-          <!--<td>{{ user.manager }}</td>-->
           <td>{{ user.location }}</td>
           <td>{{ user.role }}</td>
           <td>{{ user.skills }}</td>
         </tr>
       </tbody>
     </table>
-    <button [disabled]="selectedUsers && selectedUsers.length ===1?false:true" (click)="editUser(selectedUsers[0])">Edit</button>
-    <button [disabled]="checkStatus(selectedUsers)" (click)="deleteUser(selectedUsers[0])"
-    style="margin-left: 1em;">Delete</button>
-    <button [disabled]="checkInactiveStatus(selectedUsers)" (click)="activateUser(selectedUsers[0])" style="margin-left: 1em;">Activate Employee</button>
-    <button routerLink="/addEmployee" style="float: right;border-radius: 50%; border-color: black;">+
-    </button>
   </div>
 </div>
 <!-- routerLink="/editEmployee/{{selectedUsers[0].id}}" -->

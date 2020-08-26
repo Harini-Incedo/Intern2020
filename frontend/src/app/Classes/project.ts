@@ -7,6 +7,7 @@ export class Project {
   projectGoal: string;
   startDate: string;
   endDate: string;
-  weeklyHours: number;
+  totalAllocatedHours: number;
+  totalPlannedHours: number;
   status: string;
 }

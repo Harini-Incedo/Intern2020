@@ -46,6 +46,10 @@ export class ProjectServiceService {
       .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
+  public getProjectStatuses(): Observable<any> {
+    return this.http.get('http://localhost:8080/status', this.httpOptions);
+  }
+
   public addToProjects(project:Project):void{
     this.selectedProjects.push(project);
   }

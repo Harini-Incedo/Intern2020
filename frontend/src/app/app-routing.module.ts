@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'addSkill/:projectid', component: SkillFormComponent},
   { path: 'editSkill/:projectid/skill/:skillid', component: SkillFormComponent },
   { path: 'addEmployee/:projectid/skill/:skillName', component: EmployeeSkillFormComponent},
-  { path: 'editEngagement/:engagementid', component: EditHoursComponent }
+  { path: 'editEngagement/:engagementid', component: EditHoursComponent },
+  { path: 'addEngagement/:skillid/project/:projectid', component: SkillFormComponent}
 ];
 
 @NgModule({

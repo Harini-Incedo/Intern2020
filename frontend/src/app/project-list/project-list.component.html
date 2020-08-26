@@ -8,30 +8,6 @@
 </ul>
 <div class="card my-5">
   <div class="card-body">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Project Name</th>
-          <th scope="col">Client Name</th>
-          <th scope="col">Start Date</th>
-          <th scope="col">End Date</th>
-          <th scope="col">Weekly Hours</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let project of projects">
-          <td><input type="checkbox" (click)="onSelectList(project)"></td>
-          <td><a routerLink="/viewProject/{{project.id}}">{{ project.projectName }}</a></td>
-          <td>{{ project.clientName }}</td>
-          <td>{{ project.startDate }}</td>
-          <td>{{ project.endDate }}</td>
-          <td>{{ project.weeklyHours }}</td>
-          <td>{{ project.status }}</td>
-        </tr>
-      </tbody>
-    </table>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true" (click)="editProject(selectedProjects[0])">Edit</button>
     <button [disabled]="selectedProjects && selectedProjects.length ===1?false:true"
     style="margin-left: 1em;" (click)="startProject(selectedProjects[0])" >Start</button>
@@ -41,5 +17,55 @@
     style="margin-left: 1em;" [disabled]="selectedProjects && selectedProjects.length ===1?false:true" (click)="completeProject(selectedProjects[0])">Complete</button>
     <button routerLink="/addProject" style="float: right;border-radius: 50%; border-color: black;">+
     </button>
+    <br>
+    <br>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col" (click)="sort('projectName')">Project Name</th>
+          <th scope="col" (click)="sort('clientName')">Client Name</th>
+          <th scope="col" (click)="sort('startDate')">Start Date</th>
+          <th scope="col" (click)="sort('endDate')">End Date</th>
+          <th scope="col" (click)="sort('status')">Status</th>
+        </tr>
+        <tr>
+          <td><img src="../../assets/searchButton.jpg" (click)="filter()" style="width: 1rem; height: auto;"/></td>
+          <td>
+            <input type="text" name="projectName" placeholder="Project Name"
+            [(ngModel)]="projectName" style="width: 10em;">
+          </td>
+          <td>
+            <input type="text" name="clientName" placeholder="Client Name"
+            [(ngModel)]="clientName" style="width: 10em;">
+          </td>
+          <td>
+            <input type="date" name="startDate"
+            [(ngModel)]="startDate" style="width: 10em;">
+          </td>
+          <td>
+            <input type="date" name="endDate"
+            [(ngModel)]="endDate" style="width: 10em;">
+          </td>
+          <td>
+            <select name="status" style="width: 6em;" [(ngModel)]="selectedStatus">
+              <option *ngFor="let status of statuses" [value]="status">
+                {{status}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </thead>
+      <tbody id="paginated">
+        <tr *ngFor="let project of projects">
+          <td><input type="checkbox" (click)="onSelectList(project)"></td>
+          <td><a routerLink="/viewProject/{{project.id}}">{{ project.projectName }}</a></td>
+          <td>{{ project.clientName }}</td>
+          <td>{{ project.startDate }}</td>
+          <td>{{ project.endDate }}</td>
+          <td>{{ project.status }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
