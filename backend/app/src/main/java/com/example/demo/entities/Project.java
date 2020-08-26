@@ -54,7 +54,7 @@ public class Project {
     }
 
     public Project() {
-
+        super();
     }
 
     public String getProjectName() {
