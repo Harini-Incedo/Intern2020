@@ -4,10 +4,8 @@ import { Engagement } from '../Classes/engagement';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import {Location} from '@angular/common';
-import { Project } from '../Classes/project';
 import { catchError } from 'rxjs/operators';
 import { Skill } from '../Classes/skill';
-import { Employee } from '../Classes/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +19,6 @@ export class EngagementService {
   public selectedEngagements : Engagement[];
 
   public selectedEngagement : Engagement;
-
-  private Data : Engagement;
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

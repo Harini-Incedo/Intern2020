@@ -38,6 +38,19 @@
             Number of People Needed is required.
           </div>
         </div>
+
+        </div>
+        <div>
+          <label for="startDate">&emsp;Start Date<span style="color: red;">*</span></label>
+          <input type="date" id="number"
+          name="startDate" [(ngModel)]="startDate" min="{{actualStartDate}}" max="{{endDate}}"
+          required>
+        </div>
+        <div>
+          <label for="endDate">&emsp;End Date<span style="color: red;">*</span></label>
+          <input type="date" id="number"
+          name="endDate" [(ngModel)]="endDate" max="{{endDate}}"
+          required>
         </div>
         <div>
           <label for="totalHours">&emsp;Weekly Hours Needed<span style="color: red;">*</span></label>

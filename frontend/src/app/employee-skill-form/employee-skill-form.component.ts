@@ -8,7 +8,6 @@ import { ProjectServiceService } from '../Services/project-service.service';
 import { User } from '../Classes/user';
 import { Employee } from '../Classes/employee';
 import { SkillService } from '../Services/skill.service';
-import { sample } from 'rxjs/operators';
 import { EngagementService } from '../Services/engagement.service';
 
 @Component({
@@ -41,7 +40,7 @@ export class EmployeeSkillFormComponent implements OnInit {
     const skillid = +this.route.snapshot.paramMap.get('skillName');
     this.skillService.getById(skillid).subscribe(data=> {
       this.sampleMap["skill"] = data.skillName;
-      this.skill["skill"] = data.skillName;
+      this.skill["skillName"] = data.skillName;
       this.skill = data;
       this.userService.findRecommended(this.sampleMap).subscribe(data => {
         this.users = data;

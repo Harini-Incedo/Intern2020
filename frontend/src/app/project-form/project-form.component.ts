@@ -13,7 +13,7 @@ import { throwError } from 'rxjs';
 })
 export class ProjectFormComponent implements OnInit {
 
-  project: Project = {id:0, projectName:"", status:"", clientName:"", department:"", teamSize:0, projectGoal:"", startDate:"", endDate:"", weeklyHours:0};;
+  project: Project = {id:0, projectName:"", status:"", clientName:"", department:"", teamSize:0, projectGoal:"", startDate:"", endDate:"", totalAllocatedHours: 0, totalPlannedHours: 0};;
   departments: String[];
   statuses: String[];
   isCreateMode: boolean;
@@ -61,10 +61,5 @@ export class ProjectFormComponent implements OnInit {
 
   validateEndDate(endDate:any,startDate:any){
     this.inValidDate = this.generalService.validateEndDate(endDate,startDate);
-  }
-
-  private handleError(errorResponse: HttpErrorResponse) {
-    let check = confirm(errorResponse.error.errorMessage + ". " + errorResponse.error.debugMessage);
-    return throwError(errorResponse);
   }
 }

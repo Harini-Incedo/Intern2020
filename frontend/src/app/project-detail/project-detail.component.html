@@ -11,13 +11,16 @@
     <p style="text-align: center; font-size: x-large"><strong>{{ selectedProject.projectName }}</strong></p>
     <br>
     <p><strong>Project Goal/Objective</strong> <span> {{ selectedProject.projectGoal }} </span></p>
+    <br>
+    <br>
     <p><strong>Start Date</strong> <span> {{ selectedProject.startDate }}</span></p>
     <p><strong>End Date</strong> <span> {{selectedProject.endDate }} </span></p>
     <p><strong>Client Name</strong> <span> {{ selectedProject.clientName }} </span></p>
     <p><strong>Team Size</strong> <span> {{ selectedProject.teamSize }} </span></p>
     <p><strong>Department</strong> <span> {{ selectedProject.department }} </span></p>
-    <p><strong>Weekly Hours</strong> <span> {{ selectedProject.weeklyHours }} </span></p>
     <p><strong>Status</strong> <span> {{ selectedProject.status }} </span></p>
+    <p><strong>Total Planned Hours</strong> <span> {{ selectedProject.totalPlannedHours }} </span></p>
+    <p><strong>Total Allocated Hours</strong> <span> {{ selectedProject.totalAllocatedHours }} </span></p>
     <div style="float: right; justify-content: space-evenly;">
       <button type="button" (click)="goBack($event)">&larr;Go Back</button>
       <button routerLink="/editProject/{{selectedProject.id}}">Edit</button>
@@ -31,14 +34,15 @@
     <p style="text-align: center; font-size: x-large;"><strong>Engagements</strong></p>
     <div class="buttons">
       <strong style="margin-left: 1em;">Skill Controls:</strong>
-      <button class="add" type="button" style="margin-left: 1em;" (click)="addSkill(selectedProject)">Add Skill</button>
-      <button type="button" style="margin-left: 1em;" (click)="editSkill(selectedSkill)" [disabled]="selectedSkills && selectedSkills.length ===1?false:true">Edit Skill</button>
-      <button type="button" style="margin-left: 1em;" (click)="deleteSkill(selectedSkill)" [disabled]="selectedSkills && selectedSkills.length ===1?false:true">Delete Skill</button>
+      <button class="add" type="button" style="margin-left: 1em;" (click)="addSkill(selectedProject)">Add</button>
+      <button type="button" style="margin-left: 1em;" (click)="editSkill(selectedSkill)" [disabled]="selectedSkills && selectedSkills.length ===1?false:true">Edit</button>
+      <button type="button" style="margin-left: 1em;" (click)="deleteSkill(selectedSkill)" [disabled]="selectedSkills && selectedSkills.length ===1?false:true">Delete</button>
       <br>
       <br>
       <strong style="margin-left: 1em;">Engagement Controls:</strong>
-      <button type="button" style="margin-left: 1em;" (click)="editEngagement(selectedEngagement)" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true">Edit Engagement</button>
-      <button type="button" style="margin-left: 1em;" (click)="deleteEngagement(selectedEngagement)" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true">Delete Engagement</button>
+      <button type="button" style="margin-left: 1em" (click)="addEngagement(selectedSkill)" [disabled]="selectedSkills && selectedSkills.length ===1?false:true">Add</button>
+      <button type="button" style="margin-left: 1em;" (click)="editEngagement(selectedEngagement)" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true">Edit</button>
+      <button type="button" style="margin-left: 1em;" (click)="deleteEngagement(selectedEngagement)" [disabled]="selectedEngagements && selectedEngagements.length ===1?false:true">Delete</button>
     </div>
     <br>
     <table class="paginated">

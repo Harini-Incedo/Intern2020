@@ -91,24 +91,6 @@
           </div>
           <div  class="alert alert-danger" *ngIf="endDate.touched && inValidDate">End date cannot be before start date. Please enter a valid end date.</div>
         </div>
-        <div>
-          <label for="weeklyHours">&emsp;Weekly Hours<span style="color: red;">*</span></label>
-          <input type="number" [(ngModel)]="project.weeklyHours" id="number"
-          name="weeklyHours"
-          #weeklyHours="ngModel"
-          appForbiddenHoursNeeded="project"
-          required>
-          <div *ngIf="weeklyHours.invalid && (weeklyHours.dirty || weeklyHours.touched)"
-          class="alert alert-danger">
-            <div *ngIf="weeklyHours.errors?.forbiddenHoursNeeded">
-              The following value cannot be processed {{weeklyHours.errors?.forbiddenHoursNeeded?.value}},
-              {{printForbiddenMessageWeeklyHours(weeklyHours.errors?.forbiddenHoursNeeded?.value)}}
-            </div>
-            <div *ngIf="!weeklyHours.errors?.forbiddenHoursNeeded && weeklyHours.errors.required">
-              Hours needed is required.
-            </div>
-          </div>
-        </div>
       </div>
     </form>
     <button type="button" (click)="goBack($event)">&larr;Go Back</button>

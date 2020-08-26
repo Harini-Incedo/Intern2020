@@ -5,7 +5,6 @@ import { ProjectServiceService } from '../Services/project-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EngagementService } from '../Services/engagement.service';
 import { UserService } from '../Services/user-service.service';
-import { subscribeOn } from 'rxjs/operators';
 import { SkillService } from '../Services/skill.service';
 import { Project } from '../Classes/project';
 
@@ -19,6 +18,9 @@ export class SkillFormComponent implements OnInit {
   project: Project;
   skills: Skill[];
   isCreateMode: boolean;
+  startDate: string;
+  endDate: string;
+  actualStartDate: string;
   skill: Skill = {id: 0, name: "", projectName: "", count: null, totalWeeklyHours: null, skillName: "", avgWeeklyEngHours: null }
 
   constructor(
@@ -33,12 +35,27 @@ export class SkillFormComponent implements OnInit {
 
   ngOnInit(): void {
     const projectId = +this.route.snapshot.paramMap.get('projectid');
-    if (this.router.url.includes('edit')) {
+    if (this.router.url.includes('addEngagement')) {
+      const skillid = (+this.route.snapshot.paramMap.get('skillid'));
+      this.skillService.getById(skillid).subscribe(resp => {
+        this.skill = resp;
+        this.skill.count = 0;
+        this.skill.avgWeeklyEngHours = 0;
+        this.skill.totalWeeklyHours = 0;
+        document.querySelectorAll('button')[1].textContent = "Add";
+      })
+      document.querySelectorAll('select')[1].disabled = true;
+      document.querySelectorAll('div')[9].hidden = true;
+      document.querySelectorAll('div')[10].hidden = true;
+      document.querySelectorAll('div')[11].hidden = true;
+    } else if (this.router.url.includes('edit')) {
       const skillid = (+this.route.snapshot.paramMap.get('skillid'));
       this.skillService.getById(skillid).subscribe(resp => {
         this.skill = resp;
       })
       document.querySelectorAll('select')[1].disabled = true;
+      document.querySelectorAll('div')[8].hidden = true;
+      document.querySelectorAll('div')[12].hidden = true;
       this.engagementSerivce.findAll(projectId).subscribe(data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i]["skillName"] === this.skill.skillName) {
@@ -47,6 +64,9 @@ export class SkillFormComponent implements OnInit {
           }
         }
       })
+    } else {
+      document.querySelectorAll('div')[9].hidden = true;
+      document.querySelectorAll('div')[10].hidden = true;
     }
     this.getProjectById(projectId);
     this.getAllSkills();
@@ -54,11 +74,23 @@ export class SkillFormComponent implements OnInit {
 
   onSubmit() {
     if (this.router.url.includes('edit')) {
-      this.skillService.update(this.skill.id, this.skill.totalWeeklyHours).subscribe(d => this.goBack())
+      let test = {
+        "startDate": this.startDate,
+        "endDate": this.endDate,
+        "newHours": this.skill.totalWeeklyHours
+      }
+      this.skillService.update(this.skill.id, test).subscribe(d => this.goBack())
+    } else if (this.router.url.includes('addEngagement')) {
+      let test = {
+        "skillName": this.skill.skillName,
+        "count": this.skill.count,
+        "avgWeeklyEngHours": this.skill.avgWeeklyEngHours
+      }
+      this.skillService.addEngagements(this.project, test).subscribe(d => this.goBack());
     } else {
       let test = {
         "skillName": this.skill.skillName,
-        "totalWeeklyHours": this.skill.totalWeeklyHours,
+        "avgWeeklySkillHours": this.skill.totalWeeklyHours,
         "count": this.skill.count,
         "avgWeeklyEngHours": this.skill.avgWeeklyEngHours
       };
@@ -70,6 +102,9 @@ export class SkillFormComponent implements OnInit {
     this.projectService.getProjectByIdApi(projectId).subscribe(resp=>{
       this.project = resp;
       this.skill.projectName = resp.projectName;
+      this.startDate = resp.startDate;
+      this.actualStartDate = resp.startDate;
+      this.endDate = resp.endDate;
     })
   }
 

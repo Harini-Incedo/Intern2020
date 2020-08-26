@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../Classes/user';
 import { UserService } from '../Services/user-service.service';
 import { Router } from '@angular/router';
 import { GeneralService } from '../Services/general.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { Skill } from '../Classes/skill';
+import * as $ from 'jquery';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +13,6 @@ import { Skill } from '../Classes/skill';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   users: User[];
   selectedUsers: User[] ;
@@ -21,11 +20,19 @@ export class UserListComponent implements OnInit {
   departments: String[];
   roles: String[];
   skills: Skill[];
-  dataSource = new MatTableDataSource<User>();
+  counter: {};
+  firstName: String = null;
+  lastName: String = null;
+  selectedDepartment: String;
+  location: String = null;
+  selectedRole: String = null;
+  selectedSkills: String[] = null;
+  selectedSkill: String = null;
+  employeeType: string;
 
   constructor(
     private userService: UserService,
-    private router: Router,
+    public router: Router,
     private generalService: GeneralService
   ) {}
 
@@ -47,8 +54,97 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    console.log("Filter button clicked");
+  addSkill() {
+    if (this.selectedSkill.length > 0) {
+      if (this.selectedSkills.includes(this.selectedSkill)) {
+        alert("This value is already in the skills. Please choose another skill.")
+      } else {
+        this.selectedSkills.push(this.selectedSkill);
+        this.selectedSkills.sort();
+      }
+    } else {
+      alert("Please enter a valid input");
+    }
+    this.selectedSkill = "";
+  }
+
+  removeSkill(com:string):void{
+    let newSkills = [];
+    for (let i = 0; i < this.selectedSkills.length; i++) {
+      if (com != this.selectedSkills[i]) {
+        newSkills.push(this.selectedSkills[i]);
+      }
+    }
+    this.selectedSkills = newSkills.sort();
+  }
+
+  filter() {
+    d3.select('div.pager').attr('hidden', true);
+    let test = {
+      "firstName": this.firstName,
+      "lastName": this.lastName,
+      "department": this.selectedDepartment,
+      "location": this.location,
+      "role": this.selectedRole,
+      "skills": this.selectedSkills.toLocaleString(),
+      "status": this.employeeType
+    }
+    if (this.selectedSkills.toLocaleString().length == 0) {
+      test["skills"] = null;
+    }
+    this.userService.getFilteredEmployee(test).subscribe(d => {
+      this.users = d;
+    });
+    this.paginate();
+  }
+
+  paginate() {
+    d3.select('div.pager').attr('hidden', true);
+    setTimeout(()=> {
+      $('tbody#paginated').each(function() {
+        let currentPage = 0;
+        let numPerPage = 5;
+        let $table = $('tbody#paginated');
+        $table.bind('repaginate', function() {
+          $table.find('tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+        });
+        $table.trigger('repaginate');
+        let numRows = $table.find('tr').length;
+        let numPages = Math.ceil(numRows / numPerPage);
+        let $pager = $('<div class="pager"></div>');
+        for (let page = 0; page < numPages; page++) {
+            $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                newPage: page
+            }, function(event) {
+                currentPage = event.data['newPage'];
+                $table.trigger('repaginate');
+                $(this).addClass('active').siblings().removeClass('active');
+            }).appendTo($pager);
+        }
+        $pager.insertAfter($('table')).find('span.page-number:first').addClass('active');
+    });
+    }, 1000)
+    setTimeout(() => {
+      d3.selectAll('div.pager span').attr('style', 'display:inline-block; width: 1.8em; height: 1.8em; line-height: 1.8; text-align: center; cursor: pointer; background: #000; color: #fff; margin-right: 0.5em;');
+    }, 1010);
+  }
+
+  sort(obj: any) {
+    if (this.counter[obj] % 2 === 0) {
+      this.users.sort((a, b) => a[obj].localeCompare(b[obj]))
+    } else {
+      this.users.sort((a, b) => b[obj].localeCompare(a[obj]))
+    }
+    this.counter[obj]++;
+  }
+
+  sortSkills(obj:any) {
+    if (this.counter[obj] % 2 === 0) {
+      this.users.sort((a, b) => a[obj][0].localeCompare(b[obj][0]))
+    } else {
+      this.users.sort((a, b) => b[obj][0].localeCompare(a[obj][0]))
+    }
+    this.counter[obj]++;
   }
 
   addSelectedUser(user:User) : void {
@@ -88,6 +184,17 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
+    d3.select('div.pager').attr('hidden', true);
+    this.employeeType = "Active";
+    this.counter = {
+      "firstName": 0,
+      "lastName": 0,
+      "department": 0,
+      "location": 0,
+      "role": 0,
+      "skills": 0
+    }
+    this.selectedSkills = [];
     this.getEmployeeByType();
     this.getAllDepartments();
     this.getAllRoles();
@@ -95,13 +202,13 @@ export class UserListComponent implements OnInit {
   }
 
   getEmployeeByType(): void {
-    this.userService.findAll(document.querySelector("select").value).subscribe(data => {
+    this.userService.findAll(this.employeeType).subscribe(data => {
       this.users = data;
-      this.dataSource.data = data;
       this.userService.setUsers(data);
       this.selectedUsers = [];
-      this.dataSource.paginator = this.paginator;
     });
+    d3.select('div.pager').attr('hidden', true);
+    this.paginate();
   }
 
   getAllDepartments():void{
