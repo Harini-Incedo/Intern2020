@@ -1,19 +1,25 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Employee;
 import com.example.demo.entities.Engagement;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Skill;
 import com.example.demo.repositories.EngagementRepository;
 import com.example.demo.repositories.ProjectRepository;
 import com.example.demo.repositories.SkillRepository;
+import com.example.demo.specifications.EmployeeSpecifications;
+import com.example.demo.specifications.ProjectSpecifications;
 import com.example.demo.validation.EntityNotFoundException;
 import com.example.demo.validation.InvalidInputException;
 import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import javax.print.DocFlavor;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -41,6 +47,30 @@ public class ProjectController {
     @GetMapping("/projects")
     public List<Project> getAllProjects() {
         return repository.findAllProjects();
+    }
+
+    // To get all projects with the desired details
+    @PostMapping("/projects/filtered")
+    public List<Project> filterProjects(@RequestBody HashMap<String, String> values) {
+        // extracts necessary values from request body sent by UI
+        String projectName = values.get("projectName");
+        String clientName = values.get("clientName");
+        String status = values.get("status");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        boolean startDateGiven = values.get("startDate") != null;
+        boolean endDateGiven = values.get("endDate") != null;
+        LocalDate startDate = startDateGiven? LocalDate.parse(values.get("startDate"), dtf) : null;
+        LocalDate endDate = endDateGiven? LocalDate.parse(values.get("endDate"), dtf) : null;
+
+        List<Project> toReturn = repository.findAll(
+                Specification.where(ProjectSpecifications.withProjectName(projectName))
+                                .and(ProjectSpecifications.withClientName(clientName))
+                                .and(ProjectSpecifications.withStatus(status))
+                                .and(ProjectSpecifications.withStartDate(startDate))
+                                .and(ProjectSpecifications.withEndDate(endDate)));
+
+        return toReturn;
     }
 
     // Creates a new project in the database with the given information

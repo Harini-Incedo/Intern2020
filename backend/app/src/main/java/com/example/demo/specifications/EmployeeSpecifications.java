@@ -10,7 +10,9 @@ public class EmployeeSpecifications {
         if (firstName == null) {
             return null;
         } else {
-            return (root, query, cb) -> cb.equal(root.get("firstName"), firstName);
+            return (root, query, cb) ->
+                    cb.greaterThan(cb.locate(cb.lower(root.get("firstName")),
+                            firstName.toLowerCase()), 0);
         }
     }
 
@@ -18,7 +20,9 @@ public class EmployeeSpecifications {
         if (lastName == null) {
             return null;
         } else {
-            return (root, query, cb) -> cb.equal(root.get("lastName"), lastName);
+            return (root, query, cb) ->
+                    cb.greaterThan(cb.locate(cb.lower(root.get("lastName")),
+                            lastName.toLowerCase()), 0);
         }
     }
 
@@ -38,11 +42,17 @@ public class EmployeeSpecifications {
         }
     }
 
+    public static Specification<Employee> withStatus(boolean active) {
+        return (root, query, cb) -> cb.equal(root.get("active"), active);
+    }
+
     public static Specification<Employee> withLocation(String location) {
         if (location == null) {
             return null;
         } else {
-            return (root, query, cb) -> cb.equal(root.get("location"), location);
+            return (root, query, cb) ->
+                    cb.greaterThan(cb.locate(cb.lower(root.get("location")),
+                                                location.toLowerCase()), 0);
         }
     }
 
@@ -51,7 +61,7 @@ public class EmployeeSpecifications {
             return null;
         } else {
             return (root, query, cb) -> {
-                String[] skills = skillString.split(" ");
+                String[] skills = skillString.split(",");
                 Predicate predicate = cb.isMember(skills[0], root.get("skills"));
                 for (String skill : skills) {
                     predicate = cb.or(predicate, cb.isMember(skill, root.get("skills")));
@@ -60,6 +70,5 @@ public class EmployeeSpecifications {
             };
         }
     }
-
 
 }

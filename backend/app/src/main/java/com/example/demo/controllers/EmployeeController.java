@@ -50,7 +50,7 @@ public class EmployeeController {
     }
 
     // To get all employees with the desired details
-    @GetMapping("/employees/filtered")
+    @PostMapping("/employees/filtered")
     public List<Employee> filterEmployees(@RequestBody HashMap<String, String> values) {
         // extracts necessary values from request body sent by UI
         String firstName = values.get("firstName");
@@ -60,14 +60,27 @@ public class EmployeeController {
         String location = values.get("location");
         String skills = values.get("skills");
 
-        List<Employee> toReturn = repository.findAll(Specification.where(EmployeeSpecifications.withFirstName(firstName))
-                                    .and(EmployeeSpecifications.withLastName(lastName))
-                                    .and(EmployeeSpecifications.withRole(role))
-                                    .and(EmployeeSpecifications.withDepartment(department))
-                                    .and(EmployeeSpecifications.withLocation(location))
-                                    .and(EmployeeSpecifications.withSkills(skills)));
+        String statusString = values.get("status");
+        boolean status = statusString.equalsIgnoreCase("Active") ? true : false;
 
-        return toReturn;
+        if (statusString.equalsIgnoreCase("Both")) {
+            return repository.findAll(
+                    Specification.where(EmployeeSpecifications.withFirstName(firstName))
+                                .and(EmployeeSpecifications.withLastName(lastName))
+                                .and(EmployeeSpecifications.withRole(role))
+                                .and(EmployeeSpecifications.withDepartment(department))
+                                .and(EmployeeSpecifications.withLocation(location))
+                                .and(EmployeeSpecifications.withSkills(skills)));
+        } else {
+            return repository.findAll(
+                    Specification.where(EmployeeSpecifications.withFirstName(firstName))
+                                .and(EmployeeSpecifications.withLastName(lastName))
+                                .and(EmployeeSpecifications.withRole(role))
+                                .and(EmployeeSpecifications.withDepartment(department))
+                                .and(EmployeeSpecifications.withLocation(location))
+                                .and(EmployeeSpecifications.withSkills(skills))
+                                .and(EmployeeSpecifications.withStatus(status)));
+        }
     }
 
     // To get all recommended employees in sorted order by last name
