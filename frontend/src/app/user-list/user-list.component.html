@@ -34,7 +34,10 @@
           <th scope="col" (click)="sortSkills('skills')">Skills</th>
         </tr>
         <tr>
-          <td><img src="../../assets/searchButton.jpg" (click)="filter()" style="width: 1rem; height: auto;"/></td>
+          <td>
+            <img src="../../assets/searchButton.jpg" (click)="filter()" style="width: 1rem; height: auto;"/>
+            <img src="../../assets/closeButton.jpg" (click)="clearFilters()" style="width: 1rem; height: auto;"/>
+          </td>
           <td>
             <input type="text" name="firstName" placeholder="First Name" pattern="[a-zA-Z ]*"
             [(ngModel)]="firstName" style="width: 6em;">

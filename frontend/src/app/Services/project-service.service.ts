@@ -46,6 +46,10 @@ export class ProjectServiceService {
       .pipe(catchError((err,router) => this.handleError(err,this.router)));
   }
 
+  public filter(test: object): Observable<Project[]> {
+    return this.http.post<Project[]>(this.projectsUrl + '/filtered', test, this.httpOptions);
+  }
+
   public getProjectStatuses(): Observable<any> {
     return this.http.get('http://localhost:8080/status', this.httpOptions);
   }
