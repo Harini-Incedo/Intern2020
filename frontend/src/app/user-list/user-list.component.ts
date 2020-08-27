@@ -98,6 +98,22 @@ export class UserListComponent implements OnInit {
     this.paginate();
   }
 
+  clearFilters() {
+    this.firstName = null;
+    this.lastName = null;
+    this.selectedDepartment = null;
+    this.location = null;
+    this.selectedRole = null;
+    this.selectedSkill = null;
+    this.selectedSkills = [];
+    this.userService.findAll(this.employeeType).subscribe(data => {
+      this.users = data;
+      this.userService.setUsers(data);
+      this.selectedUsers = [];
+    });
+    this.paginate();
+  }
+
   paginate() {
     d3.select('div.pager').attr('hidden', true);
     setTimeout(()=> {
